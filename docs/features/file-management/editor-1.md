@@ -2,7 +2,6 @@
 description: >-
   Renaming has been updated to allow removing text, renaming specific files or
   renaming all files in a directory.
-icon: folder
 ---
 
 # Rename

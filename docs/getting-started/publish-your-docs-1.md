@@ -1,5 +1,4 @@
 ---
-icon: globe-pointer
 ---
 
 # Configuring the App

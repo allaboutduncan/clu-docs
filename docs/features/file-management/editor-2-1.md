@@ -1,6 +1,5 @@
 ---
 description: How to get metadata and create ComicInfo.xml files
-icon: folder
 ---
 
 # Generate ComicInfo.xml

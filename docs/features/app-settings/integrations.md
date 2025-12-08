@@ -1,6 +1,5 @@
 ---
 description: Installation Steps for Config
-icon: square-sliders
 ---
 
 # Config Installation

@@ -1,6 +1,5 @@
 ---
 description: Move your files and directories around in your mapped drive
-icon: folder
 ---
 
 # Move

@@ -1,6 +1,5 @@
 ---
 description: How to enable and setup folder monitoring
-icon: folder-gear
 ---
 
 # Monitoring Setup

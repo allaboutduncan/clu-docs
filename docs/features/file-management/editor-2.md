@@ -1,6 +1,5 @@
 ---
 description: Delete files or directories in your mapped drive
-icon: folder
 ---
 
 # Delete

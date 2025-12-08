@@ -1,6 +1,5 @@
 ---
 description: Setup for remote download of files
-icon: folder
 ---
 
 # Chrome Extension

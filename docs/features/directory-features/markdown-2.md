@@ -1,5 +1,4 @@
 ---
-icon: folder
 ---
 
 # Convert PDF to CBZ

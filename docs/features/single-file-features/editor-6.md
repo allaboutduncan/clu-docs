@@ -1,6 +1,5 @@
 ---
 description: Quick and easy way to paste a path to a file and delete it
-icon: file-slash
 ---
 
 # Delete File

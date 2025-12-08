@@ -1,6 +1,5 @@
 ---
 description: All of the Options available in Settings
-icon: square-sliders
 ---
 
 # Settings Available

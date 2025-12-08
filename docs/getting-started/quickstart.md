@@ -1,6 +1,5 @@
 ---
 description: Quick install using Docker
-icon: bullseye-arrow
 ---
 
 # Quickstart

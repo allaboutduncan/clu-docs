@@ -2,7 +2,6 @@
 description: >-
   As you browse and manage your library, there are additional features that will
   help you manage your collection
-icon: folder
 ---
 
 # Additional Features
@@ -23,11 +22,11 @@ When you start the app, a Search Cache will be built. Timing on this will be dep
 \
 Search will also run in real-time, but be warned, if you have a large library, it will likely time out before returning any valid results. Additionally, anytime you move files to this directory, the cache will be invalidated.
 
-See the Cache Management section on [app-settings](../app-settings/ "mention") for more details
+See the Cache Management section on [app-settings](../app-settings/README.md) for more details
 
 ### New Files
 
-Clicking the "New Files" button will attempt to show any new files added within the last 7 days. This is useful for seeing new downloads. This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/ "mention")
+Clicking the "New Files" button will attempt to show any new files added within the last 7 days. This is useful for seeing new downloads. This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/README.md)
 
 <figure><img src="../../.gitbook/assets/Screenshot 2025-10-21 092519.png" alt=""><figcaption></figcaption></figure>
 

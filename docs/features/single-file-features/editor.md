@@ -1,6 +1,5 @@
 ---
 description: Perform edits to a CBZ File
-icon: file-zip
 ---
 
 # Edit CBZ File
