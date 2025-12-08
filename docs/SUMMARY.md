@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [Welcome](index.md)
 
 ## Getting Started
 
@@ -10,7 +10,7 @@
 
 ## Features
 
-* [Directory Features](features/directory-features/README.md)
+* [Directory Features](features/directory-features/index.md)
   * [Clean All Filenames](features/directory-features/editor.md)
   * [Convert Directory](features/directory-features/markdown.md)
   * [Rebuild All Files](features/directory-features/markdown-1.md)
@@ -19,7 +19,7 @@
   * [Enhance Images](features/directory-features/markdown-4.md)
   * [Clean ComicInfo.xml](features/directory-features/markdown-5.md)
   * [App Logs](features/directory-features/integrations.md)
-* [Single File Features](features/single-file-features/README.md)
+* [Single File Features](features/single-file-features/index.md)
   * [Edit CBZ File](features/single-file-features/editor.md)
   * [Single File Rebuild](features/single-file-features/editor-1.md)
   * [Crop Cover](features/single-file-features/editor-2.md)
@@ -27,24 +27,24 @@
   * [Add blank Image](features/single-file-features/editor-4.md)
   * [Enhance Images](features/single-file-features/editor-5.md)
   * [Delete File](features/single-file-features/editor-6.md)
-* [File Downloads](features/file-downloads/README.md)
+* [File Downloads](features/file-downloads/index.md)
   * [Chrome Extension](features/file-downloads/editor.md)
   * [Right-Click to Download](features/file-downloads/editor-1.md)
   * [Download Status Page](features/file-downloads/editor-2.md)
-* [File Management](features/file-management/README.md)
+* [File Management](features/file-management/index.md)
   * [Move](features/file-management/editor.md)
   * [Rename](features/file-management/editor-1.md)
   * [Delete](features/file-management/editor-2.md)
   * [Additional Features](features/file-management/editor-3.md)
   * [Generate ComicInfo.xml](features/file-management/editor-2-1.md)
-* [Folder Monitoring](features/folder-monitoring/README.md)
+* [Folder Monitoring](features/folder-monitoring/index.md)
   * [Monitoring Setup](features/folder-monitoring/integrations.md)
   * [Features](features/folder-monitoring/integrations-1.md)
   * [Monitoring Logs](features/folder-monitoring/integrations-2.md)
-* [App Settings](features/app-settings/README.md)
+* [App Settings](features/app-settings/index.md)
   * [Config Installation](features/app-settings/integrations.md)
   * [Settings Available](features/app-settings/integrations-1.md)
-* [GCD Database Support](features/app-settings-1/README.md)
+* [GCD Database Support](features/app-settings-1/index.md)
   * [GCD Database Download](features/app-settings-1/integrations.md)
   * [MySQL Database Setup](features/app-settings-1/integrations-1.md)
   * [Updated CLU Settings for GCD](features/app-settings-1/integrations-1-1.md)
