@@ -1,0 +1,10 @@
+site_name: CLU Documentation
+theme:
+  name: material
+  palette:
+    scheme: slate  # Dark mode (optional, remove for light)
+    primary: indigo
+
+# This tells MkDocs your markdown files are in the root or a 'docs' subfolder.
+# If your files are in the root, you don't need 'docs_dir'.
+# If they are in a folder named 'docs', MkDocs finds them automatically.
