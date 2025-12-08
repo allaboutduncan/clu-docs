@@ -46,7 +46,7 @@ If you want to enable monitoring and did not configure these on setup, simply st
 
 When you have monitoring enabled, you will need to configure a **WATCH** folder and a **TARGET** folder.
 
-<figure><img src="docs/assets/monitor01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/monitor01.png" alt=""><figcaption></figcaption></figure>
 
 * **WATCH** is the source folder that will be monitored. Files in this location will have automated actions applied to them
 * **TARGET** is the destination folder where files will be moved as they are processed.

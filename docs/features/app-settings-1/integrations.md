@@ -15,6 +15,6 @@ you'll want to select the following options:
 * Select - Private Use
 * Click - Download MySQL Dump
 
-<figure><img src="docs/assets/Screenshot 2025-10-07 082305.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-10-07 082305.png" alt=""><figcaption></figcaption></figure>
 
 Pay attetntion to where the file is saved and move to the next step

@@ -10,7 +10,7 @@ Once you have the [Chrome extension installed](https://chromewebstore.google.com
 
 You'll see a screen similar to this within Chrome.
 
-<figure><img src="docs/assets/Screenshot 2025-05-28 092053.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-05-28 092053.png" alt=""><figcaption></figcaption></figure>
 
 ### API URL
 

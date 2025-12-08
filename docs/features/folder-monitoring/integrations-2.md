@@ -6,13 +6,13 @@ description: How can I see what folder monitoring is doing?
 
 Once enabled and configured, you'll see a Monitor Logs link in your app navigation.
 
-<figure><img src="docs/assets/monitor-nav.png" alt=""><figcaption><p>Monitor Logs in Navigation</p></figcaption></figure>
+<figure><img src="assets/monitor-nav.png" alt=""><figcaption><p>Monitor Logs in Navigation</p></figcaption></figure>
 
 This will let you view log messages associated specifically with Folder Monitoring. Navigating to this page you should see something like this:
 
 Folder Monitoring uses some of the base functions of the app to perform actions. Logs related to these actions (renaming, conversion, etc) are visible on the App Logs page.
 
-<figure><img src="docs/assets/mon-logs.png" alt=""><figcaption><p>Folder Monitoring Logs</p></figcaption></figure>
+<figure><img src="assets/mon-logs.png" alt=""><figcaption><p>Folder Monitoring Logs</p></figcaption></figure>
 
 In the example above, we can see a few things:
 

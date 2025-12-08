@@ -4,7 +4,7 @@ description: (CBR / RAR Only)
 
 # Convert Directory
 
-<figure><img src="docs/assets/convert.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/convert.png" alt=""><figcaption></figcaption></figure>
 
 Converts all _CBR / RAR_ files in a **directory** to ZIP/CBZ.&#x20;
 

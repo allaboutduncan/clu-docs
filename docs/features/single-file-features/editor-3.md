@@ -4,7 +4,7 @@ description: Remove the first image in a CBZ
 
 # Remove First Image
 
-<figure><img src="docs/assets/remove.png" alt=""><figcaption><p>Remove First Image</p></figcaption></figure>
+<figure><img src="assets/remove.png" alt=""><figcaption><p>Remove First Image</p></figcaption></figure>
 
 Many older files will have a cover image that is not the cover of the comic.
 

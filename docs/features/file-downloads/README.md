@@ -4,7 +4,7 @@ description: Remote Download of Comic Files
 
 # File Downloads
 
-<figure><img src="docs/assets/Screenshot 2025-05-28 090426.png" alt=""><figcaption><p>Built in File Manager</p></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-05-28 090426.png" alt=""><figcaption><p>Built in File Manager</p></figcaption></figure>
 
 New in Version 3.0 is remote download manager.
 

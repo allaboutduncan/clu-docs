@@ -4,11 +4,11 @@ description: How can I see what the app is doing?
 
 # App Logs
 
-<figure><img src="docs/assets/app-log-nav.png" alt=""><figcaption><p>Navigate to App Logs</p></figcaption></figure>
+<figure><img src="assets/app-log-nav.png" alt=""><figcaption><p>Navigate to App Logs</p></figcaption></figure>
 
 Navigating to App Logs will let you view log messages related to all app functions (Single File & Directory).&#x20;
 
-<figure><img src="docs/assets/app-log.png" alt=""><figcaption><p>Example App Log</p></figcaption></figure>
+<figure><img src="assets/app-log.png" alt=""><figcaption><p>Example App Log</p></figcaption></figure>
 
 In the example above, we can see a few things:
 

@@ -1,6 +1,6 @@
 # Convert PDF to CBZ
 
-<figure><img src="docs/assets/pdf.png" alt=""><figcaption><p>Convert PDF to CBZ</p></figcaption></figure>
+<figure><img src="assets/pdf.png" alt=""><figcaption><p>Convert PDF to CBZ</p></figcaption></figure>
 
 Converts all PDF files in a directory to CBZ files
 

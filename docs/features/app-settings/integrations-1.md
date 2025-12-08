@@ -6,7 +6,7 @@ description: All of the Options available in Settings
 
 With the exception on enabling [folder-monitoring](../folder-monitoring/ "mention"), all options can be updated in the Settings page.
 
-<figure><img src="docs/assets/Screenshot 2025-08-20 125115.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-08-20 125115.png" alt=""><figcaption></figcaption></figure>
 
 ### Missing Issue Configuration
 
@@ -54,7 +54,7 @@ To Do: Hide these in settings if folder monitoring is not enabled or inform user
 
 ## App Settings Continued
 
-<figure><img src="docs/assets/Screenshot 2025-08-20 125142.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-08-20 125142.png" alt=""><figcaption></figcaption></figure>
 
 ### API Download Configuration <a href="#api-configuration" id="api-configuration"></a>
 

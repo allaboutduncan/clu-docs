@@ -4,7 +4,7 @@ description: Remove half of a cover while saving the full cover
 
 # Crop Cover
 
-<figure><img src="docs/assets/crop.png" alt=""><figcaption><p>Crop Cover</p></figcaption></figure>
+<figure><img src="assets/crop.png" alt=""><figcaption><p>Crop Cover</p></figcaption></figure>
 
 Use this tool to crop a cover that is front & back, to front only.
 

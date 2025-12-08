@@ -4,7 +4,7 @@ description: Generates a Text file of "Missing" Issues
 
 # Missing Issue Check
 
-<figure><img src="docs/assets/missing.png" alt=""><figcaption><p>Missing File Check</p></figcaption></figure>
+<figure><img src="assets/missing.png" alt=""><figcaption><p>Missing File Check</p></figcaption></figure>
 
 Having various folders from various sources or many years, I wanted to be able to check and see if any issues were "missing" from a series.
 

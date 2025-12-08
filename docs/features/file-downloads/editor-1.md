@@ -10,7 +10,7 @@ Currently, GetComics.org is the only supported site for downloads.&#x20;
 
 As you browse the site and find a book you'd like to read, you'll see several download links. Right click one of the [supported download providers](editor-1.md#supported-providers) and you should see `Send to CLU` in your context menu
 
-<figure><img src="docs/assets/Screenshot 2025-05-28 090334.png" alt=""><figcaption><p>Send download to CLU</p></figcaption></figure>
+<figure><img src="assets/Screenshot 2025-05-28 090334.png" alt=""><figcaption><p>Send download to CLU</p></figcaption></figure>
 
 You can then navigate to the Download Status page in CLU (http://localhost/status) and watch the progress of the file download
 
