@@ -73,7 +73,7 @@ The example provided shows you how to pass Client ID and Client Secret to authen
 
 #### PixelDrain API Key
 
-For the [file-downloads](../file-downloads/ "mention") feature, you can bypass daily limits by entering your API key in this field.
+For the [file-downloads](../file-downloads/index.md "mention") feature, you can bypass daily limits by entering your API key in this field.
 
 ### Performance and Timeout Settings
 

@@ -24,7 +24,7 @@ In all directory listings, you'll see a blue icon button that will "Rename All F
 
 <figure><img src="assets/Screenshot 2025-08-20 150741.png" alt=""><figcaption></figcaption></figure>
 
-Clicking this will run the same renaming functions detailed on [editor.md](../directory-features/editor.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/ "mention") features.
+Clicking this will run the same renaming functions detailed on [editor.md](../directory-features/editor.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
 
 ### Remove Text from Files
 

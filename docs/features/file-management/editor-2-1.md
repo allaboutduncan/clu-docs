@@ -4,7 +4,7 @@ description: How to get metadata and create ComicInfo.xml files
 
 # Generate ComicInfo.xml
 
-If you have enabled [app-settings-1](../app-settings-1/ "mention") you'll see an additional icon in the File Manager for searching your local GCD Database for Metadata.
+If you have enabled [app-settings-1](../app-settings-1/index.md "mention") you'll see an additional icon in the File Manager for searching your local GCD Database for Metadata.
 
 {% hint style="warning" %}
 While not as thorough as ComicVine, the GCD database offers a quick way to get metadata for a large collection.
@@ -61,5 +61,5 @@ Issue count currently counts alternate covers and reprints, so some issues count
 <figure><img src="assets/Screenshot 2025-10-07 093337.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Usage of this feature requires a copy of the GCD database running on a local mySQL server. You can use your own setup and follow the [integrations-1-1.md](../app-settings-1/integrations-1-1.md "mention") or follow the guide on how to setup [app-settings-1](../app-settings-1/ "mention")
+Usage of this feature requires a copy of the GCD database running on a local mySQL server. You can use your own setup and follow the [integrations-1-1.md](../app-settings-1/integrations-1-1.md "mention") or follow the guide on how to setup [app-settings-1](../app-settings-1/index.md "mention")
 {% endhint %}
