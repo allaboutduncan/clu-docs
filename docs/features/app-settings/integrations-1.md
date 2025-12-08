@@ -4,7 +4,7 @@ description: All of the Options available in Settings
 
 # Settings Available
 
-With the exception on enabling [folder-monitoring](../folder-monitoring/ "mention"), all options can be updated in the Settings page.
+With the exception on enabling [folder-monitoring](../folder-monitoring/index.md "mention"), all options can be updated in the Settings page.
 
 <figure><img src="assets/Screenshot 2025-08-20 125115.png" alt=""><figcaption></figcaption></figure>
 
@@ -26,7 +26,7 @@ The two options here will vary greatly on how much you use [markdown-3.md](../di
 
 ### Folder Monitoring
 
-This is the most extensive set of features and will only be applicable if [folder-monitoring](../folder-monitoring/ "mention") is enabled. Most of these feature flags enhance the previous feature flag.
+This is the most extensive set of features and will only be applicable if [folder-monitoring](../folder-monitoring/index.md "mention") is enabled. Most of these feature flags enhance the previous feature flag.
 
 **WATCH:** The folder that will be monitored for files being added. This setting is dependent on the optional location mapped during [quickstart.md](../../getting-started/quickstart.md "mention")guide.
 
