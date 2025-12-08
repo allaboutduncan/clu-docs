@@ -16,17 +16,17 @@ For any directory that has more than more than 25 folders, you can now start typ
 
 Search your Comic folders to see if you have a particular issue or to see if you want to look for a better file. Search performance will be dependent on your library size until the cache is built.
 
-<figure><img src="docs/assets/Screenshot 2025-08-20 122858.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/broken/files/mImjNrmDMjGAXw9MSQHn" alt=""><figcaption></figcaption></figure>
 
 When you start the app, a Search Cache will be built. Timing on this will be dependent on your library. During testing, a library with 100,000 files indexed in about 6-minutes. This will speed up search results.\
 \
 Search will also run in real-time, but be warned, if you have a large library, it will likely time out before returning any valid results. Additionally, anytime you move files to this directory, the cache will be invalidated.
 
-See the Cache Management section on [app-settings](../app-settings/README.md) for more details
+See the Cache Management section on [app-settings](../app-settings/ "mention") for more details
 
 ### New Files
 
-Clicking the "New Files" button will attempt to show any new files added within the last 7 days. This is useful for seeing new downloads. This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/README.md)
+Clicking the "New Files" button will attempt to show any new files added within the last 7 days. This is useful for seeing new downloads. This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/ "mention")
 
 <figure><img src="docs/assets/Screenshot 2025-10-21 092519.png" alt=""><figcaption></figcaption></figure>
 

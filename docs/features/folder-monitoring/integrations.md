@@ -48,12 +48,7 @@ When you have monitoring enabled, you will need to configure a **WATCH** folder 
 
 <figure><img src="docs/assets/monitor01.png" alt=""><figcaption></figcaption></figure>
 
-* **WATCH** is the source folder that will be monitored. Files in this location will have automated actions applied to them&#x20;
+* **WATCH** is the source folder that will be monitored. Files in this location will have automated actions applied to them
 * **TARGET** is the destination folder where files will be moved as they are processed.
 
 ###
-
-
-
-
-

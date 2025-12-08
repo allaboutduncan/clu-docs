@@ -1,6 +1,3 @@
----
----
-
 # Convert PDF to CBZ
 
 <figure><img src="docs/assets/pdf.png" alt=""><figcaption><p>Convert PDF to CBZ</p></figcaption></figure>
