@@ -16,7 +16,7 @@ If you need to rebuild a directory to fix corrupted files as well, use [markdown
 
 By default, this feature will only convert the directory selected and will not convert any sub-directories.
 
-In [app-settings](../app-settings/ "mention"), you may "_Enable Subdirectories for Conversion_" which will allow this feature to traverse sub-directories as well.
+In [app-settings](../app-settings/index.md "mention"), you may "_Enable Subdirectories for Conversion_" which will allow this feature to traverse sub-directories as well.
 
 {% hint style="danger" %}
 Be aware, running this on a high level directory could run for a good bit of time.

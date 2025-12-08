@@ -31,6 +31,6 @@ This setting allows you to pass custom auth variables or anything else in the he
 }
 ```
 
-You'll need to add these same settings in the [API Download Configuration](../app-settings/integrations-1.md#directory-and-file-processing-settings). This ensures your validation credentials get passed by Chrome and the CLU app.
+You'll need to add these same settings in the [API Download Configuration](../app-settings/integrations-1.md). This ensures your validation credentials get passed by Chrome and the CLU app.
 
 Once you have everything configured, you can test it out.
