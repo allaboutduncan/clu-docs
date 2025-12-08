@@ -6,7 +6,7 @@ description: See files downloaded, currently downloading and pending.
 
 ### Download Status
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-05-28 090426.png" alt=""><figcaption><p>Current Download Status</p></figcaption></figure>
+<figure><img src="docs/assets/Screenshot 2025-05-28 090426.png" alt=""><figcaption><p>Current Download Status</p></figcaption></figure>
 
 From this page you can view current and pending downloads.
 

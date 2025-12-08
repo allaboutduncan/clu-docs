@@ -4,13 +4,13 @@ description: Setup for remote download of files
 
 # Chrome Extension
 
-<figure><img src="../../.gitbook/assets/extension1280x800.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="docs/assets/extension1280x800.png" alt=""><figcaption></figcaption></figure>
 
 Once you have the [Chrome extension installed](https://chromewebstore.google.com/detail/send-link-to-clu/cpickljbofjhmhkphgdmiagkdfijlkkg), you will need to configure the options.&#x20;
 
 You'll see a screen similar to this within Chrome.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-05-28 092053.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="docs/assets/Screenshot 2025-05-28 092053.png" alt=""><figcaption></figcaption></figure>
 
 ### API URL
 

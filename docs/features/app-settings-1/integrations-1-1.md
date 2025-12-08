@@ -69,6 +69,6 @@ Once you restart your CLU container, you should see something like this in the l
 
 and in the UI when browsing files, you should see a Cloud Download icon like this
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-10-07 085747.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="docs/assets/Screenshot 2025-10-07 085747.png" alt=""><figcaption></figcaption></figure>
 
 For additional details on usage, see the [editor-2-1.md](../file-management/editor-2-1.md "mention") section

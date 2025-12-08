@@ -4,7 +4,7 @@ description: Adds a blank PNG at the end of a file
 
 # Add blank Image
 
-<figure><img src="../../.gitbook/assets/blank.png" alt=""><figcaption><p>Insert Blank Image</p></figcaption></figure>
+<figure><img src="docs/assets/blank.png" alt=""><figcaption><p>Insert Blank Image</p></figcaption></figure>
 
 Requested feature from Komga Discord. Corrects display issues with Manga files.
 

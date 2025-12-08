@@ -4,7 +4,7 @@ description: Clean all filenames in the directory
 
 # Clean All Filenames
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-02-25 at 1.47.42 PM.png" alt=""><figcaption><p>Rename (Clean) Filenames</p></figcaption></figure>
+<figure><img src="docs/assets/Screenshot 2025-02-25 at 1.47.42 PM.png" alt=""><figcaption><p>Rename (Clean) Filenames</p></figcaption></figure>
 
 Currently this function does 5 things to all files in a directory and any sub-directories.
 

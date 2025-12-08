@@ -4,7 +4,7 @@ description: Rebuilds all files in a directory.
 
 # Rebuild All Files
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-02-25 at 1.54.06 PM.png" alt=""><figcaption><p>Rebuild Directory</p></figcaption></figure>
+<figure><img src="docs/assets/Screenshot 2025-02-25 at 1.54.06 PM.png" alt=""><figcaption><p>Rebuild Directory</p></figcaption></figure>
 
 This utility does 2 things:
 

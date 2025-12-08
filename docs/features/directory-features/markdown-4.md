@@ -4,7 +4,7 @@ description: Enhance Image Quality of all images if all CBZs of a directory
 
 # Enhance Images
 
-<figure><img src="../../.gitbook/assets/enhance (1).png" alt=""><figcaption><p>Enhance Images</p></figcaption></figure>
+<figure><img src="docs/assets/enhance (1).png" alt=""><figcaption><p>Enhance Images</p></figcaption></figure>
 
 Looking at scans from books that were published in decades past or by now defunct publishers, there quick and easy image enhancements that could be done to the images.
 

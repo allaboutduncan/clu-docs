@@ -4,7 +4,7 @@ description: Remove unnecessary info from ComicInfo.xml
 
 # Clean ComicInfo.xml
 
-<figure><img src="../../.gitbook/assets/xml.png" alt=""><figcaption><p>Clean ComicInfo.xml</p></figcaption></figure>
+<figure><img src="docs/assets/xml.png" alt=""><figcaption><p>Clean ComicInfo.xml</p></figcaption></figure>
 
 Requested by a user on Discord, this feature will let you bulk update specific items in the `ComicInfo.xml` of each _CBZ_ file in a directory.&#x20;
 

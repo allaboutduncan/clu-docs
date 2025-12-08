@@ -4,7 +4,7 @@ description: Enhances all images in a single CBZ file
 
 # Enhance Images
 
-<figure><img src="../../.gitbook/assets/enhance.png" alt=""><figcaption><p>Enhance Images in Single FIle</p></figcaption></figure>
+<figure><img src="docs/assets/enhance.png" alt=""><figcaption><p>Enhance Images in Single FIle</p></figcaption></figure>
 
 Looking at scans from books that were published in decades past or by now defunct publishers, there quick and easy image enhancements that could be done to the images.
 
