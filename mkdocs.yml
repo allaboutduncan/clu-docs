@@ -1,4 +1,5 @@
 site_name: CLU Documentation
+site_url: https://clucomics.org
 theme:
   name: material
   palette:
@@ -23,12 +24,20 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
   icon:
     repo: fontawesome/brands/github
 
 extra_css:
   - stylesheets/extra.css
+
+plugins:
+  - search
+  - social:
+      enabled: true
+
+repo_url: https://github.com/allaboutduncan/comic-utils
 
 nav:
   - Home: index.md
