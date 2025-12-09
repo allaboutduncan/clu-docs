@@ -257,3 +257,105 @@ body:has(.hero-section) .md-container {
   margin-right: 0.8rem;
   font-weight: bold;
 }
+
+/* docs/stylesheets/extra.css */
+
+:root {
+  /* --- 1. Define the Variables --- */
+  --bs-blue: #033c73;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #e83e8c;
+  --bs-red: #c71c22;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #dd5600;
+  --bs-green: #73a839;
+  --bs-teal: #20c997;
+  --bs-cyan: #2fa4e7;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #868e96;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #2fa4e7;
+  --bs-secondary: #e9ecef;
+  --bs-success: #73a839;
+  --bs-info: #033c73;
+  --bs-warning: #dd5600;
+  --bs-danger: #c71c22;
+  --bs-light: #f8f9fa;
+  --bs-dark: #343a40;
+  --bs-yellow: #ffc107;
+}
+
+/* --- 2. Create Utility Classes --- */
+
+/* Text Colors */
+.text-warning {
+  color: var(--bs-warning) !important;
+}
+
+.text-danger {
+  color: var(--bs-danger) !important;
+}
+
+.text-success {
+  color: var(--bs-success) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.text-info {
+  color: var(--bs-info) !important;
+}
+
+.text-icon {
+  color: var(--bs-yellow) !important;
+}
+
+.text-secondary {
+  color: var(--bs-light) !important;
+}
+
+/* Background Colors */
+.bg-warning {
+  background-color: var(--bs-warning);
+  color: var(--bs-white);
+  /* Ensure text is readable */
+  padding: 0.2em 0.4em;
+  /* Add a little padding for looks */
+  border-radius: 4px;
+}
+
+.bg-danger {
+  background-color: var(--bs-danger);
+  color: var(--bs-white);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.fs-1,
+.fs-2,
+.fs-3,
+.fs-4 {
+  /* Fix alignment and spacing */
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.fs-1 {
+  font-size: 1rem;
+}
+
+.fs-2 {
+  font-size: 1.3rem;
+}
+
+.fs-3 {
+  font-size: 1.7rem;
+}
+
+.fs-4 {
+  font-size: 2rem;
+}

@@ -11,6 +11,11 @@
   "assets/images/social/features/app-settings/integrations.png": "9a76056400af291df04769252dde1ebe8dd79294",
   "assets/images/social/features/app-settings/settings.png": "1dbd0b0e0667d5f4a49cfd3537dd7e2bfd84dde7",
   "assets/images/social/features/collection.png": "4d4b1835c7ff1d66826ac20ef28fe072dfb0a66c",
+  "assets/images/social/features/collection/collection.png": "85fb35e8ee937fc285fc953a8d1b9f3ac99870e9",
+  "assets/images/social/features/collection/favorites.png": "d605f375f95ae877c0c6e8eba78a2b9cd31bbcb1",
+  "assets/images/social/features/collection/folders.png": "6d3d71935b18e7948b356c61609bc0aea386b1b3",
+  "assets/images/social/features/collection/index.png": "7fe500b32f14250f3488b1ce5b1c6f032cb419a7",
+  "assets/images/social/features/collection/lists.png": "47420374e23f46a749919f7680ef14ed3a628a3e",
   "assets/images/social/features/comicvine.png": "96aae30e06912dfba11f49f7da20963fd05b6450",
   "assets/images/social/features/directory-features/clean.png": "1f0d1b0ad91641795d3cb3dc552f28c7d74ab10c",
   "assets/images/social/features/directory-features/convert.png": "548b6d2374c8560061ba7024d032dbf6c4e6215c",
@@ -87,5 +92,6 @@
   "assets/images/social/getting-started/publish-your-docs-1.png": "410d1b899fffceff05b4a144b5653082a6259e32",
   "assets/images/social/getting-started/publish-your-docs.png": "576f1a86fdaa01f4454d5db6c8845bab63767ce2",
   "assets/images/social/getting-started/quickstart.png": "4ad8cffd2fa232b2d7d8d19c0079ee45c423898f",
-  "assets/images/social/index.png": "ead12aa8a71e90642c629dabb49c651a3ecf8634"
+  "assets/images/social/index.png": "ead12aa8a71e90642c629dabb49c651a3ecf8634",
+  "assets/images/social/notes.png": "0eed526d78ecf0d8b8040853dd84159b2d837ad6"
 }

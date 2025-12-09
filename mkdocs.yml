@@ -31,6 +31,7 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css
 
 plugins:
   - search
@@ -41,6 +42,9 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
 
 repo_url: https://github.com/allaboutduncan/comic-utils
 
@@ -53,7 +57,11 @@ nav:
   - Features:
     - Overview: features/index.md
     - ComicVine: features/comicvine.md
-    - Collection: features/collection.md
+    - Collection Features:
+      - Introduction: features/collection/index.md
+      - Folders: features/collection/folders.md
+      - Favorites: features/collection/favorites.md
+      - Reading Lists: features/collection/lists.md
     - Directory Features:
       - Introduction: features/directory-features/index.md
       - Clean All Filenames: features/directory-features/rename.md
