@@ -10,6 +10,8 @@ description: Welcome to CLU (Comic Library Utilities)!
 
 CLU is an all-in-one application to manage your comic, manga and magazine libraries.
 
+The release of version 4.0 marks a significant change to the application. CLU now has built-in support visual browsing, ComicVine and GCD databases, and a new file manager.
+
 How it works?
 
 1. Install and Run CLU on your computer, server or NAS
