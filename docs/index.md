@@ -84,7 +84,7 @@ hide:
   </div>
 </div>
 
-<div class="content-section alt-bg">
+<div class="content-section">
   <h2>Supported Media</h2>
   <div class="media-grid">
     <div class="media-card">

@@ -14,15 +14,29 @@
   --glass-bg: rgba(30, 41, 59, 0.6);
 }
 
+/* Homepage Background Logic */
+body:has(.hero-section) {
+  /* Fixed background image */
+  background: url('../assets/background-color.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Ensure material containers are transparent on homepage so body bg shows */
+body:has(.hero-section) .md-main,
+body:has(.hero-section) .md-content,
+body:has(.hero-section) .md-container {
+  background: transparent !important;
+}
+
 /* Hero Section */
 .hero-section {
   position: relative;
   padding: 6rem 1rem 4rem;
   text-align: center;
-  background: radial-gradient(circle at top center, #1e1b4b 0%, #0f172a 100%);
+  /* Removed gradient to show background image */
+  background: transparent;
   margin-bottom: 2rem;
-  border-radius: 0 0 2rem 2rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-content h1 {
@@ -93,6 +107,8 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   padding: 2rem 0;
+  margin-bottom: 4rem;
+  /* Spacing before the solid section starts */
 }
 
 .feature-card {
@@ -128,16 +144,38 @@
   line-height: 1.6;
 }
 
-/* Content Sections */
+/* Content Sections (How it Works, etc) */
 .content-section {
+  /* Full viewport width breakout */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Opaque background to start the "solid" part of the page */
+  background-color: var(--md-bg-color);
+
   padding: 4rem 1rem;
   text-align: center;
+
+  /* Stack on top of the fixed body background */
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Constrain content inside the full-width section */
+.content-section>* {
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content-section.alt-bg {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 2rem;
-  margin: 2rem 0;
+  /* border-radius removed as it spans full width now, implies seamless connection */
+  margin: 0;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .content-section h2 {

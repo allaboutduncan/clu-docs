@@ -18,9 +18,5 @@ By default, this feature will only convert the directory selected and will not c
 
 In [app-settings](../app-settings/index.md "mention"), you may "_Enable Subdirectories for Conversion_" which will allow this feature to traverse sub-directories as well.
 
-{% hint style="danger" %}
-Be aware, running this on a high level directory could run for a good bit of time.
-
-In testing, I was able to convert 98 files (between 50MB to 300MB each) in \~20 minutes.
-{% endhint %}
-
+!!! warning
+    Be aware, running this on a high level directory could run for a good bit of time. In testing, I was able to convert 98 files (between 50MB to 300MB each) in \~20 minutes.

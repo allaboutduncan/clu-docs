@@ -37,6 +37,11 @@ plugins:
   - social:
       enabled: true
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 repo_url: https://github.com/allaboutduncan/comic-utils
 
 nav:
@@ -52,7 +57,7 @@ nav:
     - Directory Features:
       - Introduction: features/directory-features/index.md
       - Clean All Filenames: features/directory-features/editor.md
-      - Convert Directory: features/directory-features/markdown.md
+      - Convert Directory: features/directory-features/convert.md
       - Rebuild All Files: features/directory-features/markdown-1.md
       - Convert PDF to CBZ: features/directory-features/markdown-2.md
       - Missing Issue Check: features/directory-features/markdown-3.md
