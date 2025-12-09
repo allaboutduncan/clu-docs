@@ -1,38 +1,52 @@
 ---
-description: Welcome to CLU (Comic Library Utilities)!
+hide:
+  - navigation
+  - toc
 ---
 
-# Welcome
+<div class="hero-section">
+  <div class="hero-content">
+    <h1>Your Comics, Your Way</h1>
+    <p>The ultimate self-hosted solution for organizing, reading, and managing your digital comic collection.</p>
+    <a href="https://github.com/your-repo" class="cta-button">Get Started</a>
+  </div>
 
-<figure><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/clu-logo-360.png" alt=""><figcaption></figcaption></figure>
+  <div class="video-container">
+    <!-- Replace with actual video embed or image -->
+    <div style="padding: 2rem; text-align: center;">
+      <svg style="width:64px;height:64px;margin-bottom:1rem;" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+      </svg>
+      <h3>Introduction to CLU</h3>
+      <p>Watch the overview video</p>
+    </div>
+  </div>
+</div>
 
-### What is CLU
+<div class="feature-grid">
 
-CLU is an all-in-one application to manage your comic, manga and magazine libraries.
+  <div class="feature-card">
+    <span class="feature-icon">📚</span>
+    <h3>Smart Library</h3>
+    <p>Automatically organize your comics with metadata scraping and smart folder monitoring. Keep your collection pristine effortlessly.</p>
+  </div>
 
-The release of version 4.0 marks a significant change to the application. CLU now has built-in support visual browsing, ComicVine and GCD databases, and a new file manager.
+  <div class="feature-card">
+    <span class="feature-icon">🔍</span>
+    <h3>Deep Search</h3>
+    <p>Find any issue instantly with powerful search and filtering. Sort by publisher, year, character, or story arc.</p>
+  </div>
 
-How it works?
+  <div class="feature-card">
+    <span class="feature-icon">📱</span>
+    <h3>Read Anywhere</h3>
+    <p>Stream your comics to any device. Built-in web reader supports CBZ, CBR, PDF, and more with seamless progress syncing.</p>
+  </div>
 
-1. Install and Run CLU on your computer, server or NAS
-2. Map your library location during install
-3. Use the web interface on any client
-4. Convert, Edit, Crop, Enhance and Move your directories and files
+  <div class="feature-card">
+    <span class="feature-icon">🔄</span>
+    <h3>Collection Tracking</h3>
+    <p>Track your reading progress, manage want-to-read lists, and integrate with ComicVine for unparalleled data accuracy.</p>
+  </div>
 
-### What media does CLU Support
-
-CLU currently supports and works with these file types:
-
-* CBZ/ZIP
-* CBR/RAR
-* PDF
-
-During Image Processing, CLU Supports:
-
-* JPG/Jpeg
-* GIF
-* PNG
-
-### Jump Right In
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Install the App</td><td></td><td></td><td><a href="getting-started/quickstart.md">quickstart.md</a></td></tr><tr><td><strong>Features</strong></td><td>What CLU can do</td><td></td><td></td><td><a href="/broken/pages/7aUFmnCMx9m4smGncsXL">Broken link</a></td></tr><tr><td><strong>FAQs</strong></td><td>Frequently Asked</td><td></td><td></td><td><a href="frequently-asked-questions.md">frequently-asked-questions.md</a></td></tr></tbody></table>
+</div>
