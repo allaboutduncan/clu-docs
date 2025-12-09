@@ -1,0 +1,20 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environments
+venv/
+env/
+.env
+
+# MkDocs build output (We build this on the server, no need to sync it)
+site/
+
+# Mac OS junk files
+.DS_Store
+
+# IDE settings (Optional, if you use VS Code)
+.vscode/
+
+notes.md
