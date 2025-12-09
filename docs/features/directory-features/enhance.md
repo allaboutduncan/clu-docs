@@ -4,7 +4,7 @@ description: Enhance Image Quality of all images if all CBZs of a directory
 
 # Enhance Images
 
-<figure><img src="assets/enhance (1).png" alt=""><figcaption><p>Enhance Images</p></figcaption></figure>
+<figure><img src="/assets/directory/enhance (1).png" alt=""><figcaption><p>Enhance Images</p></figcaption></figure>
 
 Looking at scans from books that were published in decades past or by now defunct publishers, there quick and easy image enhancements that could be done to the images.
 
@@ -20,14 +20,12 @@ For processing images, I didn't want to just simply adjust the contrast. This co
 
 The app uses the Python PIL (Pillow) library to apply an "intelligent" adjustment to each image in the CBZ.&#x20;
 
-{% hint style="info" %}
-**Analyzing Each Image**
+!!! info "Analyzing Each Image"
 
-* The function `modified_s_curve_lut()` generates a lookup table (LUT) with 256 values (one for each possible brightness level in an 8-bit image).
-* The S-curve is a mathematical way of adjusting brightness—darker areas get a bit darker, mid-tones are slightly boosted, and highlights remain close to their original brightness.
-* For pixels with brightness **below 128**, the full S-curve effect is applied.
-* For pixels **above 128**, the function blends the original brightness with the S-curve, making the effect more subtle in brighter areas.
-{% endhint %}
+    * The function `modified_s_curve_lut()` generates a lookup table (LUT) with 256 values (one for each possible brightness level in an 8-bit image).
+    * The S-curve is a mathematical way of adjusting brightness—darker areas get a bit darker, mid-tones are slightly boosted, and highlights remain close to their original brightness.
+    * For pixels with brightness **below 128**, the full S-curve effect is applied.
+    * For pixels **above 128**, the function blends the original brightness with the S-curve, making the effect more subtle in brighter areas.
 
 ```python
 def modified_s_curve_lut():

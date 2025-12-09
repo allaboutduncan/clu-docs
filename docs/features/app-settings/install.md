@@ -23,7 +23,7 @@ MOVE_DIRECTORY=True
 AUTO_UNPACK=True
 ```
 
-During installation (see [quickstart.md](../../getting-started/quickstart.md "mention")), you will need to map the `/config` directory to a local folder ensure that config settings are persisted on updates.
+During installation (see [Quickstart](/getting-started/quickstart)), you will need to map the `/config` directory to a local folder ensure that config settings are persisted on updates.
 
 ```yaml
 - '/path/to/local/config:/config' # Maps local folder to container

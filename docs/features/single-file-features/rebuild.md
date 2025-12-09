@@ -4,7 +4,7 @@ description: Rebuild or convert a single file
 
 # Single File Rebuild
 
-<figure><img src="assets/single.png" alt=""><figcaption><p>Single File Rebuild</p></figcaption></figure>
+<figure><img src="/assets/single/single.png" alt=""><figcaption><p>Single File Rebuild</p></figcaption></figure>
 
 Running this will rebuild a CBZ file in an attempt to fix issues/errors with it not displaying correctly. Additionally, this will also convert a single CBR/RAR file to a CBZ
 

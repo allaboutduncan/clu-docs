@@ -6,11 +6,11 @@ description: All of the Options available in Settings
 
 With the exception on enabling [folder-monitoring](../folder-monitoring/index.md "mention"), all options can be updated in the Settings page.
 
-<figure><img src="assets/Screenshot 2025-08-20 125115.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-08-20 125115.png" alt=""><figcaption></figcaption></figure>
 
 ### Missing Issue Configuration
 
-The two options here will vary greatly on how much you use [markdown-3.md](../directory-features/markdown-3.md "mention") and how your library is structured.
+The two options here will vary greatly on how much you use [Missing Issue Check](/features/directory-features/missing "mention") and how your library is structured.
 
 **IGNORED TERMS:** Add a comma-separated list of words/terms to ignore while checking for missing issues. Update these terms and re-run the missing issue check to better parse your library.
 
@@ -18,7 +18,7 @@ The two options here will vary greatly on how much you use [markdown-3.md](../di
 
 ### Directory & File Processing Settings
 
-**Enable Subdirectories for Conversion:** This specifically allows [markdown.md](../directory-features/markdown.md "mention")to traverse subdirectories and convert all CBR/RAR files to CBZ. This is not enabled by default - as running this on a high level folder AND a large collection could take quite a bit of time.
+**Enable Subdirectories for Conversion:** This specifically allows [Convert Directory](/features/directory-features/convert "mention") to traverse subdirectories and convert all CBR/RAR files to CBZ. This is not enabled by default - as running this on a high level folder AND a large collection could take quite a bit of time.
 
 **SKIPPED TYPES:** Add a comma-separated list of extensions to skip while performing actions on files. When any operation unpacks a RAR/ZIP File, files with these extensions will be skipped. They will be re-added to the archive. Examples are `.xml`
 
@@ -26,11 +26,11 @@ The two options here will vary greatly on how much you use [markdown-3.md](../di
 
 ### Folder Monitoring
 
-This is the most extensive set of features and will only be applicable if [folder-monitoring](../folder-monitoring/index.md "mention") is enabled. Most of these feature flags enhance the previous feature flag.
+This is the most extensive set of features and will only be applicable if [folder-monitoring](/features/folder-monitoring/index "mention") is enabled. Most of these feature flags enhance the previous feature flag.
 
-**WATCH:** The folder that will be monitored for files being added. This setting is dependent on the optional location mapped during [quickstart.md](../../getting-started/quickstart.md "mention")guide.
+**WATCH:** The folder that will be monitored for files being added. This setting is dependent on the optional location mapped during [Quickstart](/features/getting-started/quickstart "mention") guide.
 
-**TARGET:** The folder where files will be after they are processed. This setting is dependent on the optional location mapped during [quickstart.md](../../getting-started/quickstart.md "mention")guide.
+**TARGET:** The folder where files will be after they are processed. This setting is dependent on the optional location mapped during [Quickstart](/features/getting-started/quickstart "mention") guide.
 
 **IGNORED EXTENSIONS:** File types listed here will be ignored by the file monitoring process. Many of these file types are `temp`file types and should be ignore. However, if you want to have others files in the WATCH folder and not have them processed with your enabled options - add those extenison types here.
 
@@ -48,13 +48,13 @@ For ZIP only, this specifically bypasses the IGNORED EXTENSIONS.
 To Do: Hide these in settings if folder monitoring is not enabled or inform user that folder monitoring is not enabled.
 {% endhint %}
 
-**Auto Cleanup Orphan Files:** If you are using the monitoring and [editor.md](../file-downloads/editor.md "mention") for downloads, failed downloads will be removed at regular intervals.
+**Auto Cleanup Orphan Files:** If you are using the monitoring and [Chrome Extension](/features/file-downloads/setup "mention") for downloads, failed downloads will be removed at regular intervals.
 
 **Cleanup Interval (hours):** Set the timing for removing orphaned files.
 
 ## App Settings Continued
 
-<figure><img src="assets/Screenshot 2025-08-20 125142.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-08-20 125142.png" alt=""><figcaption></figcaption></figure>
 
 ### API Download Configuration <a href="#api-configuration" id="api-configuration"></a>
 
@@ -73,7 +73,7 @@ The example provided shows you how to pass Client ID and Client Secret to authen
 
 #### PixelDrain API Key
 
-For the [file-downloads](../file-downloads/index.md "mention") feature, you can bypass daily limits by entering your API key in this field.
+For the [File Downloads](/features/file-downloads/index "mention") feature, you can bypass daily limits by entering your API key in this field.
 
 ### Performance and Timeout Settings
 
@@ -99,13 +99,8 @@ When browsing in file manager, directory listings are cached (default 5-seconds)
 
 Determines the number of directories that can be cached in memory while browsing. Current default value is set to 100 directories.
 
-{% hint style="info" %}
-Download directories configured in the app are not indexed.&#x20;
-
-Moving files in these directories does not invalidate the cache.
-{% endhint %}
-
-<figure><img src="/broken/files/MsPmaoTZWHI6Dl49vBY6" alt=""><figcaption></figcaption></figure>
+!!! info
+Download directories configured in the app are not indexed. Moving files in these directories does not invalidate the cache.
 
 ### Custom Rename Pattern Settings
 
@@ -113,9 +108,8 @@ Use a custom naming scheme for renaming issues when downloads are processed or f
 
 Enter your naming pattern using the syntax provided and see a real-time preview of the result.
 
-{% hint style="danger" %}
+!!! danger
 Renaming applies only to issues. Entering directory paths or folder structures is not yet supported.
-{% endhint %}
 
 ### Logging & Debugging
 

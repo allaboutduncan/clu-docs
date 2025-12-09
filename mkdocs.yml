@@ -52,8 +52,7 @@ nav:
   - Home: index.md
   - Getting Started:
     - Quickstart: getting-started/quickstart.md
-    - Navigating the App: getting-started/publish-your-docs.md
-    - Configuring the App: getting-started/publish-your-docs-1.md
+    - Navigating the App: getting-started/navigate.md
   - Features:
     - Overview: features/index.md
     - ComicVine: features/comicvine.md

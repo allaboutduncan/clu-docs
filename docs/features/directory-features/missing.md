@@ -4,7 +4,7 @@ description: Generates a Text file of "Missing" Issues
 
 # Missing Issue Check
 
-<figure><img src="assets/missing.png" alt=""><figcaption><p>Missing File Check</p></figcaption></figure>
+<figure><img src="/assets/directory/missing.png" alt=""><figcaption><p>Missing File Check</p></figcaption></figure>
 
 Having various folders from various sources or many years, I wanted to be able to check and see if any issues were "missing" from a series.
 
@@ -65,10 +65,9 @@ Series Name 071-499 (1998) [Total missing: 429]
 
 This is useful when publsihers revert to the original number of a long-running series and you have issues like `001 - 070, 500-542`
 
-{% hint style="warning" %}
-This is not a "smart" feature and simply assumes each folder should have files starting with (#01, 01, 001) and the "last" file is the last alpha-numeric file in the folder.
-{% endhint %}
+!!! warning
+    This is not a "smart" feature and simply assumes each folder should have files starting with (#01, 01, 001) and the "last" file is the last alpha-numeric file in the folder.
 
 ### Ignored Terms
 
-See the&#x20;
+See the [Settings](/app-settings/settings "mention") page to configure ignored terms.

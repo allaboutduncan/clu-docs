@@ -8,8 +8,6 @@ Docker Hub images are available for quick installation and deploy.
 
 ### Install via Docker Compose
 
-{% hint style="info" %}
-{% code lineNumbers="true" %}
 ```yaml
 version: '3.9'
 services:
@@ -47,8 +45,6 @@ services:
             ## Set the file creation mask (UMASK). 022 is a common value.
             # - UMASK=022
 ```
-{% endcode %}
-{% endhint %}
 
 ### Install via Docker
 
@@ -70,14 +66,16 @@ docker run \
 
 ### Parameters
 
-text
+Additional info about the ENV variables can be found [here](/features/app-settings/install).
 
-<table><thead><tr><th>Parameter</th><th>Function</th></tr></thead><tbody><tr><td><pre><code>-p 5577:5577
-</code></pre></td><td>The port exposed by the app for the web interface.</td></tr><tr><td><pre><code>-v /docker/clu:/config
-</code></pre></td><td>Location for your CLU directory on a local disk. Enables local storage of the <code>config.ini</code> which preservers settings during updates. Must be mapped to <code>/config</code></td></tr><tr><td><pre><code>-v /User/comics:/data
-</code></pre></td><td>Location of your library to manage. Must be mapped to <code>/data</code></td></tr><tr><td><pre><code>-v /User/downloads:/downloads
-</code></pre></td><td>Optional folder to configure if MONITOR is enabled (see below)</td></tr><tr><td><pre><code>-e FLASK_ENV=development
-</code></pre></td><td></td></tr><tr><td><pre><code>-e MONITOR=no
-</code></pre></td><td>If set to <code>yes</code> <a href="../features/folder-monitoring/">folder monitoring</a> will be enabled</td></tr><tr><td></td><td></td></tr></tbody></table>
-
-### Paths
+| Parameter | Function |
+| --- | --- |
+| -p 5577:5577 | The port exposed by the app for the web interface. |
+| -v /docker/clu:/config | Location for your CLU directory on a local disk. Enables local storage of the <code>config.ini</code> which preservers settings during updates. Must be mapped to <code>/config</code> |
+| -v /User/comics:/data | Location of your library to manage. Must be mapped to <code>/data</code> |
+| -v /User/downloads:/downloads | Optional folder to configure if MONITOR is enabled (see below) |
+| -e FLASK_ENV=development | Set to 'development' for local development. |
+| -e MONITOR=no | Set to 'yes' if you want to use folder monitoring. |
+| -e PUID=99 | Set the User ID (PUID) and Group ID (PGID) for the container. |
+| -e PGID=100 | Set the User ID (PUID) and Group ID (PGID) for the container. |
+| -e UMASK=022 | Set the file creation mask (UMASK). |
