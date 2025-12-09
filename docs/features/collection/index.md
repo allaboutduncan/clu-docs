@@ -13,7 +13,7 @@ Currently, there are up to 3 sections that can show on the collection page. They
 
 ### Publisher {.text-secondary}
 
-This is the default section. It will display all publishers in your collection. This is the only section that is always available.
+This is the default section. It will display all publishers in your collection. This is the only section that is always available. As you click into a publisher, it will display all folders (series) or issues in that publisher. Publisher, Series and Issues will have different options in the dropdown menu. 
 
 !!! Note
     In documentation, this will be referred to as the "Publisher" section, but it can be any folder structure you have in your collection.

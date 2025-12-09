@@ -59,9 +59,9 @@ nav:
     - ComicVine: features/comicvine.md
     - Collection Features:
       - Introduction: features/collection/index.md
-      - Folders: features/collection/folders.md
-      - Favorites: features/collection/favorites.md
-      - Reading Lists: features/collection/lists.md
+      - Publishers: features/collection/publishers.md
+      - Series: features/collection/series.md
+      - Issues: features/collection/issues.md
     - Directory Features:
       - Introduction: features/directory-features/index.md
       - Clean All Filenames: features/directory-features/rename.md
