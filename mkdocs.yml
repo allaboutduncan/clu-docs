@@ -56,49 +56,49 @@ nav:
     - Collection: features/collection.md
     - Directory Features:
       - Introduction: features/directory-features/index.md
-      - Clean All Filenames: features/directory-features/editor.md
+      - Clean All Filenames: features/directory-features/rename.md
       - Convert Directory: features/directory-features/convert.md
-      - Rebuild All Files: features/directory-features/markdown-1.md
-      - Convert PDF to CBZ: features/directory-features/markdown-2.md
-      - Missing Issue Check: features/directory-features/markdown-3.md
-      - Enhance Images: features/directory-features/markdown-4.md
-      - Clean ComicInfo.xml: features/directory-features/markdown-5.md
-      - App Logs: features/directory-features/integrations.md
+      - Rebuild All Files: features/directory-features/rebuild.md
+      - Convert PDF to CBZ: features/directory-features/pdf.md
+      - Missing Issue Check: features/directory-features/missing.md
+      - Enhance Images: features/directory-features/enhance.md
+      - Clean ComicInfo.xml: features/directory-features/clean.md
+      - App Logs: features/directory-features/logs.md
     - Single File Features:
       - Introduction: features/single-file-features/index.md
-      - Edit CBZ File: features/single-file-features/editor.md
-      - Single File Rebuild: features/single-file-features/editor-1.md
-      - Crop Cover: features/single-file-features/editor-2.md
-      - Remove First Image: features/single-file-features/editor-3.md
-      - Add blank Image: features/single-file-features/editor-4.md
-      - Enhance Images: features/single-file-features/editor-5.md
-      - Delete File: features/single-file-features/editor-6.md
+      - Edit CBZ File: features/single-file-features/edit.md
+      - Single File Rebuild: features/single-file-features/rebuild.md
+      - Crop Cover: features/single-file-features/crop.md
+      - Remove First Image: features/single-file-features/remove.md
+      - Add blank Image: features/single-file-features/add.md
+      - Enhance Images: features/single-file-features/enhance.md
+      - Delete File: features/single-file-features/delete.md
     - File Downloads:
       - Introduction: features/file-downloads/index.md
-      - Chrome Extension: features/file-downloads/editor.md
-      - Right-Click to Download: features/file-downloads/editor-1.md
-      - Download Status Page: features/file-downloads/editor-2.md
+      - Chrome Extension: features/file-downloads/setup.md
+      - Right-Click to Download: features/file-downloads/send.md
+      - Download Status Page: features/file-downloads/status.md
     - File Management:
       - Introduction: features/file-management/index.md
-      - Move: features/file-management/editor.md
-      - Rename: features/file-management/editor-1.md
-      - Delete: features/file-management/editor-2.md
-      - Additional Features: features/file-management/editor-3.md
-      - Generate ComicInfo.xml: features/file-management/editor-2-1.md
+      - Move: features/file-management/move.md
+      - Rename: features/file-management/rename.md
+      - Delete: features/file-management/delete.md
+      - Additional Features: features/file-management/additional.md
+      - Generate ComicInfo.xml: features/file-management/comicinfo.md
     - Folder Monitoring:
       - Introduction: features/folder-monitoring/index.md
-      - Monitoring Setup: features/folder-monitoring/integrations.md
-      - Features: features/folder-monitoring/integrations-1.md
-      - Monitoring Logs: features/folder-monitoring/integrations-2.md
+      - Monitoring Setup: features/folder-monitoring/setup.md
+      - Features: features/folder-monitoring/features.md
+      - Monitoring Logs: features/folder-monitoring/logs.md
     - App Settings:
       - Introduction: features/app-settings/index.md
-      - Config Installation: features/app-settings/integrations.md
-      - Settings Available: features/app-settings/integrations-1.md
+      - Config Installation: features/app-settings/install.md
+      - Settings Available: features/app-settings/settings.md
     - GCD Database Support:
-      - Introduction: features/app-settings-1/index.md
-      - GCD Database Download: features/app-settings-1/integrations.md
-      - MySQL Database Setup: features/app-settings-1/integrations-1.md
-      - Updated CLU Settings for GCD: features/app-settings-1/integrations-1-1.md
+      - Introduction: features/gcd-settings/index.md
+      - GCD Database Download: features/gcd-settings/download.md
+      - MySQL Database Setup: features/gcd-settings/setup.md
+      - Updated CLU Settings for GCD: features/gcd-settings/settings.md
   - FAQ: frequently-asked-questions.md
   - CLU Discord: https://discord.com/channels/678794935368941569/1349564970609938553
 
