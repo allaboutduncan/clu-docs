@@ -23,6 +23,12 @@ This will show one of the following statuses:
 * error
 * complete
 
+### Completed Downloads
+
+Downloads use the [File Monitoring](../file-monitoring/index.md) feature to process downloads. All files will saved in the **WATCH** directory and moved to the **TARGET** once they are processed. 
+
+You can adjust how files are processed in the [File Settings](../app-settings/file-settings.md).
+
 #### Cancel
 
 Before a download starts or while in progress, you can cancel a download. Once cancelled, the details are still present until you click the "Clear Completed / Cancelled Downloads" button

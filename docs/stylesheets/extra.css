@@ -17,7 +17,7 @@
 /* Homepage Background Logic */
 body:has(.hero-section) {
   /* Fixed background image */
-  background: url('../assets/background-color.png') no-repeat center center fixed;
+  background: url('../assets/background-color.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -358,6 +358,10 @@ body:has(.hero-section) .md-container {
 
 .text-secondary {
   color: var(--bs-light) !important;
+}
+
+.text-dark {
+  color: var(--bs-dark) !important;
 }
 
 /* Background Colors */

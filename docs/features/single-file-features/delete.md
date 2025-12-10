@@ -4,10 +4,11 @@ description: Quick and easy way to paste a path to a file and delete it
 
 # Delete File
 
-<figure><img src="../../assets/single/delete.png" alt=""><figcaption><p>Delete File</p></figcaption></figure>
+![Delete File](../../assets/single/delete.png){: .center-image }
 
-Utility to delete a single file and requires confirmation before performing the delete action.<br>
+Accessible in the [File Manager view](../file-management/index.md) via the <i class="bi fs-2 bi-trash text-danger"></i> icon <br/>
+or the [Collection view](../collection/index.md), via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> dropdown menu. 
 
-<div><figure><img src="../../assets/single/delete (1).png" alt=""><figcaption><p>File Select for Deletion</p></figcaption></figure> <figure><img src="../../assets/single/confirm-delete.png" alt=""><figcaption><p>Confirming the File Delete</p></figcaption></figure></div>
+Utility to delete a single file and requires confirmation before performing the delete action.
 
-File deletion can also be performed in the [File Manager](../file-management/index.md "File Manager")
+![Delete Confirmation](../../assets/single/confirm-delete.png){: .center-image }

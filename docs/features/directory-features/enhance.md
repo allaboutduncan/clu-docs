@@ -4,13 +4,15 @@ description: Enhance Image Quality of all images if all CBZs of a directory
 
 # Enhance Images
 
-![Enhance Images](../../assets/directory/enhance01.png)
+![Enhance Images](../../assets/directory/enhance01.png){: .center-image }
+
+When using File Manager or Collection to Browse - you will see <i class="bi bi-search text-dark"></i> __Enhance Images__ in the drop-down menu.
 
 Looking at scans from books that were published in decades past or by now defunct publishers, there quick and easy image enhancements that could be done to the images.
 
-This function will run an image enhancement algorithm (documented below) on all images in a CBZ and all files in a directory. This feature does not traverse directory/sub-directories.
+This function will run an image enhancement algorithm (documented below) on **all images in a CBZ** and **all files in a directory**. This feature does not traverse directory/sub-directories.
 
-Below are a few _Before/After_ examples&#x20;
+Below are a few _Before/After_ examples
 
 <table><thead><tr><th width="375" align="center">Before</th><th align="center">After</th></tr></thead><tbody><tr><td align="center"><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/enhance-before.webp" alt=""></td><td align="center"><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/enhance-after.webp" alt=""></td></tr><tr><td align="center"></td><td align="center"></td></tr></tbody></table>
 

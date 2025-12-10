@@ -4,7 +4,9 @@ description: Adds a blank PNG at the end of a file
 
 # Add blank Image
 
-<figure><img src="/assets/single/blank.png" alt=""><figcaption><p>Insert Blank Image</p></figcaption></figure>
+![Add Blank Image](../../assets/single/blank.png){: .center-image }
+
+Accessible in the [File Manager view](../file-management/index.md) only, via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> dropdown menu. 
 
 Requested feature from Komga Discord. Corrects display issues with Manga files.
 

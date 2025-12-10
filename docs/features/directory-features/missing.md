@@ -4,13 +4,13 @@ description: Generates a Text file of "Missing" Issues
 
 # Missing Issue Check
 
-<figure><img src="/assets/directory/missing.png" alt=""><figcaption><p>Missing File Check</p></figcaption></figure>
+![Missing Issue Check](../../assets/directory/missing.png){: .center-image }
 
-Having various folders from various sources or many years, I wanted to be able to check and see if any issues were "missing" from a series.
+Having various folders from various sources over many years, I wanted to be able to check and see if any issues were "missing" from a series.
 
-Once you have entered or browsed to a path, click the "Run Check" button and you should see something similar to this:
+When using File Manager or Collection to Browse - you will see <i class="bi bi-search text-dark"></i> __Missing Issue Check__ in the drop-down menu.
 
-<figure><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/missing.png" alt=""><figcaption><p>Missing Issue Process</p></figcaption></figure>
+![Missing Issue Check](../../assets/directory/missing02.png){: .center-image }
 
 Running this feature on my `/data/Valiant` directory, generated the following `missing.txt` file
 
@@ -63,11 +63,21 @@ There is a threshold of 50 issues currently configured, so if more than 50 issue
 Series Name 071-499 (1998) [Total missing: 429]
 ```
 
-This is useful when publsihers revert to the original number of a long-running series and you have issues like `001 - 070, 500-542`
+This is useful when publishers revert to the original number of a long-running series and you have issues like `001 - 070, 500-542`
 
 !!! warning
     This is not a "smart" feature and simply assumes each folder should have files starting with (#01, 01, 001) and the "last" file is the last alpha-numeric file in the folder.
 
 ### Ignored Terms
 
-See the [Settings](/app-settings/settings "mention") page to configure ignored terms.
+See the [System Settings](../app-settings/file-settings.md#missing-issue-configuration) page to configure ignored terms.
+
+### Missing.txt Files
+
+By default, the missing.txt files are created in the same directory as the directory you are running the feature on. These files will now show in the [Collection](../collection/index.md) UI.
+
+![Missing.txt Files](../../assets/directory/missing03.png){: .center-image }
+
+Additionally, they can bew viewed from within the UI as well, by clicking the file.
+
+![Missing.txt Files](../../assets/directory/missing04.png){: .center-image }

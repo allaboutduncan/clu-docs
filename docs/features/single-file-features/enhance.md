@@ -4,7 +4,9 @@ description: Enhances all images in a single CBZ file
 
 # Enhance Images
 
-<figure><img src="/assets/single/enhance.png" alt=""><figcaption><p>Enhance Images in Single FIle</p></figcaption></figure>
+![Enhance Images](../../assets/single/enhance.png){: .center-image }
+
+Accessible in the [File Manager view](../file-management/index.md) or [Collection view](../collection/index.md), via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> dropdown menu. 
 
 Looking at scans from books that were published in decades past or by now defunct publishers, there quick and easy image enhancements that could be done to the images.
 

@@ -4,7 +4,9 @@ description: Clean all filenames in the directory
 
 # Clean All Filenames
 
-<figure><img src="/assets/Screenshot 2025-02-25 at 1.47.42 PM.png" alt=""><figcaption><p>Rename (Clean) Filenames</p></figcaption></figure>
+![Clean All Filenames](../../assets/directory/rename01.png){: .center-image }
+
+Rename (Clean) Filenames is a directory based feature that allows you to clean all filenames in a directory and any sub-directories. It is accessed via the <i class="bi bi-input-cursor-text fs-2 text-primary"></i> icon to the right of the directory name in the File Manager.
 
 Currently this function does 5 things to all files in a directory and any sub-directories.
 
@@ -20,3 +22,8 @@ The pattern used for renaming is `{Series Name} {Issue Number} ({Year})`
 
 Oftentimes series archives or torrent files will have numerous naming patterns with information in parenthesis, brackets, before the year, after and all over the place. I continuously update these to handle as many as I encounter.
 
+### Renaming Rules
+
+Currently renaming rules are in `rename_rules.ini` and are priority based
+
+The current set of rules are always available to view in the repository and can be found [here](https://github.com/allaboutduncan/comic-utils/blob/main/config/rename_rules.ini)

@@ -4,7 +4,9 @@ description: Rebuilds all files in a directory.
 
 # Rebuild All Files
 
-<figure><img src="/assets/Screenshot 2025-02-25 at 1.54.06 PM.png" alt=""><figcaption><p>Rebuild Directory</p></figcaption></figure>
+![Rebuild Directory](../../assets/directory/rebuild.png){: .center-image }
+
+Very similar to convert, except it doesn't skip any existing CBZ files.
 
 This utility does 2 things:
 
