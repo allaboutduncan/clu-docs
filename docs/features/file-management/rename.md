@@ -8,54 +8,66 @@ description: >-
 
 ### Rename Single Files
 
-<figure><img src="assets/rename01.png" alt=""><figcaption><p>Folder Layout</p></figcaption></figure>
+<figure><img src="/assets/file/rename01.png" alt=""><figcaption><p>Folder Layout</p></figcaption></figure>
 
 Navigate to the directory or file you'd like to rename and click the :pencil2: icon. This will change to an input, allowing you to rename the folder or file.
 
 `ENTER` to save/update the name
 
-<figure><img src="assets/rename02.png" alt=""><figcaption><p>Renaming the file</p></figcaption></figure>
+<figure><img src="/assets/file/rename02.png" alt=""><figcaption><p>Renaming the file</p></figcaption></figure>
 
-<figure><img src="assets/rename03.png" alt=""><figcaption><p>File is renamed</p></figcaption></figure>
+<figure><img src="/assets/file/rename03.png" alt=""><figcaption><p>File is renamed</p></figcaption></figure>
 
 ### Rename All Files in a Directory
 
-In all directory listings, you'll see a blue icon button that will "Rename All Files" in that directory using your custom renaming logic or the default logic.
+In all directory listings, you'll see a <i class="bi bi-input-cursor-text text-info fs-2"></i> icon button that will "Rename All Files" in that directory using your custom renaming logic or the default logic.
 
-<figure><img src="assets/Screenshot 2025-08-20 150741.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/rename-all.png" alt=""><figcaption><p>Rename All Files in Directory</p></figcaption></figure>
 
-Clicking this will run the same renaming functions detailed on [editor.md](../directory-features/editor.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
+Clicking this will run the same renaming functions detailed on [Clean All Filenames](/features/directory-features/clean "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
 
 ### Remove Text from Files
 
 You can now remove characters from groups of files while browsing a directory. If there are files present, you will see a "Remove Text from Filenames" button. Clicking this will bring up a modal and prompt for the characters to remove. Include any spaces you want removed as well.
 
-<figure><img src="assets/Screenshot 2025-10-21 085610.png" alt=""><figcaption></figcaption></figure>
+In this example, I want to update all files and remove the " v01" from the titles.
 
-In this example, I want to update all files and remove the " V2" from the titles.
+<figure><img src="/assets/file/remove01.png" alt=""><figcaption>Remove Text Modal</figcaption></figure>
 
-<figure><img src="assets/Screenshot 2025-10-21 085801.png" alt=""><figcaption></figcaption></figure>
+Click preview once you have your text entered and the app will show a preview of the results. 
 
-Click preview once you have your text entered and the app will show a preview of the results. If the naming is as you would like, click the "Execute Rename" and the app will update all of the files, provide a summary and then close the modal.
+<figure><img src="/assets/file/remove02.png" alt=""><figcaption>Remove Text Preview Results</figcaption></figure>
+
+If the naming is as you would like, click the "Execute Rename" and the app will update all of the files, provide a summary and then close the modal.
+
+<figure><img src="/assets/file/remove03.png" alt=""><figcaption>Remove Text Complete</figcaption></figure>
 
 ### Replace Text in Filenames
 
 You can also replace text in all filenames in a directory. In this example, the series is "Saga of the Swamp Thing" and I want the naming to be "**The** Saga of the Swamp Thing"
 
-Simply click the "Replace Text" button, enter the text to replace and then the replacement text. Click "Preview" to ensure your results are correct. Once you are satisfied with the results, click "Execute Rename" to process. Once completed, you'll see a summary of files renamed.
+Simply click the "Replace Text" button, enter the text to replace and then the replacement text.
 
-<figure><img src="/broken/files/3TgTdN1jf7DIzGfSf5D5" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/replace01.png" alt=""><figcaption>Replace Text Modal</figcaption></figure>
 
-text
+Click "Preview" to ensure your results are correct.
+
+<figure><img src="/assets/file/replace02.png" alt=""><figcaption>Replace Text Preview Results</figcaption></figure>
+
+Once you are satisfied with the results, click "Execute Rename" to process. Once completed, you'll see a summary of files renamed.
+
+<figure><img src="/assets/file/replace03.png" alt=""><figcaption>Replace Text Complete</figcaption></figure>
 
 ### Rename Series
 
 You can also rename all files in a directory, replacing everything except the {issue} & {year}. This is useful if a series is named differently or truncated. In this example, all files were named Swamp Thing, but the series didn't switch to that naming until issue 31. We can rename all the files quickly.
 
-<figure><img src="assets/Screenshot 2025-10-21 090307.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/rename-series01.png" alt=""><figcaption>Rename Series Modal</figcaption></figure>
 
 Type in the new file naming you want and click preview. You'll see the expected results for the first 3 files. Click "Execute Rename" to proceed or adjust your naming and click "Preview" to review.
 
-<figure><img src="assets/Screenshot 2025-10-21 090332.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/rename-series02.png" alt=""><figcaption>Rename Series Preview Results</figcaption></figure>
 
-After clicking "Execute Rename" you'll see a summary count of all files renamed.
+Once you are satisfied with the results, click "Execute Rename" to process. Once completed, you'll see a summary count of all files renamed.
+
+<figure><img src="/assets/file/rename-series03.png" alt=""><figcaption>Rename Series Complete</figcaption></figure>

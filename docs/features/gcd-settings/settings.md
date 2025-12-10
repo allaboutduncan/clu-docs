@@ -6,7 +6,7 @@ description: Update your compose file as detailed below to use the local GCD dat
 
 Once your GCD database has completed the import, you'll need to update your CLU Docker Compose to use the same network in Docker and connect to your MySQL server.
 
-```
+```yaml
 version: '3.9'
 services:
     comic-utils:
@@ -63,12 +63,10 @@ services:
 
 Once you restart your CLU container, you should see something like this in the logs
 
-```
+```log
 172.21.0.1 - - [07/Oct/2025 08:41:20] "GET /gcd-mysql-status HTTP/1.1" 200 -
 ```
 
-and in the UI when browsing files, you should see a Cloud Download icon like this
+and in the UI when browsing files, you should see a Cloud Download icon like this <i class="bi bi-cloud-download fs-2 text-primary"></i>
 
-<figure><img src="assets/Screenshot 2025-10-07 085747.png" alt=""><figcaption></figcaption></figure>
-
-For additional details on usage, see the [editor-2-1.md](../file-management/editor-2-1.md "mention") section
+For additional details on usage, see the [File Management --> Get ComicInfo.xml](/features/file-management/comicinfo) section

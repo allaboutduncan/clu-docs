@@ -10,39 +10,40 @@ description: >-
 
 For any directory that has more than more than 25 folders, you can now start typing to filter the list. This does not search within the directories, this just quickly narrows down your results.
 
-![](<assets/Screenshot 2025-08-01 at 11.05.25 AM.png>)![](<assets/Screenshot 2025-08-01 at 11.05.37 AM.png>)
+| ![](</assets/file/filter01.png>) | ![](</assets/file/filter02.png>) |
+| :---------: | :----------------------------------: |
 
 ### Search
 
-Search your Comic folders to see if you have a particular issue or to see if you want to look for a better file. Search performance will be dependent on your library size until the cache is built.
+Search your Comic folders to see if you have a particular issue or to see if you want to look for a better file.
 
-<figure><img src="/broken/files/mImjNrmDMjGAXw9MSQHn" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/search01.png" alt=""></figure>
 
-When you start the app, a Search Cache will be built. Timing on this will be dependent on your library. During testing, a library with 100,000 files indexed in about 6-minutes. This will speed up search results.\
-\
-Search will also run in real-time, but be warned, if you have a large library, it will likely time out before returning any valid results. Additionally, anytime you move files to this directory, the cache will be invalidated.
+When you start the app, all files and folders will be indexed and saved to the database. Timing on this will be dependent on your library. During testing, a library with 110,000 files indexed in about 12-minutes. 
 
-See the Cache Management section on [app-settings](../app-settings/ "mention") for more details
+When files and folders are moved, the app will add/update/delete them in the database. 
 
-### New Files
+See the **File Index Management** section on [App Settings](/features/app-settings/settings) for more details and to manually re-index your library.
 
-Clicking the "New Files" button will attempt to show any new files added within the last 7 days. This is useful for seeing new downloads. This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/ "mention")
+This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](/features/folder-monitoring/)
 
-<figure><img src="assets/Screenshot 2025-10-21 092519.png" alt=""><figcaption></figcaption></figure>
+### Recent Files
 
-{% hint style="warning" %}
-The "New Files" feature is limited to 500 files or 30-seconds. Large libraries will timeout attempting to search all files.
-{% endhint %}
+Clicking the "Recent Files" button will show the last 100 files that have been added (or moved) withing you collection. This is useful for seeing new downloads.
+
+This provides results from your entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](/features/folder-monitoring/)
+
+<figure><img src="/assets/file/recent-files.png" alt=""><figcaption></figcaption></figure>
 
 ### File & Folder Sizes
 
-When viewing folders, you can click the _**info icon**_ and CLU will scan the folder and return the size and file count. This is done on request, as providing that data in the list would increase load time significantly.&#x20;
+When viewing folders, you can click the _**info icon**_ and CLU will scan the folder and return the size and file count. This is done on request, as providing that data in the list would increase load time significantly.
 
-<figure><img src="assets/Screenshot 2025-08-01 at 11.05.50 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/folder-info.png" alt=""></figure>
 
 When browsing files, you'll also see file size next to each file. This allows you compare two files, allowing you to see if a newer file was larger / better quality than an existing file.
 
-<figure><img src="assets/Screenshot 2025-08-01 at 11.31.34 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/file-size.png" alt=""></figure>
 
 ### View Cover, Meta-Data and ComicInfo.xml
 
@@ -50,12 +51,10 @@ Additionally, you'll see a new **info icon** next to all comics as well. Clickin
 
 Using the `<— Prev` and `Next -->` buttons, you can quickly view details for multiple issues.
 
-<figure><img src="assets/Screenshot 2025-10-07 103714.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/file/info01.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="assets/Screenshot 2025-08-01 at 11.16.42 AM.png" alt=""><figcaption></figcaption></figure>
+For any comic that has a valid 'ComicInfo.xml' file, you'll also see a <i class="bi bi-eraser fs-2 text-danger"></i> icon that will let you clear the comic info for that file. This is useful if the metadata is incorrect or incomplete.
 
-For any comic that has a valid 'ComicInfo.xml' file, you'll also see a 'red eraser' icon that will let you clear the comic info for that file. This is useful if the metadata is incorrect or incomplete.
-
-<figure><img src="assets/Screenshot 2025-10-21 093056.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-21 093056.png" alt=""><figcaption></figcaption></figure>
 
 After clicking the icon, you'll be asked to confirm you want to delete the metadata. Clicking Yes, will unpack the file, delete the XML and re-pack the file.

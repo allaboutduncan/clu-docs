@@ -14,4 +14,4 @@ Below are a few _Before/After_ examples&#x20;
 
 <table><thead><tr><th width="375" align="center">Before</th><th align="center">After</th></tr></thead><tbody><tr><td align="center"><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/enhance-before.webp" alt=""></td><td align="center"><img src="https://github.com/allaboutduncan/comic-utils/raw/main/images/enhance-after.webp" alt=""></td></tr><tr><td align="center"></td><td align="center"></td></tr></tbody></table>
 
-For details on the <mark style="color:blue;">**Image Enhancement Algorithm**</mark> used, please see the [markdown-4.md](../directory-features/markdown-4.md "mention") page under the Directory section
+For details on the **Image Enhancement Algorithm** used, please see the [Enhance Images](/features/directory-features/enhance "mention") page under the Directory section

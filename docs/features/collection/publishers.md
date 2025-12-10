@@ -1,6 +1,6 @@
 # Collection Browsing (Publishers)
 
-![Publisher Example Page](/assets/collection/publisher.png)
+![Publisher Example Page](/assets/collection/collection.png)
 /// caption
 Example Publisher Page with Nested Folders
 ///

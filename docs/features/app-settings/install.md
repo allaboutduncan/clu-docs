@@ -23,10 +23,11 @@ MOVE_DIRECTORY=True
 AUTO_UNPACK=True
 ```
 
-During installation (see [Quickstart](/getting-started/quickstart)), you will need to map the `/config` directory to a local folder ensure that config settings are persisted on updates.
+During installation (see [Quickstart](/getting-started/quickstart)),the `/config` is mapped to a separate docker volume to ensure that config settings are persisted on updates.
 
 ```yaml
-- '/path/to/local/config:/config' # Maps local folder to container
+volumes:
+  - 'config-volume:/config'
 ```
 
 **First Install:** On the first install with new config settings, visit the config page, ensure everything is configured as desired.

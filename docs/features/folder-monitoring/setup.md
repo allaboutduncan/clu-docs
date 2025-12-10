@@ -8,10 +8,9 @@ Folder monitoring is a feature that can be enabled during installation or when u
 
 ### Install or Update
 
-Monitoring runs as a separate process to ensure background operations do not interfere with any manual processing done by the user. In order to support this, folder monitoring must have 2 options configured in the <mark style="color:blue;">`docker-compose.yaml`</mark>
+Monitoring runs as a separate process to ensure background operations do not interfere with any manual processing done by the user. In order to support this, folder monitoring must have 2 options configured in the `docker-compose.yaml`
 
-{% code title="docker-compose.yaml" lineNumbers="true" %}
-```yaml
+```yaml linenums="1"
 version: '3.9' 
 services: 
     comic-utils: 
@@ -33,11 +32,10 @@ services:
             ## Set to 'yes' if you want to use folder monitoring.
             - MONITOR=yes/no 
 ```
-{% endcode %}
 
 These options are:
 
-* **Line 8:** Secondary volume/location for monitoring
+* **Line 16:** Secondary volume/location for monitoring
 * **Line 20:** `MONITOR=yes` to enable
 
 If you want to enable monitoring and did not configure these on setup, simply stop the container, update your <mark style="color:blue;">`docker-compose.yaml`</mark> file and restart.
@@ -46,7 +44,7 @@ If you want to enable monitoring and did not configure these on setup, simply st
 
 When you have monitoring enabled, you will need to configure a **WATCH** folder and a **TARGET** folder.
 
-<figure><img src="assets/monitor01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/monitor/monitor01.png" alt=""></figure>
 
 * **WATCH** is the source folder that will be monitored. Files in this location will have automated actions applied to them
 * **TARGET** is the destination folder where files will be moved as they are processed.

@@ -4,11 +4,10 @@ description: How to get metadata and create ComicInfo.xml files
 
 # Generate ComicInfo.xml
 
-If you have enabled [app-settings-1](../app-settings-1/index.md "mention") you'll see an additional icon in the File Manager for searching your local GCD Database for Metadata.
+If you have enabled [GCD Database Support](/features/gcd-settings/ "GCD Database Support") you'll see an additional icon in the File Manager for searching your local GCD Database for Metadata.
 
-{% hint style="warning" %}
-While not as thorough as ComicVine, the GCD database offers a quick way to get metadata for a large collection.
-{% endhint %}
+!!! warning
+    While not as thorough as ComicVine, the GCD database offers a quick way to get metadata for a large collection.
 
 ### Get Metadata for all comics in a folder
 
@@ -24,23 +23,21 @@ Here are two specific examples:
 
 #### Series Name (Year)
 
-<figure><img src="assets/Screenshot 2025-10-07 091007.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 091007.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="assets/Screenshot 2025-10-07 091355.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 091355.png" alt=""><figcaption></figcaption></figure>
 
 Searching for _'H.A.R.D. Corps (1992)'_ finds an exact match and applies metadata. Any issues with existing metadata will be skipped.
 
 #### Series Name \ v(Year)
 
-<figure><img src="assets/Screenshot 2025-10-07 090950.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 090950.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="/broken/files/NR3j4s9oYyiXT3Y3wBdm" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 091355.png" alt=""><figcaption></figcaption></figure>
 
 Similarly, when multiple volumes are present, CLU will grab the 'YEAR' from the folder and append it to the parent folder, so this search was for _'Archer & Armstrong (1992)'_ and we found an exact match.
 
 Searching for _'Archer & Armstrong (2012)'_ however, does not find an exact match, so we're presented with a list of possible matches. From that we can see a series from (2013-2015) with 10 Issues, so we select this for matching.
-
-<figure><img src="/broken/files/1XMUqEr8ou1KWDsquqhN" alt=""><figcaption></figcaption></figure>
 
 ### Get metadata for a single issue
 
@@ -50,16 +47,15 @@ Getting details for single issues works similar to the directory search. The sea
 * Series Name Year - If no exact match, we search for Series Name and year and llok for the issue
 * % Series Name % - If that fails, we search for series words, return the results and then match the issue from the user selection
 
-<figure><img src="assets/Screenshot 2025-10-07 093407.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 093407.png" alt=""></figure>
 
-<figure><img src="assets/Screenshot 2025-10-07 093426.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 093426.png" alt=""></figure>
 
 Selecting the (2016-2017) series will match and generate the data.
 
 Issue count currently counts alternate covers and reprints, so some issues counts (like this) are exaggerated.&#x20;
 
-<figure><img src="assets/Screenshot 2025-10-07 093337.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/assets/Screenshot 2025-10-07 093337.png" alt=""></figure>
 
-{% hint style="info" %}
-Usage of this feature requires a copy of the GCD database running on a local mySQL server. You can use your own setup and follow the [integrations-1-1.md](../app-settings-1/integrations-1-1.md "mention") or follow the guide on how to setup [app-settings-1](../app-settings-1/index.md "mention")
-{% endhint %}
+!!! info
+    Usage of this feature requires a copy of the GCD database running on a local mySQL server. You can use your own setup and follow the [GCD Database Additions Options](/features/gcd-settings/settings) or follow the guide on how to setup[GCD Database Support](/features/gcd-settings/ "GCD Database Support").

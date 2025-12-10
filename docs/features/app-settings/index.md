@@ -1,11 +1,22 @@
 ---
 description: Multiple options can be enabled / disabled from App Settings
 ---
+# Settings
 
-# App Settings
+## Config Settings
 
-Once installed, all other app options can be updated on the App Settings page.
+During installation or restart, some settings are set to default values and are persisted in the config volume
 
-<figure><img src="/assets/app-settings.png" alt=""><figcaption><p>Part of the App Settings page</p></figcaption></figure>
+[Folder Monitoring](/features/folder-monitoring/), must be enabled/disabled during install or startup.
 
-The app will be installed with a default config and once that is initialized, any changes made by the user will persist during updates.
+## App Settings
+
+After installation, all other app options can be updated on the **Settings** page.
+
+<figure><img src="/assets//settings/app-settings.png" alt=""></figure>
+
+There are 3 main sections for the app settings:
+
+* **File Processing**
+* **Download and API**
+* **System and Performance**
