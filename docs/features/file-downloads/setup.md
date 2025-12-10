@@ -4,13 +4,13 @@ description: Setup for remote download of files
 
 # Chrome Extension
 
-<figure><img src="/broken/files/AMURg23n47ocRx4VEsAD" alt=""><figcaption></figcaption></figure>
+![Extension Image](../../assets/download/extension01.png)
 
-Once you have the [Chrome extension installed](https://chromewebstore.google.com/detail/send-link-to-clu/cpickljbofjhmhkphgdmiagkdfijlkkg), you will need to configure the options.&#x20;
+Once you have the [Chrome extension installed](https://chromewebstore.google.com/detail/send-link-to-clu/cpickljbofjhmhkphgdmiagkdfijlkkg), you will need to configure the options.
 
 You'll see a screen similar to this within Chrome.
 
-<figure><img src="assets/Screenshot 2025-05-28 092053.png" alt=""><figcaption></figcaption></figure>
+![Extension Settings](../../assets/download/extension02.png)
 
 ### API URL
 
@@ -31,6 +31,6 @@ This setting allows you to pass custom auth variables or anything else in the he
 }
 ```
 
-You'll need to add these same settings in the [API Download Configuration](../app-settings/integrations-1.md). This ensures your validation credentials get passed by Chrome and the CLU app.
+You'll need to add these same settings in the [API Download Configuration](../app-settings/download-settings.md). This ensures your validation credentials get passed by Chrome and the CLU app.
 
 Once you have everything configured, you can test it out.

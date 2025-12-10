@@ -15,12 +15,12 @@ Using the default settings, this should be:
 
 ### Features
 
-The default page is the [Collection](/features/collection/) page. This page will show you a list of all folders in your collection. [Directory Features](/features/directory-features/) and [Single File Features](/features/single-file-features/) are available to manage your collection.
+The default page is the [Collection](../features/collection/index.md) page. This page will show you a list of all folders in your collection. [Directory Features](../features/directory-features/index.md) and [Single File Features](../features/single-file-features/index.md) are available to manage your collection.
 
-The [File Management](/features/file-management/) page is available to manage your files. It let's you manage your entire library remotely and Move, Rename and Delete directories and files all from one easy drag-and-drop interface.
+The [File Management](../features/file-management/index.md) page is available to manage your files. It let's you manage your entire library remotely and Move, Rename and Delete directories and files all from one easy drag-and-drop interface.
 
 ### Navigation
 
-![Navigation](/assets/nav.png)
+![Navigation](../assets/nav.png)
 
-Navigation in the header will let you access additional features like [Settings](/features/app-settings/) and [File Downloads](/features/file-downloads/).
+Navigation in the header will let you access additional features like [Settings](../features/app-settings/index.md) and [File Downloads](../features/file-downloads/index.md).

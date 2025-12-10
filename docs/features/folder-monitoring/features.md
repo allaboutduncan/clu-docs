@@ -21,7 +21,7 @@ Default file extensions are:
 
 ## Renaming
 
-This feature is enabled by default and will be running when monitoring is enabled. This applies the same renaming logic outlined in the [Clean All Filenames](/features/directory-features/clean) section to any file added to the directory.
+This feature is enabled by default and will be running when monitoring is enabled. This applies the same renaming logic outlined in the [Clean All Filenames](../directory-features/clean.md) section to any file added to the directory.
 
 Files will be moved to the **TARGET** directory when they are renamed.
 

@@ -28,44 +28,73 @@ body:has(.hero-section) .md-container {
   background: transparent !important;
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero-section {
   position: relative;
-  padding: 6rem 1rem 4rem;
-  text-align: center;
-  /* Removed gradient to show background image */
-  background: transparent;
+  padding: 4rem 1rem;
+  /* Reduced top padding */
   margin-bottom: 2rem;
   overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 1rem;
+    text-align: left;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  z-index: 2;
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   background: linear-gradient(to right, #818cf8, #c4b5fd);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.1;
+}
+
+@media screen and (min-width: 960px) {
+  .hero-content h1 {
+    font-size: 4rem;
+  }
 }
 
 .hero-content p {
   font-size: 1.25rem;
   color: #94a3b8;
-  max-width: 600px;
-  margin: 0 auto 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.hero-badges {
+.hero-actions {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 32px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -82,13 +111,39 @@ body:has(.hero-section) .md-container {
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
   background: var(--md-primary-fg-color--dark);
   color: white;
-  /* Ensure text stays white */
 }
 
-/* Video Container */
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0.8;
+}
+
+/* User's Video/Visual Container on Hero Right */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .video-container {
-  margin: 3rem auto 0;
-  max-width: 900px;
+  width: 100%;
+  max-width: 600px;
+  /* Limit size */
   aspect-ratio: 16/9;
   background: #1e293b;
   border-radius: 1rem;
@@ -99,16 +154,18 @@ body:has(.hero-section) .md-container {
   justify-content: center;
   color: #64748b;
   overflow: hidden;
+  margin: 0;
+  /* Override old margin */
 }
 
-/* Feature Grid */
+/* --- Feature Grid --- */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0;
-  margin-bottom: 4rem;
-  /* Spacing before the solid section starts */
+  gap: 1.5rem;
+  margin: 2rem auto 4rem;
+  max-width: 1220px;
+  padding: 0 1rem;
 }
 
 .feature-card {
@@ -117,8 +174,10 @@ body:has(.hero-section) .md-container {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
   transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card:hover {
@@ -127,7 +186,7 @@ body:has(.hero-section) .md-container {
 }
 
 .feature-icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   display: block;
 }
@@ -136,127 +195,110 @@ body:has(.hero-section) .md-container {
   margin-top: 0;
   font-weight: 700;
   color: var(--md-primary-fg-color--light);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .feature-card p {
   color: var(--md-typeset-color);
   margin-bottom: 0;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
-/* Content Sections (How it Works, etc) */
+/* --- Content Sections (Split Layouts) --- */
 .content-section {
-  /* Full viewport width breakout */
   width: 100vw;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-
-  /* Opaque background to start the "solid" part of the page */
   background-color: var(--md-bg-color);
-
-  padding: 4rem 1rem;
-  text-align: center;
-
-  /* Stack on top of the fixed body background */
+  padding: 5rem 1rem;
   z-index: 10;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Constrain content inside the full-width section */
-.content-section>* {
+.content-wrap {
   max-width: 1220px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
-.content-section.alt-bg {
-  background: rgba(255, 255, 255, 0.03);
-  /* border-radius removed as it spans full width now, implies seamless connection */
-  margin: 0;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+/* Split Section Generic */
+.split-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 5rem;
 }
 
-.content-section h2 {
-  font-size: 2.5rem;
+.split-section:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .split-section {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .split-section.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.split-content {
+  flex: 1;
+}
+
+.split-content h2 {
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   background: linear-gradient(to right, #e2e8f0, #94a3b8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  line-height: 1.2;
 }
 
-/* Steps Grid */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  position: relative;
-}
-
-.step-card {
-  position: relative;
-  padding: 2rem;
-}
-
-.step-number {
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(99, 102, 241, 0.2);
-  margin-bottom: 0.5rem;
-}
-
-.step-card h3 {
-  color: var(--md-primary-fg-color--light);
-  margin-top: 0;
-}
-
-/* Media Grid */
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.media-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: left;
-}
-
-.media-card h3 {
-  color: var(--md-primary-fg-color--light);
-  margin-top: 0;
-  border-bottom: 1px solid var(--glass-border);
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-
-.media-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.media-card li {
-  padding: 0.5rem 0;
+.split-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--md-typeset-color);
+  margin-bottom: 1.5rem;
+}
+
+.split-visual {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.visual-card {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #1e293b;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.media-card li::before {
-  content: "✓";
-  color: var(--md-primary-fg-color);
-  margin-right: 0.8rem;
-  font-weight: bold;
+/* Specific styling for internal elements in visuals if needed */
+.visual-card svg {
+  width: 50%;
+  height: 50%;
+  opacity: 0.2;
 }
+
 
 /* docs/stylesheets/extra.css */
 
@@ -358,4 +400,11 @@ body:has(.hero-section) .md-container {
 
 .fs-4 {
   font-size: 2rem;
+}
+
+/* docs/stylesheets/extra.css */
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

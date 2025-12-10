@@ -69,4 +69,4 @@ Once you restart your CLU container, you should see something like this in the l
 
 and in the UI when browsing files, you should see a Cloud Download icon like this <i class="bi bi-cloud-download fs-2 text-primary"></i>
 
-For additional details on usage, see the [File Management --> Get ComicInfo.xml](/features/file-management/comicinfo) section
+For additional details on usage, see the [File Management --> Get ComicInfo.xml](../file-management/comicinfo.md) section

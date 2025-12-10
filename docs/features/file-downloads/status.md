@@ -4,11 +4,9 @@ description: See files downloaded, currently downloading and pending.
 
 # Download Status Page
 
-### Download Status
-
-<figure><img src="assets/Screenshot 2025-05-28 090426.png" alt=""><figcaption><p>Current Download Status</p></figcaption></figure>
-
 From this page you can view current and pending downloads.
+
+![Current Download Status](../../assets/download/status.png)
 
 #### **Download Queue**
 

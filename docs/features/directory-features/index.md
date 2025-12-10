@@ -1,6 +1,6 @@
 # Directory Features
 
-<figure><img src="/assets/directory/home_v1.png" alt=""><figcaption></figcaption></figure>
+![Directory Features](../../assets/directory/home_v1.png)
 
 Directory based functionality is the reason I started building the app and makes up the foundation of what CLU can do.&#x20;
 

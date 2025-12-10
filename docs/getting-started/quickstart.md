@@ -66,7 +66,7 @@ docker run \
 
 ### Parameters
 
-Additional info about the ENV variables can be found [here](/features/app-settings/install).
+Additional info about the ENV variables can be found [here](../features/app-settings/install.md).
 
 | Parameter | Function |
 | --- | --- |
