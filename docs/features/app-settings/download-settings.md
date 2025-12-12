@@ -1,6 +1,6 @@
 # Download Settings
 
-<figure><img src="/assets/settings/download-settings.png" alt=""></figure>
+![Download Settings](../../assets/settings/download-settings.png){: .center-image}
 
 ### API Download Configuration <a href="#api-configuration" id="api-configuration"></a>
 
@@ -19,7 +19,7 @@ The example provided shows you how to pass Client ID and Client Secret to authen
 
 #### PixelDrain API Key
 
-For the [File Downloads](/features/file-downloads/index) feature, you can bypass daily limits by entering your API key in this field.
+For the [File Downloads](../../features/file-downloads/index.md) feature, you can bypass daily limits by entering your API key in this field.
 
 ### Metadata API Configuration
 
@@ -45,7 +45,7 @@ If this is enabled, anytime metadata from **Comicvine** is downloaded, the app w
 
 Much like the custom rename pattern, this allows you to define a custom move pattern for your files. When enabled, anytime metadata from **Comicvine** is downloaded, the app will use this pattern to move the file to the target directory.
 
-![Move Pattern](/assets/settings/move-pattern.png)
+![Move Pattern](../../assets/settings/move-pattern.png){: .center-image}
 
 !!! info "To Do: Add GCD Support"
     Future versions will support auto renaming/moving files based on metadata from the GCD database.

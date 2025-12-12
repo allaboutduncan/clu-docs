@@ -12,7 +12,7 @@ Navigating to Logs will let you view log messages related to all app functions.
 
 In the example above, we can see a few things:
 
-* **App Status:** Startup up message and [folder-monitoring](/features/folder-monitoring/index "mention")enabled (yes/no)
+* **App Status:** Startup up message and [folder-monitoring](../folder-monitoring/index.md)enabled (yes/no)
 * **Rename File: R**enaming to / from messaging
 * **Single File Conversion:** Details of the file being converted and it's location
 * **Error Messages:** While there are none displayed, error messages will show here as well
@@ -31,13 +31,13 @@ followed by the details of what is being converted, moved, renamed, etc.
 
 ### Folder Monitoring Logs
 
-If you are using [folder monitoring](../features/folder-monitoring/index.md "Folder Monitoring"), you will see log messages related to the files being monitored.
+If you are using [folder monitoring](../folder-monitoring/index.md "Folder Monitoring"), you will see log messages related to the files being monitored and downloaded in the "Monitor Logs" tab.
 
 ### Debug Logging
 
 Debug logging provides more detailed information about the app's internal state and can be helpful for debugging and understanding what the app is doing.
 
-This can be enabled by visiting the [System Settings](system-settings.md#logging-debugging "System Settings") page and enabling the `Debug Logging` option.
+This can be enabled by visiting the [System Settings](../app-settings/system-settings.md#logging-debugging "System Settings") page and enabling the `Debug Logging` option.
 
 This will show any log messages at the DEBUG level or higher.
 

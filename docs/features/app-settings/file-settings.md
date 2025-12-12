@@ -6,15 +6,15 @@ description: All of the Options available in Settings
 
 All settings related to file moving, renaming and processing are updated in this section.
 
-<figure><img src="/assets/settings/file-settings.png" alt=""><figcaption></figcaption></figure>
+![File Settings](../../assets/settings/file-settings.png){: .center-image}
 
 ### Folder Monitoring
 
-This is the most extensive set of features and will only be applicable if [folder-monitoring](/features/folder-monitoring/index "mention") is enabled. Most of these feature flags enhance the previous feature flag.
+This is the most extensive set of features and will only be applicable if [folder-monitoring](../../features/folder-monitoring/index.md) is enabled. Most of these feature flags enhance the previous feature flag.
 
-**WATCH:** The folder that will be monitored for files being added. This setting is dependent on the optional location mapped during [Quickstart](/features/getting-started/quickstart "mention") guide.
+**WATCH:** The folder that will be monitored for files being added. This setting is dependent on the optional location mapped during [Quickstart](../../getting-started/quickstart.md).
 
-**TARGET:** The folder where files will be after they are processed. This setting is dependent on the optional location mapped during [Quickstart](/features/getting-started/quickstart "mention") guide.
+**TARGET:** The folder where files will be after they are processed. This setting is dependent on the optional location mapped during [Quickstart](../../getting-started/quickstart.md).
 
 **IGNORED EXTENSIONS:** File types listed here will be ignored by the file monitoring process. Many of these file types are `temp`file types and should be ignore. However, if you want to have others files in the WATCH folder and not have them processed with your enabled options - add those extenison types here.
 
@@ -31,13 +31,13 @@ For ZIP only, this specifically bypasses the IGNORED EXTENSIONS.
 !!! info
     To Do: Hide these in settings if folder monitoring is not enabled or inform user that folder monitoring is not enabled.
 
-**Auto Cleanup Orphan Files:** If you are using the monitoring and [Chrome Extension](/features/file-downloads/setup "mention") for downloads, failed downloads will be removed at regular intervals.
+**Auto Cleanup Orphan Files:** If you are using the monitoring and [Chrome Extension](../../features/file-downloads/setup.md) for downloads, failed downloads will be removed at regular intervals.
 
 **Cleanup Interval (hours):** Set the timing for removing orphaned files.
 
 ### Missing Issue Configuration
 
-The two options here will vary greatly on how much you use [Missing Issue Check](/features/directory-features/missing "mention") and how your library is structured.
+The two options here will vary greatly on how much you use [Missing Issue Check](../../features/directory-features/missing.md) and how your library is structured.
 
 **IGNORED TERMS:** Add a comma-separated list of words/terms to ignore while checking for missing issues. Update these terms and re-run the missing issue check to better parse your library.
 
@@ -45,7 +45,7 @@ The two options here will vary greatly on how much you use [Missing Issue Check]
 
 ### Directory & File Processing Settings
 
-**Enable Subdirectories for Conversion:** This specifically allows [Convert Directory](/features/directory-features/convert "mention") to traverse subdirectories and convert all CBR/RAR files to CBZ. This is not enabled by default - as running this on a high level folder AND a large collection could take quite a bit of time.
+**Enable Subdirectories for Conversion:** This specifically allows [Convert Directory](../../features/directory-features/convert.md) to traverse subdirectories and convert all CBR/RAR files to CBZ. This is not enabled by default - as running this on a high level folder AND a large collection could take quite a bit of time.
 
 **SKIPPED TYPES:** Add a comma-separated list of extensions to skip while performing actions on files. When any operation unpacks a RAR/ZIP File, files with these extensions will be skipped. They will be re-added to the archive. Examples are `.xml`
 
@@ -57,7 +57,7 @@ Use a custom naming scheme for renaming issues when downloads are processed or f
 
 Enter your naming pattern using the syntax provided and see a real-time preview of the result.
 
-![Naming Pattern](/assets/settings/naming-pattern.png)
+![Naming Pattern](../../assets/settings/naming-pattern.png)
 
 !!! warning
     Renaming applies only to issues. Entering directory paths or folder structures is not yet supported.

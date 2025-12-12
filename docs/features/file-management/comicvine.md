@@ -15,7 +15,7 @@ Clicking the <i class="bi bi-book fs-2 text-success"></i> will begin searching f
 
 ### Additional ComicVine Settings
 
-![ComicVine Settings](../../assets/file/comicvine-settings.png)
+![ComicVine Settings](../../assets/file/comicvine-settings.png){: .center-image}
 
 Additional settings can be found in the [Download Settings --> Metadata API Configuration](../app-settings/download-settings.md#metadata-api-configuration).
 
