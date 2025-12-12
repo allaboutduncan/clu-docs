@@ -25,7 +25,7 @@ This will show one of the following statuses:
 
 ### Completed Downloads
 
-Downloads use the [File Monitoring](../file-monitoring/index.md) feature to process downloads. All files will saved in the **WATCH** directory and moved to the **TARGET** once they are processed. 
+Downloads use the [Folder Monitoring](../folder-monitoring/index.md) feature to process downloads. All files will saved in the **WATCH** directory and moved to the **TARGET** once they are processed. 
 
 You can adjust how files are processed in the [File Settings](../app-settings/file-settings.md).
 

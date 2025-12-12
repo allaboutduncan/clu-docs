@@ -11,7 +11,6 @@ hide:
     
     <div class="hero-actions">
       <a href="getting-started/quickstart/" class="cta-button">Get Started</a>
-      <a href="http://demo.clucomics.org" class="cta-button secondary">Live Demo</a>
     </div>
 
     <div class="hero-badges">
@@ -21,42 +20,53 @@ hide:
   </div>
 
   <div class="hero-visual">
-    <div class="video-container">
-      <div style="padding: 2rem; text-align: center;">
-        <svg style="width:64px;height:64px;margin-bottom:1rem;" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-        </svg>
-        <h3>Introduction to CLU</h3>
-        <p>Watch the overview video</p>
-      </div>
+    <div class="hero-image-container">
+      <img src="../assets/hero.png" alt="Dashboard Preview" class="hero-image-placeholder" />
     </div>
   </div>
 </div>
 
 <div class="feature-grid">
   <div class="feature-card">
-    <span class="feature-icon">📚</span>
-    <h3>Smart Library</h3>
-    <p>Automatically organize your comics with metadata scraping and smart folder monitoring.</p>
+    <div class="feature-image">
+      <img src="../assets/hero-edit.png" alt="Edit Your Comics">
+    </div>
+    <div class="feature-content">
+      <h3>Edit</h3>
+      <p>Edit CBZ files and crop, delete, and rearrange CBZ files directly from the app.</p>
+    </div>
   </div>
 
   <div class="feature-card">
-    <span class="feature-icon">🔍</span>
-    <h3>Deep Search</h3>
-    <p>Find any issue instantly with powerful search and filters. Sort by character, arc, or year.</p>
+    <div class="feature-image">
+       <img src="../assets/hero-manage.png" alt=Manage">
+    </div>
+    <div class="feature-content">
+      <h3>Organize</h3>
+      <p>Move, rename, and organize your entire file structure remotely via the web browser.</p>
+    </div>
   </div>
 
   <div class="feature-card">
-    <span class="feature-icon">📱</span>
-    <h3>Read Anywhere</h3>
-    <p>Stream your comics to any device. Progress syncs seamlessly across desktop and mobile.</p>
+    <div class="feature-image">
+       <img src="../assets/hero-enjoy.png" alt="Enjoy Your Comics">
+    </div>
+    <div class="feature-content">
+      <h3>Enhance</h3>
+      <p>View your comics with a fast, responsive browser and reader.</p>
+    </div>
   </div>
 
+<!-- 
   <div class="feature-card">
-    <span class="feature-icon">🔄</span>
-    <h3>Track Progress</h3>
-    <p>Manage want-to-read lists and integrate with ComicVine for metadata accuracy.</p>
-  </div>
+    <div class="feature-image">
+       <img src="https://placehold.co/600x400/e2e8f0/475569?text=Tracking" alt="Track Progress">
+    </div>
+    <div class="feature-content">
+      <h3>Track Progress</h3>
+      <p>Manage want-to-read lists and integrate with ComicVine for metadata accuracy.</p>
+    </div>
+  </div>-->
 </div>
 
 <div class="content-section">
@@ -67,16 +77,16 @@ hide:
       <div class="split-content">
         <h2>Seamless Integration</h2>
         <p>CLU integrates directly with your existing filesystem. Point it to your library, and it handles the rest. No need to move files or change your structure if you don't want to.</p>
-        <p>Supports CBZ, CBR, PDF, and EPUB formats out of the box. Your collection stays yours, simply enhanced.</p>
+        <p>Supports CBZ, CBR, and PDF formats out of the box. Your collection stays yours, simply enhanced.</p>
       </div>
       <div class="split-visual">
          <div class="visual-card">
-           <span style="font-size:4rem">📂</span>
+           <img src="../assets/hero-integrate.png" alt="Integration" style="width:100%; height:100%; object-fit:cover; opacity:0.8;">
          </div>
       </div>
     </div>
 
-    <!-- Section 2: Reading Experience (Reverse) -->
+    <!-- Section 2: Reading Experience (Reverse)-->
     <div class="split-section reverse">
       <div class="split-content">
         <h2>Premium Reading Experience</h2>
@@ -85,7 +95,7 @@ hide:
       </div>
       <div class="split-visual">
         <div class="visual-card">
-          <span style="font-size:4rem">📖</span>
+           <img src="https://placehold.co/600x450/e2e8f0/475569?text=Reading" alt="Reading Experience" style="width:100%; height:100%; object-fit:cover; opacity:0.8;">
         </div>
       </div>
     </div>
@@ -94,12 +104,11 @@ hide:
     <div class="split-section">
       <div class="split-content">
         <h2>Powerful Management</h2>
-        <p>Fix filenames, scrape metadata from ComicVine, and detect duplicate issues automatically. CLU provides the tools to keep even the largest collections pristine.</p>
-        <p>Batch processing allows you to reorganize thousands of issues with a single click.</p>
+        <p>Fix filenames, scrape metadata from multiple source, and move files easily. CLU provides the tools to keep even the largest collections pristine.</p>
       </div>
       <div class="split-visual">
         <div class="visual-card">
-          <span style="font-size:4rem">⚙️</span>
+           <img src="../assets/hero-03.png" alt="Management" style="width:100%; height:100%; object-fit:cover; opacity:0.8;">
         </div>
       </div>
     </div>

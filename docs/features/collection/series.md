@@ -1,6 +1,6 @@
 # Collection Browsing (Series)
 
-![Collection Series Landing Page](/assets/collection/publisher.png)
+![Collection Series Landing Page](../../assets/collection/publisher.png)
 /// caption
 Example Collection Series Page
 ///
@@ -10,7 +10,7 @@ Once you navigate within a publisher, you will see a list of folders (series) or
 ## Series Options
 For a series folder (any folder that is non-root / non-publisher), there are 3 options in the dropdown menu that can be accessed by clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu.
 
-![Series Dropdown Menu](/assets/collection/series-dropdown.png)
+![Series Dropdown Menu](../../assets/collection/series-dropdown.png)
 /// caption
 Example Series Dropdown Menu
 ///
@@ -21,7 +21,7 @@ Example Series Dropdown Menu
 
 ### Generating Thumbnails
 
-![Generating Thumbnails](/assets/collection/thumbnail-demo.gif)
+![Generating Thumbnails](../../assets/collection/thumbnail-demo.gif)
 /// caption
 Example of Generating Thumbnails
 ///

@@ -4,10 +4,10 @@ description: How to get metadata and create ComicInfo.xml files
 
 # ComicVine Metadata
 
-If you have entered a [Commicvine API Key](/features/gcd-settings/) in settings, you'll see an additional icon in the File Manager. Clicking the <i class="bi bi-book fs-2 text-success"></i> icon will beging searching for metadata from ComicVine.
+If you have entered a [Commicvine API Key](../app-settings/download-settings.md#metadata-api-configuration) in settings, you'll see an additional icon in the File Manager. Clicking the <i class="bi bi-book fs-2 text-success"></i> icon will beging searching for metadata from ComicVine.
 
 !!! info "Single Issue Metadata Only"
-    The **ComicVine** feature only searches for metadata for a single issue. If you have multiple issues in a directory, you will need to use the [GCD Database Method](../features/gcd-settings/index.md) feature to process multiple issues. [ComicRackCE](https://github.com/maforget/ComicRackCE) should be your first choice for performing large metadata updates if you want to use ComicVine.
+    The **ComicVine** feature only searches for metadata for a single issue. If you have multiple issues in a directory, you will need to use the [GCD Database Method](../gcd-settings/index.md) feature to process multiple issues. [ComicRackCE](https://github.com/maforget/ComicRackCE) should be your first choice for performing large metadata updates if you want to use ComicVine.
 
 ### Manually Search for Metadata
 

@@ -46,6 +46,7 @@ nav:
     - Publishers: features/collection/publishers.md
     - Series: features/collection/series.md
     - Issues: features/collection/issues.md
+    - Reading: features/collection/reading.md
 
   - Directory Features:
     - features/directory-features/index.md
@@ -65,7 +66,13 @@ nav:
     - Add blank Image: features/single-file-features/add.md
     - Enhance Images: features/single-file-features/enhance.md
     - Delete File: features/single-file-features/delete.md
-  
+
+  - Folder Monitoring:
+    - features/folder-monitoring/index.md
+    - Monitoring Setup: features/folder-monitoring/setup.md
+    - Features: features/folder-monitoring/features.md
+    - Monitoring Logs: features/folder-monitoring/logs.md
+
   - File Downloads:
     - features/file-downloads/index.md
     - Chrome Extension: features/file-downloads/setup.md
@@ -80,12 +87,6 @@ nav:
     - Additional Features: features/file-management/additional.md
     - Get ComicInfo.xml: features/file-management/comicinfo.md
     - Comicvine Metadata: features/file-management/comicvine.md
-  
-  - Folder Monitoring:
-    - features/folder-monitoring/index.md
-    - Monitoring Setup: features/folder-monitoring/setup.md
-    - Features: features/folder-monitoring/features.md
-    - Monitoring Logs: features/folder-monitoring/logs.md
   
   - App Settings:
     - features/app-settings/index.md

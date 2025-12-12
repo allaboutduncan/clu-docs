@@ -14,7 +14,7 @@ services:
     comic-utils:
         image: allaboutduncan/comic-utils-web:latest
 
-        container_name: comic-utils
+        container_name: clu
         logging:
             driver: "json-file"
             options:
@@ -24,15 +24,15 @@ services:
         ports:
             - '5577:5577'
         volumes:
-            - '/var/run/docker.sock:/tmp/docker.sock:ro' # do not change this line
-            - '/path/to/local/config:/config' # Maps local folder to container
+            - "/path/to/local/config:/config" # Maps local folder to persist settings
+            - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
             ## update the line below to map to your library.
             ## Your library MUST be mapped to '/data' for the app to work
-            - 'D:/Comics:/data'
+            - "/e/Comics:/data"
             ## Additional folder if you want to use Folder Monitoring.
-            - 'F:/downloads:/downloads'
+            - "/f/Downloads:/downloads"
         environment:
-            - FLASK_ENV=development
+            - FLASK_ENV=production
             ## Set to 'yes' if you want to use folder monitoring.
             - MONITOR=yes/no
             ## Set the User ID (PUID) and Group ID (PGID) for the container.
@@ -40,10 +40,10 @@ services:
             ## where a specific user/group owns the files.
             ## For Unraid, PUID is typically 99 (user 'nobody') and PGID is typically 100 (group 'users').
             ## For Windows/WSL, you need to set these to match your Windows user ID (see WINDOWS_WSL_SETUP.md)
-            # - PUID=99
-            # - PGID=100
+            - PUID=99
+            - PGID=100
             ## Set the file creation mask (UMASK). 022 is a common value.
-            # - UMASK=022
+            - UMASK=022
 ```
 
 ### Install via Docker
@@ -79,3 +79,9 @@ Additional info about the ENV variables can be found [here](../features/app-sett
 | -e PUID=99 | Set the User ID (PUID) and Group ID (PGID) for the container. |
 | -e PGID=100 | Set the User ID (PUID) and Group ID (PGID) for the container. |
 | -e UMASK=022 | Set the file creation mask (UMASK). |
+
+### Using a Grand Comics Database (GCD) File
+
+You can connect to a container running a local copy of the Grand Comics Database (GCD) file. This will allow you to use the metadata from the GCD file to populate your comics. 
+
+Additional parameters are needed in your docker-compose.yml file to connect to the GCD file. See [here](../features/gcd-settings/index.md) for  step by step instructions.

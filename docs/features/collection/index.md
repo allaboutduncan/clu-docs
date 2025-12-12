@@ -1,6 +1,6 @@
 # Collection Homepage
 
-| ![Collection Landing Page](/assets/collection/collection.png){ width="300" }      | ![Collection Publisher Page](/assets/collection/publisher.png){ width="300" }                          |
+| ![Collection Landing Page](../../assets/collection/collection.png){ width="300" }      | ![Collection Publisher Page](../../assets/collection/publisher.png){ width="300" }                          |
 | :---------: | :----------------------------------: |
 | Example Collection Landing Page with Favorites and Reading Lists | Example Collection Publisher Page with Nested Folders |
 

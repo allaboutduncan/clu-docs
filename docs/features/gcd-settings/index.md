@@ -10,7 +10,6 @@ Getting Metadata and building ComicInfo.xml files for a large collection using t
 
 Follow the steps on the next few pages to get a GCD Database dump setup on your Docker - Portainer instances
 
-{% hint style="warning" %}
-**Note:** This will be a snapshot in time, so it will not contain data for any new comics released after installation. For our purposes, this is fine as we are looking to bulk update comics prior to the current year.
-{% endhint %}
+!!! warning
+    **Note:** This will be a snapshot in time, so it will not contain data for any new comics released after installation. For our purposes, this is fine as we are looking to bulk update comics prior to the current year.
 

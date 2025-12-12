@@ -22,15 +22,15 @@ services:
         ports:
             - '5577:5577'
         volumes:
-            - '/var/run/docker.sock:/tmp/docker.sock:ro' # do not change this line
-            - '/path/to/local/config:/config' # Maps local folder to container
+            - "/path/to/local/config:/config" # Maps local folder to persist settings
+            - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
             ## update the line below to map to your library.
             ## Your library MUST be mapped to '/data' for the app to work
-            - 'D:/Comics:/data'
+            - "/e/Comics:/data"
             ## Additional folder if you want to use Folder Monitoring.
-            - 'F:/downloads:/downloads'
+            - "/f/Downloads:/downloads"
         environment:
-            - FLASK_ENV=development
+            - FLASK_ENV=production
             ## Set to 'yes' if you want to use folder monitoring.
             - MONITOR=yes/no
             ## Set the User ID (PUID) and Group ID (PGID) for the container.
@@ -38,27 +38,27 @@ services:
             ## where a specific user/group owns the files.
             ## For Unraid, PUID is typically 99 (user 'nobody') and PGID is typically 100 (group 'users').
             ## For Windows/WSL, you need to set these to match your Windows user ID (see WINDOWS_WSL_SETUP.md)
-            # - PUID=99
-            # - PGID=100
+            - PUID=99
+            - PGID=100
             ## Set the file creation mask (UMASK). 022 is a common value.
-            # - UMASK=022
+            - UMASK=022
             
-            # GCD Database Additions: Uncomment everything below and update the
-            # GCD_MYSQL_PASSWORD if you're using a local GCD database for Metadata
-            #- GCD_MYSQL_HOST=mysql-gcd
-            #- GCD_MYSQL_PORT=3306
-            #- GCD_MYSQL_DATABASE=gcd_data
-            #- GCD_MYSQL_USER=clu
-            #- GCD_MYSQL_PASSWORD=my-password-setup-previous-step
-        #networks:
-        #    - gcd-network
+            # GCD Database Additions: Update the GCD_MYSQL_PASSWORD 
+            # to match the MYSQL_PASSWORD you set in the previous step
+            - GCD_MYSQL_HOST=mysql-gcd
+            - GCD_MYSQL_PORT=3306
+            - GCD_MYSQL_DATABASE=gcd_data
+            - GCD_MYSQL_USER=clu
+            - GCD_MYSQL_PASSWORD=strong-user-password
+        networks:
+            - gcd-network
 
-#volumes:
-#  config-volume:
+volumes:
+  config-volume:
 
-#networks:
-#  gcd-network:
-#    external: true            
+networks:
+  gcd-network:
+    external: true            
 ```
 
 Once you restart your CLU container, you should see something like this in the logs

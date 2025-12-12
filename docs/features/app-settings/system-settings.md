@@ -4,17 +4,17 @@ description: All of the Options available in Settings
 
 # System and Performance Settings
 
-![System and Performance Settings](/assets/settings/system-settings.png)
+![System and Performance Settings](../../assets/settings/system-settings.png)
 
 ### Performance and Timeout Settings
 
-![Performance and Timeout Settings](/assets/settings/timeout.png)
+![Performance and Timeout Settings](../../assets/settings/timeout.png)
 
 Allows you to better manage large files depending on your system. Adjusting these values will enable/disable additional timing checks when processing large files (converting or rebuilding files). The default settings on average systems should easily handle converting a 2GB CBR file to CBZ.
 
 ### File Index Management
 
-![File Index Rebuild](/assets/settings/index-rebuild.png)
+![File Index Rebuild](../../assets/settings/index-rebuild.png)
 
 In v4, the **Cache Management** has been replaced with databased managed file indexing. This provides faster page loads and improved search performance. 
 
@@ -22,7 +22,7 @@ From this area in admin, you can manually trigger a file index rebuild and sched
 
 #### Automatic Rebuild Schedule
 
-![Rebuild Schedule](/assets/settings/rebuild-schedule.png)
+![Rebuild Schedule](../../assets/settings/rebuild-schedule.png)
 
 Timing for automatically rebuilding the file index. Default is disabled
 
@@ -30,13 +30,13 @@ You can set Daily or Weekly and specify the hour to rebuild the index.
 
 ### Logging & Debugging
 
-![Logging & Debugging](/assets/settings/debug.png)
+![Logging & Debugging](../../assets/settings/debug.png)
 
 If you are experiencing issues or odd behavior, enable this to add more detailed logging.
 
 ### ComicInfo.XML Updates
 
-![ComicInfo XML Updates](/assets/settings/clean-xml.png)
+![ComicInfo XML Updates](../../assets/settings/clean-xml.png)
 
 All of these features related to updating/cleaning the `ComicInfo.xml` file in archives. I would consider these experimental or beta features - in that they have been tested the least.
 

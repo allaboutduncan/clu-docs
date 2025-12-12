@@ -11,32 +11,38 @@ Folder monitoring is a feature that can be enabled during installation or when u
 Monitoring runs as a separate process to ensure background operations do not interfere with any manual processing done by the user. In order to support this, folder monitoring must have 2 options configured in the `docker-compose.yaml`
 
 ```yaml linenums="1"
-version: '3.9' 
-services: 
-    comic-utils: 
+version: '3.9'
+services:
+    comic-utils:
         image: allaboutduncan/comic-utils-web:latest
-        container_name: comic-utils
 
+        container_name: clu
+        logging:
+            driver: "json-file"
+            options:
+                max-size: '20m'  # Reduce log size to 20MB
+                max-file: '3'     # Keep only 3 rotated files
         restart: always
         ports:
             - '5577:5577'
         volumes:
-            - '/path/to/local/config:/config' # Maps local folder to container
+            - "/path/to/local/config:/config" # Maps local folder to persist settings
+            - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
             ## update the line below to map to your library.
             ## Your library MUST be mapped to '/data' for the app to work
-            - 'D:/Comics:/data'
+            - "/e/Comics:/data"
             ## Additional folder if you want to use Folder Monitoring.
-            - 'F:/downloads:/downloads'
+            - "/f/Downloads:/downloads"
         environment:
-            - FLASK_ENV=development
+            - FLASK_ENV=production
             ## Set to 'yes' if you want to use folder monitoring.
-            - MONITOR=yes/no 
+            - MONITOR=yes/no
 ```
 
 These options are:
 
-* **Line 16:** Secondary volume/location for monitoring
-* **Line 20:** `MONITOR=yes` to enable
+* **Line 22:** Secondary volume/location for monitoring
+* **Line 26:** `MONITOR=yes` to enable
 
 If you want to enable monitoring and did not configure these on setup, simply stop the container, update your <mark style="color:blue;">`docker-compose.yaml`</mark> file and restart.
 

@@ -29,3 +29,6 @@ Indicated by the Pixeldrain button
 #### **Mega.nz**
 
 Indicated by the Mega button
+
+#### **Comic Book +**
+When logged in and browsing [https://comicbookplus.com](https://comicbookplus.com), right-click on the "Download File" link

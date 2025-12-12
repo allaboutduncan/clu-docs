@@ -8,13 +8,13 @@ Getting a dump of the GCD data is quick and easy. You'll just need to register f
 
 Once you're registered and logged in, visit this URL:
 
-{% embed url="https://www.comics.org/download/" %}
+[https://www.comics.org/download/](https://www.comics.org/download/)
 
 you'll want to select the following options:
 
 * Select - Private Use
 * Click - Download MySQL Dump
 
-<figure><img src="assets/Screenshot 2025-10-07 082305.png" alt=""><figcaption></figcaption></figure>
+![Download MySQL Dump](../../assets/gcd-download.png)
 
-Pay attetntion to where the file is saved and move to the next step
+Pay attention to where the file is saved and move to the next step

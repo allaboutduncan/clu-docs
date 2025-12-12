@@ -1,27 +1,30 @@
 :root {
-  --md-primary-fg-color: #6366f1;
+  /* Light Theme Variables */
+  --md-primary-fg-color: #4f46e5;
+  /* Indigo 600 */
+  --md-primary-fg-color--light: #6366f1;
   /* Indigo 500 */
-  --md-primary-fg-color--light: #818cf8;
-  --md-primary-fg-color--dark: #4f46e5;
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
+  --md-primary-fg-color--dark: #4338ca;
+  /* Indigo 700 */
 
-[data-md-color-scheme="slate"] {
-  --md-bg-color: #0f172a;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  /* Slate 200 */
+  --glass-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --text-main: #0f172a;
   /* Slate 900 */
-  --glass-bg: rgba(30, 41, 59, 0.6);
+  --text-muted: #475569;
+  /* Slate 600 */
 }
 
-/* Homepage Background Logic */
+/* Homepage Background */
 body:has(.hero-section) {
-  /* Fixed background image */
   background: url('../assets/background-color.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
-/* Ensure material containers are transparent on homepage so body bg shows */
+/* Ensure material containers are transparent on homepage */
 body:has(.hero-section) .md-main,
 body:has(.hero-section) .md-content,
 body:has(.hero-section) .md-container {
@@ -32,19 +35,17 @@ body:has(.hero-section) .md-container {
 .hero-section {
   position: relative;
   padding: 4rem 1rem;
-  /* Reduced top padding */
   margin-bottom: 2rem;
   overflow: visible;
-
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   max-width: 1220px;
   margin-left: auto;
   margin-right: auto;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 960px) {
   .hero-section {
     flex-direction: row;
     align-items: center;
@@ -63,11 +64,12 @@ body:has(.hero-section) .md-container {
 .hero-content h1 {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(to right, #818cf8, #c4b5fd);
+  /* Darker gradient for light bg */
+  background: linear-gradient(to right, #4f46e5, #818cf8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.1;
 }
 
@@ -79,8 +81,8 @@ body:has(.hero-section) .md-container {
 
 .hero-content p {
   font-size: 1.25rem;
-  color: #94a3b8;
-  margin-bottom: 2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
   line-height: 1.6;
 }
 
@@ -88,50 +90,38 @@ body:has(.hero-section) .md-container {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
+  padding: 14px 36px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: white;
+  color: white !important;
   background: var(--md-primary-fg-color);
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
   background: var(--md-primary-fg-color--dark);
   color: white;
-}
-
-.cta-button.secondary {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: none;
-}
-
-.cta-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .hero-badges {
   display: flex;
   gap: 0.5rem;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-/* User's Video/Visual Container on Hero Right */
+/* User's Visual Container (Image Placeholder) */
 .hero-visual {
   flex: 1;
   display: flex;
@@ -140,70 +130,87 @@ body:has(.hero-section) .md-container {
   width: 100%;
 }
 
-.video-container {
+.hero-image-container {
   width: 100%;
-  max-width: 600px;
-  /* Limit size */
-  aspect-ratio: 16/9;
-  background: #1e293b;
+  max-width: 650px;
   border-radius: 1rem;
-  box-shadow: var(--glass-shadow);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #64748b;
   overflow: hidden;
-  margin: 0;
-  /* Override old margin */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: white;
+}
+
+.hero-image-placeholder {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* --- Feature Grid --- */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin: 2rem auto 4rem;
   max-width: 1220px;
   padding: 0 1rem;
 }
 
 .feature-card {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 1rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  /* For image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--glass-shadow);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border-color: var(--md-primary-fg-color--light);
 }
 
-.feature-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
+.feature-image {
+  width: 100%;
+  height: 200px;
+  background: #f1f5f9;
+  overflow: hidden;
 }
 
-.feature-card h3 {
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.feature-card:hover .feature-image img {
+  transform: scale(1.05);
+}
+
+.feature-content {
+  padding: 1.5rem;
+}
+
+.feature-content h3 {
   margin-top: 0;
   font-weight: 700;
-  color: var(--md-primary-fg-color--light);
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
-.feature-card p {
-  color: var(--md-typeset-color);
+.feature-content p {
+  color: var(--text-muted);
   margin-bottom: 0;
-  line-height: 1.5;
-  font-size: 0.95rem;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 /* --- Content Sections (Split Layouts) --- */
@@ -212,10 +219,11 @@ body:has(.hero-section) .md-container {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--md-bg-color);
+  background-color: white;
+  /* Explicit white background */
   padding: 5rem 1rem;
   z-index: 10;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .content-wrap {
@@ -223,13 +231,12 @@ body:has(.hero-section) .md-container {
   margin: 0 auto;
 }
 
-/* Split Section Generic */
 .split-section {
   display: flex;
   flex-direction: column;
   gap: 3rem;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 6rem;
 }
 
 .split-section:last-child {
@@ -239,7 +246,7 @@ body:has(.hero-section) .md-container {
 @media screen and (min-width: 800px) {
   .split-section {
     flex-direction: row;
-    gap: 4rem;
+    gap: 5rem;
   }
 
   .split-section.reverse {
@@ -252,20 +259,17 @@ body:has(.hero-section) .md-container {
 }
 
 .split-content h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(to right, #e2e8f0, #94a3b8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--text-main);
   line-height: 1.2;
 }
 
 .split-content p {
   font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--md-typeset-color);
+  line-height: 1.8;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
@@ -279,38 +283,36 @@ body:has(.hero-section) .md-container {
 .visual-card {
   width: 100%;
   aspect-ratio: 4/3;
-  background: #1e293b;
+  background: #f8fafc;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  color: rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--glass-shadow);
 }
 
-/* Specific styling for internal elements in visuals if needed */
-.visual-card svg {
-  width: 50%;
-  height: 50%;
-  opacity: 0.2;
+/* Internal overrides for readability */
+.md-typeset h1 {
+  color: var(--md-primary-fg-color--dark);
 }
 
+.md-typeset h2 {
+  color: var(--text-main);
+  border-bottom-color: #e2e8f0;
+}
 
-/* docs/stylesheets/extra.css */
-
+/* --- Bootstrap Utilities (Preserved) --- */
 :root {
-  /* --- 1. Define the Variables --- */
   --bs-blue: #033c73;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #e83e8c;
   --bs-red: #c71c22;
   --bs-orange: #fd7e14;
-  --bs-yellow: #dd5600;
+  --bs-yellow: #ffc107;
   --bs-green: #73a839;
   --bs-teal: #20c997;
   --bs-cyan: #2fa4e7;
@@ -322,16 +324,12 @@ body:has(.hero-section) .md-container {
   --bs-secondary: #e9ecef;
   --bs-success: #73a839;
   --bs-info: #033c73;
-  --bs-warning: #dd5600;
+  --bs-warning: #ffc107;
   --bs-danger: #c71c22;
   --bs-light: #f8f9fa;
   --bs-dark: #343a40;
-  --bs-yellow: #ffc107;
 }
 
-/* --- 2. Create Utility Classes --- */
-
-/* Text Colors */
 .text-warning {
   color: var(--bs-warning) !important;
 }
@@ -352,42 +350,26 @@ body:has(.hero-section) .md-container {
   color: var(--bs-info) !important;
 }
 
-.text-icon {
-  color: var(--bs-yellow) !important;
-}
-
 .text-secondary {
-  color: var(--bs-light) !important;
+  color: var(--bs-gray) !important;
 }
 
 .text-dark {
   color: var(--bs-dark) !important;
 }
 
-/* Background Colors */
 .bg-warning {
   background-color: var(--bs-warning);
-  color: var(--bs-white);
-  /* Ensure text is readable */
+  color: #000;
   padding: 0.2em 0.4em;
-  /* Add a little padding for looks */
   border-radius: 4px;
 }
 
 .bg-danger {
   background-color: var(--bs-danger);
-  color: var(--bs-white);
+  color: white;
   padding: 0.2em 0.4em;
   border-radius: 4px;
-}
-
-.fs-1,
-.fs-2,
-.fs-3,
-.fs-4 {
-  /* Fix alignment and spacing */
-  vertical-align: middle;
-  line-height: 1;
 }
 
 .fs-1 {
@@ -406,7 +388,6 @@ body:has(.hero-section) .md-container {
   font-size: 2rem;
 }
 
-/* docs/stylesheets/extra.css */
 .center-image {
   display: block;
   margin-left: auto;
@@ -419,17 +400,23 @@ body:has(.hero-section) .md-container {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
+  /* Add a decorative element or border if visually appropriate, 
+     but material theme h1 usually has no border by default. 
+     We can add one for separation. */
   border-bottom: 2px solid var(--md-primary-fg-color--light);
   padding-bottom: 0.5rem;
 }
 
 .md-typeset h2 {
   color: var(--md-primary-fg-color--dark);
+  /* Distinct from straight black/current color */
   font-weight: 700;
   margin-top: 3rem;
+  /* Increase spacing before new sections */
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--glass-border);
+  /* Subtle separation */
 }
 
 .md-typeset h3 {

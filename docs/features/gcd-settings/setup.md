@@ -14,10 +14,10 @@ Once you have your MySQL database dump - the file should be **`current.zip`** - 
    1. the date formatted naming should import, but this makes it consistent for all users
 3. Create a new Docker container using the below `docker-compose` settings
 
-```dockercompose
-  version: "3.8"
+```yaml
+version: "3.8"
 
-  services:
+services:
     mysql:
       image: mysql:9.0
       container_name: mysql-gcd
@@ -35,16 +35,19 @@ Once you have your MySQL database dump - the file should be **`current.zip`** - 
       ports:
         - "3306:3306"
 
-  volumes:
+volumes:
     mysql_data:
 
-  networks:
+networks:
     gcd-network:
       external: true
 ```
 
-4. When you start the container for the first time - MySQL v9 will be installed, the database will be created and the data from `current.sql` will be imported. Length of the import will be dependent on the download size and the speed of your machine.\
-   \
-   &#xNAN;_&#x49;nitial import should take around 60-minutes._
+When you start the container for the first time:
+
+* MySQL v9 will be installed
+* the database will be created and the data from `current.sql` will be imported
+* Length of the import will be dependent on the download size and the speed of your machine.
+* Initial import should take around 60-minutes.
 
 Once the DB is setup, you'll update your CLU docker-compose to use the same network and connect to the local GCD database.
