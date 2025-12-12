@@ -1,0 +1,434 @@
+:root {
+  /* Light Theme Variables */
+  --md-primary-fg-color: #4f46e5;
+  /* Indigo 600 */
+  --md-primary-fg-color--light: #6366f1;
+  /* Indigo 500 */
+  --md-primary-fg-color--dark: #4338ca;
+  /* Indigo 700 */
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  /* Slate 200 */
+  --glass-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --text-main: #0f172a;
+  /* Slate 900 */
+  --text-muted: #475569;
+  /* Slate 600 */
+}
+
+/* Homepage Background */
+body:has(.hero-section) {
+  background: url('../assets/background-color.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Ensure material containers are transparent on homepage */
+body:has(.hero-section) .md-main,
+body:has(.hero-section) .md-content,
+body:has(.hero-section) .md-container {
+  background: transparent !important;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  position: relative;
+  padding: 4rem 1rem;
+  margin-bottom: 2rem;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 960px) {
+  .hero-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 1rem;
+    text-align: left;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  /* Darker gradient for light bg */
+  background: linear-gradient(to right, #4f46e5, #818cf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+@media screen and (min-width: 960px) {
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white !important;
+  background: var(--md-primary-fg-color);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+  background: var(--md-primary-fg-color--dark);
+  color: white;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0.9;
+}
+
+/* User's Visual Container (Image Placeholder) */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 650px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: white;
+}
+
+.hero-image-placeholder {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Feature Grid --- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem auto 4rem;
+  max-width: 1220px;
+  padding: 0 1rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  /* For image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--glass-shadow);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--md-primary-fg-color--light);
+}
+
+.feature-image {
+  width: 100%;
+  height: 200px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.feature-card:hover .feature-image img {
+  transform: scale(1.05);
+}
+
+.feature-content {
+  padding: 1.5rem;
+}
+
+.feature-content h3 {
+  margin-top: 0;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-content p {
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* --- Content Sections (Split Layouts) --- */
+.content-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  /* Explicit white background */
+  padding: 5rem 1rem;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.content-wrap {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.split-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.split-section:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .split-section {
+    flex-direction: row;
+    gap: 5rem;
+  }
+
+  .split-section.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.split-content {
+  flex: 1;
+}
+
+.split-content h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.split-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.split-visual {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.visual-card {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f8fafc;
+  border-radius: 1rem;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+}
+
+/* Internal overrides for readability */
+.md-typeset h1 {
+  color: var(--md-primary-fg-color--dark);
+}
+
+.md-typeset h2 {
+  color: var(--text-main);
+  border-bottom-color: #e2e8f0;
+}
+
+/* --- Bootstrap Utilities (Preserved) --- */
+:root {
+  --bs-blue: #033c73;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #e83e8c;
+  --bs-red: #c71c22;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #73a839;
+  --bs-teal: #20c997;
+  --bs-cyan: #2fa4e7;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #868e96;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #2fa4e7;
+  --bs-secondary: #e9ecef;
+  --bs-success: #73a839;
+  --bs-info: #033c73;
+  --bs-warning: #ffc107;
+  --bs-danger: #c71c22;
+  --bs-light: #f8f9fa;
+  --bs-dark: #343a40;
+}
+
+.text-warning {
+  color: var(--bs-warning) !important;
+}
+
+.text-danger {
+  color: var(--bs-danger) !important;
+}
+
+.text-success {
+  color: var(--bs-success) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.text-info {
+  color: var(--bs-info) !important;
+}
+
+.text-secondary {
+  color: var(--bs-gray) !important;
+}
+
+.text-dark {
+  color: var(--bs-dark) !important;
+}
+
+.bg-warning {
+  background-color: var(--bs-warning);
+  color: #000;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.bg-danger {
+  background-color: var(--bs-danger);
+  color: white;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.fs-1 {
+  font-size: 1rem;
+}
+
+.fs-2 {
+  font-size: 1.3rem;
+}
+
+.fs-3 {
+  font-size: 1.7rem;
+}
+
+.fs-4 {
+  font-size: 2rem;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Content Readability Improvements --- */
+.md-typeset h1 {
+  color: var(--md-primary-fg-color);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  /* Add a decorative element or border if visually appropriate, 
+     but material theme h1 usually has no border by default. 
+     We can add one for separation. */
+  border-bottom: 2px solid var(--md-primary-fg-color--light);
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h2 {
+  color: var(--md-primary-fg-color--dark);
+  /* Distinct from straight black/current color */
+  font-weight: 700;
+  margin-top: 3rem;
+  /* Increase spacing before new sections */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  /* Subtle separation */
+}
+
+.md-typeset h3 {
+  color: var(--md-primary-fg-color);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.md-typeset h4 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  color: var(--md-typeset-color);
+  opacity: 0.9;
+}
