@@ -48,7 +48,7 @@ services:
 
 ### Install via Docker
 
-```
+```text
 docker run \
   --name clu \
   --restart always \
