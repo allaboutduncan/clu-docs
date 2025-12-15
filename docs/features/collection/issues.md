@@ -7,6 +7,13 @@ Example Issues Page
 
 When you navigate to a folder (series) with only files (issues), you will see a list of files (issues) in that folder.
 
+To ensure you can quickly determine the issue number, the issue number will be displayed in the top right corner of the cover.
+
+![Issue Number](../../assets/collection/issue_number.png)
+/// caption
+Issue Number
+///
+
 ## Issue Options
 For issues, there are 6 options in the dropdown menu that can be accessed by clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu.
 

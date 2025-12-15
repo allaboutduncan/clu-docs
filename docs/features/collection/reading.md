@@ -5,7 +5,15 @@
 Reading a Comic
 ///
 
-When browsinmg your collection, you can click on a comic to read it. The reader will open in a modal over the page.
+When browsing your collection, you can click on a comic to read it. The reader will open in a modal over the page.
+
+## Read vs Unread Status
+
+![Read vs Unread Status](../../assets/collection/read_unread.png)
+
+When you read a comic, it will be marked as read and saved in your history. This is done automatically when you reach 90% of the issue.
+
+Additionaly, you'll see a unread/read icon <i class="bi bi-book text-primary"></i> in the right corner of the cover, directly after the issue number
 
 ## Reader Features
 The current implementation is a simple reader that allows you to read your comics quickly.  
