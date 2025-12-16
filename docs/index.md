@@ -60,7 +60,7 @@ hide:
         </div>
         <div class="card-body">
           <h3>Edit</h3>
-          <p>Crop, delete, and rearrange pages in CBZ files directly from your browser. Full control, zero friction.</p>
+          <p>Crop, delete, and rearrange pages in CBZ files directly from your browser. Full control,<br/> zero friction.</p>
         </div>
         <div class="card-accent"></div>
       </article>
@@ -96,7 +96,7 @@ hide:
       <div class="showcase-content">
         <span class="showcase-label">Seamless Setup</span>
         <h2>Point. Click. Done.</h2>
-        <p>CLU plugs directly into your existing filesystem. No migrations, no restructuring, no headaches. Your collection stays exactly where it is.</p>
+        <p>CLU plugs directly into your existing filesystem. No migrations, no restructuring,<br/> no headaches. Your collection stays exactly where it is.</p>
         <ul class="feature-list">
           <li><span class="check"></span>CBZ, CBR, and PDF support</li>
           <li><span class="check"></span>Docker-ready deployment</li>
@@ -112,13 +112,13 @@ hide:
 
     <div class="showcase-item reverse">
       <div class="showcase-content">
-        <span class="showcase-label">Premium Experience</span>
-        <h2>Read Like You Mean It.</h2>
-        <p>A reader built for visual storytelling. Double-page spreads that breathe, manga mode for right-to-left, and crisp scaling from 4K to mobile.</p>
+        <span class="showcase-label">Track Your Reading</span>
+        <h2>The Efficient Reader</h2>
+        <p>Experience reading without the drag. Enjoy a lightweight, high-speed reader designed for maximum efficiency.</p>
         <ul class="feature-list">
-          <li><span class="check"></span>Fit-to-width scaling</li>
-          <li><span class="check"></span>Keyboard navigation</li>
-          <li><span class="check"></span>Responsive on all devices</li>
+          <li><span class="check"></span>Instantaneous page loads</li>
+          <li><span class="check"></span>Reading Heatmap</li>
+          <li><span class="check"></span>Daily Reading Streaks</li>
         </ul>
       </div>
       <div class="showcase-visual">
@@ -153,7 +153,7 @@ hide:
     <div class="cta-pattern"></div>
     <div class="cta-content">
       <h2>Ready to Take Control?</h2>
-      <p>Get CLU running in minutes. Docker makes it simple.</p>
+      <p>Get CLU running in minutes.<br/> Docker makes it simple.</p>
       <a href="getting-started/quickstart/" class="btn-primary large">
         <span class="btn-text">Start Now</span>
         <span class="btn-arrow">&rarr;</span>

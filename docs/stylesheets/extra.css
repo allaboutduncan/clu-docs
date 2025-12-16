@@ -236,12 +236,18 @@ body:has(.clu-landing) .md-header {
   gap: 4rem;
   align-items: center;
   width: 100%;
+  margin-top: -42px
 }
 
 @media (min-width: 1024px) {
   .hero-content {
     grid-template-columns: 1fr 1.1fr;
     gap: 5rem;
+    margin-top: -420px;
+  }
+
+  .hero {
+    padding: 6rem 2rem 3rem;
   }
 }
 
@@ -451,6 +457,13 @@ body:has(.clu-landing) .md-header {
   padding: 6rem 2rem;
   background: var(--ink-deep);
   position: relative;
+  margin-top: -15rem;
+}
+
+@media (max-width: 768px) {
+  .features-panel {
+    margin-top: -0;
+  }
 }
 
 .features-panel::before {
