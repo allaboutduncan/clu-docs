@@ -67,6 +67,7 @@ nav:
     - Remove First Image: features/single-file-features/remove.md
     - Add blank Image: features/single-file-features/add.md
     - Enhance Images: features/single-file-features/enhance.md
+    - Read Date: features/single-file-features/date.md
     - Delete File: features/single-file-features/delete.md
 
   - Folder Monitoring:
@@ -91,9 +92,9 @@ nav:
     - Comicvine Metadata: features/file-management/comicvine.md
   
   - Library Insights:
-    - features/stats/index.md
-    - Library Insights Page: features/stats/insights.md
-    - Insights API: features/stats/api.md
+    - features/insights/index.md
+    - Library Insights Page: features/insights/insights.md
+    - Insights API: features/insights/api.md
 
   - App Settings:
     - features/app-settings/index.md
