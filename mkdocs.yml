@@ -79,7 +79,7 @@ nav:
   - File Downloads:
     - features/file-downloads/index.md
     - Chrome Extension: features/file-downloads/setup.md
-    - Right-Click to Download: features/file-downloads/send.md
+    - Click to Download: features/file-downloads/send.md
     - Download Status Page: features/file-downloads/status.md
   
   - File Management:
@@ -90,6 +90,7 @@ nav:
     - Additional Features: features/file-management/additional.md
     - Get ComicInfo.xml: features/file-management/comicinfo.md
     - Comicvine Metadata: features/file-management/comicvine.md
+    - Metron Metadata: features/file-management/metron.md
   
   - Library Insights:
     - features/insights/index.md

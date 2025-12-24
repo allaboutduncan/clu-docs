@@ -2,15 +2,27 @@
 description: Right-click and send to CLU for download
 ---
 
-# Right-Click to Download
+# Click to Download
 
-## GetComics.org
+## Supported Sites
 
-Currently, GetComics.org is the only supported site for downloads.&#x20;
+Currently, GetComics.org and [Comic Book Plus](https://comicbookplus.com) are supported for downloads.
 
-As you browse the site and find a book you'd like to read, you'll see several download links. Right click one of the [supported download providers](send.md#supported-providers) and you should see `Send to CLU` in your context menu
+As you browse these sites and find a book you'd like to read, v2 of the extension will append a `CLU` icon next to the supported download link(s).
 
-![Send download to CLU](../../assets/download/send.png)
+![Click to send to CLU](../../assets/download/append.png){: .center-image}
+/// caption
+Click to send to CLU
+///
+
+Clicking this will send the download request to CLU and you'll see it show up in the download status page.
+
+Some older style links may not have the icon appended. In this case, you can right click one of the [supported download providers](send.md#supported-providers) and you should see `Send to CLU` in your context menu
+
+![Send download to CLU](../../assets/download/send.png){: .center-image}
+/// caption
+Send download to CLU
+///
 
 You can then navigate to the Download Status page in CLU (http://localhost/status) and watch the progress of the file download
 

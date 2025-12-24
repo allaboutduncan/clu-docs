@@ -4,17 +4,23 @@ description: Setup for remote download of files
 
 # Chrome Extension
 
-![Extension Image](../../assets/download/extension01.png)
+![Extension Image](../../assets/download/extension01.png){: .center-image}
+/// caption
+Extension Image
+///
 
 Once you have the [Chrome extension installed](https://chromewebstore.google.com/detail/send-link-to-clu/cpickljbofjhmhkphgdmiagkdfijlkkg), you will need to configure the options.
 
 You'll see a screen similar to this within Chrome.
 
-![Extension Settings](../../assets/download/extension02.png)
+![Extension Settings](../../assets/download/extension02.png){: .center-image}
+/// caption
+Extension Settings
+///
 
 ### API URL
 
-Visiting https://localhost/download will show you a confirmation that your API url is running and ready to accept requests.
+Visiting `https://localhost/download` will show you a confirmation that your API url is running and ready to accept requests.
 
 In order to accept requests from machines other than the one running CLU, you will need to have a tunnel, domain, VPN or other means of access setup.
 

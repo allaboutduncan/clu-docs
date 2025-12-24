@@ -1,8 +1,8 @@
 # Collection Browsing (Publishers)
 
-![Publisher Example Page](../../assets/collection/collection.png)
+![Publisher Example Page](../../assets/collection/header.png)
 /// caption
-Example Publisher Page with Nested Folders
+Example Publisher Page with Custom Header
 ///
 
 With CLU, you can visually browse your collection. It will load you root (/data) folder and display all folders and files in it. For documentation purposes, we'll refer to this as the "Publisher" section, but it can be any folder structure you have in your collection.
@@ -21,6 +21,10 @@ There are 3 options in the dropdown menu:
 - **Scan Files**: This will scan the folder and rebuild the database for this publisher, capturing any new files or structure changes.
 - **Generate Missing Thumbnails**: This will generate thumbnails for all folders that are missing a thumbnail. This uses the same process as [Generating Thumbnails](series.md#generating-thumbnails).
 - **Missing File Check**: This will check for missing files in the folder based on the [Directory Features Missing File Check](../directory-features/missing.md).
+
+### Custom Headers
+
+All folders support custom headers. CLU will look for an image file named `header.png`, `header.jpg`, or `header.gif` in the folder. If it finds one, it will use it as the header. Recommended image size is 2200x516 pixels.
 
 ### Custom Thumbnails
 
