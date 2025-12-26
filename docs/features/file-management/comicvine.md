@@ -15,7 +15,7 @@ If you use Mylar3, it adds a `cvinfo` file when you add a series. This file cont
 
 ![Add CVINFO](../../assets/file/cvinfo.png){: .center-image}
 
-This will open a modal window where you can add the ComicVine ID of the series as well as the Metron ID of the series. The Metron ID is optional and will only be used if you have enabled the [Metron Metadata](../metron.md) feature.
+This will open a modal window where you can add the ComicVine ID of the series as well as the Metron ID of the series. The Metron ID is optional and will only be used if you have enabled the [Metron Metadata](metron.md) feature.
 
 ## Manually Search for Metadata
 
