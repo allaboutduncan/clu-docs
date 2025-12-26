@@ -58,6 +58,7 @@ nav:
     - Convert PDF to CBZ: features/directory-features/pdf.md
     - Missing Issue Check: features/directory-features/missing.md
     - Enhance Images: features/directory-features/enhance.md
+    - Clean ComicInfo.xml: features/directory-features/clean.md
   
   - Single File Features:
     - features/single-file-features/index.md
