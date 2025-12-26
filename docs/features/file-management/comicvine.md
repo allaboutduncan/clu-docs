@@ -9,7 +9,7 @@ If you have entered a [Commicvine API Key](../app-settings/download-settings.md#
 !!! info "Single Issue Metadata Only"
     The **ComicVine** feature only searches for metadata for a single issue. If you have multiple issues in a directory, you will need to use the [GCD Database Method](../gcd-settings/index.md) feature to process multiple issues. [ComicRackCE](https://github.com/maforget/ComicRackCE) should be your first choice for performing large metadata updates if you want to use ComicVine.
 
-### CVINFO File and Creation
+## CVINFO File and Creation
 
 If you use Mylar3, it adds a `cvinfo` file when you add a series. This file contains the ComicVine ID of the series, which CLU can use to search for metadata from ComicVine. To enable this functionality for series created outside of Mylar3, you can create a `cvinfo` file in the same directory as the comic by clicking the <button class="btn btn-outline-info btn-sm add-cvinfo-btn me-2" title="Save ComicVine URL to cvinfo file in this directory"><i class="bi bi-link-45deg me-2"></i>Add CVINFO</button> button.
 
