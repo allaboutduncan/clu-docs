@@ -11,7 +11,11 @@ If you have entered a [Commicvine API Key](../app-settings/download-settings.md#
 
 ## CVINFO File and Creation
 
-If you use Mylar3, it adds a `cvinfo` file when you add a series. This file contains the ComicVine ID of the series, which CLU can use to search for metadata from ComicVine. To enable this functionality for series created outside of Mylar3, you can create a `cvinfo` file in the same directory as the comic by clicking the <button class="btn btn-outline-info btn-sm add-cvinfo-btn me-2" title="Save ComicVine URL to cvinfo file in this directory"><i class="bi bi-link-45deg me-2"></i>Add CVINFO</button> button.
+If you use Mylar3, it adds a `cvinfo` file when you add a series. This file contains the ComicVine ID of the series, which CLU can use to search for metadata from ComicVine. To enable this functionality for series created outside of Mylar3, you can create a `cvinfo` file in the same directory as the comic by clicking the <i class="bi bi-link-45deg text-pruple"></i>Add CVINFO</i> button.
+
+![Add CVINFO](../../assets/file/cvinfo.png){: .center-image}
+
+This will open a modal window where you can add the ComicVine ID of the series as well as the Metron ID of the series. The Metron ID is optional and will only be used if you have enabled the [Metron Metadata](../metron.md) feature.
 
 ## Manually Search for Metadata
 
