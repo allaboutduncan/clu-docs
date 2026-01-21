@@ -32,3 +32,8 @@ You can adjust how files are processed in the [File Settings](../app-settings/fi
 #### Cancel
 
 Before a download starts or while in progress, you can cancel a download. Once cancelled, the details are still present until you click the "Clear Completed / Cancelled Downloads" button
+
+## Automated Downloads
+
+If you are using the Metron API and the [Pull List](../pull-list/index.md) feature, CLU will attempt to auto-download all missing issues for the series on your pull list.
+

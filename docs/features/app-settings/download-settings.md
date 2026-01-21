@@ -33,6 +33,9 @@ Enter your Comicvine API key here to allow the app to call the Comicvine API for
 
 Enter your Metron username and password here to allow the app to call the [Metron API](https://metron.cloud/) for metadata.
 
+!!! warning "Required for Pull List"
+    The pull list requires the Metron API to be enabled in the app settings.
+
 #### GCD Metadata Languages
 
 Enter a comma-separated list of languages to search for metadata on. This is used by the app to search for metadata on comics in the GCD database. Defualts to `en`. 

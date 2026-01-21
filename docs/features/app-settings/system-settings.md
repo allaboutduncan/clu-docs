@@ -6,13 +6,13 @@ description: All of the Options available in Settings
 
 ![System and Performance Settings](../../assets/settings/system-settings.png)
 
-### Performance and Timeout Settings
+## Performance and Timeout Settings
 
 ![Performance and Timeout Settings](../../assets/settings/timeout.png)
 
 Allows you to better manage large files depending on your system. Adjusting these values will enable/disable additional timing checks when processing large files (converting or rebuilding files). The default settings on average systems should easily handle converting a 2GB CBR file to CBZ.
 
-### File Index Management
+## Index & Sync Management
 
 ![File Index Rebuild](../../assets/settings/index-rebuild.png)
 
@@ -20,13 +20,32 @@ In v4, the **Cache Management** has been replaced with databased managed file in
 
 From this area in admin, you can manually trigger a file index rebuild and schedule daily or weekly rebuilds. You'll also see your current index status here.
 
-#### Automatic Rebuild Schedule
+### Automatic Rebuild Schedule
 
 ![Rebuild Schedule](../../assets/settings/rebuild-schedule.png)
 
 Timing for automatically rebuilding the file index. Default is disabled
 
 You can set Daily or Weekly and specify the hour to rebuild the index. 
+
+### Automatic Metron Sync Schedule
+
+![Metron Sync Schedule](../../assets/pull/metron-sync.png)
+
+Timing for automatically syncing and updating your Pull List with the Metron API. This determines how often CLU checks the Metron API for new issues and updates your local Pull List. 
+
+You can set Daily or Weekly and specify the hour to sync. 
+
+### GetComics Auto-Download Schedule
+
+![Auto-Download Schedule](../../assets/pull/auto-downloads.png)
+
+Timing for attempting to download new, wanted and missing issues from GetComics.
+
+You can set Daily or Weekly and specify the hour to download. When a file is downloaded, it will will be moved to the [Series Folder](../pull-list/series.md) once it is processed. Metadata will be added to the file at that time if it does not already have it.
+
+!!! note
+    Any files that are manually downloaded and placed in the the TARGET directory will be checked against your **Want List** and **Missing List** and processed accordingly.
 
 ### Logging & Debugging
 

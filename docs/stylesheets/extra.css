@@ -24,6 +24,7 @@
   --accent-yellow: #ffd60a;
   --accent-magenta: #f72585;
   --accent-blue: #4cc9f0;
+  --accent-green: #10b981;
 
   /* Light Theme Text */
   --light-text-primary: #1a1a2e;
@@ -814,7 +815,7 @@ body:has(.clu-landing) .md-header {
 }
 
 .text-success {
-  color: var(--accent-cyan) !important;
+  color: var(--accent-green) !important;
 }
 
 .text-primary {

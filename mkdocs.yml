@@ -97,6 +97,16 @@ nav:
     - features/insights/index.md
     - Library Insights Page: features/insights/insights.md
     - Insights API: features/insights/api.md
+    - Timeline: features/insights/timeline.md
+
+  - Pull List:
+    - features/pull-list/index.md
+    - Releases: features/pull-list/releases.md
+    - Series: features/pull-list/series.md
+    - Pull List: features/pull-list/pull-list.md
+    - Wanted: features/pull-list/wanted.md
+    - Series Search: features/pull-list/series-search.md
+    - Publishers: features/pull-list/publishers.md
 
   - App Settings:
     - features/app-settings/index.md
