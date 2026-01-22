@@ -17,7 +17,7 @@ hide:
           <span class="title-line accent">Your Rules.</span>
         </h1>
         <p class="hero-description">
-          The open-source powerhouse for organizing, reading, and managing your digital comic collection. Lightning fast. Brutally simple.
+          The open-source powerhouse for <strong>editing, organizing</strong>, and managing your digital comic collection. Stop just reading. Start managing.
         </p>
         <div class="hero-cta">
           <a href="getting-started/quickstart/" class="btn-primary">
@@ -59,8 +59,8 @@ hide:
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
-          <h3>Edit</h3>
-          <p>Crop, delete, and rearrange pages in CBZ files directly from your browser. Full control,<br/> zero friction.</p>
+          <h3>Edit & Crop</h3>
+          <p>Delete ads, crop covers, and rearrange pages in CBZ files directly from your browser.</p>
         </div>
         <div class="card-accent"></div>
       </article>
@@ -70,8 +70,8 @@ hide:
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
-          <h3>Organize</h3>
-          <p>Move, rename, and restructure your entire library remotely. Your filesystem, your way.</p>
+          <h3>Manage</h3>
+          <p>Move, rename, and restructure your entire library remotely. Zero friction.</p>
         </div>
         <div class="card-accent"></div>
       </article>
@@ -81,8 +81,8 @@ hide:
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
-          <h3>Enhance</h3>
-          <p>Blazing-fast reader with double-page spreads, manga mode, and responsive scaling.</p>
+          <h3>Automate</h3>
+          <p>Scrape Metron, download from GetComics, and auto-tag your library.</p>
         </div>
         <div class="card-accent"></div>
       </article>
@@ -154,10 +154,15 @@ hide:
     <div class="cta-content">
       <h2>Ready to Take Control?</h2>
       <p>Get CLU running in minutes.<br/> Docker makes it simple.</p>
-      <a href="getting-started/quickstart/" class="btn-primary large">
-        <span class="btn-text">Start Now</span>
-        <span class="btn-arrow">&rarr;</span>
-      </a>
+      <div class="cta-buttons">
+        <a href="why-clu/" class="btn-ghost large">
+          <span class="btn-text">Why CLU?</span>
+        </a>
+        <a href="getting-started/quickstart/" class="btn-primary large">
+          <span class="btn-text">Start Now</span>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 

@@ -1,5 +1,9 @@
 site_name: CLU Documentation
 site_url: https://clucomics.org
+site_description: "The ultimate self-hosted comic book library manager. Edit CBZ files, manage your filesystem, and download from Metron & GetComics. A powerful alternative to Komga and Kavita."
+site_author: "CLU Team"
+copyright: "Copyright &copy; 2024 CLU"
+
 theme:
   name: material
   logo: assets/clu.png
@@ -39,6 +43,7 @@ repo_url: https://github.com/allaboutduncan/comic-utils
 
 nav:
   - Home: index.md
+  - Why CLU?: why-clu.md
   - Getting Started:
     - Quickstart: getting-started/quickstart.md
     - Navigating the App: getting-started/navigate.md

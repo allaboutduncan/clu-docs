@@ -762,6 +762,13 @@ body:has(.clu-landing) .md-header {
   margin-bottom: 2rem;
 }
 
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
