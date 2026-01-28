@@ -7,3 +7,5 @@ description: Remote Download of Comic Files
 ![Extension Image](../../assets/download/extension01.png){: .center-image }
 
 Install the [Chrome Extension](https://chromewebstore.google.com/detail/send-link-to-clu/cpickljbofjhmhkphgdmiagkdfijlkkg), configure it and then visit GetComics.info to right-click and download files directly to your server.
+
+Extensions for Edge and Firefox have been submitted and are awaiting approval.
