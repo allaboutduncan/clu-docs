@@ -3,7 +3,7 @@ description: Multiple themes can be enabled / disabled from App Settings
 ---
 # Styling
 
-![Styling](../../assets/settings/styling.png)
+![Styling](../../assets/settings/styling.png){: .center-image}
 
 You can enable / disable multiple themes from the Styling page. All are Bootstrap/Bootswatch themes.
 

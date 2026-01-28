@@ -12,6 +12,18 @@ description: All of the Options available in Settings
 
 Allows you to better manage large files depending on your system. Adjusting these values will enable/disable additional timing checks when processing large files (converting or rebuilding files). The default settings on average systems should easily handle converting a 2GB CBR file to CBZ.
 
+## Timezone and Cache Management
+
+![Timezone and Cache Management](../../assets/settings/timezone.png)
+
+### Timezone
+
+Update to your timezone to show reading stats and other date/time related information in your timezone.
+
+### Cache Management
+
+Clears system cache and API to remove any cached data.
+
 ## Index & Sync Management
 
 ![File Index Rebuild](../../assets/settings/index-rebuild.png)

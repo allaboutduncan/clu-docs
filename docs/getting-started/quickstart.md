@@ -27,8 +27,11 @@ services:
             - "/path/to/local/config:/config" # Maps local folder to persist settings
             - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
             ## update the line below to map to your library.
-            ## Your library MUST be mapped to '/data' for the app to work
+            ## Map your first/main library to /data
             - "/e/Comics:/data"
+            ## Map additional libraries and add them in the settings of the app
+            - "/e/Manga:/manga"
+            - "/f/Magazines:/magazines"
             ## Additional folder if you want to use Folder Monitoring.
             - "/f/Downloads:/downloads"
         environment:

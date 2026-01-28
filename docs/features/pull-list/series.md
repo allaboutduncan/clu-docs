@@ -52,3 +52,15 @@ For existing subscriptions, you will see the following options:
 ### Refresh
 
 <i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues. .   
+
+## Wanted / Skipped / Owned
+
+By default, any issues not in the series folder will be marked as "Wanted" and will be searched for in the nightly pull process. 
+
+![Owned or Skipped](../../assets/pull/skipped.png){: .center-image}
+
+You can mark issues as "Owned" if you have a copy in a trade or another location. This will prevent CLU from searching for the issue in the nightly pull process.
+
+You can mark issues as "Skipped" if you don't want to search for the issue in the nightly pull process.
+
+

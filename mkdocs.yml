@@ -122,10 +122,12 @@ nav:
   - App Settings:
     - features/app-settings/index.md
     - Config Installation: features/app-settings/install.md
+    - Libraries: features/app-settings/libraries.md
     - File Processing Settings: features/app-settings/file-settings.md
     - Download & API Settings: features/app-settings/download-settings.md
     - System Settings: features/app-settings/system-settings.md
     - Styling: features/app-settings/styling.md
+    - Recommendations: features/app-settings/recommendations.md
     - App Logs: features/app-settings/logs.md
   
   - GCD Database Support:

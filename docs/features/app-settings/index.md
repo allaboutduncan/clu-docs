@@ -15,8 +15,11 @@ After installation, all other app options can be updated on the **Settings** pag
 
 <figure><img src="../../assets/settings/app-settings.png" alt=""></figure>
 
-There are 3 main sections for the app settings:
+There are 6 sections in the app settings:
 
-* **File Processing**
-* **Download and API**
-* **System and Performance**
+* **Libraries** - Add, Edit, Pause and Remove libraries
+* **File Processing** - Settings related to file monitoring and renaming
+* **Download and API** - Metadata providers configuration and download settings
+* **System and Performance** - Timesone, performance logging and library scan settings
+* **Styling** - Select any of the supported
+* **Recommendations** - Enter an API key for ChatGPT, Google Gemini or Claude to get recommendations
