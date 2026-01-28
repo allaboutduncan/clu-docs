@@ -21,6 +21,8 @@ theme:
     - content.code.copy
   icon:
     repo: fontawesome/brands/github
+  analytics:
+    gtag: G-FG4J5F18LV 
 
 extra_css:
   - stylesheets/extra.css
