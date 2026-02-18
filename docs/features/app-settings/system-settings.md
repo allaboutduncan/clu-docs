@@ -4,7 +4,7 @@ description: All of the Options available in Settings
 
 # System and Performance Settings
 
-![System and Performance Settings](../../assets/settings/system-settings.png)
+Settings related to System Performace and Operations are managed in this section.
 
 ## Performance and Timeout Settings
 
@@ -28,8 +28,6 @@ Clears system cache and API to remove any cached data.
 
 ![File Index Rebuild](../../assets/settings/index-rebuild.png)
 
-In v4, the **Cache Management** has been replaced with databased managed file indexing. This provides faster page loads and improved search performance. 
-
 From this area in admin, you can manually trigger a file index rebuild and schedule daily or weekly rebuilds. You'll also see your current index status here.
 
 ### Automatic Rebuild Schedule
@@ -39,6 +37,9 @@ From this area in admin, you can manually trigger a file index rebuild and sched
 Timing for automatically rebuilding the file index. Default is disabled
 
 You can set Daily or Weekly and specify the hour to rebuild the index. 
+
+!!! Warning
+    New files will not appear until the index is rebuilt. You must either run the process manually or ensure you have a schedule set to rebuild the index.
 
 ### Automatic Metron Sync Schedule
 

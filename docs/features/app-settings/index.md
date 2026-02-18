@@ -20,6 +20,6 @@ There are 6 sections in the app settings:
 * **Libraries** - Add, Edit, Pause and Remove libraries
 * **File Processing** - Settings related to file monitoring and renaming
 * **Download and API** - Metadata providers configuration and download settings
+* **Metadata Providers** - Metadata providers configuration and download settings
 * **System and Performance** - Timesone, performance logging and library scan settings
-* **Styling** - Select any of the supported
-* **Recommendations** - Enter an API key for ChatGPT, Google Gemini or Claude to get recommendations
+* **Preferences** - Update the Homepage layout, change the theme, and enable recommendations

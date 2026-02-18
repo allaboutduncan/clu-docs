@@ -63,4 +63,12 @@ You can mark issues as "Owned" if you have a copy in a trade or another location
 
 You can mark issues as "Skipped" if you don't want to search for the issue in the nightly pull process.
 
+### Multi-Select Actions
 
+![Multi-Select Actions](../../assets/pull/multi-select.png){: .center-image}
+
+You can select multiple issues and perform the following actions:
+
+- **Mark as Owned** - Mark multiple issues as owned
+- **Mark as Skipped** - Mark multiple issues as skipped
+- **Mark as Wanted** - Mark multiple issues as wanted (only if they are currently marked as Owned or Skipped)

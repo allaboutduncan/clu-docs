@@ -8,7 +8,7 @@ All settings related to file moving, renaming and processing are updated in this
 
 ![File Settings](../../assets/settings/file-settings.png){: .center-image}
 
-### Folder Monitoring
+## Folder Monitoring
 
 This is the most extensive set of features and will only be applicable if [folder-monitoring](../../features/folder-monitoring/index.md) is enabled. Most of these feature flags enhance the previous feature flag.
 
@@ -43,7 +43,9 @@ The two options here will vary greatly on how much you use [Missing Issue Check]
 
 **IGNORED FILES:** Add a comma-separated list of files to ignore when checking for missing issues. Your collection may be a mix of CBZ/CBR/PDF or other files but if you have other files in your directories you want excluded, just add them here.
 
-### Directory & File Processing Settings
+## Directory & File Processing Settings
+
+![Directory & File Processing Settings](../../assets/settings/directory-settings.png){: .center-image}
 
 **Enable Subdirectories for Conversion:** This specifically allows [Convert Directory](../../features/directory-features/convert.md) to traverse subdirectories and convert all CBR/RAR files to CBZ. This is not enabled by default - as running this on a high level folder AND a large collection could take quite a bit of time.
 
@@ -51,13 +53,27 @@ The two options here will vary greatly on how much you use [Missing Issue Check]
 
 **DELETED TYPES:** Add a comma-separated list of extensions to delete while performing actions on files. When any operation unpacks a RAR/ZIP File, files with these extensions will deleted before the file is re-packed. Examples are: `.nfo,.sfv,.db,.DS_Store`
 
-### Custom Rename Pattern Settings
+## Custom Naming Settings
 
-Use a custom naming scheme for renaming issues when downloads are processed or files are renamed.
+![Custom Naming Settings](../../assets/settings/naming-settings.png){: .center-image}
+
+Use the options below to customize the naming scheme for file and directory operations.
+
+### Custom File Naming
+
+Use a custom naming scheme for renaming issues when downloads are processed or files/directories are renamed in the UI
 
 Enter your naming pattern using the syntax provided and see a real-time preview of the result.
 
-![Naming Pattern](../../assets/settings/naming-pattern.png)
+### Custom Folder Patterns
 
-!!! warning
-    Renaming applies only to issues. Entering directory paths or folder structures is not yet supported.
+Similar to the custom file naming above, this allows you to customize the naming scheme for folders.
+
+Currently, this is only used with the [Pull List](../../features/pull-list/index.md) feature to create folders for each series. This allows you to organize your files in a way that makes sense to you.
+
+!!! info "Available Variables"
+    - {publisher}
+    - {series_name}
+    - {volume_number}
+    - {start_year}
+    - {issue_number}
