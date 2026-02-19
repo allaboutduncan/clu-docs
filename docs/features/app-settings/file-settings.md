@@ -18,19 +18,28 @@ This is the most extensive set of features and will only be applicable if [folde
 
 **IGNORED EXTENSIONS:** File types listed here will be ignored by the file monitoring process. Many of these file types are `temp`file types and should be ignore. However, if you want to have others files in the WATCH folder and not have them processed with your enabled options - add those extenison types here.
 
-**Auto CBZ Conversion:** If enabled, when CBR files are downloaded, this will auto-convert them to CBZ
+**Auto-Convert to CBZ:** If enabled, when CBR files are downloaded, this will auto-convert them to CBZ
 
-**Auto ZIP Extraction:** If enabled, when ZIP files are added to your WATCH folder, this will automatically extract them. This does not create folders. It uses the structure within the ZIP file.&#x20;
+**Auto-Unpack ZIP Files:** If enabled, when ZIP files are added to your WATCH folder, this will automatically extract them. This does not create folders. It uses the structure within the ZIP file.&#x20;
 
 For ZIP only, this specifically bypasses the IGNORED EXTENSIONS.
 
-**Processing Sub-Directories:** If enabled, this will perform monitoring functions on sub-directories within your WATCH folder. For example, if you have `/WATCH/archive01.zip` and it is auto-extracted to `/WATCH/archive`each file will be processed and moved to `/TARGET`.
+**Process Sub-Directories:** If enabled, this will perform monitoring functions on sub-directories within your WATCH folder. For example, if you have `/WATCH/archive01.zip` and it is auto-extracted to `/WATCH/archive`each file will be processed and moved to `/TARGET`.
 
-**Moving Sub-Directories:** If enabled, this will preserve any sub-directories in your `/WATCH` folder when they are moved to your `TARGET` folder. For example, if you have `/WATCH/archive01.zip` and it is auto-extracted to `/WATCH/archive`each file will be processed and moved to `/TARGET/archive`.
+**Autu-Move Sub-Directories:** If enabled, this will preserve any sub-directories in your `/WATCH` folder when they are moved to your `TARGET` folder. For example, if you have `/WATCH/archive01.zip` and it is auto-extracted to `/WATCH/archive`each file will be processed and moved to `/TARGET/archive`.
 
-!!! info
-    To Do: Hide these in settings if folder monitoring is not enabled or inform user that folder monitoring is not enabled.
+![Consolidate Single-File Directories](../../assets/settings/consolidate.png){: .center-image}
 
+**Consolidate Single-File Directories:** If enabled, this will attempt to consolidate line-named single-file directories into a single folder when they are moved from **WATCH** to **TARGET**. This is handy for processing manually downloaded files from newsgroups. For example:
+```
+/PEP Comics 140/PEP Comics 140.cbz
+/PEP Comics 141/PEP Comics 142.cbz
+/PEP Comics 142/PEP Comics 142.cbz
+```
+Will all be place in a single directory:
+```
+/PEP Comics/
+```
 **Auto Cleanup Orphan Files:** If you are using the monitoring and [Chrome Extension](../../features/file-downloads/setup.md) for downloads, failed downloads will be removed at regular intervals.
 
 **Cleanup Interval (hours):** Set the timing for removing orphaned files.

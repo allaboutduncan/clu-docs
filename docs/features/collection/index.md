@@ -42,7 +42,7 @@ This section will display issues that have been started but not completed. Click
 
 ### Discover
 
-This feature takes your reading history and "Want to Read" list and uses it to generate personalized recommendations for you. Recommendations are manually triggerer, so you can manage how often they run and use them when you want to find something new to read. You'll need to enter an API in [Recommendations](../app-settings/recommendations.md) to use this feature.
+This feature takes your reading history and "Want to Read" list and uses it to generate personalized recommendations for you. Recommendations are manually triggerer, so you can manage how often they run and use them when you want to find something new to read. You'll need to enter an API in [Recommendations](../app-settings/personalization.md#recommendations) to use this feature.
 
 ### Recently Added
 

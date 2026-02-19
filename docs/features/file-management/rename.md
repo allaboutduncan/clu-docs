@@ -24,7 +24,7 @@ In all directory listings, you'll see a <i class="bi bi-input-cursor-text text-i
 
 ![Rename All Files in Directory](../../assets/file/rename-all.png){: .center-image}
 
-Clicking this will run the same renaming functions detailed on [Clean All Filenames](../directory-features/clean.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
+Clicking this will run the same renaming functions detailed on [Rename All Files](../directory-features/rename.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
 
 ### Remove Text from Files
 

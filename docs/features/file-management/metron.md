@@ -6,7 +6,7 @@ description: How to get metadata and create ComicInfo.xml files
 
 ![Metron Info](../../assets/settings/metron.png){: .center-image}
 
-If you have entered a [Metron Username and Password](../app-settings/download-settings.md#metadata-api-configuration) in settings, Metron will be used to search for metadata when moving issues.
+If you have entered a [Metron Username and Password](../app-settings/metadata.md) in settings, Metron will be used to search for metadata when moving issues.
 
 !!! info "Single Issue Metadata Only"
     The **Metron** feature only searches for metadata for a single issue. If you have multiple issues in a directory, you will need to use the [GCD Database Method](../gcd-settings/index.md) feature to process multiple issues.

@@ -1,10 +1,10 @@
 ---
-description: Clean all filenames in the directory
+description: Rename all files in the directory
 ---
 
-# Clean All Filenames
+# Rename All Files
 
-![Clean All Filenames](../../assets/directory/rename01.png){: .center-image }
+![Rename All Files](../../assets/directory/rename01.png){: .center-image }
 
 Rename (Clean) Filenames is a directory based feature that allows you to clean all filenames in a directory and any sub-directories. It is accessed via the <i class="bi bi-input-cursor-text fs-2 text-primary"></i> icon to the right of the directory name in the File Manager.
 
@@ -16,9 +16,9 @@ Currently this function does 5 things to all files in a directory and any sub-di
 4. Removes any text / characters after "filename issue (year)"
 5. Removes any extra spaces before the file extension
 
-The pattern used for renaming is `{Series Name} {Issue Number} ({Year})`
+The default pattern used for renaming is `{Series Name} {Issue Number} ({Year})`
 
-[Mylar3](https://mylarcomics.com/) and [ComicRackCE](https://github.com/maforget/ComicRackCE) should be your first choice for performing these actions, but I wanted something I could easily run on my manual downloads directory or repair in a one-off method.
+You can define custom naming patterns in [File Settings](../app-settings/file-settings.md#custom-naming-settings).
 
 Oftentimes series archives or torrent files will have numerous naming patterns with information in parenthesis, brackets, before the year, after and all over the place. I continuously update these to handle as many as I encounter.
 
