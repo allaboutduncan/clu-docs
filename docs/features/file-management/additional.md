@@ -27,6 +27,12 @@ See the **File Index Management** section on [App Settings](../app-settings/file
 
 This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/index.md)
 
+### Upload Files
+
+![Upload](../../assets/file/upload.png){: .center-image}
+
+You can drag and drop a single file or multiple files to upload them to the currently visible _Source_ or _Destination_ directory
+
 ### Recent Files
 
 Clicking the "Recent Files" button will show the last 100 files that have been added (or moved) withing you collection. This is useful for seeing new downloads.

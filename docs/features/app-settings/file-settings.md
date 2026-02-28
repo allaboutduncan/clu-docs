@@ -40,6 +40,9 @@ Will all be place in a single directory:
 ```
 /PEP Comics/
 ```
+
+**Auto Rename on Move:** When enabled, files will be renamed using the default name cleansing patterns and your _Custom Name Pattern_ (if enabled) when files are moved from your WATCH to TARGET folder. This setting is enabeld by default. 
+
 **Auto Cleanup Orphan Files:** If you are using the monitoring and [Chrome Extension](../../features/file-downloads/setup.md) for downloads, failed downloads will be removed at regular intervals.
 
 **Cleanup Interval (hours):** Set the timing for removing orphaned files.

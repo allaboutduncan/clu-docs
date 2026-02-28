@@ -24,3 +24,14 @@ The [File Management](../features/file-management/index.md) page is available to
 ![Navigation](../assets/nav.png)
 
 Navigation in the header will let you access additional features like [Settings](../features/app-settings/index.md) and [File Downloads](../features/file-downloads/index.md).
+
+### Active Operations
+
+![Active Operations](../assets/active.png)
+
+Any long running operation will have progress and current status displayed in the header. Currently supporter opertions are:
+
+- Converting more than 10 CBR to CBZ
+- Converting a 1GB+ CBR to CBZ
+- Moving 10+ files to a new location
+- Apply ComicInfo to a Folder of files

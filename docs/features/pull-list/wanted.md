@@ -4,6 +4,20 @@
 
 The wanted page will show you all missing and upcoming issues for the series you are subscribed to. We'll review the difference between missing and upcoming issues below.
 
+At the very top, you'll see 3 buttons that perform actions related to the *Wanted* issues.
+
+### Refresh
+
+Checks all series in your Pull List and refreshes your _Wanted_ and _Missing_ issues.
+
+### Scan Download Directory
+
+This will scan your download directory to check for any files that may have been placed there since the last scan. This same process is triggered when a file or file(s) are moved to your TARGET directory.
+
+### Check for Missing Issues
+
+This will manually run the job to check **GetComics** for any issues in your _Wanted_ list.
+
 ## Missing Issues
 
 Missing issues are issues that are missing from your collection that have a **Store Date** that is in the past.

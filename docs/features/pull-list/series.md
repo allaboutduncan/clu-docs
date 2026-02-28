@@ -51,7 +51,11 @@ For existing subscriptions, you will see the following options:
 
 ### Refresh
 
-<i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues. .   
+<i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues.
+
+### On the Stack
+
+If this is enabled and you have [*On the Stack*](../collection/index.md#on-the-stack) configured to show on your Library page, this will show the next issue you haven't read in that section. 
 
 ## Wanted / Skipped / Owned
 

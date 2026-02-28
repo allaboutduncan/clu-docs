@@ -44,6 +44,22 @@ This section will display issues that have been started but not completed. Click
 
 This feature takes your reading history and "Want to Read" list and uses it to generate personalized recommendations for you. Recommendations are manually triggerer, so you can manage how often they run and use them when you want to find something new to read. You'll need to enter an API in [Recommendations](../app-settings/personalization.md#recommendations) to use this feature.
 
+### On the Stack
+
+![On the Stack](../../assets/collection/stack.png){: .center-image}
+
+The *On the Stack* section will alert you to new issues for series that you are reading, to ensure you are always caught up.
+
+You have read `Absolute Batman 001` through `Absolute Batman 017` and are currently caught up.
+
+When `Absolute Batman 018` is available, it will be shown in "On the Stack", letting you know it's available for you to read.
+
+!!! Note
+
+    We should only show the next unread issue. So if you have `Absolute Batman 019` and `Absolute Batman 018` is still unread, we should only show `Absolute Batman 018`
+
+CLU will only show series in your [Pull List](../pull-list/pull-list.md) in this area. If you don't want certain series to show here, there's an option to remove them on the [Series page](../pull-list/series.md)
+
 ### Recently Added
 
 This section shows the last 100 issues added to your collection.

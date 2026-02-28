@@ -26,6 +26,9 @@ Use the up <i class="bi bi-arrow-up"></i> and down <i class="bi bi-arrow-down"><
 
 Check and uncheck sections you want to display on your homepage.
 
+!!! Note
+    For an explanation of each section, visit the [Collection](../collection/index.md#sections) page
+
 ## Recommendations
 
 ![Recommendations](../../assets/settings/recommendations.png){: .center-image}
