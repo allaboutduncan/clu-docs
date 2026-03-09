@@ -7,7 +7,7 @@ authors:
   - allaboutduncan
 ---
 
-# v4.10: The "Source Wall & Safety" Update
+# v4.10 - The Source Wall & Safety Update
 
 This release focuses on giving you better visibility and more control over your library’s metadata, improving the "quality of life" for file management, and ensuring that our external API integrations (thanks Metron) are running as lean as possible.
 
