@@ -10,11 +10,11 @@ When the File Manager is loaded, it will display all files in your <mark style="
 
 ### Moving Files
 
+![Move Files](../../assets/file/move.png){: .center-image}
+
 Using the file manager, navigate to the file(s) that you wish to move. Simply click and drag it to the location you want to file to move.
 
 The file manager supports dragging and dropping files/directories to/and from the **Source** and **Destination**. All examples will demonstrate **Source --> Destination,** but either direction will work.
-
-![Move Files](../../assets/file/move.png){: .center-image}
 
 ### Moving Directories
 
@@ -22,7 +22,9 @@ Similar to files, navigate to the directory you wish to move. Click and drag it 
 
 ![Moving a Directory](../../assets/file/move_dir.png){: .center-image}
 
-You'll see the directory automatically update in the new location
+If you move a large file(s) or a directory, the UI will indicate the move as *in progress* and the status will be displayed in the Action Items area in the header as well, allowing you to navigate away and continue monitoring.
+
+![Move Progress](../../assets/file/moving.png){: .center-image}
 
 ### Select Multiple
 

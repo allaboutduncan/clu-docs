@@ -1,6 +1,6 @@
 # Collection Browsing (Issues)
 
-![Issues Page](../../assets/collection/issues.png)
+![Issues Page](../../assets/collection/issues.png){: .center-image}
 /// caption
 Example Issues Page
 ///
@@ -9,7 +9,7 @@ When you navigate to a folder (series) with only files (issues), you will see a 
 
 To ensure you can quickly determine the issue number, the issue number will be displayed in the top right corner of the cover.
 
-![Issue Number](../../assets/collection/issue_number.png)
+![Issue Number](../../assets/collection/issue_number.png){: .center-image}
 /// caption
 Issue Number
 ///
@@ -17,7 +17,7 @@ Issue Number
 ## Issue Options
 For issues, there are 6 options in the dropdown menu that can be accessed by clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu.
 
-![Issue Dropdown Menu](../../assets/collection/issue-dropdown.png)
+![Issue Dropdown Menu](../../assets/collection/issue-dropdown.png){: .center-image}
 /// caption
 Example Issue Dropdown Menu
 ///

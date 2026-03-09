@@ -14,7 +14,7 @@ Each folder will have a <i class="bi bi-three-dots-vertical fs-2 text-icon"></i>
 
 ## Publisher Folders
 
-![Publisher Dropdown Menu](../../assets/collection/pub-dropdown.png)
+![Publisher Dropdown Menu](../../assets/collection/pub-dropdown.png){: .center-image}
 
 There are 3 options in the dropdown menu:
 
@@ -32,21 +32,21 @@ All folders support custom thumbnails. CLU will look for an image file named `fo
 
 ### Uploading a Publisher Thumbnail
 
-![Publisher without Thumbnail](../../assets/collection/upload-pub-01.png)
+![Publisher without Thumbnail](../../assets/collection/upload-pub-01.png){: .center-image}
 /// caption
 Publisher without Thumbnail
 ///
 
 You can upload a thumbnail for a publisher by dragging and dropping an image file onto the publisher folder.
 
-![Uploading a Thumbnail](../../assets/collection/upload-pub-02.png)
+![Uploading a Thumbnail](../../assets/collection/upload-pub-02.png){: .center-image}
 /// caption
 Uploading a Thumbnail
 ///
 
 Once you browse back to the publisher page, you should see your thumbnail.
 
-![Publisher with Thumbnail](../../assets/collection/upload-pub-03.png)
+![Publisher with Thumbnail](../../assets/collection/upload-pub-03.png){: .center-image}
 /// caption
 Publisher with Thumbnail
 ///
