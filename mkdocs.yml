@@ -51,7 +51,7 @@ repo_url: https://github.com/allaboutduncan/comic-utils
 
 nav:
   - Home: index.md
-  #- Blog: blog/index.md  # Fixed: pointed specifically to the index
+  - Blog: blog/index.md
   - Why CLU?: why-clu.md
   - Getting Started:
       - Quickstart: getting-started/quickstart.md
