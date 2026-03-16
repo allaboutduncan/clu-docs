@@ -27,9 +27,9 @@ Metadata providers and implementations status are listed below:
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
 | [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
 | [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../gcd-settings/index.md)) |
-| AniList | <i class="bi bi-info-circle-fill text-warning"></i> | AniList Database (FUTURE IMPLEMENTATION) |
-| Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | Bedetheque Database (FUTURE IMPLEMENTATION) |
-| MangaUpdates | <i class="bi bi-info-circle-fill text-warning"></i> | MangaUpdates Database (FUTURE IMPLEMENTATION) |
+| MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |
+| MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database
+| Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | Bedetheque Database (Future Implementation) | |
 
 
 ## Assign Metadata Providers to Libraries
