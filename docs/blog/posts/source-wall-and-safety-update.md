@@ -19,7 +19,7 @@ This release focuses on giving you better visibility and more control over your 
 
 ![Source Wall](../../assets/source/files.png){: .center-image}
 
-Fine-tuning your comic metadata just got a lot easier. In v4.10, we've introduced the **Source Wall** view (naming inspired by [Metron](https://metron.cloud)) **. This view is a table-based view of your libray, that also includes the metadata. Whether you want a quick view of your directories or you need to address those metadata inconsistencies, you now have the visibility you need to keep your library organized.
+Fine-tuning your comic metadata just got a lot easier. In v4.10, we've introduced the **Source Wall** view (naming inspired by [Metron](https://metron.cloud)) **. This view is a table-based view of your library, that also includes the metadata. Whether you want a quick view of your directories or you need to address those metadata inconsistencies, you now have the visibility you need to keep your library organized.
 
 ### **Soft Delete & The Trash Can**
 
