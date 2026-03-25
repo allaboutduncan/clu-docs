@@ -65,6 +65,10 @@ The two options here will vary greatly on how much you use [Missing Issue Check]
 
 **DELETED TYPES:** Add a comma-separated list of extensions to delete while performing actions on files. When any operation unpacks a RAR/ZIP File, files with these extensions will deleted before the file is re-packed. Examples are: `.nfo,.sfv,.db,.DS_Store`
 
+![Hide Directories](../../assets/settings/hide-directories.png){: .center-image}
+
+**HIDDEN DIRECTORIES:** You can enter a comma-separated list of directory names to hide from all views (File Manager, Collection and Source Wall). Default configuration is: `@eaDir`
+
 ## Custom Naming Settings
 
 ![Custom Naming Settings](../../assets/settings/naming-settings.png){: .center-image}

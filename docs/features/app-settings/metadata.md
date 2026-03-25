@@ -26,6 +26,7 @@ Metadata providers and implementations status are listed below:
 |----------|--------|-------------|
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
 | [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
+| [GCD API](https://github.com/GrandComicsDatabase/gcd-django/wiki/API) | <i class="bi bi-check-circle-fill text-success"></i> | Grand Comics Database API |
 | [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../gcd-settings/index.md)) |
 | MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |
 | MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database
