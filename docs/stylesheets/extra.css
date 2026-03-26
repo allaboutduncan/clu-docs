@@ -245,7 +245,7 @@ body:has(.clu-landing) .md-header {
   .hero-content {
     grid-template-columns: 1fr 1.1fr;
     gap: 5rem;
-    margin-top: -420px;
+    margin-top: -320px;
   }
 
   .hero {
@@ -881,14 +881,21 @@ body:has(.clu-landing) .md-header {
 
 .thirty {
   width: 30%;
+  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
+  margin: 0 10px;
 }
 
 .half {
   width: 50%;
+  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
 }
 
 .sixty {
   width: 60%;
+  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
 }
 
 /* ==========================================================================

@@ -67,6 +67,7 @@ nav:
     - Issues: features/collection/issues.md
     - Reading: features/collection/reading.md
     - Source Wall: features/collection/source-wall.md
+    - Reading Lists: features/collection/reading-lists.md
 
   - Directory Features:
     - features/directory-features/index.md
@@ -107,9 +108,8 @@ nav:
     - Rename: features/file-management/rename.md
     - Delete: features/file-management/delete.md
     - Additional Features: features/file-management/additional.md
-    - Get ComicInfo.xml: features/file-management/comicinfo.md
-    - Comicvine Metadata: features/file-management/comicvine.md
-    - Metron Metadata: features/file-management/metron.md
+    - Adding Metadata: features/file-management/add-metadata.md
+    - ComicInfo.xml Options: features/file-management/comicinfo.md
   
   - Library Insights:
     - features/insights/index.md
