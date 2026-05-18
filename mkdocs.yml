@@ -59,6 +59,7 @@ nav:
   - Getting Started:
       - Quickstart: getting-started/quickstart.md
       - Navigating the App: getting-started/navigate.md
+      - Setup Walkthrough: getting-started/setup-walkthrough.md
 
   - Collection Features:
     - features/collection/index.md
