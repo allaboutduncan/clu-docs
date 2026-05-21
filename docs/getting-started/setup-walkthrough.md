@@ -158,6 +158,8 @@ services:
       - PUID=1000
       - PGID=1000
       - UMASK=022
+volumes:
+  config-volume:
 ```
 
 > **Note on paths:** Docker Desktop on Windows accepts paths using **forward slashes** (`C:/Users/YourName/...`). This is the cleanest format inside a YAML file. Don't use backslashes here.

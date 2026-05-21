@@ -9,7 +9,6 @@ Docker Hub images are available for quick installation and deploy.
 ### Install via Docker Compose
 
 ```yaml
-version: '3.9'
 services:
     comic-utils:
         image: allaboutduncan/comic-utils-web:latest
@@ -24,8 +23,8 @@ services:
         ports:
             - '5577:5577'
         volumes:
-            - "/path/to/local/config:/config" # Maps local folder to persist settings
-            - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
+            - 'config-volume:/config' # Maps to a Docker Volume for Database Storage and Backups
+            - "/path/to/local/cache:/cache" # Maps to local folder for thumbnail cache
             ## update the line below to map to your library.
             ## Map your first/main library to /data
             - "/e/Comics:/data"
@@ -47,6 +46,11 @@ services:
             - PGID=100
             ## Set the file creation mask (UMASK). 022 is a common value.
             - UMASK=022
+            ### You can enable basic authentication by setting the two values below
+            ## CLU_USERNAME=[username] - Set the username for the app.
+            ## CLU_PASSWORD=[password] - Set the password for the app.
+volumes:
+  config-volume: # Now required for Database Storage and Backups
 ```
 
 ### Install via Docker
