@@ -12,7 +12,8 @@ Once you have your MySQL database dump - the file should be **`current.zip`** - 
    1. For example, persistent local storage for Docker is at `\.docker` so I'll create `\.docker\clu\gcd-data\current.sql`
 2. Rename the extracted file to `current.sql`&#x20;
    1. the date formatted naming should import, but this makes it consistent for all users
-3. Create a new Docker container using the below `docker-compose` settings
+3. From your termininal, you'll need to run `docker network create "gcd-network"` to create the nextwork connection
+4. Create a new Docker container using the below `docker-compose` settings
 
 ```yaml
 version: "3.8"
