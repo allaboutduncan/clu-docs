@@ -157,7 +157,7 @@ services:
       - MONITOR=no
       - PUID=1000
       - PGID=1000
-      - UMASK=022
+      - UMASK=000
 volumes:
   config-volume:
 ```
@@ -225,7 +225,7 @@ In the `environment:` section, find the line `- MONITOR=no`.
 
 ### 4.3 — PUID, PGID, and UMASK
 
-For a typical Windows setup, the values `PUID=1000`, `PGID=1000`, `UMASK=022` already in the file are fine. **Leave them alone** unless you specifically know you need different values.
+For a typical Windows setup, the values `PUID=1000`, `PGID=1000`, `UMASK=000` already in the file are fine. **Leave them alone** unless you specifically know you need different values.
 
 ### 4.4 — Save your changes
 
@@ -404,7 +404,7 @@ services:
       - MONITOR=no
       - PUID=1000
       - PGID=1000
-      - UMASK=022
+      - UMASK=000
   volumes:
     config-volume:
 ```
