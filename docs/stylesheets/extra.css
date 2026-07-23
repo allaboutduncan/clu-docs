@@ -245,7 +245,7 @@ body:has(.clu-landing) .md-header {
   .hero-content {
     grid-template-columns: 1fr 1.1fr;
     gap: 5rem;
-    margin-top: -160px;
+    margin-top: -375px;
   }
 
   .hero {
