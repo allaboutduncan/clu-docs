@@ -3,7 +3,9 @@ title: v6.0 - Usenet Downloads, Library Import, Split File, & More
 date: 2026-07-23
 ---
 
-v6.0 is the biggest release CLU has shipped in a while, and most of it is about getting comics into your library and keeping that library organized. The headline feature is full **Usenet (newsgroup) download support** — SABnzbd/NZBGet clients, Usenet indexers, and end-to-end search, grab, and import that sits right alongside the existing Direct Download flow. On top of that, the **Pull List** grew up: monitoring flags, color-coded collection health, bulk actions, and a `series.json` and `.cvinfo` based Import that maps your existing library in one scan.
+v6.0 is the biggest release CLU has shipped in a while, and most of it is about getting comics into your library and keeping that library organized. The headline feature is full **Usenet (newsgroup) download support** — SABnzbd/NZBGet clients, Usenet indexers, and end-to-end search, grab, and import that sits right alongside the existing Direct Download flow. 
+
+On top of that, the **Pull List** received new features: monitoring flags, color-coded collection health, bulk actions, and a `series.json` and `.cvinfo` based Import that maps your existing library in one scan.
 
 There's also a new **Split File** tool for breaking multi-issue CBZs apart, a smarter and more configurable rename engine, and a set of reliability fixes for folks running CLU on FUSE/mergerfs mounts and issue matching speed improvements for large libraries and pull-lists. Here's the tour.
 
