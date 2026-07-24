@@ -53,6 +53,12 @@ For existing subscriptions, you will see the following options:
 
 <i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues.
 
+### Monitor
+
+The **Monitor** toggle controls whether CLU actively searches for this series' wanted issues. When a series is **Not Monitored**, it's greyed out on the [Pull List](pull-list.md#monitoring) and excluded from the nightly wanted-issues refresh and from DDL/Usenet auto-download.
+
+Turn this off for series where you already have every issue, know the rest aren't available, or don't want CLU searching on a nightly basis. You can also flip the Monitor flag for many series at once from the [Pull List's bulk actions](pull-list.md#bulk-actions).
+
 ### On the Stack
 
 If this is enabled and you have [*On the Stack*](../collection/index.md#on-the-stack) configured to show on your Library page, this will show the next issue you haven't read in that section. 

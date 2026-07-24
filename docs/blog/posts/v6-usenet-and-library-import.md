@@ -23,7 +23,7 @@ Once it's configured, Usenet is wired into everything:
 
 Grabs are submitted to your client as real NZB content, tracked to completion by a background poller, and the finished comic is moved into your WATCH folder as `<series> <issue>.cbz` so the normal wanted-matching pipeline picks it up from there.
 
-![Download Clients settings](../../assets/settings/usenet.png)
+![Download Clients settings](../../assets/settings/usenet-indexers.png)
 
 ***
 

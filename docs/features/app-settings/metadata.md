@@ -26,8 +26,9 @@ Metadata providers and implementations status are listed below:
 |----------|--------|-------------|
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
 | [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
+| ComicVine (Local DB) | <i class="bi bi-info-circle-fill text-info"></i> | Local ComicVine SQLite database (requires [local setup](../local-databases/comicvine.md)) |
 | [GCD API](https://github.com/GrandComicsDatabase/gcd-django/wiki/API) | <i class="bi bi-check-circle-fill text-success"></i> | Grand Comics Database API |
-| [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../gcd-settings/index.md)) |
+| [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../local-databases/gcd.md)) |
 | MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |
 | MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database
 | Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | Bedetheque Database (Future Implementation) | |
@@ -42,3 +43,6 @@ For each library, you can enable the metadata providers you want to use. Simply 
 You can assing priority and preference for each library and provider combination. Click the up <i class="bi bi-arrow-up text-dark"></i> and down <i class="bi bi-arrow-down text-dark"></i> arrows to change the priority and preference. 
 
 When applying metadata to an issue or a folder, CLU will iterate through the providers in order of priority and preference and apply the metadata from the first provider that returns a result.
+
+!!! info "Metron credit roles"
+    Metron's **Script** and **Plot** credit roles now map to **Writer**, so writers credited as "Script" (e.g. Jeff Lemire on *Black Hammer*) are no longer dropped from metadata.

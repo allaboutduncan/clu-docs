@@ -1,85 +1,67 @@
 ---
-description: All of the Options available in Settings
+description: Timeouts, timezone, cache, missing-issue rules, logging, and ComicInfo.xml cleanup
 ---
 
 # System and Performance Settings
 
-Settings related to System Performace and Operations are managed in this section.
+Settings related to system performance and operations are managed on the **System and Performance** tab.
 
-## Performance and Timeout Settings
+!!! info "Scheduling moved to its own page"
+    Index rebuilds, Metron sync, GetComics auto-download, and the other recurring jobs are no longer configured here — they're on the dedicated [**Schedules**](schedules.md) page (also in the gear <i class="bi bi-gear-fill"></i> menu).
+
+## Performance & Timeout Settings
 
 ![Performance and Timeout Settings](../../assets/settings/timeout.png)
 
-Allows you to better manage large files depending on your system. Adjusting these values will enable/disable additional timing checks when processing large files (converting or rebuilding files). The default settings on average systems should easily handle converting a 2GB CBR file to CBZ.
+These help you manage large files depending on your system. The default settings on an average system will easily handle converting a 2GB CBR to CBZ.
 
-## Timezone and Cache Management
+| Setting | Description |
+| --- | --- |
+| **Operation Timeout (seconds)** | Timeout for large file operations (convert, rebuild). Default **3600** (1 hour). Minimum 300 (5 minutes), maximum 7200. |
+| **Large File Threshold (MB)** | Files larger than this get enhanced progress reporting. Default **500 MB** (range 100–2000). |
 
-![Timezone and Cache Management](../../assets/settings/timezone.png)
+## Timezone Settings
 
-### Timezone
+![Timezone](../../assets/settings/timezone.png)
 
-Update to your timezone to show reading stats and other date/time related information in your timezone.
+Set your local **Timezone** so reading history and other date/time information — including [Schedules](schedules.md) times and the [Insights](../insights/index.md) page — display and run correctly for you.
 
-### Cache Management
+## Cache Management
 
-Clears system cache and API to remove any cached data.
+Click **Clear All Caches** to clear the directory cache and the statistics cache (Insights charts). Use this if data appears stale after moving or editing files.
 
-## Index & Sync Management
+## Missing Issue Configuration
 
-![File Index Rebuild](../../assets/settings/index-rebuild.png)
+These two settings tune the [Missing Issue Check](../directory-features/missing.md). How much they matter depends on how heavily you use that feature and how your library is structured.
 
-From this area in admin, you can manually trigger a file index rebuild and schedule daily or weekly rebuilds. You'll also see your current index status here.
+| Setting | Description |
+| --- | --- |
+| **IGNORED TERMS** | Comma-separated words/terms to ignore while scanning for missing issues. Update these and re-run the check to better parse your library. |
+| **IGNORED FILES** | Comma-separated file names to ignore when checking for missing issues (e.g. `cover.jpg, cvinfo`). |
 
-### Automatic Rebuild Schedule
-
-![Rebuild Schedule](../../assets/settings/rebuild-schedule.png)
-
-Timing for automatically rebuilding the file index. Default is disabled
-
-You can set Daily or Weekly and specify the hour to rebuild the index. 
-
-!!! Warning
-    New files will not appear until the index is rebuilt. You must either run the process manually or ensure you have a schedule set to rebuild the index.
-
-### Automatic Metron Sync Schedule
-
-![Metron Sync Schedule](../../assets/pull/metron-sync.png)
-
-Timing for automatically syncing and updating your Pull List with the Metron API. This determines how often CLU checks the Metron API for new issues and updates your local Pull List. 
-
-You can set Daily or Weekly and specify the hour to sync. 
-
-### GetComics Auto-Download Schedule
-
-![Auto-Download Schedule](../../assets/pull/auto-downloads.png)
-
-Timing for attempting to download new, wanted and missing issues from GetComics.
-
-You can set Daily or Weekly and specify the hour to download. When a file is downloaded, it will will be moved to the [Series Folder](../pull-list/series.md) once it is processed. Metadata will be added to the file at that time if it does not already have it.
-
-!!! note
-    Any files that are manually downloaded and placed in the the TARGET directory will be checked against your **Want List** and **Missing List** and processed accordingly.
-
-### Logging & Debugging
+## Logging & Debugging
 
 ![Logging & Debugging](../../assets/settings/debug.png)
 
-If you are experiencing issues or odd behavior, enable this to add more detailed logging.
+**Enable Debug Logging** adds detailed diagnostic messages to the [App Logs](logs.md). This helps with troubleshooting but increases log file size. Changes take effect after saving. See [Debug Logging](logs.md#debug-logging) for what the output looks like.
 
-### ComicInfo.XML Updates
+!!! tip
+    When reporting a problem, enable debug logging, reproduce the issue, then use **[Download Debug Package](logs.md#download-debug-package)** on the Logs page to bundle everything up (with secrets redacted).
+
+## ComicInfo.XML Update Settings
 
 ![ComicInfo XML Updates](../../assets/settings/clean-xml.png)
 
-All of these features related to updating/cleaning the `ComicInfo.xml` file in archives. I would consider these experimental or beta features - in that they have been tested the least.
+These features update/clean the `ComicInfo.xml` inside archives. The process runs on a single directory: it extracts the `ComicInfo.xml`, makes the updates below, and recompresses the file. Consider them experimental — they've been tested the least.
 
-**Update Volume to First Issue Year:** If there is not a **volume year** in the `ComicInfo.xml` this will read the (YEAR) from the first issue in the folder and update the **volume year** for each file to match.
+**Update Volume to First Issue Year:** When there's no volume year in the `ComicInfo.xml`, this reads the 4-digit year from the alphanumerically-first file in the folder and applies it as the volume year for each file.
 
-**Remove All Markdown Content:** When enabled, if there are _tables_, _bold text_, or _headers_ in the Comments field of the `ComicInfo.xml` file, they will be removed.
+**Remove ALL Markdown Content from Comments:** Removes headers, bold text, and tables from the `Comments` field of the `ComicInfo.xml`.
 
-**Remove 'Covers & Creators' Table:** When enabled, if there is a _Covers & Creators table_ in the Comments field of the `ComicInfo.xml` file, it will be removed.
+**Remove 'Covers & Creators' Table:** Removes a *Covers & Creators* table from the `Comments` field of the `ComicInfo.xml`.
 
-### Save & Restart
+## Save & Restart
 
-**SAVE:** Click the Save button to save any changes you have made to the app.
+**Save System & Performance Settings:** Saves any changes made on this tab.
 
-**RESTART APP:** Only require on the initial install and a quick way to force restart to reload the config/settings changes.
+**Restart App:** Only needed on the initial install and as a quick way to force a restart to reload config/settings changes. The Restart App button lives at the bottom of the [Personalization](personalization.md) tab.

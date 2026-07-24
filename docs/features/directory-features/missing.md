@@ -70,7 +70,7 @@ This is useful when publishers revert to the original number of a long-running s
 
 ### Ignored Terms
 
-See the [System Settings](../app-settings/file-settings.md#missing-issue-configuration) page to configure ignored terms.
+See the [System Settings](../app-settings/system-settings.md#missing-issue-configuration) page to configure ignored terms.
 
 ### Missing.txt Files
 

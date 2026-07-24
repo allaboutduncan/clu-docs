@@ -47,13 +47,23 @@ Will all be place in a single directory:
 
 **Cleanup Interval (hours):** Set the timing for removing orphaned files.
 
-### Missing Issue Configuration
+### Trash Can
 
-The two options here will vary greatly on how much you use [Missing Issue Check](../../features/directory-features/missing.md) and how your library is structured.
+![Trash Can Settings](../../assets/settings/trash-settings.png){: .center-image}
 
-**IGNORED TERMS:** Add a comma-separated list of words/terms to ignore while checking for missing issues. Update these terms and re-run the missing issue check to better parse your library.
+When enabled, deleted files are moved to a trash folder instead of being permanently removed, so you can recover them.
 
-**IGNORED FILES:** Add a comma-separated list of files to ignore when checking for missing issues. Your collection may be a mix of CBZ/CBR/PDF or other files but if you have other files in your directories you want excluded, just add them here.
+**Enable Trash Can:** Move deleted files to trash instead of permanently deleting them.
+
+**Trash Folder Path:** Where trashed files are stored. Leave empty to use the default (`/cache/trash`).
+
+**Max Trash Size (MB):** When the trash exceeds this size, the oldest items are automatically evicted (range 100–100000 MB).
+
+!!! info "New in v6.0"
+    The Trash Can is new in **v6.0**.
+
+!!! note "Missing Issue Configuration moved"
+    The **IGNORED TERMS** and **IGNORED FILES** settings for the [Missing Issue Check](../../features/directory-features/missing.md) now live on the [System and Performance](system-settings.md#missing-issue-configuration) tab.
 
 ## Directory & File Processing Settings
 
@@ -81,6 +91,23 @@ Use a custom naming scheme for renaming issues when downloads are processed or f
 
 Enter your naming pattern using the syntax provided and see a real-time preview of the result.
 
+### Issue Number Leading Zeros
+
+![Issue Number Leading Zeros setting](../../assets/settings/leading-zeros.png){: .center-image}
+
+The **Issue Number Leading Zeros** dropdown controls how issue numbers are padded when files are renamed.
+
+| Setting | Example (issue 44) | Example (issue 3) |
+| --- | --- | --- |
+| **None** | `44` | `3` |
+| **3** (default) | `044` | `003` |
+| **4** | `0044` | `0003` |
+
+The default is **3**.
+
+!!! info "New in v6.0"
+    This setting is new in **v6.0**. Decimal and alpha suffixes are **preserved at every width** — for example `44.MU` becomes `044.MU` at width 3, or `0044.MU` at width 4.
+
 ### Custom Folder Patterns
 
 Similar to the custom file naming above, this allows you to customize the naming scheme for folders.
@@ -93,3 +120,27 @@ Currently, this is only used with the [Pull List](../../features/pull-list/index
     - {volume_number}
     - {start_year}
     - {issue_number}
+
+### Smart Rename
+
+![Smart Rename Settings](../../assets/settings/smart-rename.png){: .center-image}
+
+Smart Rename renames files using values from `series.json` and the issue number parsed from each filename, instead of regex-matching the whole name. It's run from the folder three-dots menu on the Files page.
+
+**Preview Before Renaming:** Show a modal of planned renames and require *Apply* before any file is touched. Turn off to rename immediately on click.
+
+**Recurse Into Subfolders:** Walk subdirectories and process each one that has its own `cvinfo` / `series.json`.
+
+**Skip files containing:** A comma-separated, case-insensitive substring match against the filename (e.g. `Annual,Special`). Useful when Annuals/Specials share a folder with the main series — they have their own numbering and shouldn't be renamed onto the main slots. Leave blank to skip nothing.
+
+### Filename Character Cleanup
+
+Applied after pattern substitution to every rename (custom and default logic). The file extension is always preserved.
+
+**Clean Spaces in Filenames:** Remove spaces, or replace them with a character of your choice (e.g. `Batman 001` → `Batman_001`).
+
+**Clean Special Characters:** Remove or replace additional characters you list (treated literally, not as regex).
+
+!!! warning "Always-removed characters"
+    These filesystem-hostile characters are **always** removed, even when Clean Special Characters is off:
+    `\ / : * ? " < > | & $ ;`. Use the cleanup field only to remove *additional* characters. Replacement text cannot contain Windows-reserved characters: `< > : " / \ | ? *`.

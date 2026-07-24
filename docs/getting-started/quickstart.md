@@ -88,8 +88,8 @@ Additional info about the ENV variables can be found [here](../features/app-sett
 | -e PGID=100 | Set the User ID (PUID) and Group ID (PGID) for the container. |
 | -e UMASK=000 | Set the file creation mask (UMASK). |
 
-### Using a Grand Comics Database (GCD) File
+### Using a Local Metadata Database (GCD / ComicVine)
 
-You can connect to a container running a local copy of the Grand Comics Database (GCD) file. This will allow you to use the metadata from the GCD file to populate your comics. 
+You can use a local copy of the Grand Comics Database (GCD) or ComicVine as an offline metadata source. This lets you bulk-populate your comics quickly, with no API rate limits.
 
-Additional parameters are needed in your docker-compose.yml file to connect to the GCD file. See [here](../features/gcd-settings/index.md) for  step by step instructions.
+As of v6.0 this is just a **SQLite file** you place on a mapped path and point CLU at from the settings — no separate database container required. See [Local Metadata Databases](../features/local-databases/index.md) for step-by-step instructions.

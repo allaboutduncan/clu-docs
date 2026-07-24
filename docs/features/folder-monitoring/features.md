@@ -50,3 +50,28 @@ Files are extracted to the **WATCH** folder and will maintain the structure with
 ## Convert to CBZ
 
 When enabled, any CBR file will be auto-converted to a CBZ when processed.
+
+## Auto-Unwrap for Hybrid & Multipart Releases
+
+!!! info "New in v6.0"
+    Auto-unwrap is new in **v6.0**. It's gated behind the existing **AutoConvert / Auto-Unpack** setting — there's nothing new to configure.
+
+Usenet releases don't always arrive as a ready-to-read comic. Many show up as a **hybrid/multipart release**: a folder of obfuscated, multi-part archives — a set of `.zip` parts that extract to a `.RAR` that finally extracts to the actual PDF, CBR, or CBZ. The old per-file monitor couldn't tell that four zips were really one archive, so it treated each obfuscated part as a separate file.
+
+CLU now recognizes these packaged releases and **unwraps them automatically**. A folder-level pre-pass:
+
+1. **Claims** the release folder in your **WATCH** directory.
+2. **Waits** for all parts to finish arriving (settling) before touching anything.
+3. **Extracts** the nested archives **layer by layer in an isolated work area**.
+4. **Renames** the emerged comic to a clean release name and **converts PDF → CBZ**.
+5. **Hands off** to the normal monitoring pipeline.
+
+Key guarantees:
+
+- **The source is never mutated.** Extraction happens in isolation, not in place.
+- **Conservative by design.** It won't fire when a ready comic is already present in the folder.
+- **Cleans up on success, keeps on failure.** Leftover parts and cruft are deleted after a successful unwrap; on failure the source is left alone and retried later.
+
+<!-- TODO: before/after screenshot — obfuscated parts vs. clean CBZ (assets/monitor/unwrap.png) -->
+
+See [Searching & Grabbing](../usenet/search-and-grab.md) for how these releases arrive from Usenet.

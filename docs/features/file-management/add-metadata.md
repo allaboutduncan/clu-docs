@@ -15,13 +15,14 @@ CLU supports multiple metadata providers for populating your files with ComicInf
 |----------|--------|-------------|
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
 | [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
+| ComicVine (Local DB) | <i class="bi bi-info-circle-fill text-info"></i> | Local ComicVine SQLite database (requires [local setup](../local-databases/comicvine.md)) |
 | [GCD API](https://github.com/GrandComicsDatabase/gcd-django/wiki/API) | <i class="bi bi-check-circle-fill text-success"></i> | Grand Comics Database API |
-| [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../gcd-settings/index.md)) |
+| [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../local-databases/gcd.md)) |
 | MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |
 | MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database
 | Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | Bedetheque Database (Future Implementation) | |
 
-If you have enabled [GCD Database Support](../gcd-settings/index.md "GCD Database Support") you'll see an additional icon in the File Manager for searching your local GCD Database for Metadata.
+If you have enabled a [Local Metadata Database](../local-databases/index.md "Local Metadata Databases") you'll see an additional icon in the File Manager for searching your local database for Metadata.
 
 !!! warning
     While not as thorough as ComicVine, the GCD database offers a quick way to get metadata for a large collection.

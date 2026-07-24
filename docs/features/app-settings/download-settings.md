@@ -25,12 +25,57 @@ This section allows you to set the priority of the download providers. This is u
 
 Use the up and down arrows to move the download providers up and down in the list. The higher the provider is in the list, the higher the priority it has. If one provider fails, the download will be retried with the next provider in the list.
 
+!!! info "Usenet download clients"
+    Usenet (SABnzbd / NZBGet) clients and Newznab indexers are configured on the **Download Clients** tab, not here. See [Usenet Downloads](../../features/usenet/index.md) for setup, and [Source Priority](../../features/usenet/source-priority.md) for choosing between Usenet and GetComics.
+
 ### PixelDrain API Key
 
 For the [File Downloads](../../features/file-downloads/index.md) feature, you can bypass daily limits by entering your API key in this field. 
 
 !!! Recommended Provider
     PixelDrain is a recommended service. $10 of [Pre-Paid service](https://pixeldrain.com/home#) should easily last you all year and you'll see download speed improvements with 5GB downloads in a matter of minutes.
+
+## Search Variant Settings
+
+!!! info "New in v6.0"
+    Search Variant Settings are new in **v6.0**.
+
+Configure how GetComics handles different publication types and format variants during search matching.
+
+| Setting | Description |
+| --- | --- |
+| **Publication Types** | Comma-separated types that create a **different series** (e.g. "Batman Annual" is distinct from "Batman"). Example: `annual,quarterly`. |
+| **Variant Types** | Comma-separated format variants that can optionally be **accepted** when searching (e.g. TPB, Omnibus, Hardcover editions). |
+| **One-Shot Folders** | Folder names whose files are **unrelated single issues** (e.g. one-shots). In bulk metadata, each file in these folders is matched **individually** from its own filename and **no** `cvinfo`/`series.json` is written. Matched by folder name. |
+
+## GetComics Wanted Issues Simulation
+
+!!! info "New in v6.0"
+    The wanted-issues simulation is new in **v6.0**.
+
+Simulate the full wanted-issues search across all tracked series. It shows exactly what *would* be searched, found, scored, and downloaded — **without making any actual downloads** — so you can tune your matching before letting auto-download run.
+
+Optionally enter a **Series ID** to simulate a single series (leave empty for all), then click **Run Simulation**. Results are summarized into counts — **Searched**, **Accept**, **Fallback**, **No Match**, **No Results** — with a per-issue table (Series, Issue, Year, Decision, Score, Best Match, All Results).
+
+<!-- TODO: screenshot — GetComics Wanted Issues Simulation results -->
+
+## Client API Access
+
+!!! info "New in v6.0"
+    The client API token is new in **v6.0**.
+
+Generate a long-lived **bearer token** for the offline mobile/desktop reader app. The client sends it as `Authorization: Bearer <token>` on every request to `/api/v1/*`.
+
+- **API Token** — click **Generate Token** to create one; use the show/hide and copy buttons to grab it. Click again to **rotate** (which revokes the old token).
+- **Default browse mode for the API** — choose how the reader navigates your library by default:
+    - **Metadata view** groups by publisher / series read from each file's `ComicInfo.xml`.
+    - **Filesystem view** mirrors the folders under your data directory — the same as the main `/collection` browser.
+    - Clients can override per request with `?mode=metadata` or `?mode=filesystem`.
+
+!!! warning "Treat the token like a password"
+    Anyone with this token can read your library and reading progress over `/api/v1/*`. Rotate it to revoke access from old clients.
+
+<!-- TODO: screenshot — Client API Access token + browse-mode toggle -->
 
 ## Komga Reading Sync
 

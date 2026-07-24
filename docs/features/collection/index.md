@@ -26,6 +26,9 @@ This is the default section. It will display all publishers in your collection. 
 
 With the introduction of multiple libraries, this section will update based on your selected library.
 
+!!! info "Per-page selection persists"
+    Your **Per page** choice when browsing is now saved and restored across navigation instead of resetting on each load.
+
 ### Favorite Collections
 
 This section will display all publishers that have been marked as a favorite. You can mark a publisher as a favorite by clicking the <i class="bi bi-bookmark-heart fs-2 text-icon"></i> icon in the top left of the publisher list.

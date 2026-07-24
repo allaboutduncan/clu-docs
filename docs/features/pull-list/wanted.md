@@ -16,7 +16,7 @@ This will scan your download directory to check for any files that may have been
 
 ### Check for Missing Issues
 
-This will manually run the job to check **GetComics** for any issues in your _Wanted_ list.
+This will manually run the job to check for any issues in your _Wanted_ list. If [Usenet Downloads](../usenet/index.md) are configured, this checks **GetComics** and your Usenet indexers in [Source Priority](../usenet/source-priority.md) order; otherwise it checks GetComics only.
 
 ## Missing Issues
 
@@ -26,9 +26,9 @@ The Missing Issues list is sorted by the **Store Date** in from oldest to newest
 
 ### Search for Missing Issues
 
-For missing issues in your collection, you can search for them on GetComics.org without leaving CLU. Simply click on the <i class="bi bi-search text-info"></i> **Search** button next to the issue.
+For missing issues in your collection, you can search for them without leaving CLU. Simply click on the <i class="bi bi-search text-info"></i> **Search** button next to the issue.
 
-This will open a modal and begin searching for the issue on GetComics.org. 
+This will open a modal and begin searching for the issue. 
 
 ![Searching for Issue](../../assets/pull/search01.png){: .center-image}
 
@@ -37,6 +37,9 @@ The modal will show you the results of the search and allow you to add the issue
 ![Refining the Search](../../assets/pull/search02.png){: .center-image}
 
 You can adjust the terms in the modal to refine your search in an attempt to find the issue you are looking for.
+
+!!! info "GetComics + Usenet results"
+    If you've configured [Usenet Downloads](../usenet/index.md), this search queries **GetComics** *and* your Usenet indexers together. Both sources appear under labeled section headers, ordered by your [Source Priority](../usenet/source-priority.md). Grab from either — see [Searching & Grabbing](../usenet/search-and-grab.md) for details.
 
 ## Upcoming Issues
 
