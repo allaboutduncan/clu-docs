@@ -1,5 +1,5 @@
 ---
-title: v6.2 - User Roles, Library & Folder Permissions, & More
+title: v6.2 - User Accounts, Library & Folder Permissions, & More
 date: 2026-08-03
 ---
 
