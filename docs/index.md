@@ -40,7 +40,7 @@ hide:
           <div class="frame-corner tr"></div>
           <div class="frame-corner bl"></div>
           <div class="frame-corner br"></div>
-          <img src="assets/hero.png" alt="CLU Dashboard" class="hero-image">
+          <img src="assets/hero.png" alt="CLU Dashboard" class="hero-image" width="1607" height="1285" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ hide:
     <div class="features-grid">
       <article class="feature-card" style="--delay: 0">
         <div class="card-image">
-          <img src="assets/hero-edit.png" alt="Edit Comics">
+          <img src="assets/hero-edit.png" alt="Edit Comics" width="2528" height="1696" loading="lazy">
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
@@ -66,7 +66,7 @@ hide:
       </article>
       <article class="feature-card" style="--delay: 1">
         <div class="card-image">
-          <img src="assets/hero-manage.png" alt="Organize Files">
+          <img src="assets/hero-manage.png" alt="Organize Files" width="2528" height="1696" loading="lazy">
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
@@ -77,7 +77,7 @@ hide:
       </article>
       <article class="feature-card" style="--delay: 2">
         <div class="card-image">
-          <img src="assets/hero-enjoy.png" alt="Read Comics">
+          <img src="assets/hero-enjoy.png" alt="Read Comics" width="2528" height="1696" loading="lazy">
           <div class="card-overlay"></div>
         </div>
         <div class="card-body">
@@ -96,7 +96,7 @@ hide:
       <div class="showcase-content">
         <span class="showcase-label">Seamless Setup</span>
         <h2>Point. Click. Done.</h2>
-        <p>CLU plugs directly into your existing filesystem. No migrations, no restructuring,<br/> no headaches. Your collection stays exactly where it is.</p>
+        <p>CLU plugs directly into your existing filesystem. No migrations, no restructuring, no headaches. Your collection stays exactly where it is.</p>
         <ul class="feature-list">
           <li><span class="check"></span>CBZ, CBR, and PDF support</li>
           <li><span class="check"></span>Docker-ready deployment</li>
@@ -105,7 +105,7 @@ hide:
       </div>
       <div class="showcase-visual">
         <div class="visual-frame">
-          <img src="assets/hero-integrate.png" alt="Integration">
+          <img src="assets/hero-integrate.png" alt="Integration" width="2816" height="1536" loading="lazy">
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@ hide:
       </div>
       <div class="showcase-visual">
         <div class="visual-frame">
-          <img src="assets/hero-enjoy.png" alt="Reading Experience">
+          <img src="assets/hero-enjoy.png" alt="Reading Experience" width="2528" height="1696" loading="lazy">
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@ hide:
       </div>
       <div class="showcase-visual">
         <div class="visual-frame">
-          <img src="assets/hero-03.png" alt="Management">
+          <img src="assets/hero-03.png" alt="Management" width="2816" height="1536" loading="lazy">
         </div>
       </div>
     </div>
@@ -153,7 +153,7 @@ hide:
     <div class="cta-pattern"></div>
     <div class="cta-content">
       <h2>Ready to Take Control?</h2>
-      <p>Get CLU running in minutes.<br/> Docker makes it simple.</p>
+      <p>Get CLU running in minutes. Docker makes it simple.</p>
       <div class="cta-buttons">
         <a href="why-clu/" class="btn-ghost large">
           <span class="btn-text">Why CLU?</span>
