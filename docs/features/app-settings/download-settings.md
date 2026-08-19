@@ -75,11 +75,29 @@ Generate a long-lived **bearer token** for the offline mobile/desktop reader app
 !!! warning "Treat the token like a password"
     Anyone with this token can read your library and reading progress over `/api/v1/*`. Rotate it to revoke access from old clients.
 
+### Per-user tokens
+
+!!! info "New in v6.2"
+    In a [multi-user install](../users/index.md), a bearer token identifies **a specific person**.
+
+The token on this page is the **legacy global token**. It still works and resolves to the [Store Owner](../users/roles.md), so existing clients keep running untouched.
+
+Alongside it, every account has its own tokens, minted either by that user from [My Account](../users/my-account.md#api-tokens) or by the owner from [Settings → Users](../users/managing-users.md):
+
+- `/api/v1` resolves a bearer token to its user, so reading progress, favorites, and library scope land on the right account.
+- **Reader and Clerk tokens are library-scoped.** A token can't reach files outside its user's [library and folder grants](../users/library-and-folder-access.md) — the same 403s apply as in the browser.
+- `/api/insights` accepts the same tokens as an optional header. Without one it reports the Store Owner's numbers, so existing tokenless widgets are unchanged.
+
+**OPDS** does not use tokens at all: OPDS readers authenticate with **HTTP Basic Auth** using the account's own username and password, and `/opds/browse` and `/opds/to-read` filter to that user. In implicit-owner mode OPDS stays auth-free exactly as before.
+
 <!-- TODO: screenshot — Client API Access token + browse-mode toggle -->
 
 ## Komga Reading Sync
 
 ![Komga Reading Sync](../../assets/settings/komga-sync.png){: .center-image}
+
+!!! info "Komga sync is shared, not per user"
+    Komga sync targets a **single shared server and account**, attributed to the [Store Owner](../users/roles.md). In a multi-user install everyone's imported progress lands on that one connection. See [Per-User Data](../users/personal-data.md#still-shared).
 
 This section allows you to import your reading progress from Komga. Once imported, your reading history will be available in all [Library Insights](../../features/insights/index.md) sections. This will allow you to see your reading progress in the context of your entire collection.
 
@@ -110,3 +128,19 @@ This section will display the status of the sync between CLU and Komga. It will 
 - **Save:** Saves the settings in this section.
 - **Test Connection:** Tests the connection to your Komga server. If successful, it will display a *Connected* indicator.
 - **Sync Now:** Triggers an immediate sync between CLU and Komga. You can trigger a one-time sync anytime you'd like by clicking this button.
+
+## Download client groups
+
+!!! info "New in v6.3"
+    Download clients now belong to a **group**, and the "only one active client" rule is scoped **per group**.
+
+| Group | Clients | Docs |
+| --- | --- | --- |
+| `usenet` | SABnzbd, NZBGet | [Usenet Downloads](../usenet/index.md) |
+| `dcpp` | AirDC++ | [DC++ Downloads](../dcpp/index.md) |
+
+**Activating AirDC++ does not deactivate SABnzbd.** The two sources are independent and can both be active at once — you can only have one active client *within* each group.
+
+Existing clients backfill to the `usenet` group automatically on upgrade, so nothing changes for an install that was using Usenet before.
+
+Which sources the nightly [auto-download](../pull-list/wanted.md) job actually uses is a separate question, governed by [Source Priority](../usenet/source-priority.md).

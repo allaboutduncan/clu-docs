@@ -179,3 +179,63 @@ Use the **Tags** button <i class="bi bi-tags"></i> on each reading list card to 
 Open a reading list and click the **Export CBL** button. CLU generates a standard `.cbl` XML file containing all issues in the list with their series, issue number, volume, and year fields. The file downloads immediately with the list name as the filename.
 
 The exported CBL file is compatible with ComicBookLover, ComicRack, and other comic readers that support the CBL format. -->
+
+## Reading Lists on the Dashboard
+
+!!! info "New in v6.3"
+    A reading list can now surface on the [Collection homepage](index.md). Before v6.3 a list only existed if you deliberately navigated to it.
+
+### Bookmarking a list
+
+The **Bookmark** action on a reading list card is the single opt-in that drives **both** dashboard surfaces. Bookmark a list once and it appears in Want to Read *and* feeds On the Stack; un-bookmark it and it leaves both.
+
+!!! info "Per user"
+    Bookmarks are **user-scoped**. In a [multi-user install](../users/index.md) everyone curates their own dashboard from the same shared lists — your bookmarks don't change anyone else's homepage.
+
+    **Readers can bookmark.** It's their own personal data, so it isn't gated behind the Clerk role. See [Per-User Data](../users/personal-data.md).
+
+### Want to Read
+
+![Reading list card in Want to Read](../../assets/lists/want-to-read-card.png){: .center-image}
+
+/// caption
+A bookmarked reading list as a single Want to Read card.
+///
+
+Each bookmarked list gets **one card** in the Want to Read swiper, showing:
+
+- A **cover stack** built from the list's issues
+- A **read / total** count
+- A **progress bar**
+- Click-through to the list itself
+
+### On the Stack
+
+![List-name badge in On the Stack](../../assets/lists/on-the-stack-badge.png){: .center-image}
+
+On the Stack surfaces each bookmarked list's **next unread issue**, defined precisely as:
+
+> the first entry **in the list's own sort order** that is unread **and** has a matched file.
+
+Two consequences worth knowing:
+
+- **Entries with no matched file are skipped, not counted as unread.** This is why a list can show a later issue than you'd expect — the unmatched ones in between are passed over rather than blocking. [Map the missing issues](#mapping-missing-issues) if you want them in the sequence.
+- **A list you've never started still appears.** It doesn't require prior progress; an untouched list contributes its first entry.
+
+Entries carry a **list-name badge** so you can tell which list an issue came from.
+
+On the Stack merges these with your subscribed series and **dedupes**: if a bookmarked list and a subscribed series point at the same next issue, it's shown once. The existing folder-scope filter applies to reading-list issues too.
+
+## Searching for Missing Issues
+
+!!! info "Updated in v6.3"
+    The search modal on the Reading Lists page now includes **Usenet** and **DC++** sections with full result scoring. It was GetComics-only before.
+
+When you search for a missing issue from a reading list, you get the same combined, scored, multi-source results as the series page and [Wanted Issues](../pull-list/wanted.md) — ordered by [Source Priority](../usenet/source-priority.md) — plus the **download and keep searching** behavior described in [Click to Download](../file-downloads/send.md#queue-more-than-one-at-a-time).
+
+The modal also now passes the **issue year** into the query, which improves matching on long-running series.
+
+## Reading Lists and roles
+
+!!! info "Who can do what"
+    In a [multi-user install](../users/index.md), **Readers** can browse reading lists and bookmark them for their own dashboard. Creating, importing, editing, deleting, mapping, and reordering lists are [Clerk](../users/roles.md) actions.

@@ -35,5 +35,17 @@ From there the normal [wanted-matching pipeline](../pull-list/wanted.md) picks i
 
 Releases that don't include an identifiable issue number (or are just a bare series title) **appear in manual search** so you can grab them by hand if you know what they are — but they are **excluded from auto-download**. This keeps the nightly job from grabbing an ambiguous release that only matched on series and year.
 
+## Grabs no longer create ".cbz" folders
+
+!!! info "Fixed in v6.3"
+    A grab for `Heavy Metal 5.cbz` no longer produces a **directory** named `Heavy Metal 5.cbz`.
+
+CLU was handing the NZB client the destination **filename**, extension included, and download clients name the completed job folder after whatever you submit. The result was a folder called `Heavy Metal 5.cbz` holding the real comic — which the [folder monitor](../folder-monitoring/index.md) then read as a comic *file*, producing a series folder named `Heavy Metal 5.cbz` and nothing at the TARGET level at all.
+
+The submitted name is now stripped of its extension before it reaches the client.
+
+!!! info "You don't need to re-grab"
+    The monitor-side half of the fix strips comic extensions when deriving folder names, so it also **repairs folders already queued at your client** — and folders created this way by other download clients.
+
 !!! info "New in v6.0"
     Combined GetComics + Usenet search and grabbing is new in **v6.0**.

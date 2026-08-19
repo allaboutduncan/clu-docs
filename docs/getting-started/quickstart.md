@@ -47,7 +47,8 @@ services:
             ## File creation mask. 000 -> world-writable folders (drwxrwsrwx) and files
             ## (-rw-rw-rw-). Use 002 for group-writable (775/664) or 022 for owner-only writes.
             - UMASK=000
-            ### You can enable basic authentication by setting the two values below
+            ### Legacy login gate. On a fresh install these seed the Store Owner account.
+            ### See features/users/first-run.md - new installs can skip these entirely.
             ## CLU_USERNAME=[username] - Set the username for the app.
             ## CLU_PASSWORD=[password] - Set the password for the app.
 volumes:
@@ -87,6 +88,10 @@ Additional info about the ENV variables can be found [here](../features/app-sett
 | -e PUID=99 | Set the User ID (PUID) and Group ID (PGID) for the container. |
 | -e PGID=100 | Set the User ID (PUID) and Group ID (PGID) for the container. |
 | -e UMASK=000 | Set the file creation mask (UMASK). |
+| -e CLU_USERNAME / CLU_PASSWORD | **Optional, legacy.** The old login gate. On a fresh install these seed a hashed [Store Owner](../features/users/first-run.md) account and keep working through the normal login screen. New installs can leave them out and use the one-time Store Owner Setup screen instead. |
+
+!!! info "Accounts and logins"
+    CLU is login-free with a single account. Real user accounts, roles, and per-folder permissions are covered in [Users & Access](../features/users/index.md).
 
 ### Using a Local Metadata Database (GCD / ComicVine)
 

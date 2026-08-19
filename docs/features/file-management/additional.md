@@ -64,3 +64,33 @@ For any comic that has a valid 'ComicInfo.xml' file, you'll also see a <i class=
 ![Clear Comic Info](../../assets/file/clear-xml.png){: .center-image}
 
 After clicking the icon, you'll be asked to confirm you want to delete the metadata. Clicking Yes, will unpack the file, delete the XML and re-pack the file.
+
+### Want to Read
+
+!!! info "New in v6.3"
+    **Want to Read** is available on both **files and folders** from the dropdown menu, in the File Manager and the collection grid.
+
+Flags the item for the [Want to Read](../collection/index.md#want-to-read-list) swiper on the Collection homepage. It's a personal flag — in a [multi-user install](../users/index.md) it lands on your dashboard only.
+
+### Add to Pull List
+
+!!! info "New in v6.3"
+    **Add to Pull List** is available on **folders** from the dropdown menu.
+
+Runs the same identity resolution that [Scan Library](../pull-list/automap.md) uses, but on a **single folder**. The result is indistinguishable from a full library scan: sidecars are backfilled, issues are synced, and owned/missing counts are rebuilt in the background.
+
+#### Outcomes
+
+The action reports what actually happened rather than silently doing something surprising:
+
+| Outcome | Meaning | What to do next |
+| --- | --- | --- |
+| `already_mapped` | The folder is already mapped to a series on your Pull List. | Nothing — this is a no-op. |
+| `applied` | The series was identified and mapped. Issues are syncing in the background. | Nothing. Check the [Pull List](../pull-list/pull-list.md) in a moment. |
+| `needs_match` | No usable `series.json` or `.cvinfo` sidecar was found. | A **Metron picker** opens — search for and pick the right series. |
+| `conflict` | The series is already mapped to a **different** folder. | CLU reports *where* rather than re-pointing the mapping. Decide which folder is correct and fix the mapping on the [Series page](../pull-list/series.md). |
+| `failed` | The operation could not complete. | Check [App Logs](../app-settings/logs.md). |
+
+!!! info "Constraints"
+    - **The folder must sit inside a configured [library root](../app-settings/libraries.md).** This is what keeps your `/downloads` folder off the Pull List.
+    - **Root-level folders are excluded** in the collection grid, because at that level a folder is a *publisher*, not a series.

@@ -40,3 +40,15 @@ Oftentimes series archives or torrent files will have numerous naming patterns w
 Currently renaming rules are in `rename_rules.ini` and are priority based
 
 The current set of rules are always available to view in the repository and can be found [here](https://github.com/allaboutduncan/comic-utils/blob/main/config/rename_rules.ini)
+
+### Bare-year filenames
+
+!!! info "Fixed in v6.3"
+    `Series ### YYYY` — an **unparenthesized** year — no longer parses the year as the issue number.
+
+A filename like `Star Wars - Poe Dameron 001 2016` fell through to the no-year pattern, which reads the **last** number as the issue. That parsed the issue as "2016" for every file in the series, and because Smart Rename discards the parsed series in favour of the sidecar, **every file collapsed to the same name** and picked up ` (2)`, ` (3)` collision suffixes.
+
+The `{issue_year}` token now also **falls back to the year in the filename** when ComicInfo.xml has none — previously the year group was stripped entirely for these files, since they carry no ComicInfo year.
+
+!!! warning "Files already renamed into collision suffixes need a re-run"
+    The fix corrects the parser, not files that were already renamed by the broken one. If you have a folder of `Series (2).cbz`, `Series (3).cbz`, **re-run the rename** on it to recover the real issue numbers.

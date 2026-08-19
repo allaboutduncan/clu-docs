@@ -48,7 +48,19 @@ When you apply the mappings, CLU:
 
 ![Import complete](../../assets/pull/import04.png){: .center-image}
 
+## Scanning a single folder
+
+!!! info "New in v6.3"
+    **Add to Pull List** on a folder dropdown runs this same identity resolution against **one folder**.
+
+It is genuinely the same code path, not a lighter version — sidecars are backfilled, issues synced, and owned/missing rebuilt in the background exactly as a full scan would. A folder added this way is indistinguishable from one Scan Library picked up.
+
+One behavior differs in emphasis: a **corrupt or unreadable sidecar** returns *needs match* and opens a Metron picker, rather than failing. You can always map it by hand.
+
+See [Additional Features](../file-management/additional.md#add-to-pull-list) for the full outcome table.
+
 ## Related
 
 - [Pull List](pull-list.md) — where imported series land.
+- [Additional Features](../file-management/additional.md#add-to-pull-list) — adding a single folder to the Pull List.
 - [Series page](series.md) — mapping and subscription management for a single series.

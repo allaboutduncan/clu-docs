@@ -10,8 +10,10 @@ Your download client is the app — **SABnzbd** or **NZBGet** — that receives 
 
 You add and manage download clients from the **Download Clients** tab in Settings.
 
-!!! warning "Only one active client"
-    Only **one** download client is active at a time. If you configure both SABnzbd and NZBGet, only the one marked active will receive grabs.
+!!! warning "Only one active Usenet client"
+    Only **one** Usenet download client is active at a time. If you configure both SABnzbd and NZBGet, only the one marked active will receive grabs.
+
+    As of **v6.3** this is scoped **per client group**, so an active [AirDC++](../dcpp/setup.md) client does **not** deactivate your Usenet client — the two run side by side. See [Download client groups](../app-settings/download-settings.md#download-client-groups).
 
 !!! info "Editing saved clients"
     When you re-open a saved client, its fields are **pre-filled with the real stored values** and secrets have a working **reveal toggle**. Editing one field no longer wipes the others, so you can update a single value without re-entering everything.

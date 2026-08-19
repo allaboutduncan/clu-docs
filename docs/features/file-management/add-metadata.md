@@ -55,3 +55,41 @@ If enabled, when you move a file to a new location the metadata will be applied 
 ### File Renamed when Metadata is Added
 
 If this feature is enabled, when a `ComicInfo.xml` file is generated, the file will be renamed to match your configured [Custom Rename Pattern](../app-settings/file-settings.md#custom-naming-settings) based on the data in the `ComicInfo.xml` file.
+
+## When the Issue Number Won't Match
+
+!!! info "New in v6.3"
+    When the **volume matches but the issue number doesn't**, CLU now shows the volume's issues and lets you pick one — instead of dead-ending on *"No metadata found for selection"*.
+
+Applying metadata resolves the issue by **exact number** against the volume you chose. Odd numbering means the volume is right but the issue is never found, and the old flow simply gave up with a red toast.
+
+![Issue picker](../../assets/single/issue-picker.png){: .center-image}
+
+/// caption
+The volume's issues, listed after an issue-number match failed.
+///
+
+### Cases this covers
+
+| Case | Example |
+| --- | --- |
+| **Decimal or suffixed numbering** | `1.MU`, `13A` |
+| **A file numbered differently from the provider** | your file says `003`, the provider stores `23` |
+
+Rather than teaching the parser every numbering scheme ever invented, CLU shows you the volume's issues in the same card layout and filter as the volume picker, and you pick the right one.
+
+### Batch behavior
+
+On a **folder run**, files that hit this are **collected as you go** rather than interrupting the batch. When the run finishes you walk through them one at a time. The issue list is cached per volume, so a folder of near-misses from the same volume doesn't re-fetch it repeatedly.
+
+!!! info "A real match always wins"
+    Providers that matched a series but no issue are recorded as **near misses** and offered **only after the whole provider cascade comes up empty**. Every provider still runs first, so a genuine match from a later provider always takes precedence over a near-miss picker from an earlier one.
+
+### Scope
+
+| Path | Providers covered |
+| --- | --- |
+| **Single file** | Metron, ComicVine, ComicVine local DB, GCD API |
+| **Batch / folder** | The above, plus GCD |
+
+The [bulk-review wizard](../collection/source-wall.md) already had its own picker and is unchanged.

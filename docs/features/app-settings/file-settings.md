@@ -79,6 +79,17 @@ When enabled, deleted files are moved to a trash folder instead of being permane
 
 **HIDDEN DIRECTORIES:** You can enter a comma-separated list of directory names to hide from all views (File Manager, Collection and Source Wall). Default configuration is: `@eaDir`
 
+### Auto-Generate Folder Thumbnails
+
+!!! info "New in v6.3"
+    **AUTO-GENERATE FOLDER THUMBNAILS** controls whether CLU creates folder cover art on its own while you browse.
+
+When enabled (the default), any folder the [collection grid](../collection/index.md#folder-art) can't draw art for is handed to a background queue that generates it from the first comic in the folder. The art appears within a few seconds, and existing folder art is never replaced.
+
+**When you'd turn it off:** very large libraries on slow storage. Generation has to **open comic archives** to pull a cover, so on a network share, a spinning disk, or a FUSE/mergerfs mount, browsing a folder full of unarted series adds real I/O.
+
+Turning it off doesn't remove any art you already have, and the manual **Generate Thumbnail** action keeps working either way.
+
 ## Custom Naming Settings
 
 ![Custom Naming Settings](../../assets/settings/naming-settings.png){: .center-image}

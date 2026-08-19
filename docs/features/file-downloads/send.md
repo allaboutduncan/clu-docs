@@ -44,3 +44,29 @@ Indicated by the Mega button
 
 #### **Comic Book +**
 When logged in and browsing [https://comicbookplus.com](https://comicbookplus.com), right-click on the "Download File" link
+
+## The Search Modal
+
+Separately from the browser extension, CLU has a **source-search modal** you open from inside the app — on a series page, the [Wanted Issues](../pull-list/wanted.md) page, and the [Reading Lists](../collection/reading-lists.md) page. It queries every configured download source at once: GetComics, [Usenet](../usenet/index.md), and [DC++](../dcpp/index.md), each under its own section header ordered by [Source Priority](../usenet/source-priority.md).
+
+### Queue more than one at a time <a href="#queue-more-than-one-at-a-time" id="queue-more-than-one-at-a-time"></a>
+
+!!! info "New in v6.3"
+    Every result now has **two buttons**: **download**, or **download and keep searching**.
+
+Clicking a result used to queue it *and close the modal*, which made queuing a terminal action — so spotting a second or third file you wanted meant reopening the modal and re-running the entire search for each one.
+
+| Button | What it does |
+| --- | --- |
+| **Download** | Queues the release and closes the modal. The original behavior. |
+| **Download and keep searching** | Queues the release and leaves the modal open, so you can carry on browsing the same result set. |
+
+### Duplicate protection
+
+Because the grab endpoints aren't idempotent, keeping the modal open needs protection against sending the same release twice:
+
+- **Both buttons in a row lock together** while a grab is in flight. Otherwise the second button stays live and the same release gets sent twice.
+- **Queued rows stay locked for the visit.** Narrowing your query and re-searching brings already-taken rows back **locked** rather than arming them again.
+
+!!! warning "DC++ is the exception"
+    DC++ result tokens belong to a **single live search instance** and are re-minted on every search, so DC++ rows **re-arm** when you run a new search. They can't be matched back to what you already queued. See [DC++ Searching & Grabbing](../dcpp/search-and-grab.md).

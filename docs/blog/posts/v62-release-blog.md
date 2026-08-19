@@ -172,4 +172,4 @@ Two pieces are intentionally still global and are on the list for a follow-up: *
 
 That's **v6.2** — CLU with a front door, a set of keys, and a much better sense of whose comics are whose. Feedback is welcome via [Discord](https://discord.gg/6c83t3Qsvq) or [GitHub](https://github.com/allaboutduncan/clu-comics/issues). If you set up accounts for your household, I'd love to hear how the role split holds up.
 
-Previous release: [v6.0 — Usenet Downloads, Pull List Monitoring, Split File, & More](https://clucomics.org/blog/2026/07/23/v60---usenet-downloads-library-import-split-file--more/)
+Previous release: [v6.0 — Usenet Downloads, Library Import, Split File, & More](https://clucomics.org/blog/2026/07/23/v60---usenet-downloads-library-import-split-file--more/)

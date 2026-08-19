@@ -1,6 +1,6 @@
 site_name: CLU Documentation
 site_url: https://clucomics.org
-site_description: "The ultimate self-hosted comic book library manager. Edit CBZ files, manage your filesystem, and download from Metron & GetComics. A powerful alternative to Komga and Kavita."
+site_description: "The self-hosted comic library manager. Convert CBR to CBZ, edit ComicInfo.xml metadata, read in the browser, and download from GetComics, Usenet and DC++. Multi-user with per-folder permissions, a Pull List, and an /api/v1 REST API. A powerful alternative to Komga and Kavita."
 site_author: "CLU Team"
 copyright: "Copyright &copy; 2024 CLU"
 
@@ -50,7 +50,7 @@ markdown_extensions:
   - md_in_html
   - pymdownx.blocks.caption
 
-repo_url: https://github.com/allaboutduncan/comic-utils
+repo_url: https://github.com/allaboutduncan/clu-comics
 
 nav:
   - Home: index.md
@@ -60,6 +60,15 @@ nav:
       - Quickstart: getting-started/quickstart.md
       - Navigating the App: getting-started/navigate.md
       - Setup Walkthrough: getting-started/setup-walkthrough.md
+
+  - Users & Access:
+    - features/users/index.md
+    - Roles & Permissions: features/users/roles.md
+    - First Run & Logging In: features/users/first-run.md
+    - Managing Users: features/users/managing-users.md
+    - Library & Folder Access: features/users/library-and-folder-access.md
+    - Per-User Data: features/users/personal-data.md
+    - My Account: features/users/my-account.md
 
   - Collection Features:
     - features/collection/index.md
@@ -109,6 +118,12 @@ nav:
     - Adding Newznab Indexers: features/usenet/indexers.md
     - Source Priority: features/usenet/source-priority.md
     - Searching & Grabbing: features/usenet/search-and-grab.md
+
+  - DC++ Downloads:
+    - features/dcpp/index.md
+    - Adding AirDC++: features/dcpp/setup.md
+    - Searching & Grabbing: features/dcpp/search-and-grab.md
+    - Status & Restart Recovery: features/dcpp/status-and-recovery.md
 
   - File Management:
     - features/file-management/index.md

@@ -21,10 +21,14 @@ The Settings page is organized into tabs:
 * **File Processing** — [File monitoring, renaming, trash, and cleanup](file-settings.md) settings
 * **Download and API** — [Download provider priority, search variants, the client API token, and Komga sync](download-settings.md)
 * **Metadata Providers** — [Configure and prioritize metadata providers](metadata.md) per library
-* **Download Clients** — [Usenet download clients, indexers, and Source Priority](../usenet/index.md)
+* **Download Clients** — [Usenet](../usenet/index.md) and [DC++](../dcpp/index.md) download clients, indexers, and [Source Priority](../usenet/source-priority.md)
 * **System and Performance** — [Timeouts, timezone, cache, logging, and ComicInfo.xml cleanup](system-settings.md)
 * **Database** — [Database stats, integrity, and backups](database.md)
-* **Personalization** — [Theme, dashboard layout, and recommendations](personalization.md)
+* **Personalization** — [Site-default theme, dashboard layout, and recommendations](personalization.md)
+* **Users** — [User accounts, roles, and library/folder grants](../users/managing-users.md) *(Store Owner only)*
 
 !!! info "Schedules and Logs moved"
     Recurring jobs now live on their own [**Schedules**](schedules.md) page, and [**Logs**](logs.md) has its own page too. Both are reached from the same **gear <i class="bi bi-gear-fill"></i> menu**, alongside Settings.
+
+!!! info "Settings is Store Owner only"
+    In a multi-user install, every Settings tab requires the [Store Owner](../users/roles.md) role — including by direct URL. Readers and Clerks reach their own theme, dashboard layout, and API tokens from [My Account](../users/my-account.md) instead.

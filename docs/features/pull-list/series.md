@@ -53,6 +53,13 @@ For existing subscriptions, you will see the following options:
 
 <i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues.
 
+!!! info "Refresh now genuinely refetches (fixed in v6.3)"
+    Refresh skipped CLU's own cache, but the refetch still went through the Metron client library — which answers from **its** response cache before dispatching any HTTP request, and that cache is stale-forever in practice. A **Summary edited on Metron never reached the page.**
+
+    CLU now purges the cached responses for that series before refetching, so an edit made on Metron shows up.
+
+    The same fix applies to **API Sync**, which had a second, independent version of the problem: it only ever filled a *blank* description, so an edited Summary couldn't land through that path either. It now **updates a description that already has content**.
+
 ### Monitor
 
 The **Monitor** toggle controls whether CLU actively searches for this series' wanted issues. When a series is **Not Monitored**, it's greyed out on the [Pull List](pull-list.md#monitoring) and excluded from the nightly wanted-issues refresh and from DDL/Usenet auto-download.
