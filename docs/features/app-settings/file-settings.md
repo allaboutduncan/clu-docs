@@ -20,9 +20,29 @@ This is the most extensive set of features and will only be applicable if [folde
 
 **Auto-Convert to CBZ:** If enabled, when CBR files are downloaded, this will auto-convert them to CBZ
 
-**Auto-Unpack ZIP Files:** If enabled, when ZIP files are added to your WATCH folder, this will automatically extract them. This does not create folders. It uses the structure within the ZIP file.&#x20;
+!!! warning "Auto-Unpack was removed in v6.4"
+    **Auto-Unpack ZIP Files** no longer exists as a setting — archives dropped in **WATCH** are now **always** unpacked, and unpacked based on what's actually inside them.
 
-For ZIP only, this specifically bypasses the IGNORED EXTENSIONS.
+    The setting predated automated downloads and shipped **off**, so a fresh install silently stranded packs in WATCH with no indication why. With the behaviour unconditional there's nothing left to store, so the dead `AUTO_UNPACK` key is stripped from your `config.ini` on the next start rather than left looking like it still does something.
+
+    **If you had it off deliberately**, this is a behaviour change: drop archives somewhere other than WATCH.
+
+### How archives in WATCH are handled
+
+CLU peeks inside an archive **without extracting it** to decide what it is, then acts accordingly:
+
+| What's inside | What CLU does |
+| --- | --- |
+| **Ready comics** (`.cbz` / `.cbr` / `.pdf` / `.cbt`) | Extracts them beside the archive and deletes the archive. |
+| **Page images** | The archive **is** the comic. A `.zip` is renamed to `.cbz` — never repacked — and a `.rar` goes through the normal CBR→CBZ conversion. |
+| **Unreadable, or neither** | Blind extract, so nothing is left stranded in WATCH. |
+
+Two long-standing problems were fixed by the same change:
+
+- **A loose `.rar` was never unpacked at all.** It sits on IGNORED EXTENSIONS and, unlike `.zip`, had no exemption. Archives now bypass the ignore list entirely — they're on that list because they aren't comics to *move*, not because they shouldn't be opened.
+- **Unpacking was content-blind.** A `.zip` that was really a comic exploded into loose page images, which the pipeline then moved to TARGET **one page at a time**.
+
+Multipart and hybrid release folders are unchanged — [auto-unwrap](../folder-monitoring/features.md) still gets first refusal.
 
 **Process Sub-Directories:** If enabled, this will perform monitoring functions on sub-directories within your WATCH folder. For example, if you have `/WATCH/archive01.zip` and it is auto-extracted to `/WATCH/archive`each file will be processed and moved to `/TARGET`.
 

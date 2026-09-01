@@ -136,7 +136,12 @@ How the queue behaves:
 | **6-hour backoff** | A folder that can't produce art isn't retried for six hours, so a broken folder doesn't get hammered every time you browse past it. |
 | **Existing art is never replaced** | If a folder already has art — uploaded or generated — the queue leaves it alone. |
 
-`folder.gif` is now recognized as folder art alongside `.png`, `.jpg`, and `.jpeg`.
+`folder.gif` is now recognized as folder art alongside `.png`, `.jpg`, and `.jpeg` — and as of **v6.4**, so is `folder.webp`. Two separate hardcoded extension lists had omitted it, so an uploaded `.webp` survived a rebuild and kept winning: the new art was generated and then never shown.
+
+!!! info "New in v6.4 — pick how folder art looks"
+    Generated folder art now has **four styles** — Fanned Stack (the default, unchanged), Single Image, Isometric Cascade and 2x2 Mosaic Grid — chosen site-wide on the [Personalization](../app-settings/personalization.md#folder-thumbnail-style) page, along with a switch for the nested-folder icon overlay.
+
+    You can pin a specific issue's cover as a folder's primary art with **[Set as Folder Thumbnail](issues.md#set-as-folder-thumbnail)**, and apply a style change to art that already exists with **[Regenerate All Thumbnails](../app-settings/personalization.md#regenerate-all-thumbnails)**.
 
 **Card art also renders at a consistent size** regardless of the source image's dimensions. Previously only some card types constrained the image, so identical art could appear at two different scales — a 200×300 file overflowed its frame and got centre-cropped while a 167×250 one sat inside it untouched.
 

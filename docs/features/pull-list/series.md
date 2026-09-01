@@ -58,6 +58,11 @@ For existing subscriptions, you will see the following options:
 
     CLU now purges the cached responses for that series before refetching, so an edit made on Metron shows up.
 
+!!! info "Refresh also drops the issue bodies now (v6.4)"
+    The v6.3 fix purged the *series* response but not the individual **issue** responses — which are the ones carrying **creator credits**. So a series whose issues Metron had since completed still came back credit-less.
+
+    Refresh now drops the cached issue detail for every known issue in the series too. If your files were tagged with no credits, see [Credit Backfill](../app-settings/schedules.md#credit-backfill) for the automatic repair.
+
     The same fix applies to **API Sync**, which had a second, independent version of the problem: it only ever filled a *blank* description, so an edited Summary couldn't land through that path either. It now **updates a description that already has content**.
 
 ### Monitor

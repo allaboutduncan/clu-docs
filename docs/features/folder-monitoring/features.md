@@ -54,7 +54,9 @@ When enabled, any CBR file will be auto-converted to a CBZ when processed.
 ## Auto-Unwrap for Hybrid & Multipart Releases
 
 !!! info "New in v6.0"
-    Auto-unwrap is new in **v6.0**. It's gated behind the existing **AutoConvert / Auto-Unpack** setting — there's nothing new to configure.
+    Auto-unwrap is new in **v6.0**. There's nothing to configure.
+
+    As of **v6.4** the **Auto-Unpack** setting is gone — archives in WATCH are always unpacked, and unpacked based on what's inside them. See [How archives in WATCH are handled](../app-settings/file-settings.md#how-archives-in-watch-are-handled).
 
 Usenet releases don't always arrive as a ready-to-read comic. Many show up as a **hybrid/multipart release**: a folder of obfuscated, multi-part archives — a set of `.zip` parts that extract to a `.RAR` that finally extracts to the actual PDF, CBR, or CBZ. The old per-file monitor couldn't tell that four zips were really one archive, so it treated each obfuscated part as a separate file.
 

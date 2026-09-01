@@ -16,6 +16,53 @@ description: Answers to the most asked questions or things I think you should kn
 ??? question "How Can I Say Thank You?"
     If you enjoyed this, want to say thanks or want to encourage updates and enhancements, feel free to [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/allaboutduncan)
 
+??? question "Can CLU notify me when a download finishes?"
+    Yes, as of **v6.4**. Settings → **Notifications** takes one or more [Apprise](https://github.com/caronc/apprise) URLs — `discord://`, `tgram://`, `ntfy://`, `mailto://` and 100+ others — and pushes when a download completes, a download fails, or wanted issues land in your library.
+
+    Nothing is sent until you add a URL and tick at least one event. See [Notifications](features/app-settings/notifications.md).
+
+??? question "My comics were tagged from Metron with no creator credits"
+    This was a real bug, fixed in **v6.4** — and there's an automatic repair.
+
+    The Metron client library's response cache had **no working TTL**, so on a long-lived container CLU could tag a file from a body cached days earlier. Metron also finishes issue records *after* a comic ships, so a release-morning fetch legitimately has no credits yet. Either way the file was stuck: once `ComicInfo.xml` has a `Notes` field, every automatic tagging path skips it forever.
+
+    Turn on **Credit Backfill** (or click **Backfill Credits Now**) on the [Schedules](features/app-settings/schedules.md#credit-backfill) page. It asks Metron which issues have changed, repairs the affected files, and only rewrites a file when Metron actually has credits now.
+
+??? question "CLU got my IP banned from Metron"
+    Fixed in **v6.4**. CLU couldn't tell a **401** from a normal miss, so mistyped credentials meant it kept sending requests — through the nightly series sync, the Weekly Releases publisher warm, automap and auto-tagging — until fail2ban blocked the IP.
+
+    A 401 or 403 now **latches a block on all Metron traffic**, persisted across restarts. It doesn't time out: only saving your credentials, a successful **Test**, or the **Re-enable** button clears it. See [Metron Authentication](features/app-settings/metadata.md#metron-authentication).
+
+??? question "Can I use a Metron API token instead of my username and password?"
+    Yes, as of **v6.4**. Generate a token on your [metron.cloud](https://metron.cloud) account page, then pick **API Token** in the auth method picker on the Metron card in Settings → Metadata Providers.
+
+    Username and password still works — the token is an addition, not a replacement. If both are stored, the token wins. See [Metron Authentication](features/app-settings/metadata.md#metron-authentication).
+
+??? question "How do I change what folder cover art looks like?"
+    Settings → **Personalization** → **Folder Thumbnail Style**, new in **v6.4**. Four styles: Fanned Stack (the default, unchanged from v6.3), Single Image, Isometric Cascade, and 2x2 Mosaic Grid.
+
+    Picking a style only affects art generated **from that point on**. To restyle art you already have, run **Regenerate All Thumbnails** — from Personalization for every library, or from a top-level folder's <i class="bi bi-three-dots-vertical"></i> menu for one branch. See [Folder Thumbnail Style](features/app-settings/personalization.md#folder-thumbnail-style).
+
+??? question "Can I choose which cover a folder uses?"
+    Yes. Open the folder, click the <i class="bi bi-three-dots-vertical"></i> menu on the issue you want, and choose **Set as Folder Thumbnail**.
+
+    The pin is the folder's *primary* cover in **every** style — the whole image in Single Image, the front card in Fanned Stack and Cascade, the top-left tile in the Mosaic — so switching styles never loses your choice. See [Set as Folder Thumbnail](features/collection/issues.md#set-as-folder-thumbnail).
+
+??? question "I ran Regenerate All Thumbnails on a publisher and its own art didn't change"
+    That's deliberate. A sweep **never touches the folder it was invoked on** — running it on `/data/DC Comics` restyles every series inside and leaves that publisher's own `folder.png` alone, because a hand-picked publisher image isn't what you're replacing when you restyle series art. The all-libraries sweep skips the library roots the same way.
+
+    To change a publisher's own art, upload a new image to that folder.
+
+??? question "Where did the Auto-Unpack setting go?"
+    Removed in **v6.4**. Archives dropped in WATCH are now **always** unpacked, so there's nothing left to configure and the dead `AUTO_UNPACK` key is stripped from your `config.ini` on the next start.
+
+    It shipped **off**, which meant a fresh install silently stranded packs in WATCH. Unpacking is also content-aware now: ready comics get extracted, a `.zip` that's really a comic is renamed to `.cbz` rather than exploded into loose pages, and a loose `.rar` — previously ignored outright — is handled too. See [How archives in WATCH are handled](features/app-settings/file-settings.md#how-archives-in-watch-are-handled).
+
+??? question "My download failed but CLU didn't notify me for twenty minutes"
+    Working as intended. As of **v6.4** a failed download is **retried up to 3 times**, spaced 1, 5 and 15 minutes apart, and the failure notification is held back until those are spent — so a notification means "genuinely dead" rather than "the first mirror hiccuped".
+
+    Downloads [blocked by Cloudflare](features/file-downloads/status.md#blocked-by-cloudflare) are the exception: they skip the retries and report immediately, because no automated client can pass a managed challenge.
+
 ??? question "I get \"Illegal seek\" or CBZ write errors on a mergerfs / FUSE mount"
     This is fixed as of **v6.0**. If your library or `/data` lives on a mergerfs, network, or other FUSE mount, older builds could fail zip writes with `OSError: [Errno 29] Illegal seek`. CLU now assembles every zip write on a local seekable volume and moves the finished file into place, so these failures are gone. Those writes also get consistent parent-folder permissions as a bonus. If you're still seeing the error, update to v6.0 or later.
 

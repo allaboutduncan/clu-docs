@@ -20,8 +20,46 @@ This will show one of the following statuses:
 
 * queued
 * in\_progress
+* retry\_pending *(new in v6.4)*
 * error
 * complete
+
+### Automatic Retries
+
+!!! info "New in v6.4"
+    A failed download is now **retried automatically up to 3 times** before it's reported as failed.
+
+Most download failures are transient — an overloaded GetComics mirror, a dropped connection, a 5xx — and would have succeeded on a second attempt a few minutes later. CLU already failed *over* between mirrors, but once the last mirror raised, that was the end of it and you had to notice the red row and click **Retry** by hand.
+
+A failed download is now parked and re-queued **3 times, spaced 1, 5 and 15 minutes apart**. The row shows the wait live:
+
+> **`Retrying in 4m 12s (2 of 3)`** — in warning colour, with the last error on hover.
+
+While a retry is pending the row offers **Cancel** rather than Retry, since it's already going to run again. **Clear Failed Downloads** won't delete a row that's waiting to retry.
+
+!!! info "Failure notifications wait for the retries"
+    The **Download failed** [push notification](../app-settings/notifications.md) is held back until all three retries are spent, so a notification means *"this one is genuinely dead"* rather than *"the first mirror hiccuped"* — and it tells you how many retries were burned.
+
+A manual retry during a backoff doesn't double-download: the pending timer expires into a no-op.
+
+!!! note "Scope"
+    Retries cover **direct downloads** — GetComics, Pixeldrain, MEGA, ComicBookPlus. [Usenet](../usenet/index.md) and [DC++](../dcpp/index.md) clients do their own retrying.
+
+    A hand-driven **Retry** now also keeps the download's fallback mirrors, which it used to silently drop.
+
+### Blocked by Cloudflare
+
+!!! info "New in v6.4"
+    Cloudflare-blocked downloads now say so, and offer the link that actually works.
+
+A managed Cloudflare challenge is the one download failure CLU can't retry its way out of — **no automated client can pass one**. These rows previously showed a bare **error** with nothing explaining why, and a Retry button that could only fail again.
+
+Now:
+
+- The **Status** column reads **"Blocked by Cloudflare"** in warning styling, with a hover explanation.
+- The **Actions** column leads with a **Download manually** button that opens the original GetComics page in a new tab — ahead of Retry, because Retry is pointless here.
+
+These downloads **skip the automatic retries entirely**. Three more attempts would do nothing but delay the manual link you actually need by twenty minutes.
 
 ### Downloads from every source
 
@@ -35,6 +73,9 @@ The Status page shows all three download sources in one table, each with its own
 
 !!! info "DC++ jobs survive a restart"
     DC++ bundles are recorded in the database at grab time, so a container restart no longer orphans one — and a bundle that completed while CLU was down can still be imported. **Failed** and **complete-but-not-moved** rows persist until you dismiss them, deliberately. Usenet jobs are **not** yet covered by this. See [Status & Restart Recovery](../dcpp/status-and-recovery.md).
+
+!!! tip "You don't have to watch this page"
+    As of **v6.4**, CLU can [push a notification](../app-settings/notifications.md) to Discord, Telegram, ntfy, email and 100+ other services when a download completes or fails — from **all three sources**. Set it up in Settings → Notifications.
 
 ### Completed Downloads
 

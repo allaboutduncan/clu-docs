@@ -24,7 +24,8 @@ The Settings page is organized into tabs:
 * **Download Clients** — [Usenet](../usenet/index.md) and [DC++](../dcpp/index.md) download clients, indexers, and [Source Priority](../usenet/source-priority.md)
 * **System and Performance** — [Timeouts, timezone, cache, logging, and ComicInfo.xml cleanup](system-settings.md)
 * **Database** — [Database stats, integrity, and backups](database.md)
-* **Personalization** — [Site-default theme, dashboard layout, and recommendations](personalization.md)
+* **Personalization** — [Site-default theme, dashboard layout, folder art style, and recommendations](personalization.md)
+* **Notifications** — [Push notifications for downloads and wanted issues](notifications.md) *(new in v6.4)*
 * **Users** — [User accounts, roles, and library/folder grants](../users/managing-users.md) *(Store Owner only)*
 
 !!! info "Schedules and Logs moved"

@@ -162,6 +162,7 @@ nav:
     - System Settings: features/app-settings/system-settings.md
     - Database: features/app-settings/database.md
     - Personalization: features/app-settings/personalization.md
+    - Notifications: features/app-settings/notifications.md
     - Schedules: features/app-settings/schedules.md
     - App Logs: features/app-settings/logs.md
   

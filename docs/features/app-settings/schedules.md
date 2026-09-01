@@ -4,7 +4,7 @@ description: Configure CLU's recurring background jobs from the Schedules page
 
 # Schedules
 
-The **Schedules** page is where you configure CLU's recurring background jobs — file-index rebuilds, the GetComics scrape index, Metron series sync, GetComics auto-download, and reading-list sync.
+The **Schedules** page is where you configure CLU's recurring background jobs — file-index rebuilds, the GetComics scrape index, Metron series sync, [credit backfill](#credit-backfill), GetComics auto-download, and reading-list sync.
 
 Open it from the **gear <i class="bi bi-gear-fill"></i> menu** in the top navigation → **Schedules**.
 
@@ -62,6 +62,59 @@ The status area shows how many **entries** are cached and the **next scheduled**
 ![Metron Sync Schedule](../../assets/pull/metron-sync.png){: .center-image}
 
 Configures how often CLU syncs your tracked series from the **Metron API** to check for new issues and updated details. Set the schedule and **Save Sync Schedule**, or click **Sync Now** to run it immediately. The last sync and next run are shown below the buttons.
+
+### Credit Backfill
+
+!!! info "New in v6.4"
+    CLU can find comics that were tagged **without creator credits** and repair them automatically.
+
+![Backfill Credits](../../assets/settings/credit-backfill.png){: .center-image}
+
+<!-- TODO: screenshot — Schedules → Credit Backfill toggle and "Backfill Credits Now" button -->
+
+#### Why your comics have no credits
+
+Comics tagged on release morning frequently came out with **no creator credits at all**. Two files from the same sweep, five seconds apart, would come out one with full credits and one with none — both naming Metron as the source, and Metron's API holding full credits for both.
+
+Two causes compound:
+
+1. **The Metron client library's response cache had no working TTL.** It never checked the expiry column, and its cleanup only ran at startup — so on a long-lived container the effective TTL was *process uptime*. A fresh fetch could never displace a stale row; the old one had to be deleted outright.
+2. **Metron finishes issue records after a comic ships.** One reported issue was still being edited on Metron **two hours after** the file was written.
+
+Either way the file was stuck permanently: once `ComicInfo.xml` carries a `Notes` field, every automatic tagging path skips that file forever — and a manual re-tag was a no-op, because the cache purge only dropped *series* responses and never the issue detail, which is the response carrying the credits. **That's fixed too**: [Refresh from Metron](../pull-list/series.md#refresh) on a series page now drops the issue bodies as well, and bulk re-tag with *overwrite existing* fetches through the purging path rather than rewriting the same half-entered record it was meant to repair.
+
+#### How the sweep works
+
+The backfill runs in two passes against one shared fetch budget:
+
+| Pass | What it does |
+| --- | --- |
+| **Changed records** | Asks Metron which issues have been **modified** since the last sweep — the field that moves when an editor finishes a half-entered record — joins that list against your library, and repairs those. One paged call replaces a detail fetch per candidate, and it finds a comic tagged a year ago whose record was completed last night. |
+| **Credit-less files** | The safety net for the other cause. When a file was tagged from a stale cached body, Metron's record may never have changed, so the first pass never mentions it. Recently written credit-less files are re-fetched directly. |
+
+Two guarantees worth knowing:
+
+- **A file is only rewritten when Metron now actually has credits.** A run that finds nothing touches no bytes.
+- **The rewrite merges.** Tags the file already carries — your `Genre`, your own edits — survive.
+
+Candidates are limited to a **45-day window** on the file's modification time, so a comic Metron will never have credits for ages out of scope instead of being re-fetched every night forever. The fetch budget caps Metron *requests*, not files examined — skips are nearly free — and a run stops early on either the budget or a spent daily quota.
+
+!!! note "No rescan, no restart"
+    The join uses a new indexed column holding each file's Metron issue id. Existing rows are filled in by the metadata scanner in the background, at the lowest priority, whenever it has nothing else pending. There is no big-bang rescan to trigger and nothing to wait for on upgrade.
+
+#### Controls
+
+| Control | What it does |
+| --- | --- |
+| **Enable credit backfill** | Runs the sweep automatically after each [series sync](#automatic-series-sync-schedule). |
+| **Backfill Credits Now** | Runs it immediately, on demand. |
+
+The on-demand run is backgrounded with progress in **Active Operations**, since a full sweep is paced at roughly 15 requests a minute and would outlast the gateway timeout.
+
+The automatic run sits behind its own guard, so **a backfill problem can never fail the series sync**.
+
+!!! info "Metron only, for now"
+    ComicVine has the same shape of problem — a day-of-release ComicVine issue often has no credits, and the same "already has Notes" skip locks it in. The candidate query is provider-agnostic, so a ComicVine arm can be added later.
 
 ### GetComics Auto-Download Schedule
 
