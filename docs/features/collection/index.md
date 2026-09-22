@@ -150,6 +150,40 @@ How the queue behaves:
 
 You can turn automatic generation off entirely from [File Processing Settings](../app-settings/file-settings.md).
 
+!!! warning "Security fix in v6.5 — please upgrade"
+    The endpoint that serves folder cover art did not properly confine which files it would return, so a **signed-in user could read files outside the libraries they had been granted**.
+
+    This is fixed in **v6.5** (GHSA-vhvw-93fg-whm8). If your install has users you don't fully trust, the relevant action is simply: **upgrade to v6.5**.
+
+## Comic covers
+
+### Covers update when the comic does
+
+!!! info "Fixed in v6.5 — thumbnails never updating"
+    Editing, rebuilding or re-tagging a comic left its cover **stale**, sometimes permanently. Two specifics are worth naming, because they're what people actually reported:
+
+    - **Rebuilding a whole directory** left every cover stale — while rebuilding the same issues **one at a time** worked correctly.
+    - On installs running under `PUID`/`PGID`, thumbnails written by an earlier root-fallback start could **never be overwritten at all**, so those covers were frozen for good.
+
+**What changed for you:** every operation that rewrites a comic now refreshes its cover, and the grid additionally notices on its own when a comic is **newer than its cached cover**. You shouldn't need to do anything.
+
+!!! info "Upgrading from an earlier version?"
+    Existing stale thumbnails **repair themselves** as the grid asks for them. There's no rescan to trigger and nothing to schedule — browse your library and they'll correct as you go.
+
+### Formats that can't be thumbnailed are skipped, not retried
+
+PDFs — and CBR/RAR files on the background scan — have **no thumbnail reader**. They used to be re-queued at **every restart**, which is why large libraries saw a thumbnail storm on boot that never accomplished anything.
+
+They're now skipped **once**, permanently. And importantly, they are **not** recorded on the [Problem Files](../problem-files/index.md) page: *"a PDF has no thumbnail reader"* is a fact about the format, not damage to your file.
+
+**macOS sidecar files** (`._Foo.cbz`) are no longer queued as comics either.
+
+### A genuinely failed thumbnail is retryable
+
+When a cover fails because the **archive** is actually broken, that's a real problem and it's now reported as one.
+
+Instead of a silent broken tile in the grid, the file appears on the **[Problem Files](../problem-files/index.md)** page under **Thumbnail**, carrying the actual archive error. From there you can see the error in full, **Retry** it immediately, or **[Find a replacement](../problem-files/replacing-a-file.md)**.
+
 ## Access in a multi-user install
 
 !!! info "Readers see a simplified grid"

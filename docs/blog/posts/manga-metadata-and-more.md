@@ -1,4 +1,5 @@
 ---
+title: v4.11 & 12 - Manga Metadata, Reading Lists, & More
 date: 2026-03-25
 categories:
   - Releases
@@ -6,9 +7,6 @@ categories:
 authors:
   - allaboutduncan
 ---
-
-# v4.11 & 12 - Manga Metadata, Reading Lists, & More
-
 These back-to-back releases bring a highly requested additions to CLU — Manga metadata support and an absolute overhaul of Reading Lists. Additionally, we've added another metadata provider with Grand Comics Database (GCD) API support and added the ability to hide directories from your library views.
 
 Let's go over what's new in these releases.

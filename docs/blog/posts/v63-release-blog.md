@@ -1,6 +1,11 @@
 ---
 title: v6.3 - Per-User Themes, DC++ Downloads, Reading Lists on the Dashboard, & More
 date: 2026-08-18
+categories:
+  - Releases
+  - Updates
+authors:
+  - allaboutduncan
 ---
 
 v6.2 adding User accounts and with v6.3 adds personalization for each user.

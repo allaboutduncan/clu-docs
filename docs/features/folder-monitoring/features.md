@@ -77,3 +77,46 @@ Key guarantees:
 <!-- TODO: before/after screenshot — obfuscated parts vs. clean CBZ (assets/monitor/unwrap.png) -->
 
 See [Searching & Grabbing](../usenet/search-and-grab.md) for how these releases arrive from Usenet.
+
+## Fixes in v6.5
+
+Four long-standing ways a WATCH folder could work against you, all fixed in **v6.5**.
+
+### A corrupt archive is opened once, not forever
+
+!!! info "Fixed in v6.5"
+    A damaged `.zip` in WATCH used to be re-extracted on **every five-minute sweep**, producing a trail of `Comic (19).cbz`-style duplicates in your processed folder and thousands of log lines — forever, or until you noticed and deleted it.
+
+    It now **fails once**, is recorded on the [Problem Files](../problem-files/index.md) page under **Unpack**, and is left alone.
+
+This is the one row type that explains *"my download vanished and never appeared in the library"* — the file never reached your library, so nothing else would ever have told you about it.
+
+### Partial downloads are left alone
+
+!!! info "Fixed in v6.5"
+    An AirDC++ transfer still in progress (a `.dctmp` file) was being imported as a **finished comic every 30 seconds**. One report left **28 copies** of the same file.
+
+Two guards were added alongside it:
+
+- **Orphan cleanup refuses to delete anything that's still growing.** A file whose size is changing is a download in progress, not an orphan.
+- **The Clean Up Orphan Files button got the same guard**, so clicking it mid-download no longer kills the download.
+
+!!! info "Another client's queue is never reaped"
+    In-progress queue items belonging to another download client are **never** cleaned up, regardless of age. A DC++ queue item can legitimately sit idle for **hours** waiting for a source, and idle is not the same as abandoned.
+
+### A failed move leaves no copy behind
+
+!!! info "Fixed in v6.5"
+    If a move out of WATCH failed part-way, the partial destination file was left in place — and a full copy left behind gets **re-imported under a new name on the next sweep**, which is how you end up with numbered duplicates of a file you only downloaded once.
+
+    CLU now cleans up the partial destination when a move fails.
+
+### No more CBR sitting beside its own CBZ
+
+!!! info "Fixed in v6.5"
+    On **CIFS/SMB and Windows-backed WSL2 mounts**, a CBR-to-CBZ conversion could write a **perfectly good CBZ and still report itself as failed** — so the original CBR was kept, and you got both files. On **every** download.
+
+    The conversion is now reported correctly. See [Convert Directory](../directory-features/convert.md).
+
+!!! note "Existing pairs need cleaning up by hand"
+    The fix stops new pairs being created; it doesn't go looking for the ones you already have. Sort a folder by name and the `.cbr`/`.cbz` pairs are easy to spot.

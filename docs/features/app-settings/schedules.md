@@ -4,7 +4,7 @@ description: Configure CLU's recurring background jobs from the Schedules page
 
 # Schedules
 
-The **Schedules** page is where you configure CLU's recurring background jobs — file-index rebuilds, the GetComics scrape index, Metron series sync, [credit backfill](#credit-backfill), GetComics auto-download, and reading-list sync.
+The **Schedules** page is where you configure CLU's recurring background jobs — file-index rebuilds, the GetComics scrape index, Metron series sync, [credit backfill](#credit-backfill), GetComics auto-download, and [reading-list sync](#reading-list-sync-schedule).
 
 Open it from the **gear <i class="bi bi-gear-fill"></i> menu** in the top navigation → **Schedules**.
 
@@ -127,10 +127,29 @@ Configures how often CLU searches GetComics for **wanted issues** (with today's 
 
 Downloaded files are moved to the [Series Folder](../pull-list/series.md) once processed, and metadata is added at that time if missing.
 
+!!! info "New in v6.5 — one sweep at a time, and a ceiling on it"
+    If a scheduled run is already in progress, **Download Now** and the next scheduled trigger **stand down** rather than starting a second copy that re-queues everything the first run is still working through.
+
+    A single sweep also queues **at most 150 downloads**. That's a blast-radius limit, not a throughput limit — hitting it stops that run and the rest is picked up on the next one. See [Downloading the right comic](../file-downloads/send.md#downloading-the-right-comic).
+
+    Progress now reports into **Active Operations**, so a multi-hour run is visible from anywhere in the app.
+
 ## Reading List Sync Schedule
 
 ![Reading List Sync](../../assets/settings/rebuild-schedule.png){: .center-image}
 
-Automatically syncs GitHub-sourced [reading lists](../collection/reading-lists.md) so CLU can detect upstream changes. Set the **Frequency** / **Time** / **Day of Week** and click **Save Reading List Sync Schedule**.
+Automatically [syncs your reading lists](../collection/reading-lists.md#keeping-an-imported-list-up-to-date) so CLU can pick up upstream changes without you visiting each list. Set the **Frequency** / **Time** / **Day of Week** and click **Save Reading List Sync Schedule**.
+
+!!! info "Updated in v6.5 — it's no longer GitHub-only"
+    This job used to sync **GitHub-sourced lists only**. As of **v6.5** it syncs **every list that has a syncable source**: GitHub CBL URLs, Metron reading lists, Metron story arcs and ComicVine story arcs.
+
+    Lists you built by hand, or imported from an uploaded `.cbl` file, have no remote copy to compare against and are skipped.
+
+Each run asks the cheap question first and only rebuilds a list when the source has actually changed, so a nightly schedule on an unchanged library is close to free.
+
+!!! note "Metron lists are pre-filtered in one call"
+    A library with dozens of imported Metron lists would otherwise cost dozens of requests per run. CLU asks Metron **once** which of your lists have moved, then only re-reads those — so the schedule scales with how much *changed*, not with how many lists you have.
+
+    Story arcs are checked differently, because an arc's own last-modified date never moves when an issue is added to it. See [Why an arc syncs differently from a reading list](../collection/reading-lists.md#keeping-an-imported-list-up-to-date).
 
 <!-- TODO: screenshot — Reading List Sync schedule card -->

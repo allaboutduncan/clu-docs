@@ -1,6 +1,11 @@
 ---
 title: v6.2 - User Accounts, Library & Folder Permissions, & More
 date: 2026-08-03
+categories:
+  - Releases
+  - Updates
+authors:
+  - allaboutduncan
 ---
 
 **v6.2 is the release where CLU stops assuming there's only one of you.**

@@ -23,6 +23,8 @@ services:
         ports:
             - '5577:5577'
         volumes:
+            ## REQUIRED. Without this, the database lives in the container's own
+            ## writable layer and is destroyed on the next image update.
             - 'config-volume:/config' # Maps to a Docker Volume for Database Storage and Backups
             - "/path/to/local/cache:/cache" # Maps to local folder for thumbnail cache
             ## update the line below to map to your library.
@@ -90,11 +92,24 @@ Additional info about the ENV variables can be found [here](../features/app-sett
 | -e UMASK=000 | Set the file creation mask (UMASK). |
 | -e CLU_USERNAME / CLU_PASSWORD | **Optional, legacy.** The old login gate. On a fresh install these seed a hashed [Store Owner](../features/users/first-run.md) account and keep working through the normal login screen. New installs can leave them out and use the one-time Store Owner Setup screen instead. |
 
+!!! warning "`/config` must be a real volume, on local storage"
+    CLU's database lives in `/config`. Two ways to get this wrong, both of which end in a lost or corrupted database:
+
+    - **Not mapping `/config` at all.** The database then sits in the container's own writable layer and is **deleted the next time the container is recreated** — which includes every image update. CLU reports this as a **Storage: `overlay`** alert on the [Database](../features/app-settings/database.md#storage-is-the-most-important-field-on-this-page) tab.
+    - **Mapping `/config` to a network share** (CIFS/SMB, NFS, sshfs). SQLite needs file locking those don't implement reliably, and the database **will** corrupt eventually. Your library on `/data` can live on a NAS; the database can't.
+
 !!! info "Accounts and logins"
     CLU is login-free with a single account. Real user accounts, roles, and per-folder permissions are covered in [Users & Access](../features/users/index.md).
+
+!!! info "If your container seems to hang on start"
+    It probably isn't. Before **v6.5**, a first run or a large-library start could sit **completely silent for up to two minutes** — indistinguishable from a container that never started.
+
+    As of v6.5 the container reports what it's doing while it starts. Watch it with `docker logs -f clu`. Ownership passes over `/cache` and `/config` are the slow part on a large install, and they're now timed and reported individually.
 
 ### Using a Local Metadata Database (GCD / ComicVine)
 
 You can use a local copy of the Grand Comics Database (GCD) or ComicVine as an offline metadata source. This lets you bulk-populate your comics quickly, with no API rate limits.
 
 As of v6.0 this is just a **SQLite file** you place on a mapped path and point CLU at from the settings — no separate database container required. See [Local Metadata Databases](../features/local-databases/index.md) for step-by-step instructions.
+
+As of **v6.5**, CLU can [download and update the ComicVine database for you](../features/local-databases/comicvine.md#3-download-the-database) — you only need to give it a path.

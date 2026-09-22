@@ -65,6 +65,18 @@ Now, the moment Metron returns a **401** or **403**, CLU **latches a block on al
 
     Five raw Metron calls that bypassed CLU's rate limiter entirely — one of them inside the *Sync All* loop — now take a rate-limit slot and respect the lockout like everything else.
 
+## Fixes in v6.5
+
+!!! info "Saving settings no longer signs you out"
+    Saving on the Settings page could **end your session**, dropping you back at the login screen — with no indication of whether what you'd just saved had actually been written. It hadn't always.
+
+    Fixed in **v6.5**. Saving is just saving.
+
+!!! info "ComicVine works again on the current Simyan release"
+    The online **ComicVine** provider broke against recent versions of the Simyan client library, so a correctly configured ComicVine card could fail every lookup while still testing as **Connected**.
+
+    Fixed in **v6.5**. If you moved a library to a different provider because ComicVine stopped returning anything, you can move it back.
+
 ## Available Metadata Providers
 
 Metadata providers and implementations status are listed below:
@@ -73,7 +85,7 @@ Metadata providers and implementations status are listed below:
 |----------|--------|-------------|
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
 | [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
-| ComicVine (Local DB) | <i class="bi bi-info-circle-fill text-info"></i> | Local ComicVine SQLite database (requires [local setup](../local-databases/comicvine.md)) |
+| ComicVine (Local DB) | <i class="bi bi-info-circle-fill text-info"></i> | Local ComicVine SQLite database. As of **v6.5** CLU can [download and update it for you](../local-databases/comicvine.md#3-download-the-database). |
 | [GCD API](https://github.com/GrandComicsDatabase/gcd-django/wiki/API) | <i class="bi bi-check-circle-fill text-success"></i> | Grand Comics Database API |
 | [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../local-databases/gcd.md)) |
 | MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |

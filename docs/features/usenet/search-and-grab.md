@@ -47,5 +47,17 @@ The submitted name is now stripped of its extension before it reaches the client
 !!! info "You don't need to re-grab"
     The monitor-side half of the fix strips comic extensions when deriving folder names, so it also **repairs folders already queued at your client** — and folders created this way by other download clients.
 
+## Auto-download correctness
+
+!!! info "Fixed in v6.5"
+    Several fixes landed in the shared auto-download path that both GetComics and Usenet grabs run through:
+
+    - A GetComics **listing page** no longer yields the first unrelated comic on it — CLU takes the specific entry or nothing.
+    - A post **split into several downloads** has the correct part picked per issue.
+    - A **sweep can't run twice** over the same scope, and queues at most **150 downloads** per run.
+    - A **rate-limited host is stood down** rather than asked again on every queued item.
+
+    See [Downloading the right comic](../file-downloads/send.md#downloading-the-right-comic) for the detail.
+
 !!! info "New in v6.0"
     Combined GetComics + Usenet search and grabbing is new in **v6.0**.

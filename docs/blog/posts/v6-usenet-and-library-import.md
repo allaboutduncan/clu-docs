@@ -1,6 +1,11 @@
 ---
 title: v6.0 - Usenet Downloads, Library Import, Split File, & More
 date: 2026-07-23
+categories:
+  - Releases
+  - Updates
+authors:
+  - allaboutduncan
 ---
 
 v6.0 is the biggest release CLU has shipped in a while, and most of it is about getting comics into your library and keeping that library organized. The headline feature is full **Usenet (newsgroup) download support** — SABnzbd/NZBGet clients, Usenet indexers, and end-to-end search, grab, and import that sits right alongside the existing Direct Download flow. 

@@ -43,3 +43,6 @@ Example Issue Dropdown Menu
 7. **Fetch Metadata**: The retrieves the metadata for the issue and generates the `ComicInfo.xml` file. This is the same process documented at [Get ComicInfo.xml](../file-management/comicinfo.md#get-metadata-for-a-single-issue)
 8. **Info**: View the full contents of the  `ComicInfo.xml` and other file information (number of image, image size, etc)
 9. **Delete**: This will delete the issue. This is the same feature as [Delete](../single-file-features/delete.md).
+
+!!! info "Fixed in v6.5 — the Pull List menu is back"
+    The **Pull List** entry was missing from the actions menu **on this page only** — it was present everywhere else an issue appears, which made it look like a Source Wall limitation rather than the oversight it was. It's back.

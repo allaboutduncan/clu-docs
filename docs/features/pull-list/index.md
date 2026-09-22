@@ -9,6 +9,11 @@ CLU has a built-in pull list that allows you to keep track of the comics you wan
 - Search for a series and add it to your pull list
 - View wanted and upcoming issues
 
+!!! info "New in v6.5 — Wanted has two sources"
+    The [Wanted](wanted.md) page still reports the missing issues for the series on your Pull List, and as of **v6.5** it can also report the issues you're missing from a [reading list](../collection/reading-lists.md).
+
+    Reading-list tracking is **opt-in per list** — turn on **[Track Wanted](../collection/reading-lists.md#track-wanted)** on the list itself, and its unmatched entries appear under [From Reading Lists](wanted.md#from-reading-lists).
+
 ## Metron API Required
 
 ![Metron](../../assets/pull/metron.png){: .center-image}

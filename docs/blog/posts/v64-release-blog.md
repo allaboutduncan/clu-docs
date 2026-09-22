@@ -1,6 +1,11 @@
 ---
 title: v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair
 date: 2026-09-01
+categories:
+  - Releases
+  - Updates
+authors:
+  - allaboutduncan
 ---
 
 Until now, the only way CLU could tell you anything was via a toast in a browser. In v6.4, you can add **push notifications** via **Apprise** — one URL, 100+ services, and a push when a download finishes, fails, or a wanted issue lands in your library.

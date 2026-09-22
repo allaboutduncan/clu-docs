@@ -70,3 +70,39 @@ Because the grab endpoints aren't idempotent, keeping the modal open needs prote
 
 !!! warning "DC++ is the exception"
     DC++ result tokens belong to a **single live search instance** and are re-minted on every search, so DC++ rows **re-arm** when you run a new search. They can't be matched back to what you already queued. See [DC++ Searching & Grabbing](../dcpp/search-and-grab.md).
+
+## Downloading the right comic
+
+!!! info "Fixed in v6.5 — CLU downloaded a comic you didn't ask for"
+    This is the most consequential fix in the release, and it's worth describing by its **symptom**, because that's what people searched for.
+
+    A GetComics **listing** page — a weekly update post, a Top-10 roundup — holds **many unrelated comics**. CLU used to fetch the **first download link on the page**, whatever it was aiming for. So a run of wanted issues could all quietly download the **same unrelated comic**, each one filed under the name of the issue it was supposed to be.
+
+    **A download of the wrong comic under the right name is worse than no download**, because nothing looks broken until you open it. CLU now takes the **specific entry** it was after, or nothing at all.
+
+### Posts split into several downloads
+
+A GetComics post is often split into parts — "#1–15", "#16–30", "#31–50". CLU used to take the **first part** regardless of which issue it wanted. The correct part is now picked **per issue**.
+
+### One sweep at a time
+
+If a scheduled download run is already in progress, **Run Now** and the next scheduled trigger **stand down** rather than starting a second copy that re-queues everything the first run is still working through.
+
+!!! info "Check for Missing Issues is the exception"
+    A full sweep does **not** block the per-series **[Check for Missing Issues](../pull-list/wanted.md#check-for-missing-issues)** button.
+
+    Clicking that is an explicit request about **one series**, and making you wait out a multi-hour sweep would be worse than the single duplicate download it can occasionally cost.
+
+### A sweep queues at most 150 downloads
+
+This is a **blast-radius limit, not a throughput limit**. Hitting it stops that run; the rest is picked up on the next one.
+
+Worth knowing so that hitting the cap doesn't look like data loss — nothing has been dropped or forgotten, it's just been deferred.
+
+### A rate-limited host is stood down
+
+When a host starts refusing requests, CLU now **stops asking it for a while** instead of asking again on every queued item.
+
+MEGA in particular used to produce **dozens of identical "Too many requests" failures** against a handful of files, burning the queue without downloading anything.
+
+A cooling host is **moved to the back of the list, not dropped** — so it's still used when it's the only link a post offers.

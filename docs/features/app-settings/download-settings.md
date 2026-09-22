@@ -47,6 +47,42 @@ Configure how GetComics handles different publication types and format variants 
 | **Publication Types** | Comma-separated types that create a **different series** (e.g. "Batman Annual" is distinct from "Batman"). Example: `annual,quarterly`. |
 | **Variant Types** | Comma-separated format variants that can optionally be **accepted** when searching (e.g. TPB, Omnibus, Hardcover editions). |
 | **One-Shot Folders** | Folder names whose files are **unrelated single issues** (e.g. one-shots). In bulk metadata, each file in these folders is matched **individually** from its own filename and **no** `cvinfo`/`series.json` is written. Matched by folder name. |
+| **Download Packs** *(new in v6.5)* | Whether automatic downloads may satisfy a missing issue with a **multi-issue pack**. See below. |
+
+### Download Packs
+
+!!! info "New in v6.5"
+    A switch on the **Search Variant Settings** card.
+
+A **pack** is a download that holds **more than one issue** — "Batman #1–50", or the "#1–15" part of a GetComics post that's been split into several downloads.
+
+| Switch | What CLU does |
+| --- | --- |
+| **On** | The [scheduled download](schedules.md#getcomics-auto-download-schedule) and **[Check for Missing Issues](../pull-list/wanted.md#check-for-missing-issues)** will take a pack containing a missing issue **when no single-issue download is found**. A single issue still wins if one exists. |
+| **Off** *(default)* | A missing issue that only exists inside a pack stays missing. |
+
+!!! warning "Default: off, and it's worth leaving off unless you mean it"
+    A pack can be **tens of gigabytes**, fetched to satisfy one missing issue — and a wanted list with twenty gaps in one series can pull the same 50-issue pack for each of them.
+
+**What this switch does *not* affect:**
+
+- **Downloads you pick yourself** from a [search window](../file-downloads/send.md#the-search-modal). The search window **marks packs**, so choosing one is always an explicit decision of yours, whatever the switch says.
+- **[Weekly Packs](../pull-list/weekly.md)**, which are a separate feature with their own settings.
+
+!!! info "This is what FALLBACK in the search results means"
+    A pack containing your issue scores as **FALLBACK** rather than **ACCEPT** — the same ACCEPT / FALLBACK / REJECT vocabulary the [wanted-issues simulation](#getcomics-wanted-issues-simulation) reports.
+
+    **FALLBACK is a score, not a decision to download.** Whether a FALLBACK result is ever actually taken automatically is what this switch controls.
+
+### How variants are matched
+
+!!! info "Fixed in v6.5 — plurals score like their singulars"
+    **Variant Types** are no longer matched literally. "Annuals", "TPBs", "Quarterlies", "Omnibuses" and "Galleries" are matched by their corresponding singular keyword, so you **don't** need to add plural forms to the list yourself.
+
+    If you added plurals by hand to work around this, they're harmless — just redundant.
+
+!!! info "Fixed in v6.5 — an Annuals add-on is not a different series"
+    "Batman #1–50 + Annuals" is still a **Batman #1–50** pack. It used to be rejected as a different series because "Annual" is a **Publication Type**, and matching the word anywhere in the title was enough to disqualify the whole release.
 
 ## GetComics Wanted Issues Simulation
 

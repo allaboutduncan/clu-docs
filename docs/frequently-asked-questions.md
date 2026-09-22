@@ -16,6 +16,87 @@ description: Answers to the most asked questions or things I think you should kn
 ??? question "How Can I Say Thank You?"
     If you enjoyed this, want to say thanks or want to encourage updates and enhancements, feel free to [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/allaboutduncan)
 
+??? question "CLU says my database is corrupted — what do I do?"
+    Three steps, in this order.
+
+    1. **Check the Storage field** on Settings → [Database](features/app-settings/database.md#storage-is-the-most-important-field-on-this-page). If it says CIFS, NFS, sshfs or `overlay`, that is your cause, and repairing the file won't keep it repaired.
+    2. **Run Salvage.** It reads out everything still readable and builds a **clean copy without touching your current database**, so you see the result before deciding whether to install it. See [Database Recovery](features/app-settings/database-recovery.md).
+    3. **If CLU won't start at all**, use the [offline rescue script](features/app-settings/database-recovery.md#the-offline-rescue-script) — it runs via `docker exec` with nothing but Python's standard library.
+
+    Don't run **Compact** on a damaged database. CLU will refuse anyway: compacting rewrites every page, which is the last thing a failing file needs.
+
+??? question "Should my database be on a NAS share?"
+    **No.** SQLite relies on file locking that **CIFS/SMB, NFS and sshfs do not implement reliably**, and a database on one of those will corrupt eventually. That isn't a CLU bug and nothing in CLU can prevent it.
+
+    Your **library** on a network share is fine — CLU reads and writes whole files there. It's `/config` that has to be local, because that's where a database is being written continuously by several workers at once.
+
+    Map `/config` to a **named Docker volume or a local path**. The [Database](features/app-settings/database.md#storage-is-the-most-important-field-on-this-page) tab tells you what you've currently got — and **`overlay` means `/config` was never mounted at all**, so the database dies with the container.
+
+??? question "What is the Problem Files page, and why is it empty?"
+    It's the report of comics CLU **tried to read and couldn't** — new in **v6.5**, in the gear menu, [Store Owner](features/users/roles.md) only.
+
+    It is **not a scanner**. CLU doesn't go looking for damage; a file appears there because an operation it actually attempted — a thumbnail, a rebuild, a metadata write, a CBR conversion, an unpack — failed on it.
+
+    So an empty page means **nothing has failed**, not *your library is clean*. See [Problem Files](features/problem-files/index.md).
+
+??? question "A comic in my library is corrupt. Can CLU replace it?"
+    Yes, as of **v6.5**. Open its row on [Problem Files](features/problem-files/index.md) and click **Find a replacement**. The search opens pre-filled from the filename, and whatever you queue is **claimed for that exact path** — so when it lands, CLU verifies it, trashes the damaged copy and moves the replacement into its place.
+
+    The replacement is CRC-checked and must actually contain pages before anything is destroyed. If it fails that check, **nothing moves**. The damaged file goes to the **trash**, never straight to deletion, and a failed swap puts it back. See [Replacing a damaged file](features/problem-files/replacing-a-file.md).
+
+    **Rebuild** is not the tool for this. Its only real repair is an archive that's a RAR wearing a `.cbz` name — a genuine CRC error aborts the extraction, and repacking can't invent the missing bytes.
+
+??? question "Why did CLU download a comic I didn't ask for?"
+    Fixed in **v6.5**. A GetComics **listing** page — a weekly update, a Top-10 roundup — holds many unrelated comics, and CLU used to fetch the **first download link on the page** whatever it was aiming for. A run of wanted issues could all end up as the same unrelated comic, each filed under the name of the issue it was meant to be.
+
+    A post **split into several downloads** had the same problem from the other direction: it always took the first part rather than the part holding your issue.
+
+    Both are fixed — CLU now takes the specific entry or nothing. See [Downloading the right comic](features/file-downloads/send.md#downloading-the-right-comic).
+
+??? question "Why is CLU downloading 50-issue packs? (Or: why isn't it?)"
+    That's the **Download Packs** switch, new in **v6.5**, on Settings → Download & API → Search Variant Settings.
+
+    It ships **off**: a missing issue that only exists inside a multi-issue pack stays missing, because a pack can be tens of gigabytes fetched to satisfy one gap. Turn it on and the scheduled sweep and **Check for Missing Issues** will take a pack **when no single-issue download is found**.
+
+    It doesn't affect downloads you pick yourself — the search window marks packs, so that's always your call. See [Download Packs](features/app-settings/download-settings.md#download-packs).
+
+??? question "My reading list doesn't show missing issues on the Wanted page"
+    You have to turn on **Track Wanted** — the <i class="bi bi-binoculars"></i> button on the list itself, beside **Sync**. It's **per list** and **off by default**, deliberately: importing a 300-issue arc must not silently start 300 nightly searches.
+
+    Once it's on, every entry with no matched file appears under [From Reading Lists](features/pull-list/wanted.md#from-reading-lists) and is searched by the nightly sweep. See [Track Wanted](features/collection/reading-lists.md#track-wanted).
+
+??? question "I re-imported my reading list and now I have two"
+    Importing a list you already have always makes a **second list**. Use **Sync** instead — it re-reads the original source and rebuilds the list you already have to match it.
+
+    As of **v6.5**, Sync covers **all four sources**: GitHub CBL URLs, Metron reading lists, Metron story arcs and ComicVine story arcs. It used to be GitHub-only, which is why re-importing was often the only option. See [Keeping an imported list up to date](features/collection/reading-lists.md#keeping-an-imported-list-up-to-date).
+
+    Note that **Sync** and **Re-match** are different things sharing an icon: Sync pulls what the *source* now holds; Re-match re-runs local file matching on what's already in the list.
+
+??? question "My covers never update after I edit a comic"
+    Fixed in **v6.5**. Editing, rebuilding or re-tagging a comic left its cover stale — and two cases were permanent: **rebuilding a whole directory** left every cover stale (while one-at-a-time rebuilds worked), and on `PUID`/`PGID` installs, thumbnails written by an earlier root-fallback start could never be overwritten at all.
+
+    Every operation that rewrites a comic now refreshes its cover, and the grid notices on its own when a comic is newer than its cached cover. **Existing stale thumbnails repair themselves** as you browse — there's no rescan to trigger. See [Comic covers](features/collection/index.md#comic-covers).
+
+??? question "There's a .cbr sitting next to its own .cbz"
+    Fixed in **v6.5**. On **CIFS/SMB and Windows-backed WSL2 mounts**, a CBR-to-CBZ conversion could write a perfectly good CBZ and *still* report itself as failed — so the source CBR was kept. It happened on every conversion, not occasionally.
+
+    The fix stops new pairs being created but doesn't remove the ones you already have. Sort a folder by name and they sit next to each other. See [Convert Directory](features/directory-features/convert.md#a-cbr-left-beside-its-own-cbz).
+
+??? question "My container takes two minutes to start with no output"
+    Fixed in **v6.5** — or rather, it now tells you what it's doing. A first run or a large-library start genuinely can take a while; what was wrong is that it did so in **complete silence**, which is indistinguishable from a container that never started.
+
+    Watch `docker logs -f clu`. Ownership passes over `/cache` and `/config` are the slow part, and they're now timed and reported individually. The startup database backup also no longer blocks startup.
+
+??? question "Can I get the local ComicVine database without downloading it by hand?"
+    Yes, as of **v6.5**. Enter a path on the **ComicVine (Local DB)** card in Settings → Metadata Providers, then click **Download now** — it fetches, unpacks and checksum-verifies the database for you, and works as a **first** download on a new install.
+
+    There's also a **Keep this database up to date automatically** switch that checks for a newer copy every **2 weeks**. It's **off by default**: the download is around 540 MB and unpacks to several GB, so peak disk usage is roughly *old + new*. See [ComicVine Local DB Setup](features/local-databases/comicvine.md#3-download-the-database).
+
+??? question "My download vanished and never appeared in my library"
+    If it was an archive that wouldn't open, check [Problem Files](features/problem-files/index.md) and filter to **Unpack**.
+
+    That's the one row type whose path is a **download** rather than a library comic — the file never reached your library, which is exactly why nothing else would ever have told you about it. Before **v6.5**, a corrupt archive in WATCH was silently re-extracted every five minutes forever, producing numbered duplicates and log noise and nothing you could act on.
+
 ??? question "Can CLU notify me when a download finishes?"
     Yes, as of **v6.4**. Settings → **Notifications** takes one or more [Apprise](https://github.com/caronc/apprise) URLs — `discord://`, `tgram://`, `ntfy://`, `mailto://` and 100+ others — and pushes when a download completes, a download fails, or wanted issues land in your library.
 

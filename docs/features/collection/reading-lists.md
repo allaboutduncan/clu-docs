@@ -97,6 +97,87 @@ When importing reading lists, the import status is displayed in the header. The 
 - **Progress Bar** — The progress of the import
 - **Current Issue** — The current issue being imported
 
+## Keeping an imported list up to date
+
+!!! info "New in v6.5"
+    An imported reading list is no longer a **snapshot**. CLU can now keep it matching its source, keep its entries pointing at the right files, and — if you ask it to — go and find the issues you're missing.
+
+    Sync existed before v6.5 but covered **GitHub CBLs only**. It now covers every import source.
+
+### Sync
+
+The **Sync** button re-reads the list's original source and rebuilds the list to match it — issues added upstream appear, issues removed upstream go away, and the reading order follows.
+
+| Source | What syncing it does | How CLU knows it changed |
+| --- | --- | --- |
+| **GitHub CBL URL** | Re-reads the `.cbl` file at the URL you imported from. | The file's contents. |
+| **Metron reading list** | Re-reads the list from Metron. | The list's last-modified date. |
+| **Metron story arc** | Re-reads which issues belong to the arc. | Which issues are in the arc. |
+| **ComicVine story arc** | Re-reads which issues belong to the arc. | Which issues are in the arc. |
+
+In every case CLU asks the **cheap question first** and only rebuilds the list when the answer has actually moved.
+
+#### The Sync button has two outcomes
+
+They look quite different, which is worth knowing before you assume one of them is a bug:
+
+- **Nothing changed** — answered **instantly**, in the request itself. No progress bar, no background task, no task in Active Operations. The list was already correct.
+- **Something changed** — the rebuild runs **in the background** and the page tells you so. A large ComicVine arc genuinely takes minutes.
+
+!!! info "The Sync button only appears on lists that have a syncable source"
+    A list you built by hand, or imported from an **uploaded** CBL file, has nothing to sync against — there's no remote copy to compare with. Those lists show no Sync button.
+
+!!! info "Re-importing the same list makes a second list"
+    This is still true, and it is exactly what Sync is for. Importing a list you already have gives you **two lists**, not an updated one.
+
+    **Sync the list you have; don't re-import it.**
+
+!!! info "Why an arc syncs differently from a reading list"
+    Adding an issue to a story arc modifies the **issue**, not the arc — so an arc's own "last modified" date never moves, and asking for it would tell you nothing.
+
+    For arcs, CLU compares the arc's **membership** instead. That's a slightly more expensive question than a date, which is why arc syncs take a little longer than reading-list syncs.
+
+### Sync is not Re-match
+
+The **Re-match** button sits next to Sync and shares its icon, so it's worth being explicit:
+
+| Button | What it re-reads |
+| --- | --- |
+| **Sync** | The **source**. Pulls what GitHub / Metron / ComicVine now holds, and rebuilds the list's entries to match. |
+| **Re-match** | Your **library**. Re-runs local file matching against the entries that are already in the list. Nothing about the list's contents changes. |
+
+Use **Sync** when the upstream list has changed. Use **Re-match** when your *files* have changed and the list hasn't caught up.
+
+### Automatic syncing
+
+The [Reading List Sync Schedule](../app-settings/schedules.md#reading-list-sync-schedule) runs the same thing on a schedule, across every list that has a syncable source.
+
+## Track Wanted
+
+!!! info "New in v6.5"
+    A per-list **Track Wanted** button <i class="bi bi-binoculars"></i>, beside **Sync** on the reading list page.
+
+Turn it on and **every entry in the list with no matched file becomes a wanted issue**. Those entries:
+
+- appear on the [Wanted](../pull-list/wanted.md#from-reading-lists) page, in their own **From Reading Lists** section, and
+- are searched for by the nightly GetComics sweep like any other wanted issue.
+
+Turn it off and they leave again. That's the whole feature — it's a switch on one list.
+
+!!! warning "Off by default, and that's deliberate"
+    Importing a 300-issue arc must not silently start **300 nightly searches** on your behalf. Tracking is **opt-in, per list**, so nothing starts downloading until you've decided that's what you want for that specific list.
+
+!!! info "Who can turn it on"
+    Unlike [bookmarking](#bookmarking-a-list) — personal data any role may set — **Track Wanted spends bandwidth and disk**, so it's restricted to users who can manage the list. Readers see the button but can't use it. See [Roles & Permissions](../users/roles.md).
+
+### Nothing is stored, so nothing goes stale
+
+"Unmatched" *is* the definition of a tracked wanted issue — there's no separate list being maintained alongside the reading list. That has one useful consequence:
+
+**Mapping an issue by hand removes it from the Wanted page immediately, and clearing the mapping puts it back.** There's nothing to rebuild, nothing to refresh, and no way for the two views to disagree.
+
+Entries with a **blank series name or issue number** are excluded from tracking entirely — they can never match a file, so searching for them forever would be pointless.
+
 ## Create a Reading List
 
 ![Create Reading List](../../assets/collection/reading-list-create.png){.center-image}
@@ -156,12 +237,36 @@ For imported lists where an issue was not automatically matched to a local file,
 For example, this Constantine reading list is missing an issue of Swamp Thing before it was renamed.
 ///
 
-Additionally, you can search GetComics for the missing issue and download it to your CLU Downloads folder. Once downloaded, it will be automatically added to your CLU file index and you can map it to the reading list.
+Additionally, you can search for the missing issue and download it to your CLU Downloads folder. As of **v6.5** you don't have to come back and map it by hand — see [Gaps fill the moment the file arrives](#gaps-fill-the-moment-the-file-arrives) below.
 
 ![Map Issue](../../assets/collection/reading-list-map02.png){.center-image}
 /// caption
 Here we are searching for a missing issue.
 ///
+
+### Lists keep themselves matched
+
+!!! info "New in v6.5"
+    Three changes, one promise: **a reading list keeps pointing at the right file.**
+
+#### Matches follow the file
+
+**Rename a comic, move it to another folder, or convert it from CBR to CBZ, and the list entry follows it.** Previously any of those broke the mapping and left a "Click to map" placeholder behind on a file you still owned.
+
+Delete the file and the entry goes back to unmatched — which, on a [tracked list](#track-wanted), is what puts it back on the Wanted page.
+
+This matters most for **mappings you made by hand**. Re-match deliberately **skips** an entry you mapped yourself — your answer beats the matcher's, and that's the right default. But it used to mean a hand-picked mapping broken by a rename could **never** heal itself: the matcher wouldn't touch it, and you had to notice and redo it. Now the path follows the file, so it doesn't break in the first place.
+
+#### Gaps fill the moment the file arrives
+
+When a download lands in your library, CLU checks whether it closes a gap on any tracked list and **maps it immediately**. You don't have to wait for the nightly re-match or press **Re-match** yourself.
+
+!!! info "This only ever adds a match"
+    An arriving file can **never un-map** something you'd already mapped. *Clearing* a match stays a decision for the nightly sweep and the explicit **Re-match** button — the arrival path is add-only.
+
+#### The right volume
+
+A list entry no longer maps to an issue of the **same number from a different volume or year**. `Daredevil #1 (1964)` and `Daredevil #1 (1998)` are no longer interchangeable to the matcher.
 
 ### Managing Tags
 
@@ -238,4 +343,4 @@ The modal also now passes the **issue year** into the query, which improves matc
 ## Reading Lists and roles
 
 !!! info "Who can do what"
-    In a [multi-user install](../users/index.md), **Readers** can browse reading lists and bookmark them for their own dashboard. Creating, importing, editing, deleting, mapping, and reordering lists are [Clerk](../users/roles.md) actions.
+    In a [multi-user install](../users/index.md), **Readers** can browse reading lists and bookmark them for their own dashboard. Creating, importing, editing, deleting, mapping, reordering, **syncing**, and **[Track Wanted](#track-wanted)** are [Clerk](../users/roles.md) actions.

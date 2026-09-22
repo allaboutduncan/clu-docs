@@ -23,10 +23,13 @@ The Settings page is organized into tabs:
 * **Metadata Providers** — [Configure and prioritize metadata providers](metadata.md) per library
 * **Download Clients** — [Usenet](../usenet/index.md) and [DC++](../dcpp/index.md) download clients, indexers, and [Source Priority](../usenet/source-priority.md)
 * **System and Performance** — [Timeouts, timezone, cache, logging, and ComicInfo.xml cleanup](system-settings.md)
-* **Database** — [Database stats, integrity, and backups](database.md)
+* **Database** — [Database stats, storage health, maintenance, and backups](database.md), plus [Database Recovery](database-recovery.md) *(new in v6.5)*
 * **Personalization** — [Site-default theme, dashboard layout, folder art style, and recommendations](personalization.md)
 * **Notifications** — [Push notifications for downloads and wanted issues](notifications.md) *(new in v6.4)*
 * **Users** — [User accounts, roles, and library/folder grants](../users/managing-users.md) *(Store Owner only)*
+
+!!! info "Problem Files — new in v6.5"
+    Comics CLU tried to read and couldn't are reported on their own page, reached from the same **gear <i class="bi bi-gear-fill"></i> menu**. See [Problem Files](../problem-files/index.md). Like Settings, it's [Store Owner](../users/roles.md) only.
 
 !!! info "Schedules and Logs moved"
     Recurring jobs now live on their own [**Schedules**](schedules.md) page, and [**Logs**](logs.md) has its own page too. Both are reached from the same **gear <i class="bi bi-gear-fill"></i> menu**, alongside Settings.

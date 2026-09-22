@@ -97,7 +97,22 @@ Before a download starts or while in progress, you can cancel a download. Once c
 
     **Stopping isn't instantaneous.** Granularity is bounded by chunk size, so on a slow link a cancel takes a few seconds to take effect.
 
+#### Clear Completed
+
+!!! info "Fixed in v6.5 — Clear Completed now clears everything"
+    The button only ever cleared **direct** downloads. [Usenet](../usenet/index.md) and [DC++](../dcpp/index.md) rows stayed on the page reading "Complete" after you clicked it — which is precisely what made the button look broken. It now covers all three sources.
+
+Two rows that behave differently, and deliberately so:
+
+- **A download that finished but couldn't be filed clears as *completed*, not failed.** The download genuinely worked; what failed afterwards was CLU finding the file — most often because the download client is running on **another host** and CLU can't see the path it wrote to.
+- **Bundles queued directly in AirDC++ are never cleared.** They aren't CLU's jobs to forget. See [Status & Restart Recovery](../dcpp/status-and-recovery.md).
+
 ## Automated Downloads
 
 If you are using the Metron API and the [Pull List](../pull-list/index.md) feature, CLU will attempt to auto-download all missing issues for the series on your pull list.
+
+!!! info "New in v6.5 — the sweep is visible while it runs"
+    The scheduled sweep and **Run Now** now report into the header's **Active Operations** indicator, not just the per-series button.
+
+    A run that can last hours used to be **completely invisible** unless you happened to have started it from a series page. It also can't now run twice over the same scope, and queues at most 150 downloads per run — see [Downloading the right comic](send.md#downloading-the-right-comic).
 

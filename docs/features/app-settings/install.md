@@ -26,6 +26,11 @@ volumes:
   - 'config-volume:/config'
 ```
 
+!!! warning "`/config` is not optional"
+    Your **database** lives here too, not just `config.ini`. If `/config` isn't mapped, the database sits in the container's writable layer and is destroyed the next time the container is recreated — including on every image update. CLU flags this as a **Storage: `overlay`** alert on the [Database](database.md#storage-is-the-most-important-field-on-this-page) tab.
+
+    Map it to a **named Docker volume or a local path**. Not a network share — see [Database Recovery](database-recovery.md).
+
 **First Install:** On the first install with new config settings, visit the config page, ensure everything is configured as desired.
 
 * Save your Config settings
@@ -44,3 +49,18 @@ volumes:
 </code></pre></td><td>Auto-convert files to CBZ as they are downloaded with folder monitoring enabled</td></tr><tr><td><pre><code>XML_YEAR
 </code></pre></td><td>Move sub-directories when moving files in folder monitoring</td></tr><tr><td><pre><code>GCD_METADATA_LANGUAGES
 </code></pre></td><td>When using <strong>GCD Metadata</strong>, CLU will search for metadata on these languages</td></tr></tbody></table>
+
+## Startup
+
+!!! info "If your container seems to hang on start"
+    It probably isn't hanging. Before **v6.5**, a first run or a large-library start could sit **completely silent for up to two minutes**, which is indistinguishable from a container that never started — so people killed it and tried again.
+
+    As of v6.5 the container **reports what it's doing while it starts**. Watch the log:
+
+    ```bash
+    docker logs -f clu
+    ```
+
+    Ownership passes over `/cache` and `/config` are the slow part on a large install, and they are now **timed and reported individually**, so you can see which one you're waiting on.
+
+    The [startup database backup](database.md#backups) also no longer blocks startup — it runs in the background.

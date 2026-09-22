@@ -1,6 +1,11 @@
 ---
 title: v4.14 - External API, Smart Rename, Trash Restore, & More
 date: 2026-05-21
+categories:
+  - Releases
+  - Updates
+authors:
+  - allaboutduncan
 ---
 
 <!--
