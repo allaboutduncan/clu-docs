@@ -40,7 +40,13 @@ hide:
           <div class="frame-corner tr"></div>
           <div class="frame-corner bl"></div>
           <div class="frame-corner br"></div>
-          <img src="assets/hero.png" alt="CLU Dashboard" class="hero-image" width="1607" height="1285" fetchpriority="high">
+          <video class="hero-image"
+            autoplay muted loop playsinline preload="metadata"
+            poster="assets/video/clu-promo-poster.jpg"
+            aria-label="CLU promo: browsing, organizing, reading lists, pull list and file editing">
+            <source src="assets/video/clu-promo.webm" type="video/webm">
+            <source src="assets/video/clu-promo-720p.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
