@@ -29,6 +29,9 @@ This feature allows you to bulk delete the `ComicInfo.xml` for each _CBZ_ file i
 
 From the Library view, you can CTRL+click or SHIFT+click to select multiple files. As soon as you have 2 or more files selected, you should see the _Bulk Actions Bar_. Simply click the "Remove XML" and the ComicInfo will be removed from each selected file.
 
+!!! info "New in v6.6 — Remove XML is queued"
+    Remove XML now runs as a job on the shared file job queue. If another job is running, the toast says it was **queued** and it starts when its turn comes. A file with no ComicInfo.xml is counted as **skipped** rather than failed, and one bad file no longer stops the rest.
+
 ### File Browser
 
 ![File Browser - Remove XML](../../assets/directory/context-menu.png){: .center-image }

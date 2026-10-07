@@ -72,3 +72,6 @@ This is the fallback path, not the normal one. **Download now** is simpler and v
 For the best of both worlds, order **ComicVine (Local DB)** *above* the online **ComicVine** provider in your [library's provider priority](../app-settings/metadata.md#assign-metadata-providers-to-libraries). CLU will serve metadata from the local database first and **fall back to the ComicVine API** for anything the local copy is missing (such as very recent releases).
 
 For usage while browsing, see [File Management → Adding Metadata](../file-management/add-metadata.md).
+
+!!! info "Fixed in v6.6 — HTML in summaries"
+    The local database stores descriptions as HTML, which used to end up in the `<Summary>` field. CLU now converts them to plain text when it writes ComicInfo. Files tagged before v6.6 keep their HTML until re-tagged. See [Metadata](../app-settings/metadata.md#changes-in-v66).

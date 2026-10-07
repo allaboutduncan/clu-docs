@@ -112,11 +112,25 @@ Select your preferred AI provider from the dropdown. Currently supported provide
 - OpenAI (ChatGPT)
 - Anthropic (Claude)
 - Gemini (Google)
+- **Local / OpenAI-compatible** — Ollama, LM Studio, LocalAI, or any server that speaks the OpenAI API
+
+!!! info "New in v6.6 — Run recommendations on your own hardware"
+    Choose **Local / OpenAI-compatible** to keep recommendations entirely on your network. No cloud account is needed.
+
+    Selecting it reveals a **Base URL** field, e.g. `http://localhost:11434/v1` for Ollama. If CLU runs in Docker, use `http://host.docker.internal:11434/v1`. On a Linux host that also needs `extra_hosts: ["host.docker.internal:host-gateway"]` in your compose file.
+
+    Leave **Base URL** or **Model** blank and CLU falls back to the `OPENAI_BASE_URL` and `OPENAI_MODEL` environment variables.
+
+    Local requests time out after **110 seconds**. If a large model is slow to answer, try a smaller one.
+
+### Base URL
+
+Shown only for **Local / OpenAI-compatible**. The address of your local server. It is read only from saved settings, so it can't be changed by a recommendation request.
 
 ### API Key
 
-Enter your API key for the selected provider.
+Enter your API key for the selected provider. For **Local / OpenAI-compatible** the key is optional.
 
 ### Model
 
-Select the model you would like to use for recommendations.
+Enter the model you would like to use for recommendations. As of **v6.6** this is a free-text field for every provider, with suggestions for each, so you can type any model you have pulled locally or any newer hosted model.

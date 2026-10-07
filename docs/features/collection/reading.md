@@ -28,6 +28,12 @@ It has the following features:
 3. **Page Count**: The reader will show the page count of the issue along with the current page number.
 4. **Progress Bar**: The reader will show a progress bar, indicating how far you have read. When this reaches 90%, the issue will be marked as read and saved in your history.
 5. **Jump to Page**: The dots along the bottom allow you to jump to a specific page in the issue.
+6. **Tap to Hide Controls**: Tap or click the page to hide or show the header and footer.
+
+!!! info "New in v6.6 — Tap to hide works at every size and orientation"
+    Tap-to-hide used to work only on screens up to 1024px wide, so turning a tablet to landscape brought the controls back and tapping stopped hiding them. It now works at **every screen size and orientation**, in the collection, metadata browser, reading list view and source wall.
+
+    On desktop, the header and footer now **overlay** the top and bottom of the page rather than sitting beside it. They still show when the reader opens, and one click hides them. Double-click still zooms.
 
 ### Resume Reading
 

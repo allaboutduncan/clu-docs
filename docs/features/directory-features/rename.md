@@ -33,6 +33,11 @@ You can define custom naming patterns in [File Settings](../app-settings/file-se
 
 Renaming many files at once now runs as a **single queued, coalesced background operation** instead of one request per file. This is dramatically faster on large batches and doesn't hammer the database — progress shows in the nav **operations indicator**. This is mainly a performance/UX improvement; the resulting filenames are unchanged.
 
+!!! info "New in v6.6 — Batch renames run on the file job queue"
+    Batch rename now shares one job queue with post-move tagging, **Remove XML** and bulk metadata, so only one of them runs at a time, in the order submitted. This stops a rename from moving a file out from under a tagging job.
+
+    If another job is running, the rename dialog says **Queued — it will start when the current job finishes** and the operations indicator shows it waiting. A rename submitted behind a long tagging batch therefore waits for it. Renaming a single directory is not queued.
+
 Oftentimes series archives or torrent files will have numerous naming patterns with information in parenthesis, brackets, before the year, after and all over the place. I continuously update these to handle as many as I encounter.
 
 ### Renaming Rules

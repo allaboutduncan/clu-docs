@@ -26,6 +26,9 @@ In all directory listings, you'll see a <i class="bi bi-input-cursor-text text-i
 
 Clicking this will run the same renaming functions detailed on [Rename All Files](../directory-features/rename.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
 
+!!! info "New in v6.6"
+    Batch renames now wait their turn on the shared [file job queue](../directory-features/rename.md#batched-bulk-renames) behind any running tagging, Remove XML or bulk metadata job.
+
 ### Remove Text from Files
 
 You can now remove characters from groups of files while browsing a directory. If there are files present, you will see a "Remove Text from Filenames" button. Clicking this will bring up a modal and prompt for the characters to remove. Include any spaces you want removed as well.

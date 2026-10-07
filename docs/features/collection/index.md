@@ -80,6 +80,13 @@ This section shows the last 100 issues added to your collection.
 
 ## Browsing the grid
 
+### All Books
+
+!!! info "New in v6.6 — Volumes stay together"
+    **All Books** now sorts by series, then **parent folder**, then issue number, with cover year only as a tiebreaker. Previously, two volumes of the same series with overlapping cover years were interleaved — *Captain America* v1998 #49 could land between v2002 #7 and #8. Each volume's folder now stays together, and the order still matches the A–Z letter bar.
+
+    Two volumes kept loose in the *same* folder still sort by issue number within it.
+
 ### The pager
 
 !!! info "New in v6.3"

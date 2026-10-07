@@ -77,6 +77,20 @@ Now, the moment Metron returns a **401** or **403**, CLU **latches a block on al
 
     Fixed in **v6.5**. If you moved a library to a different provider because ComicVine stopped returning anything, you can move it back.
 
+## Changes in v6.6
+
+!!! info "Bulk metadata runs on the file job queue"
+    Bulk metadata, post-move tagging, Remove XML and batch rename now share one queue and run **one at a time, in the order submitted**. If a job is waiting, the progress modal shows **Queued: N ahead** and starts it when its turn comes.
+
+    This also fixes a false failure: dragging dozens of files into a folder could report "N moves failed" after five minutes while the files were still being tagged. Queued jobs are never marked stalled.
+
+!!! info "ComicVine summaries no longer contain HTML"
+    ComicVine returns descriptions as HTML, and CLU wrote them straight into the `<Summary>` field, so the CBZ Info modal showed raw tags like `<p>` and `<br />`.
+
+    Fixed in **v6.6** for both the online API and the local database. Paragraphs and line breaks become real line breaks, entities are decoded, and ComicVine's "List of covers and their creators" tables are dropped.
+
+    Files that are already tagged **keep their HTML** until they are re-tagged or edited. AniList summaries are not affected by this change.
+
 ## Available Metadata Providers
 
 Metadata providers and implementations status are listed below:

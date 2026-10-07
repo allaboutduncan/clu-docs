@@ -25,6 +25,17 @@ description: Answers to the most asked questions or things I think you should kn
 
     Don't run **Compact** on a damaged database. CLU will refuse anyway: compacting rewrites every page, which is the last thing a failing file needs.
 
+??? question "Can I use a local model (Ollama, LM Studio) for recommendations?"
+    Yes, as of **v6.6**. In Settings → Recommendation Service choose **Local / OpenAI-compatible**, enter your server's **Base URL** (for Ollama, `http://localhost:11434/v1`) and a **Model**. The API key is optional.
+
+    In Docker, use `http://host.docker.internal:11434/v1`, and on Linux add `extra_hosts: ["host.docker.internal:host-gateway"]`. See [Recommendations](features/app-settings/personalization.md#recommendations).
+
+??? question "Why are my metadata and rename jobs running one at a time?"
+    By design, as of **v6.6**. Post-move tagging, Remove XML, bulk metadata and batch rename share one queue, so they can't hit the metadata providers and the same files at once. Waiting jobs show **Queued** in the operations indicator and start on their own. See [Batched Bulk Renames](features/directory-features/rename.md#batched-bulk-renames).
+
+??? question "Why do my ComicVine summaries show HTML tags?"
+    Fixed in **v6.6** for newly tagged files. Files tagged earlier keep the HTML until you re-tag them or edit the Summary. See [Metadata](features/app-settings/metadata.md#changes-in-v66).
+
 ??? question "Should my database be on a NAS share?"
     **No.** SQLite relies on file locking that **CIFS/SMB, NFS and sshfs do not implement reliably**, and a database on one of those will corrupt eventually. That isn't a CLU bug and nothing in CLU can prevent it.
 
