@@ -15,6 +15,34 @@ The theme: **heavy file work now happens one job at a time, in order.** Dragging
 Along the way: the reader finally hides its controls on a tablet turned sideways, All Books stops shuffling your volumes together, and ComicVine summaries stop showing raw HTML.
 
 <!-- more -->
+### Single Worker Queue
+
+This one started with an issue I noticed and a previous request in Github. I was updating a directory and I moved 70+ files onto a folder and the app became sluggish.
+
+The File Manager sent **one request per file**, and each request spun up its own thread to move the file, fetch metadata from Metron or ComicVine, rewrite the CBZ, and re-match the series' wanted list. Seventy threads fighting over one worker and one SQLite write lock is exactly as bad as it sounds. Worse, threads waiting on the Metron rate limiter reported no progress, so after five minutes the page announced "N of 70 moves failed" while the files were still being processed.
+
+| ![File Move Queue](../../assets/file/queue01.png){: .center-image }      | ![File Update Progress](../../assets/file/queue02.png){: .center-image }                          |
+| :---------: | :----------------------------------: |
+| File Move Queue | File Update Progress |
+
+v6.7 fixes that with a **one-worker FIFO job queue**. All the heavy file work now goes through it, one job at a time, in the order you submitted it:
+
+- post-move tagging
+- **Remove XML**
+- **bulk metadata**
+- **batch rename**
+
+What you'll notice:
+
+- **A drag-and-drop move is one request.** Everything moves at once, each series is reconciled **once**, and a single "Tagging N items" job is queued. The destination fills within seconds; the tagging counts up behind it.
+- **A waiting job says so.** The operations indicator, the bulk metadata progress modal, and the rename dialogs show **Queued** (with how many jobs are ahead) instead of "Started!" or a false failure.
+- **A queued job is never marked stalled.** The stale-operation sweep only touches jobs that are actually running.
+- **Remove XML skips instead of failing.** A file with no ComicInfo.xml counts as skipped, and one bad file no longer ends the run.
+- **The operations indicator scrolls** and escapes file names, which were previously inserted as raw HTML.
+
+The trade-off, stated plainly: **a batch rename submitted behind a long tagging batch now waits for it.** The ordering is deliberate. A rename running beside a queued tagging job would move a path out from under it. Renaming a single directory (`/rename-directory`) still runs immediately and is not queued.
+
+***
 
 ### Recommendations on Your Own Hardware
 
@@ -41,31 +69,6 @@ A few things I did to make small local models behave:
 
 !!! note "Security"
     The Base URL is read only from saved, owner-only settings. It is never taken from the request body of `/api/recommendations`, which non-owners can call. Otherwise anyone able to ask for recommendations could point your server at an address of their choosing.
-
-***
-
-### One Work Queue
-
-This one started with a bug report: drag 70+ files onto a folder that holds a `cvinfo`, and the app became sluggish.
-
-The File Manager sent **one request per file**, and each request spun up its own thread to move the file, fetch metadata from Metron or ComicVine, rewrite the CBZ, and re-match the series' wanted list. Seventy threads fighting over one worker and one SQLite write lock is exactly as bad as it sounds. Worse, threads waiting on the Metron rate limiter reported no progress, so after five minutes the page announced "N of 70 moves failed" while the files were still being processed.
-
-v6.6 fixes that with a **one-worker FIFO job queue**. All the heavy file work now goes through it, one job at a time, in the order you submitted it:
-
-- post-move tagging
-- **Remove XML**
-- **bulk metadata**
-- **batch rename**
-
-What you'll notice:
-
-- **A drag-and-drop move is one request.** Everything moves at once, each series is reconciled **once**, and a single "Tagging N items" job is queued. The destination fills within seconds; the tagging counts up behind it.
-- **A waiting job says so.** The operations indicator, the bulk metadata progress modal, and the rename dialogs show **Queued** (with how many jobs are ahead) instead of "Started!" or a false failure.
-- **A queued job is never marked stalled.** The stale-operation sweep only touches jobs that are actually running.
-- **Remove XML skips instead of failing.** A file with no ComicInfo.xml counts as skipped, and one bad file no longer ends the run.
-- **The operations indicator scrolls** and escapes file names, which were previously inserted as raw HTML.
-
-The trade-off, stated plainly: **a batch rename submitted behind a long tagging batch now waits for it.** The ordering is deliberate. A rename running beside a queued tagging job would move a path out from under it. Renaming a single directory (`/rename-directory`) still runs immediately and is not queued.
 
 ***
 
@@ -116,6 +119,6 @@ Nothing to migrate, and nothing turns itself on.
 - **Local recommendations are opt-in.** Your current provider and key are untouched.
 - **Big jobs queue now.** If you start a bulk metadata run and then a batch rename, the rename waits its turn. That's intended.
 
-That's v6.6 — recommendations that can stay on your own hardware, a work queue that keeps big moves from swamping the app, and a handful of small things that stop getting in your way. Feedback is welcome via Discord or GitHub.
+That's v6.7 — recommendations that can stay on your own hardware, a work queue that keeps big moves from swamping the app, and a handful of small things that stop getting in your way. Feedback is welcome via Discord or GitHub.
 
 Previous release: [v6.5 — Problem Files, Self-Maintaining Reading Lists, & Database Recovery](https://clucomics.org/blog/2026/09/22/v65---problem-files-self-maintaining-reading-lists--database-recovery/)
