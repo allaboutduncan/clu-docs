@@ -1,6 +1,6 @@
 ---
-title: v6.6 - Local AI Recommendations, One Work Queue, & Reader Polish
-date: 2026-10-06
+title: v6.7 - Local AI Recommendations, One Work Queue, & Reader Polish
+date: 2026-10-07
 categories:
   - Releases
   - Updates
@@ -8,7 +8,7 @@ authors:
   - allaboutduncan
 ---
 
-v6.6 is a smaller release with one headline and one theme. The headline: **recommendations can now run on a model you host yourself** — Ollama, LM Studio, LocalAI, or anything else that speaks the OpenAI API. No cloud account, no API key, nothing leaves your network.
+v6.7 is a smaller release with one headline and one theme. The headline: **recommendations can now run on a model you host yourself** — Ollama, LM Studio, LocalAI, or anything else that speaks the OpenAI API. No cloud account, no API key, nothing leaves your network.
 
 The theme: **heavy file work now happens one job at a time, in order.** Dragging 70 files into a folder used to make the whole app crawl. It doesn't anymore.
 
