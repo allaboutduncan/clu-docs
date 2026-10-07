@@ -1,0 +1,4262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The self-hosted comic library manager. Convert CBR to CBZ, edit ComicInfo.xml metadata, read in the browser, and download from GetComics, Usenet and DC++. Multi-user with per-folder permissions, a Pull List, and an /api/v1 REST API. A powerful alternative to Komga and Kavita.">
+      
+      
+        <meta name="author" content="CLU Team">
+      
+      
+        <link rel="canonical" href="https://clucomics.org/blog/2026/09/01/v64---push-notifications-folder-art-styles-metron-tokens--credit-repair/">
+      
+      
+        <link rel="prev" href="../../../08/18/v63---per-user-themes-dc-downloads-reading-lists-on-the-dashboard--more/">
+      
+      
+        <link rel="next" href="../../22/v65---problem-files-self-maintaining-reading-lists--database-recovery/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/clu.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair - CLU Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-FG4J5F18LV"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-FG4J5F18LV",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-FG4J5F18LV",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair - CLU Documentation" />
+<meta property="og:description" content="The self-hosted comic library manager. Convert CBR to CBZ, edit ComicInfo.xml metadata, read in the browser, and download from GetComics, Usenet and DC++. Multi-user with per-folder permissions, a Pull List, and an /api/v1 REST API. A powerful alternative to Komga and Kavita." />
+<meta property="og:image" content="https://clucomics.org/assets/images/social/blog/2026/09/01/v64---push-notifications-folder-art-styles-metron-tokens--credit-repair.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://clucomics.org/blog/2026/09/01/v64---push-notifications-folder-art-styles-metron-tokens--credit-repair/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair - CLU Documentation" />
+<meta property="twitter:description" content="The self-hosted comic library manager. Convert CBR to CBZ, edit ComicInfo.xml metadata, read in the browser, and download from GetComics, Usenet and DC++. Multi-user with per-folder permissions, a Pull List, and an /api/v1 REST API. A powerful alternative to Komga and Kavita." />
+<meta property="twitter:image" content="https://clucomics.org/assets/images/social/blog/2026/09/01/v64---push-notifications-folder-art-styles-metron-tokens--credit-repair.png" />
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#push-notifications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="CLU Documentation" class="md-header__button md-logo" aria-label="CLU Documentation" data-md-component="logo">
+      
+  <img src="../../../../../assets/clu.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CLU Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allaboutduncan/clu-comics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="CLU Documentation" class="md-nav__button md-logo" aria-label="CLU Documentation" data-md-component="logo">
+      
+  <img src="../../../../../assets/clu.png" alt="logo">
+
+    </a>
+    CLU Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allaboutduncan/clu-comics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../why-clu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why CLU?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../getting-started/navigate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigating the App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../getting-started/setup-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/users/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users & Access
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Users & Access
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles & Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/first-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Run & Logging In
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/managing-users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/library-and-folder-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library & Folder Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/personal-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Per-User Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/users/my-account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/collection/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collection Features
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collection Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/publishers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/reading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/source-wall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source Wall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/collection/reading-lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reading Lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/directory-features/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directory Features
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Directory Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/rename/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rename All Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/convert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/rebuild/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rebuild All Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/pdf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convert PDF to CBZ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/missing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Missing Issue Check
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/enhance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enhance Images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/directory-features/update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update ComicInfo.xml
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/single-file-features/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single File Features
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Single File Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/edit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edit CBZ File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/rebuild/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Single File Rebuild
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/crop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop Cover
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/remove/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remove First Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/add/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add blank Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/enhance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enhance Images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/date/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read Date
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/single-file-features/delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/folder-monitoring/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Folder Monitoring
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Folder Monitoring
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/folder-monitoring/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/folder-monitoring/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/folder-monitoring/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/file-downloads/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Downloads
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File Downloads
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-downloads/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrome Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-downloads/send/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Click to Download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-downloads/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download Status Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/usenet/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usenet Downloads
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usenet Downloads
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/usenet/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding a Download Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/usenet/indexers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Newznab Indexers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/usenet/source-priority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source Priority
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/usenet/search-and-grab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Searching & Grabbing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/dcpp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DC++ Downloads
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DC++ Downloads
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/dcpp/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding AirDC++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/dcpp/search-and-grab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Searching & Grabbing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/dcpp/status-and-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status & Restart Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/file-management/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Management
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/move/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Move
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/rename/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rename
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/additional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Additional Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/add-metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/file-management/comicinfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComicInfo.xml Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/insights/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library Insights
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Library Insights
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/insights/insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library Insights Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/insights/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Insights API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/insights/timeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/pull-list/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pull List
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pull List
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/pull-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pull List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/automap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automap (Scan Library)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/wanted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wanted
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/weekly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weekly Packs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/series-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Series Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/pull-list/publishers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/app-settings/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App Settings
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App Settings
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/file-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Processing Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/download-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download & API Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MetaData Providers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/system-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/database-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/schedules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/app-settings/logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/problem-files/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problem Files
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Problem Files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/problem-files/replacing-a-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Replacing a Damaged File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../features/local-databases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Metadata Databases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_18" id="__nav_18_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Local Metadata Databases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/local-databases/gcd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GCD SQLite Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../features/local-databases/comicvine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComicVine Local DB Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../frequently-asked-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://discord.gg/ndDhpvrgBa" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLU Discord
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#push-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Push Notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloads-retry-themselves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Downloads Retry Themselves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-looks-for-folder-art" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four Looks for Folder Art
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Four Looks for Folder Art">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pin-the-cover-you-want" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin the cover you want
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regenerate-all-thumbnails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regenerate All Thumbnails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-bugs-found-along-the-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two bugs found along the way
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metron-api-tokens-and-an-end-to-the-ban-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metron API Tokens, and an End to the Ban Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-comics-that-came-out-with-no-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Comics That Came Out With No Credits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Comics That Came Out With No Credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#also-in-v64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Also in v6.4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug Fixes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-for-upgraders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes for Upgraders
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://github.com/allaboutduncan.png" alt="Phillip Duncan">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Phillip Duncan
+                        
+                      </strong>
+                      <br>
+                      Creator of CLU
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-09-01 00:00:00+00:00" class="md-ellipsis">September 1, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/releases/">Releases</a>, 
+                              <a href="../../../../category/updates/">Updates</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              16 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+  
+
+
+  <h1>v6.4 - Push Notifications, Folder Art Styles, Metron Tokens, & Credit Repair</h1>
+
+<p>Until now, the only way CLU could tell you anything was via a toast in a browser. In v6.4, you can add <strong>push notifications</strong> via <strong>Apprise</strong> — one URL, 100+ services, and a push when a download finishes, fails, or a wanted issue lands in your library.</p>
+<p>Alongside it: <strong>folder cover art gets four styles</strong> and you can pin any issue's cover as the folder's art; <strong>Metron API token support</strong>; and a <strong>credit repair sweep</strong> that fixes comics missing creator metadata.</p>
+<p>There's other improvements too: downloads retry themselves before reporting failure, the Docker image is <strong>less than half the size it was</strong>, and archives dropped in WATCH now always get unpacked.</p>
+<!-- more -->
+
+<h3 id="push-notifications">Push Notifications</h3>
+<p>CLU had no outbound notification path at all. The in-app toast list is process-local and expires after 300 seconds, so if you weren't looking at the browser, nothing told you anything had happened.</p>
+<p>v6.4 adds <a href="https://github.com/caronc/apprise"><strong>Apprise</strong></a> — one dependency, one URL scheme, and over a hundred services behind it. Paste one or more URLs into the new <strong>Notifications</strong> tab in Settings, tick the events you care about, and you get a push when:</p>
+<ul>
+<li><strong>a download completes</strong></li>
+<li><strong>a download fails</strong></li>
+<li><strong>wanted issues land in your library</strong></li>
+</ul>
+<p>The URL <em>is</em> the configuration. Here are some examples:</p>
+<p><code>discord://webhook_id/webhook_token</code>
+<code>tgram://bottoken/ChatID</code>
+<code>ntfy://topic</code>
+<code>mailto://user:pass@gmail.com</code></p>
+<p>Apprise parses the scheme and does the rest. Multiple URLs, one per line, all fire together. A <strong>Send Test Notification</strong> button proves it works before you rely on it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Notification URLs contain credentials</p>
+<p>Apprise URLs embed bot tokens and SMTP passwords. They're stored and displayed in plaintext, exactly as the existing API keys are. They're <strong>redacted before anything reaches the logs</strong>, so a debug package won't leak them — but treat the Notifications tab as sensitive.</p>
+</div>
+<p>Three things about how this is wired that are worth knowing:</p>
+<ul>
+<li><strong>Downloads settle in three independent places</strong> — CLU's own HTTP downloader, the Usenet poller, and the DC++ poller — so there are three hook sites rather than one. All three go through the same code, so all three notify identically.</li>
+<li><strong>Cancellations never notify.</strong> Aborting a transfer is how a cancel surfaces from most providers, so the failure path runs for cancels too. The notification deliberately sits <em>after</em> the cancel guard, so cancelling a download doesn't push you a failure.</li>
+<li><strong>Wanted issues send one digest per sweep</strong>, not one push per issue. A catch-up sweep can import dozens of issues at once; the digest enumerates up to 20 and adds an "and N more" tail.</li>
+</ul>
+<p>A hung Discord webhook can't block a download — every send runs on its own daemon thread, and every failure is noted in the log. <strong>A notification must never break the download it's reporting on.</strong></p>
+<div class="admonition info">
+<p class="admonition-title">Not covered yet</p>
+<p>The "On the Stack" new-issue notice, notifications for newly-<em>discovered</em> wanted issues, and files imported by the folder monitor. The monitor runs as its own OS process and needs its own config read to participate.</p>
+</div>
+<p><img alt="Notifications tab in Settings" class="center-image" src="../../../../../assets/settings/notifications.png" /></p>
+<hr />
+<h3 id="downloads-retry-themselves">Downloads Retry Themselves</h3>
+<p>Related, and shipped in the same release: a failed download used to settle as <code>error</code> immediately, and you had to notice the red row on the Status page and click <strong>Retry</strong> by hand.</p>
+<p>Most of those failures are transient — an overloaded GetComics mirror, a dropped connection, a 5xx — and would have worked on a second attempt a few minutes later. CLU already fails <em>over</em> between mirrors, but once the last mirror raised, that was the end of it.</p>
+<p>A failed download is now parked and re-queued <strong>up to 3 times, spaced 1, 5 and 15 minutes apart</strong>. The Status page shows the wait live — <code>Retrying in 4m 12s (2 of 3)</code>, in warning colour, with the last error on hover, and a <strong>Cancel</strong> button instead of Retry.</p>
+<p>Crucially, <strong>the <code>download_failed</code> push is held back until the retries are spent.</strong> A notification now means "this one is genuinely dead", not "the first mirror hiccuped" — and it tells you how many retries were burned getting there.</p>
+<p>Two exceptions:</p>
+<ul>
+<li><strong>Cloudflare failures skip the retries entirely.</strong> A managed challenge is the one failure no automated client can pass, so three more attempts would do nothing but delay the manual link you actually need by twenty minutes. Those rows now read <strong>"Blocked by Cloudflare"</strong> with a <strong>Download manually</strong> button that opens the original GetComics page — ahead of Retry, because Retry is pointless there.</li>
+<li><strong>Usenet and DC++ are unaffected.</strong> Their clients do their own retrying.</li>
+</ul>
+<hr />
+<h3 id="four-looks-for-folder-art">Four Looks for Folder Art</h3>
+<p>Folder cover art had exactly two looks, both hardcoded. You asked for more.</p>
+<p>There are now <strong>four styles</strong>, selectable site-wide under <strong>Settings → Personalization</strong>, with a real preview of each:</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Look</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fanned Stack</strong> <em>(default)</em></td>
+<td>Unchanged from today — up to four covers fanned at random rotations.</td>
+</tr>
+<tr>
+<td><strong>Single Image</strong></td>
+<td>One cover, full-bleed.</td>
+</tr>
+<tr>
+<td><strong>Isometric Cascade</strong></td>
+<td>3–4 covers, no rotation, stepped up-and-right with crisp per-layer shadows.</td>
+</tr>
+<tr>
+<td><strong>2x2 Mosaic Grid</strong></td>
+<td>Quad-split, four tiles, interior dividers and one unified outer shadow.</td>
+</tr>
+</tbody>
+</table>
+<p>The previews aren't mockups — they're generated by running the actual composers, so they can't drift from what you'll get.</p>
+<p><img alt="Folder thumbnail style picker" class="center-image" src="../../../../../assets/settings/thumbnail-styles.png" /></p>
+<h4 id="pin-the-cover-you-want">Pin the cover you want</h4>
+<p>Any issue's three-dots menu gains <strong>Set as Folder Thumbnail</strong>. The pin is the folder's <em>primary</em> cover in <strong>every</strong> style — the whole image in Single, the front card in Fanned and Cascade, the top-left tile in the Mosaic — so switching styles never loses your choice.</p>
+<h4 id="regenerate-all-thumbnails">Regenerate All Thumbnails</h4>
+<p>A style change only affects art that doesn't exist yet, so there's a <strong>Regenerate All Thumbnails</strong> sweep to apply it to art you already have. Run it from Settings for all libraries, or from a top-level folder's three-dots menu for one branch. It's destructive, so it sits behind a confirmation modal.</p>
+<div class="admonition warning">
+<p class="admonition-title">A sweep never touches the folder it was invoked on</p>
+<p>Running it on <code>/data/DC Comics</code> restyles every series inside and leaves that publisher's own <code>folder.png</code> <strong>alone</strong>. A hand-picked publisher image is not what you're replacing when you restyle your series art. The all-libraries sweep excludes the library roots the same way.</p>
+</div>
+<p>Both sweeps now run on a background thread with live progress in Active Operations. The old Generate-All-Missing walked the whole tree inside the web request, which outlasts the 120-second gateway timeout on a real library.</p>
+<p>The <strong>folder-icon overlay</strong> for nested folders is now its own site-wide switch, applied to whichever style you've picked, rather than a separate hardcoded look.</p>
+<h4 id="two-bugs-found-along-the-way">Two bugs found along the way</h4>
+<ul>
+<li><strong>Single Image could produce a blank thumbnail.</strong> It took cover index 0 blindly, so one corrupt cache entry left the folder with an empty <code>folder.png</code> — where every other style fell through to the next cover. Bad entries are now filtered out <em>before</em> the four-cover cap, so a corrupt file no longer eats one of the slots either.</li>
+<li><strong><code>folder.webp</code> was invisible to the generator.</strong> Two separate hardcoded extension lists omitted it, so an uploaded <code>.webp</code> survived a rebuild and kept winning — the new image was generated and then never shown. Both lists are now one shared list.</li>
+</ul>
+<hr />
+<h3 id="metron-api-tokens-and-an-end-to-the-ban-loop">Metron API Tokens, and an End to the Ban Loop</h3>
+<p>Two related changes, and the second one matters more than the first.</p>
+<p><strong>Metron now supports token authentication.</strong> Generate a token on your metron.cloud account page, paste it into the Metron card in Settings → Metadata Providers, and CLU sends it as a bearer token. The config page now shows an <strong>auth method picker</strong> — username/password or API token — and both stay fully supported.</p>
+<p><strong>And bad credentials no longer hammer Metron until you're banned.</strong> A user reported that after mistyping their Metron credentials, CLU kept sending requests until fail2ban blocked their IP, and a Metron admin asked for it to be reported.</p>
+<p>The cause was structural rather than a stray retry loop. CLU couldn't tell a <strong>401</strong> apart from a miss — every API error was caught identically — and the "is Metron configured?" check was a presence-only string test, so credentials that <em>existed</em> were credentials that got used. Meanwhile the call volume is large and repeating: the nightly series sync makes one call per mapped series across your library, the Weekly Releases publisher warm is re-kicked by a 5-second browser poll, and credit backfill, library automap and post-download auto-tagging all loop too.</p>
+<p>Metron's own <a href="https://metron-project.github.io/blog/api-best-practices">API best practices</a> put it plainly: <em>"Only retry on 429 and 5xx. Retrying 4xx errors (other than 429) wastes requests."</em></p>
+<p>Now, <strong>a 401 or 403 latches a block on all Metron traffic.</strong> Nothing gets through — not the pacer, not a client fetched once and driven in a loop.</p>
+<div class="admonition info">
+<p class="admonition-title">The block does not time out</p>
+<p>A rejected credential does not heal on its own, so there's no timed auto-retry. Only <strong>saving your credentials</strong>, <strong>a successful connection test</strong>, or the <strong>Re-enable</strong> button clears it. The block is persisted, so a container crash-looping with bad credentials doesn't resume hammering on every restart.</p>
+<p><strong>Test Connection is the one path allowed past the block</strong> — otherwise you could never prove you'd fixed it.</p>
+</div>
+<p>Saving Metron credentials now verifies them in the same request, so you find out immediately. They're stored either way — refusing the save would strand you if Metron itself happened to be down.</p>
+<p>One bug this surfaced: <strong>arc pages would have broken silently under token auth.</strong> The arc fetcher builds its own HTTP request to escape auto-pagination and was passing username/password unconditionally — both empty on a token session, which strips the only credential and 401s every arc page. It now sends basic auth only when there's a real pair.</p>
+<p><img alt="Metron auth method picker" class="center-image" src="../../../../../assets/settings/metron-token.png" /></p>
+<hr />
+<h3 id="the-comics-that-came-out-with-no-credits">The Comics That Came Out With No Credits</h3>
+<p>Several people reported the same thing: comics tagged on release morning came out with <strong>no creator credits at all</strong>. Two files from the same sweep, five seconds apart — one with full credits, one with none. Both named Metron as the source, and Metron's API returns full credits for both issues.</p>
+<p>The mapper was never at fault. The body CLU saw simply wasn't the body the API returns now, for two reasons that compound:</p>
+<ol>
+<li><strong>The Metron client library's response cache had no working TTL.</strong> It never checked the expiry column, and its cleanup only ran at startup — so on a long-lived container the effective TTL was <em>process uptime</em>. Worse, a fresh fetch could never displace a stale row; the old one had to be deleted.</li>
+<li><strong>Metron finishes issue records after a comic ships.</strong> One of the reported issues was still being edited two hours after the file was written.</li>
+</ol>
+<p>Either way the file was stuck permanently: once ComicInfo carries <code>Notes</code>, every automatic tagging path skips it forever — and a manual re-tag did not work, because the cache purge only dropped <em>series</em> responses, never the issue detail, which is the response that carries the credits.</p>
+<h4 id="what-changed">What changed</h4>
+<p><strong>Cache correctness.</strong> There's now a precise issue-cache purge, and one entry point that every "fetch this issue in order to write it into a file" path goes through: purge, then fetch. Bulk re-tag uses it too — without it, "overwrite existing" was rewriting the same half-entered record it was meant to repair. <strong>Refresh from Metron on a series page now also drops the issue bodies</strong>, so it means what it says. Display-only reads still use the cache, because ids are stable and those lists are the bulk of the quota.</p>
+<p><strong>A recovery sweep.</strong> CLU finds credit-less files with a single index query — no archive I/O to select them — re-fetches each issue live, and <strong>rewrites only when Metron now actually has credits</strong>, merging so tags the file already carries survive. There's a <code>credit_backfill_enabled</code> toggle and a <strong>Backfill Credits Now</strong> button on the <a href="../../../../../features/app-settings/schedules/">Schedules</a> page, and it runs automatically after each series sync behind its own guard so a backfill problem can never fail the sync.</p>
+<p><strong>Then it got better.</strong> Rather than guessing which files might be stale from local timestamps, the sweep now asks Metron directly: Metron stamps each issue with a <code>modified</code> date — the field that moves when an editor finishes a half-entered record — and CLU asks <em>which issues changed since the last sweep</em>, joins that against your library, and repairs those. One paged call replaces a detail fetch per candidate, and it finds a comic tagged a year ago whose record was completed last night, which no local timestamp can reveal. The credit-less pass stays as the safety net for the <em>other</em> cause.</p>
+<p>The join is a new indexed column holding the file's Metron issue id, drained in the background at the lowest priority by the metadata scanner — <strong>no big-bang rescan</strong>, nothing to trigger, no restart cost.</p>
+<div class="admonition note">
+<p class="admonition-title">Editor credits now land too</p>
+<p>Metron spells editorial roles out in full — <em>Executive Editor</em>, <em>Group Editor</em>, <em>Editor In Chief</em>, <em>Assistant Editor</em> — and CLU was matching role names exactly, so it found one name out of four. Editors now match on substring, mirroring how ComicVine already worked, and land in <code>&lt;Editor&gt;</code> on newly tagged files and on any file the backfill repairs.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">ComicVine has the same shape of problem</p>
+<p>A day-of-release ComicVine issue often has no credits either, and the same "already has Notes" skip locks it in. The candidate query is provider-agnostic, so a ComicVine arm can be added behind the same entry point later.</p>
+</div>
+<p><img alt="Backfill Credits on the Schedules page" class="center-image" src="../../../../../assets/settings/credit-backfill.png" /></p>
+<hr />
+<h3 id="also-in-v64">Also in v6.4</h3>
+<ul>
+<li><strong>The Docker image is less than half the size.</strong> <strong>2.06 GB → 913 MB.</strong> The dormant Scrape feature was already unreachable — its nav link had been commented out for months — and it was the only thing in the codebase using Playwright, so Chromium and the browser-only system libraries went with it. Two side effects worth noting: its six routes were <strong>still live with no auth decorator</strong>, and every page load was polling a status endpoint every 30 seconds for a badge that didn't exist.</li>
+<li><strong>Archives dropped in WATCH are always unpacked, and unpacked content-aware.</strong> <code>AUTO_UNPACK</code> predated automated downloads and shipped <strong>off</strong>, so a fresh install silently stranded packs in WATCH. The setting is <strong>removed</strong> — the behaviour is now unconditional, and the dead key is stripped from your <code>config.ini</code> on next start. Two things fell out of the same code: a loose <code>.rar</code> was never unpacked at all (it's on the ignored-extensions list and, unlike <code>.zip</code>, had no exemption), and unpacking was content-blind — a <code>.zip</code> that was really a comic exploded into loose page images which the pipeline then moved one page at a time. CLU now peeks inside without extracting: ready comics get extracted beside the archive, page images mean <strong>it is the comic</strong> (a <code>.zip</code> is renamed to <code>.cbz</code>, never repacked), and anything unreadable gets a blind extract so nothing is stranded.</li>
+<li><strong>Pan the reader's zoom window.</strong> Zooming always centred on the page, so a zoomed-in page could only ever show the middle of the artwork. <code>Shift</code>/<code>Ctrl</code>+arrows or <code>W</code>/<code>A</code>/<code>S</code>/<code>D</code> pan, <code>0</code> or <code>Home</code> re-centres without changing zoom, and the wheel pans (<code>Shift</code>+wheel horizontally). Bare arrows still turn pages and zoom, exactly as before. Two bugs went with it: <code>Ctrl</code>+arrow used to <em>blow the page up</em> rather than pan it, and the wheel was dead while zoomed.</li>
+<li><strong>A per-series "Check for Missing Issues" button</strong>, next to API Sync and Refresh on a series page. It runs the same sweep the nightly job runs, scoped to that one series — and it <strong>ignores that series' Monitor toggle</strong>, because the toggle exists to keep the <em>unattended</em> sweep off a series and clicking the button is an explicit request. It won't make the nightly sweep look as though it had already run.</li>
+<li><strong>A compact table view for Weekly Releases.</strong> Cards stay the default; a header toggle swaps in a paginationless table sorted on publisher, series and issue number, listing the whole week at once. Issue numbers sort numerically, so <code>-1 &lt; 1 &lt; 1.MU &lt; 2 &lt; 10</code>. Your choice is remembered across sessions and week navigation.</li>
+<li><strong>Turn off automatic metadata on move.</strong> Moving a comic into a folder carrying a <code>cvinfo</code> triggers a provider lookup and a ComicInfo write. If you curate your own metadata and want a move to stay a move, there's now a switch — <strong>default on</strong>, since that's what every existing install already does. On-demand tagging is unaffected. While adding it, <strong>Automatic Metadata</strong> and <strong>Metadata Match Validation</strong> moved onto the <strong>File Processing</strong> tab.</li>
+<li><strong>A Jump to page select and a Back to top button</strong> on the Browse Library pager. The windowed page numbers only reach ±2 from the current page, so the middle of a long library was unreachable without repeated clicking — and the slot next to them was spent on a duplicate of the per-page select three rows above. It's now a <strong>Jump to</strong> select labelled <code>3 of 47</code>, which can only offer pages that exist. The Back to top button returns you to the folder header without scrolling the grid by hand.</li>
+</ul>
+<hr />
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong><code>-1</code> issues are recognized instead of reported as wanted.</strong> Marvel's 1997 "Flashback" month numbered its books <strong>-1</strong>, which is a real issue number, not a negative to be discarded. The matcher was throwing away the minus sign two different ways, so <code>Amazing Spider-Man -001 (1997).cbz</code> sat in the mapped folder while the wanted page kept asking for <code>#-01</code>. The mirror image was worse: the pattern for <strong>#1</strong> happily claimed that same file, which in the wanted-issue mover means filing the wrong comic under the right name. The sign rule is structural, not keyword-based — <code>Spider-Man -001</code> is a sign, <code>Batman-001</code> and <code>Batman - 001</code> are separators, and <code>Batman 001-006</code> range packs still work. The renamer had the same blind spot from the other direction and was renaming <code>-001</code> to <code>001</code> — <em>exactly #1's name</em> — collapsing two issues onto one file.</li>
+<li><strong>Wanted issues match when your rename pattern uses <code>#</code>.</strong> If your pattern is <code>{series_name} #{issue_number} (...)</code>, the <code>#</code> compiled as a <strong>hard requirement</strong>, so no file named <code>Series 001 (2026).cbz</code> could ever satisfy it — for any series, for as long as that pattern was configured. Downloads landed in TARGET and then sat there while the nightly sweep kept reporting them missing.</li>
+<li><strong>Re-tagging no longer destroys metadata the new provider doesn't supply.</strong> Applying metadata rebuilt <code>ComicInfo.xml</code> from scratch, so re-tagging a GCD-sourced file through ComicVine — which has no genre data at all — always lost its <code>Genre</code>. Four more defects stacked on top: ComicVine returns each creator's roles as one comma-joined string (<code>"penciler, inker"</code>) and CLU matched the whole string first-match-wins, so <strong>a creator landed in exactly one bucket and every other credit they held was discarded</strong>; <code>editor</code>, bare <code>artist</code>, <code>painter</code>, <code>plot</code>, <code>finishes</code> and <code>translator</code> had no bucket at all (bare <code>artist</code> is very common and produced nothing); <code>Web</code> was never mapped; and neither XML writer could emit <code>&lt;Editor&gt;</code> — the GCD provider computed editor credits and then dropped them at serialization.</li>
+<li><strong>GCD series matching, four separate ways.</strong> The tokenized variation emitted a <strong>literal backslash</strong> into its regex, so it had never matched anything, for any library, in any language — every multi-word title fell through to a one-token fallback that had no floor, substring-matching the first token (<code>%le%</code> matches 18,526 series in the current dump) and taking the newest survivor. The year-constrained branch <strong>never applied the year</strong> to that fallback, so a 2014 file matched a 1999 series. And both search loops took the first row of <code>ORDER BY year_began DESC</code>, making the winner the <em>newest</em> series that survived the filter rather than the best match — <code>Superman (2000)</code> resolved to <code>Mann and Superman</code>. Candidates are now ranked on name equality, word overlap, length agreement and year distance, over a much wider candidate window.</li>
+<li><strong>The GCD language preference now applies to automatic lookups.</strong> <code>gcd_metadata_languages</code> was read only by the manual search endpoint. Every automatic caller defaulted to English, so on a non-English library GCD contributed <strong>nothing, without leaving any trace</strong> — there was no fallback and misses weren't logged. Where the English-only query returned a <em>wrong</em> result rather than none, that result was selected. Non-English issues were also being tagged <code>LanguageISO: en</code> regardless.</li>
+<li><strong>A matched issue's date is cross-checked against the filename.</strong> When the <em>series</em> match is wrong, the issue number still resolves, so a file gets tagged with confidently wrong metadata rather than being left alone. There's now an optional check comparing the matched issue's date against the year in the filename — or, for collections numbered <code>001.cbz</code> inside a folder that carries the year, against the <strong>folder</strong>. Three modes, <strong>off by default</strong>: <code>off</code>, <code>log</code> (so you can see what it would do to your library before letting it change anything), and <code>enforce</code> (a conflicting match goes to review instead of being written). Providers that report a series-start year rather than an issue date are exempt.</li>
+<li><strong>Publication dates are no longer read as issue numbers.</strong> <code>001 - Il re del terrore (Mondadori 1957-12).cbz</code> parsed as <strong>issue #1957</strong>, with the series name mangled — and since that parser is what the renamer uses, those files were renamed to match. Dates are now only read from inside brackets with digits delimited on both sides, and <strong>must carry a month</strong>, because plenty of series names <em>are</em> numbers (<code>007 - Licence to Kill (2019)</code>, <code>100 Bullets</code>, <code>300</code>).</li>
+<li><strong>Comixology-scraped files can be re-tagged.</strong> <code>Notes</code> doubles as the "already tagged, skip this file" sentinel, and six independent auto-tag entry points each carried their own copy of the exclusion string in two different quote styles. The policy is now in one place, <code>Scraped metadata from Comixology</code> is excluded alongside Amazon, and matching is case-insensitive — these strings come from third-party scrapers that don't spell their own product consistently.</li>
+<li><strong>Tagging a file records its real modification time.</strong> Writing ComicInfo rebuilds the whole archive, so the on-disk mtime jumps to the moment of tagging — but nothing recorded that. A comic that had been in your library for months and was re-tagged today kept a months-old timestamp in the index, which made it <strong>invisible to the credit backfill</strong> — and that's exactly the population the sweep exists to repair.</li>
+</ul>
+<hr />
+<h3 id="notes-for-upgraders">Notes for Upgraders</h3>
+<p><strong>Two dependency bumps happen for you</strong> on a normal image pull: Apprise is new, and the Metron client library moves to 4.4.0 or later for token support. If you somehow end up on an older version, CLU declines with a clear "upgrade" message rather than failing in a worker thread.</p>
+<p>Three things worth knowing:</p>
+<ul>
+<li><strong>Notifications are opt-in and off by default.</strong> Nothing is sent until you add at least one URL and tick at least one event.</li>
+<li><strong><code>AUTO_UNPACK</code> is gone from your config.</strong> Archives in WATCH are now always unpacked, and the dead key is stripped from <code>config.ini</code> on first start so you're not left with a line that looks like it still does something. If you had it <em>off</em> deliberately, this is a behaviour change: drop archives somewhere other than WATCH.</li>
+<li><strong>Your folder art doesn't change.</strong> Fanned Stack is the default and is unchanged from v6.3. New art keeps generating in that style until you pick a different one — and picking a different one only affects art generated from that point on, until you run <strong>Regenerate All Thumbnails</strong>.</li>
+<li><strong>Metron username/password still works.</strong> Tokens are an addition, not a replacement. But if you're on the receiving end of a fail2ban block, note that the lockout is now the thing standing between a typo and an IP ban.</li>
+</ul>
+<p>That's v6.4 — CLU that can finally tell you something happened, folder art that looks the way you want it to, and a Metron integration that repairs its own mistakes instead of compounding them. Feedback is welcome via Discord or GitHub.</p>
+<p>Previous release: <a href="https://clucomics.org/blog/2026/08/18/v63---per-user-themes-dc-downloads-reading-lists-on-the-dashboard--more/">v6.3 — Per-User Themes, DC++ Downloads, Reading Lists on the Dashboard, &amp; More</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../08/18/v63---per-user-themes-dc-downloads-reading-lists-on-the-dashboard--more/" class="md-footer__link md-footer__link--prev" aria-label="Previous: v6.3 - Per-User Themes, DC++ Downloads, Reading Lists on the Dashboard, &amp; More">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                v6.3 - Per-User Themes, DC++ Downloads, Reading Lists on the Dashboard, & More
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../22/v65---problem-files-self-maintaining-reading-lists--database-recovery/" class="md-footer__link md-footer__link--next" aria-label="Next: v6.5 - Problem Files, Self-Maintaining Reading Lists, &amp; Database Recovery">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                v6.5 - Problem Files, Self-Maintaining Reading Lists, & Database Recovery
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 CLU
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.indexes", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../../../javascripts/lightbox.js"></script>
+      
+    
+  </body>
+</html>
