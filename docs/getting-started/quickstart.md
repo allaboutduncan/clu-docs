@@ -113,3 +113,7 @@ You can use a local copy of the Grand Comics Database (GCD) or ComicVine as an o
 As of v6.0 this is just a **SQLite file** you place on a mapped path and point CLU at from the settings — no separate database container required. See [Local Metadata Databases](../features/local-databases/index.md) for step-by-step instructions.
 
 As of **v6.5**, CLU can [download and update the ComicVine database for you](../features/local-databases/comicvine.md#3-download-the-database) — you only need to give it a path.
+
+## Next: Guided Setup
+
+Once CLU is running, open it in your browser. On a new install, [Guided Setup](guided-setup.md) opens on your first visit: it checks your volumes and permissions, then walks you through libraries, metadata and the rest.

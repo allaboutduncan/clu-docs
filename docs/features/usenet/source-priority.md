@@ -11,6 +11,15 @@ description: Rank GetComics, Usenet and DC++ for auto-download
 !!! info "Three sources as of v6.3"
     Source Priority used to be a single **Usenet vs. GetComics** comparison. As of **v6.3** it is a general ranking over **three** sources — [GetComics](../file-downloads/index.md), [Usenet](index.md), and [DC++](../dcpp/index.md) — and both the real auto-download loop and the dry-run simulation walk the same ordered list.
 
+!!! info "Changed in v6.8: on/off switches"
+    Each source now has an **on/off switch**, and only the sources that are on are saved. On a new install, the list is **GetComics alone**: Usenet and DC++ are switched on only when you choose to.
+
+    * A source you turn off keeps its client configuration, and is simply left out of the list.
+    * **The last source can't be switched off.**
+    * Before v6.8, the Settings page defaulted to all three sources, so the first reorder switched Usenet and DC++ on without asking.
+
+    The [Mylar3 importer](../mylar-import.md) adds Usenet for you once it has imported an active client and an enabled indexer. The Downloads step of [Guided Setup](../../getting-started/guided-setup.md#downloads) sets the same list.
+
 ## What it does and doesn't control
 
 This is the part worth reading twice, because Source Priority means **two different things** depending on where you are:

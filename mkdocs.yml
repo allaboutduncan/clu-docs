@@ -58,6 +58,7 @@ nav:
   - Why CLU?: why-clu.md
   - Getting Started:
       - Quickstart: getting-started/quickstart.md
+      - Guided Setup: getting-started/guided-setup.md
       - Navigating the App: getting-started/navigate.md
       - Setup Walkthrough: getting-started/setup-walkthrough.md
 
@@ -147,6 +148,7 @@ nav:
     - Series: features/pull-list/series.md
     - Pull List: features/pull-list/pull-list.md
     - Automap (Scan Library): features/pull-list/automap.md
+    - Import from Mylar3: features/mylar-import.md
     - Wanted: features/pull-list/wanted.md
     - Weekly Packs: features/pull-list/weekly.md
     - Series Search: features/pull-list/series-search.md
@@ -170,6 +172,7 @@ nav:
   - Problem Files:
     - features/problem-files/index.md
     - Replacing a Damaged File: features/problem-files/replacing-a-file.md
+    - Duplicates: features/problem-files/duplicates.md
 
   - Local Metadata Databases:
     - features/local-databases/index.md

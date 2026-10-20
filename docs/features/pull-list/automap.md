@@ -31,6 +31,9 @@ Items marked **needs review** are confirmed in a modal. For each one, pick the c
 
 ![Automap review modal](../../assets/pull/import02.png){: .center-image}
 
+!!! tip "Running it from Guided Setup"
+    The **Pull List Scan** step of [Guided Setup](../../getting-started/guided-setup.md#pull-list-scan) runs this same scan. Folders that need review open here, in the Pull List page's review window, on the finished scan. Review them within 15 minutes, because the results aren't kept longer than that.
+
 When you apply the mappings, CLU:
 
 - **Backfills the sidecars** so each mapped folder carries the resolved series info going forward.
@@ -62,5 +65,6 @@ See [Additional Features](../file-management/additional.md#add-to-pull-list) for
 ## Related
 
 - [Pull List](pull-list.md) — where imported series land.
+- [Import from Mylar3](../mylar-import.md) — import a Mylar3 watchlist from its database instead of from sidecars.
 - [Additional Features](../file-management/additional.md#add-to-pull-list) — adding a single folder to the Pull List.
 - [Series page](series.md) — mapping and subscription management for a single series.

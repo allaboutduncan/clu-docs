@@ -414,3 +414,7 @@ services:
 That's it — you're now running CLU in Docker on Windows. 🎉
 
 For project documentation, updates, and the source code, visit **https://github.com/allaboutduncan/clu-comics**.
+
+## Next: Guided Setup
+
+Open CLU in your browser. On a new install, [Guided Setup](guided-setup.md) opens on your first visit: it checks your volumes and permissions, then walks you through libraries, metadata and the rest.

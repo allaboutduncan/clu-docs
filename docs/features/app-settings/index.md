@@ -28,6 +28,12 @@ The Settings page is organized into tabs:
 * **Notifications** — [Push notifications for downloads and wanted issues](notifications.md) *(new in v6.4)*
 * **Users** — [User accounts, roles, and library/folder grants](../users/managing-users.md) *(Store Owner only)*
 
+!!! info "Guided Setup and Mylar3 import — new in v6.8"
+    Two buttons sit above the tabs:
+
+    * **Run Guided Setup** walks through the setup, or checks what is configured and what needs attention. See [Guided Setup](../../getting-started/guided-setup.md). It's also in the **gear <i class="bi bi-gear-fill"></i> menu**.
+    * **Import from Mylar3** imports the watchlist, download client, indexers and ComicVine key from Mylar3. See [Import from Mylar3](../mylar-import.md).
+
 !!! info "Problem Files — new in v6.5"
     Comics CLU tried to read and couldn't are reported on their own page, reached from the same **gear <i class="bi bi-gear-fill"></i> menu**. See [Problem Files](../problem-files/index.md). Like Settings, it's [Store Owner](../users/roles.md) only.
 

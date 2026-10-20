@@ -26,7 +26,7 @@ This section allows you to set the priority of the download providers. This is u
 Use the up and down arrows to move the download providers up and down in the list. The higher the provider is in the list, the higher the priority it has. If one provider fails, the download will be retried with the next provider in the list.
 
 !!! info "Usenet download clients"
-    Usenet (SABnzbd / NZBGet) clients and Newznab indexers are configured on the **Download Clients** tab, not here. See [Usenet Downloads](../../features/usenet/index.md) for setup, and [Source Priority](../../features/usenet/source-priority.md) for choosing between Usenet and GetComics.
+    Usenet (SABnzbd / NZBGet) and DC++ clients and Newznab indexers are configured on the **Download Clients** tab, not here. See [Usenet Downloads](../usenet/index.md) and [DC++ Downloads](../dcpp/index.md) for setup, and [Source Priority](../usenet/source-priority.md) for choosing between GetComics, Usenet and DC++.
 
 ### PixelDrain API Key
 
@@ -180,3 +180,10 @@ This section will display the status of the sync between CLU and Komga. It will 
 Existing clients backfill to the `usenet` group automatically on upgrade, so nothing changes for an install that was using Usenet before.
 
 Which sources the nightly [auto-download](../pull-list/wanted.md) job actually uses is a separate question, governed by [Source Priority](../usenet/source-priority.md).
+
+!!! info "Changed in v6.8: a source is on only while it's in the priority list"
+    Source Priority now has an on/off switch per source, and saves only the sources that are on. Some things to know:
+
+    * **A source is used only while it's in the list.** Configuring and activating a client doesn't add it.
+    * **The last source can't be switched off.**
+    * **Usenet and DC++ are no longer on by default.** On a new install, the list is GetComics alone. Before v6.8, the Settings page defaulted to all three, so the first reorder switched Usenet and DC++ on without asking.

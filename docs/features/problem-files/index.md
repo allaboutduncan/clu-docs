@@ -24,6 +24,46 @@ This is the first thing to understand about the page, because the empty state is
 
 So an empty page means **nothing has failed** — not *your library is healthy*. A comic you have never opened, never rebuilt and never re-tagged could be thoroughly corrupt and will not appear here until something touches it.
 
+To find damage *before* something trips over it, turn on the [library health scan](#library-health-scan).
+
+## Library health scan
+
+!!! info "New in v6.8"
+    The **library health scan** is new in **v6.8**. It is **off by default**.
+
+The health scan opens every comic to check that it can be read. It also finds orphaned files, empty folders, `series.json` problems and [duplicates](duplicates.md). Anything it finds lands on this page alongside the other rows.
+
+It's controlled from the **Library health** card at the top of the page:
+
+| Control | What it does |
+| --- | --- |
+| **Scan automatically** | Turns the scheduled scan on. Off by default. |
+| **Every** | How often it runs: every hour, 6 hours (the default), 12 hours, day or week. |
+| **Files per run** | How many comics each run checks: 50, 200 (the default), 500, 1000 or 2500. |
+| **Run scan now** | Checks the next batch right away, plus `series.json`, stray files, empty folders and ComicInfo counts. |
+| **Review duplicates** | Opens the [Duplicates](duplicates.md) page. The badge shows how many groups are open. |
+
+<!-- TODO: screenshot — the Library health card with score and coverage (assets/settings/library-health.png) -->
+
+### How it works through a library
+
+The scan is **rolling**. Each run checks one batch of files, the ones checked longest ago first, so a large library is covered over several runs rather than one long one. Once every file has been read, files are re-checked periodically.
+
+The cheaper folder-wide checks (`series.json`, stray files and empty folders) run at most once a day on the schedule. **Run scan now** always includes them.
+
+### Coverage
+
+The coverage bar shows the share of the library with a **current** result: **40% checked means 60% unknown**, not 60% healthy. A file that changes on disk (a new size or modified time) counts as unchecked again until the scan reads it.
+
+### Score
+
+The card's score starts at **100/100**, and loses points for damaged files, duplicate groups, orphans and other problems. It shows **red** when any file is damaged, **amber** for anything else below 100, and **green** at 100.
+
+Before the first scan, the status line reminds you: *an empty list below means nothing has failed, not that the library is clean.*
+
+!!! tip "From Guided Setup"
+    The **Repair Tour** step of [Guided Setup](../../getting-started/guided-setup.md#repair-tour) sets the same switch and interval, and can run a scan for you. It accepts any interval from 1 to 168 hours.
+
 ## Where a row came from
 
 Every row records which operation hit the error, and that tells you what CLU was doing at the time.
@@ -108,6 +148,7 @@ If you hit the cap, the problem is almost certainly one shared cause — a mount
 
 ## Related
 
+- [Duplicates](duplicates.md) — review the duplicate groups the health scan finds.
 - [Replacing a damaged file](replacing-a-file.md) — download a clean copy straight onto the damaged file's own path.
 - [Single File Rebuild](../single-file-features/rebuild.md) — what Rebuild does, and what happens when it fails.
 - [Folder Monitoring → Features](../folder-monitoring/features.md) — where **Unpack** rows come from.
