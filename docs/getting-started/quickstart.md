@@ -6,6 +6,9 @@ description: Quick install using Docker
 
 Docker Hub images are available for quick installation and deploy.
 
+!!! tip "New to Docker on Windows?"
+    [Installing CLU on Windows with Docker Desktop](../blog/posts/windows-install-walkthrough.md) walks through every step, from installing Docker Desktop to opening CLU in your browser.
+
 ### Install via Docker Compose
 
 ```yaml
@@ -30,15 +33,12 @@ services:
             ## update the line below to map to your library.
             ## Map your first/main library to /data
             - "/e/Comics:/data"
-            ## Map additional libraries and add them in the settings of the app
-            - "/e/Manga:/manga"
+            ## Map additional drives/libraries and add them in the app settings
             - "/f/Magazines:/magazines"
             ## Additional folder if you want to use Folder Monitoring.
             - "/f/Downloads:/downloads"
         environment:
             - FLASK_ENV=production
-            ## Set to 'yes' if you want to use folder monitoring.
-            - MONITOR=yes/no
             ## Set the User ID (PUID) and Group ID (PGID) for the container.
             ## This is often needed to resolve permission issues, especially on systems like Unraid
             ## where a specific user/group owns the files.
@@ -49,26 +49,26 @@ services:
             ## File creation mask. 000 -> world-writable folders (drwxrwsrwx) and files
             ## (-rw-rw-rw-). Use 002 for group-writable (775/664) or 022 for owner-only writes.
             - UMASK=000
-            ### Legacy login gate. On a fresh install these seed the Store Owner account.
-            ### See features/users/first-run.md - new installs can skip these entirely.
-            ## CLU_USERNAME=[username] - Set the username for the app.
-            ## CLU_PASSWORD=[password] - Set the password for the app.
 volumes:
-  config-volume: # Now required for Database Storage and Backups
+  config-volume: # Required for Database Storage and Backups
 ```
 
 ### Install via Docker
 
 ```text
-docker run \
+docker run -d \
   --name clu \
   --restart always \
   -p 5577:5577 \
-  -v /Users/phillipduncan/Documents/docker/clu:/config \
-  -v /Users/phillipduncan/Documents/GitHub/comic-utils/bak:/data \
-  -v /Users/phillipduncan/Documents/GitHub/comic-utils/files:/downloads \
-  -e FLASK_ENV=development \
-  -e MONITOR=no \
+  --log-driver json-file \
+  --log-opt max-size=20m \
+  --log-opt max-file=3 \
+  -v config-volume:/config \
+  -v /path/to/local/cache:/cache \
+  -v /e/Comics:/data \
+  -v /f/Magazines:/magazines \
+  -v /f/Downloads:/downloads \
+  -e FLASK_ENV=production \
   -e PUID=99 \
   -e PGID=100 \
   -e UMASK=000 \
@@ -82,37 +82,16 @@ Additional info about the ENV variables can be found [here](../features/app-sett
 | Parameter | Function |
 | --- | --- |
 | -p 5577:5577 | The port exposed by the app for the web interface. |
-| -v /docker/clu:/config | Location for your CLU directory on a local disk. Enables local storage of the <code>config.ini</code> which preservers settings during updates. Must be mapped to <code>/config</code> |
+| - 'config-volume:/config' | Maps to a Docker Volume for Database Storage and Backups |
 | -v /User/comics:/data | Location of your library to manage. Must be mapped to <code>/data</code> |
-| -v /User/downloads:/downloads | Optional folder to configure if MONITOR is enabled (see below) |
+| -v /User/downloads:/downloads | Optional folder to configure for Folder Monitoring. |
 | -e FLASK_ENV=development | Set to 'development' for local development. |
-| -e MONITOR=no | Set to 'yes' if you want to use folder monitoring. |
-| -e PUID=99 | Set the User ID (PUID) and Group ID (PGID) for the container. |
-| -e PGID=100 | Set the User ID (PUID) and Group ID (PGID) for the container. |
+| -e PUID=99 | Set the User ID (PUID) for the container. |
+| -e PGID=100 | Set the Group ID (PGID) for the container. |
 | -e UMASK=000 | Set the file creation mask (UMASK). |
-| -e CLU_USERNAME / CLU_PASSWORD | **Optional, legacy.** The old login gate. On a fresh install these seed a hashed [Store Owner](../features/users/first-run.md) account and keep working through the normal login screen. New installs can leave them out and use the one-time Store Owner Setup screen instead. |
-
-!!! warning "`/config` must be a real volume, on local storage"
-    CLU's database lives in `/config`. Two ways to get this wrong, both of which end in a lost or corrupted database:
-
-    - **Not mapping `/config` at all.** The database then sits in the container's own writable layer and is **deleted the next time the container is recreated** — which includes every image update. CLU reports this as a **Storage: `overlay`** alert on the [Database](../features/app-settings/database.md#storage-is-the-most-important-field-on-this-page) tab.
-    - **Mapping `/config` to a network share** (CIFS/SMB, NFS, sshfs). SQLite needs file locking those don't implement reliably, and the database **will** corrupt eventually. Your library on `/data` can live on a NAS; the database can't.
 
 !!! info "Accounts and logins"
     CLU is login-free with a single account. Real user accounts, roles, and per-folder permissions are covered in [Users & Access](../features/users/index.md).
-
-!!! info "If your container seems to hang on start"
-    It probably isn't. Before **v6.5**, a first run or a large-library start could sit **completely silent for up to two minutes** — indistinguishable from a container that never started.
-
-    As of v6.5 the container reports what it's doing while it starts. Watch it with `docker logs -f clu`. Ownership passes over `/cache` and `/config` are the slow part on a large install, and they're now timed and reported individually.
-
-### Using a Local Metadata Database (GCD / ComicVine)
-
-You can use a local copy of the Grand Comics Database (GCD) or ComicVine as an offline metadata source. This lets you bulk-populate your comics quickly, with no API rate limits.
-
-As of v6.0 this is just a **SQLite file** you place on a mapped path and point CLU at from the settings — no separate database container required. See [Local Metadata Databases](../features/local-databases/index.md) for step-by-step instructions.
-
-As of **v6.5**, CLU can [download and update the ComicVine database for you](../features/local-databases/comicvine.md#3-download-the-database) — you only need to give it a path.
 
 ## Next: Guided Setup
 

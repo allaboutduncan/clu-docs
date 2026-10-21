@@ -62,7 +62,7 @@ The card's score starts at **100/100**, and loses points for damaged files, dupl
 Before the first scan, the status line reminds you: *an empty list below means nothing has failed, not that the library is clean.*
 
 !!! tip "From Guided Setup"
-    The **Repair Tour** step of [Guided Setup](../../getting-started/guided-setup.md#repair-tour) sets the same switch and interval, and can run a scan for you. It accepts any interval from 1 to 168 hours.
+    The **Library Health** step of [Guided Setup](../../getting-started/guided-setup.md#repair-tour) sets the same switch and interval, and can run a scan for you. It accepts any interval from 1 to 168 hours.
 
 ## Where a row came from
 

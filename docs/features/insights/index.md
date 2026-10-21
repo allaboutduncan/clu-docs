@@ -7,3 +7,5 @@ The Library Insights page provides a quick overview of your collection, includin
 The **Recently Read** has a link to an expanded [Timeline](timeline.md) view that shows your full reading history.
 
 Additional information about **Top Writers**, **Top Artists**, and **Top Characters** can be found in the Reading Trends section.
+
+Some of these statistics are also available as JSON from the [Insights API](api.md).

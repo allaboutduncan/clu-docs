@@ -9,7 +9,7 @@ description: Review duplicate comics found by the library health scan, keep one 
 
 The [library health scan](index.md#library-health-scan) groups copies of the same comic. The **Duplicate Files** page is where you review those groups: pick the copy to keep, and send the rest to the [trash](../file-management/delete.md).
 
-Find it from [Problem Files](index.md) with the **Review duplicates** button, or from the Repair Tour in [Guided Setup](../../getting-started/guided-setup.md#repair-tour).
+Find it from [Problem Files](index.md) with the **Review duplicates** button, or from the Library Health in [Guided Setup](../../getting-started/guided-setup.md#library-health).
 
 !!! warning "Store Owner only"
     Like Problem Files, the Duplicates page is [Store Owner](../users/roles.md) only.

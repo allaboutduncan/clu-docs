@@ -1,8 +1,17 @@
-# CLU Setup Guide for Windows
+---
+title: "Installing CLU on Windows with Docker Desktop"
+date: 2026-10-21
+categories:
+  - General
+authors:
+  - allaboutduncan
+---
 
 A complete, no‑experience‑required walkthrough for installing Docker Desktop on Windows and launching **CLU (Comic Library Utilities)** using Docker Compose.
 
 By the end of this guide you'll have CLU running locally and accessible in your web browser at `http://localhost:5577`.
+
+<!-- more -->
 
 ---
 
@@ -405,8 +414,8 @@ services:
       - PUID=1000
       - PGID=1000
       - UMASK=000
-  volumes:
-    config-volume:
+volumes:
+  config-volume:
 ```
 
 ---
@@ -417,4 +426,4 @@ For project documentation, updates, and the source code, visit **https://github.
 
 ## Next: Guided Setup
 
-Open CLU in your browser. On a new install, [Guided Setup](guided-setup.md) opens on your first visit: it checks your volumes and permissions, then walks you through libraries, metadata and the rest.
+Open CLU in your browser. On a new install, [Guided Setup](../../getting-started/guided-setup.md) opens on your first visit: it checks your volumes and permissions, then walks you through libraries, metadata and the rest.

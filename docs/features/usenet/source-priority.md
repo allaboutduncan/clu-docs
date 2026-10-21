@@ -74,4 +74,4 @@ In the manual per-issue search, on the [Wanted Issues](../pull-list/wanted.md) p
     **Download Provider Priority**, set in the [Download and API](../app-settings/download-settings.md) tab, only orders the DDL providers *within* GetComics results relative to each other. It has no effect on Usenet or DC++.
 
 !!! info "Where this page lives"
-    Source Priority now governs all three download sources, but the page stays here in the Usenet group so existing links keep working. It applies equally to [DC++](../dcpp/index.md) and [File Downloads](../file-downloads/index.md).
+    Source Priority governs all three download sources, so it sits at the top of the **Downloads** section, ahead of each source's own pages. Its address stays under `/features/usenet/` so existing links keep working. It applies equally to [DC++](../dcpp/index.md) and [File Downloads](../file-downloads/index.md).
