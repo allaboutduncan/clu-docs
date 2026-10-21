@@ -1,23 +1,22 @@
 ---
-description: Rebuilds all files in a directory.
+description: Rebuild and re-pack all comic archives in a directory to repair corrupted structures.
 ---
 
 # Rebuild All Files
 
 ![Rebuild Directory](../../assets/directory/rebuild.png){: .center-image }
 
-Very similar to convert, except it doesn't skip any existing CBZ files.
+The **Rebuild All Files** tool unpacks, validates, and repackages all comic archives in a directory into standardized CBZ format.
 
-This utility does 2 things:
+While [Convert Directory](convert.md) only processes CBR and RAR files and skips existing CBZ archives, **Rebuild All Files** processes every archive in the directory:
 
-1. Convert all RAR / CBR files to CBZ
-2. Rebuild all ZIP / CBZ files
+1. **Converts RAR / CBR files** into clean CBZ format.
+2. **Re-packs existing CBZ files**, restructuring internal folder hierarchies, stripping non-image junk files, and repairing damaged zip headers.
 
-I often see, in both newer and older files, that Komga doesn't recognize or scan them correctly.&#x20;
+Rebuilding fixes common indexing failures and thumbnail rendering errors encountered in media servers and comic readers.
 
-More often than not, rebuilding them corrects the error. This option will rebuild all files in a directory (RAR/CBR/ZIP/CBZ --> CBZ)
+## Archive Format Recovery
 
-!!! info
-    If the app fails to unpack a CBZ file, it will attempt to extraxt using RAR. I have encountered files where they were CBR files with the extension incorrectly renamed to CBZ instead of being properly converted. The app will account for that during any unpack/re-pack operation.
+Archives are occasionally misnamed — for instance, a RAR archive incorrectly labeled with a `.cbz` extension. During rebuild operations, CLU inspects the archive's actual file headers. If standard ZIP extraction fails, CLU automatically tests RAR extraction, recovers the embedded page images, and repacks them into a true, valid CBZ archive.
 
-For PDF conversions - see the next function
+To convert PDF documents into CBZ format, see [Convert PDF to CBZ](pdf.md).

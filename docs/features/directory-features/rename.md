@@ -1,59 +1,50 @@
 ---
-description: Rename all files in the directory
+description: Clean and standardize comic filenames across a directory and subdirectories.
 ---
 
 # Rename All Files
 
 ![Rename All Files](../../assets/directory/rename01.png){: .center-image }
 
-Rename (Clean) Filenames is a directory based feature that allows you to clean all filenames in a directory and any sub-directories. It is accessed via the <i class="bi bi-input-cursor-text fs-2 text-primary"></i> icon to the right of the directory name in the File Manager.
+The **Rename All Files** tool standardizes and cleans filenames across all comics in a directory and its subdirectories. It is accessed via the <i class="bi bi-input-cursor-text fs-2 text-primary"></i> icon to the right of any directory name in the **File Manager**.
 
-Currently this function does 5 things to all files in a directory and any sub-directories.
+When executed, the renaming engine applies the following cleaning rules:
 
-1. Removes everything in parentheses with the exception of the 4-digit year (if available)
-2. Removes `c2c`
-3. Removes anything in brackets `[any text removed]` - along with the brackets
-4. Removes any text / characters after "filename issue (year)"
-5. Removes any extra spaces before the file extension
+1. Removes all parenthetical metadata with the exception of the 4-digit release year (if present).
+2. Removes release format tags such as `c2c` (cover-to-cover).
+3. Strips bracketed annotations (e.g. `[any text]`) along with the brackets themselves.
+4. Trims scanner watermarks and trailing metadata appearing after `{Series} {Issue} ({Year})`.
+5. Removes duplicate whitespace and trailing spaces before the file extension.
 
-The default pattern used for renaming is `{Series Name} {Issue Number} ({Year})`
+The default naming pattern is:
+`{Series Name} {Issue Number} ({Year})`
 
-You can define custom naming patterns in [File Settings](../app-settings/file-settings.md#custom-naming-settings).
+You can configure custom naming formats in [File Settings](../app-settings/file-settings.md#custom-naming-settings).
 
 ### Issue Number Handling
 
-!!! info "Improved in v6.0"
-    The rename engine picked up one new setting and several correctness fixes in **v6.0**.
+The renaming engine includes built-in rules for edge cases:
 
-- **Configurable leading zeros** — the [Issue Number Leading Zeros](../app-settings/file-settings.md#issue-number-leading-zeros) setting controls issue-number padding: **None** (`44`), **3** (`044`, the default), or **4** (`0044`).
-- **Decimal & suffix issues preserved** — point issues like `001.1` and Marvel tags like `1.MU`, `.NOW`, and `.INH` keep their suffix through renaming and wanted-matching (previously `Avengers 001.1` could become `Avengers 001`).
-- **DC "One Million" issues** — `#1,000,000` one-shots (e.g. *Action Comics 1000000*) are preserved and no longer truncated to `1000`.
+- **Configurable leading zeros**: The [Issue Number Leading Zeros](../app-settings/file-settings.md#issue-number-leading-zeros) setting controls issue padding: **None** (`44`), **3 digits** (`044`, default), or **4 digits** (`0044`).
+- **Decimal and suffix issues**: Point issues (e.g. `001.1`) and publisher event tags (e.g. `1.MU`, `.NOW`, and `.INH`) are preserved during renaming.
+- **Large issue numbers**: High issue numbers (such as DC `#1,000,000` one-shots like *Action Comics 1000000*) are preserved without truncation.
 
 ### Batched Bulk Renames
 
-Renaming many files at once now runs as a **single queued, coalesced background operation** instead of one request per file. This is dramatically faster on large batches and doesn't hammer the database — progress shows in the nav **operations indicator**. This is mainly a performance/UX improvement; the resulting filenames are unchanged.
+Renaming directories with large file counts executes as a single, coalesced background task. Progress updates in real time via the **operations indicator** in the top navigation bar.
 
-!!! info "New in v6.6 — Batch renames run on the file job queue"
-    Batch rename now shares one job queue with post-move tagging, **Remove XML** and bulk metadata, so only one of them runs at a time, in the order submitted. This stops a rename from moving a file out from under a tagging job.
+Batch renames run on a shared file job queue alongside post-move tagging, Remove XML, and bulk metadata tasks:
 
-    If another job is running, the rename dialog says **Queued — it will start when the current job finishes** and the operations indicator shows it waiting. A rename submitted behind a long tagging batch therefore waits for it. Renaming a single directory is not queued.
+- Jobs run sequentially in the order submitted, ensuring a rename operation never moves a file while a tagging job is active.
+- If another file operation is running, the rename dialog indicates that the job is queued and will start automatically once the current job finishes.
 
-Oftentimes series archives or torrent files will have numerous naming patterns with information in parenthesis, brackets, before the year, after and all over the place. I continuously update these to handle as many as I encounter.
+### Renaming Rules & Year Parsing
 
-### Renaming Rules
+Renaming rules are configured in `rename_rules.ini` on a priority basis. The default rule definitions are maintained in the [project repository](https://github.com/allaboutduncan/comic-utils/blob/main/config/rename_rules.ini).
 
-Currently renaming rules are in `rename_rules.ini` and are priority based
+#### Bare-Year Filenames
 
-The current set of rules are always available to view in the repository and can be found [here](https://github.com/allaboutduncan/comic-utils/blob/main/config/rename_rules.ini)
+Filenames containing unparenthesized release years (such as `Star Wars - Poe Dameron 001 2016`) are parsed correctly, ensuring the four-digit year is not mistakenly captured as the issue number. When an archive lacks a `ComicInfo.xml` tag, the `{issue_year}` token falls back to the year extracted from the filename.
 
-### Bare-year filenames
-
-!!! info "Fixed in v6.3"
-    `Series ### YYYY` — an **unparenthesized** year — no longer parses the year as the issue number.
-
-A filename like `Star Wars - Poe Dameron 001 2016` fell through to the no-year pattern, which reads the **last** number as the issue. That parsed the issue as "2016" for every file in the series, and because Smart Rename discards the parsed series in favour of the sidecar, **every file collapsed to the same name** and picked up ` (2)`, ` (3)` collision suffixes.
-
-The `{issue_year}` token now also **falls back to the year in the filename** when ComicInfo.xml has none — previously the year group was stripped entirely for these files, since they carry no ComicInfo year.
-
-!!! warning "Files already renamed into collision suffixes need a re-run"
-    The fix corrects the parser, not files that were already renamed by the broken one. If you have a folder of `Series (2).cbz`, `Series (3).cbz`, **re-run the rename** on it to recover the real issue numbers.
+!!! tip "Resolving collision suffixes"
+    If files in a folder previously acquired collision suffixes (such as `Series (2).cbz`, `Series (3).cbz`), simply re-run **Rename All Files** on that folder to re-parse the archives and restore their proper issue numbers.

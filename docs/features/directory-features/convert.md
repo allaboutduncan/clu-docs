@@ -1,37 +1,31 @@
 ---
-description: (CBR / RAR Only)
+description: Batch convert CBR and RAR comic archives to standard CBZ format.
 ---
 
 # Convert Directory
 
 ![Convert Directory](../../assets/directory/convert.png){: .center-image }
 
-Converts all _CBR / RAR_ files in a **directory** to ZIP/CBZ.
+The **Convert Directory** tool batch converts all CBR and RAR comic archives within a directory into standard CBZ (ZIP) archives.
 
-This is accessed via the <i class="bi fs-2 bi-three-dots-vertical text-warning"></i> icon to the right of the directory name and will be the first option in the dropdown.
-<i class="bi bi-arrow-repeat text-dark"></i> Convert CBR-->CBZ
+To run this tool, open the **File Manager**, click the <i class="bi fs-2 bi-three-dots-vertical text-warning"></i> menu to the right of any directory name, and select **Convert CBR $\rightarrow$ CBZ**.
 
-This process skips any existing CBZ files.
+This operation automatically skips any files that are already in CBZ format. If you need to re-pack or repair existing CBZ archives as well, use [Rebuild All Files](rebuild.md).
 
-If you need to rebuild a directory to fix corrupted files as well, use [Rebuild Directory](rebuild.md).
+### Converting Subdirectories
 
-### Converting Sub-Directories
+By default, this feature converts only the files directly within the selected directory and does not recurse into subdirectories.
 
-By default, this feature will only convert the directory selected and will not convert any sub-directories.
+You can enable recursive processing by turning on **Enable Subdirectories for Conversion** in [File Settings](../app-settings/file-settings.md#directory-file-processing-settings).
 
-In [File Settings](../app-settings/file-settings.md#directory-file-processing-settings), you may "_Enable Subdirectories for Conversion_" which will allow this feature to traverse sub-directories as well.
-
-!!! warning
-    Be aware, running this on a high level directory could run for a good bit of time. In testing, I was able to convert 98 files (between 50MB to 300MB each) in \~20 minutes.
+!!! tip "Performance considerations"
+    Converting high-level directories containing hundreds of archives can require significant processing time and temporary disk space. Conversions run in the background with live progress reported in the operations indicator.
 
 ## A CBR left beside its own CBZ
 
-!!! info "Fixed in v6.5"
-    On **CIFS/SMB and Windows-backed WSL2 mounts**, a conversion could write a **perfectly good CBZ** and *still* be reported as failed — so the source CBR was kept rather than removed, leaving both files in the folder. It happened on every conversion, not occasionally.
+Upon completing a conversion, CLU validates the newly created CBZ file and deletes the source CBR or RAR archive from disk.
 
-    If you're on one of those mounts and your library is full of `.cbr`/`.cbz` pairs, this is why.
+If you encounter duplicate pairs (`.cbr` and `.cbz` with the same name) in your folders:
 
-!!! note "Existing stray pairs need cleaning up by hand"
-    The fix prevents new pairs; it doesn't remove the ones already on disk. Sort a folder by name and they sit next to each other.
-
-The same fix applies to conversions done by [folder monitoring](../folder-monitoring/features.md) as files arrive.
+- This typically indicates that an earlier conversion operation was interrupted before file cleanup completed, or that file system permissions on a network share (such as CIFS/SMB mounts) temporarily prevented source file deletion.
+- Verify that the resulting `.cbz` file opens and reads correctly, and safely delete the redundant `.cbr` source file.

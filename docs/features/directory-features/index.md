@@ -2,11 +2,18 @@
 
 ![Directory Features](../../assets/directory/dropdown.png){: .center-image }
 
-Directory based functionality is the reason I started building the app and makes up the foundation of what CLU can do.
+Directory-based features provide batch operations across entire folders in your comic library. Instead of processing files individually, you can execute format conversions, filename cleanup, metadata updates, and sequence audits across an entire folder with a single action.
 
-When browsing your library in the File Manager, directory based features are available via the <i class="bi fs-2 bi-three-dots-vertical text-warning"></i> icon to the right of the directory name.
+When browsing your library in the **File Manager**, directory operations are accessible via the <i class="bi fs-2 bi-three-dots-vertical text-warning"></i> menu to the right of any directory name.
 
-!!! info "New Interface in v4"
-    The previous interface from CLU v1-v3 has been removed. The original interface wasn't user-friendly and was implemented based on what I knew at the time. After multiple revisions and using the app myself for a year, I feel like this method is more intuitive while using the app.
+## Available Directory Features
 
-Keep reading for a breakdown of the features
+| Feature | Description | Documentation |
+| --- | --- | --- |
+| **Rename All Files** | Standardizes filenames, strips redundant tags, and applies custom naming schemes. | [Rename All Files](rename.md) |
+| **Convert Directory** | Batch converts CBR and RAR archives into standard CBZ files. | [Convert Directory](convert.md) |
+| **Rebuild All Files** | Unpacks and rebuilds all archives (CBR, RAR, CBZ) to repair corrupted structures. | [Rebuild All Files](rebuild.md) |
+| **Convert PDF to CBZ** | Extracts raster pages from PDF documents and repackages them into CBZ archives. | [Convert PDF to CBZ](pdf.md) |
+| **Missing Issue Check** | Scans issue number sequences to detect missing issues in a series. | [Missing Issue Check](missing.md) |
+| **Enhance Images** | Applies automated contrast and curve adjustments across all pages in a folder. | [Enhance Images](enhance.md) |
+| **Bulk ComicInfo Actions** | Updates or removes embedded `ComicInfo.xml` metadata across all folder files. | [Update ComicInfo.xml](update.md) |

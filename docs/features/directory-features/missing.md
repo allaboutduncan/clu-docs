@@ -1,83 +1,53 @@
 ---
-description: Generates a Text file of "Missing" Issues
+description: Scan directories to identify missing issue numbers in series sequences.
 ---
 
 # Missing Issue Check
 
 ![Missing Issue Check](../../assets/directory/missing.png){: .center-image }
 
-Having various folders from various sources over many years, I wanted to be able to check and see if any issues were "missing" from a series.
+The **Missing Issue Check** tool scans a folder and its subdirectories to identify gaps in issue numbering sequences, generating a report file named `missing.txt`.
 
-When using File Manager or Collection to Browse - you will see <i class="bi bi-search text-dark"></i> __Missing Issue Check__ in the drop-down menu.
+You can run this tool from the folder actions menu (<i class="bi fs-2 bi-three-dots-vertical text-warning"></i>) in either the **File Manager** or the **Collection** view by selecting **Missing Issue Check**.
 
-![Missing Issue Check](../../assets/directory/missing02.png){: .center-image }
+![Run Missing Issue Check](../../assets/directory/missing02.png){: .center-image }
 
-Running this feature on my `/data/Valiant` directory, generated the following `missing.txt` file
+## How Detection Works
+
+The check evaluates numeric patterns in filenames across each directory:
+
+- Sequences are assumed to start at issue `#1` (e.g. `01`, `001`) and progress sequentially up to the highest issue number present in that folder.
+- Any gaps found between issue 1 and the highest numbered issue are recorded in the report.
+- When more than 50 consecutive issues are missing (often seen when series switch to legacy numbering, e.g. jumping from issue `#70` to `#500`), the report summarizes the gap as a range:
+  ```
+  Series Name 071-499 (1998) [Total missing: 429]
+  ```
+
+Sample `missing.txt` output:
 
 ```
-Directory: /data/Valiant/Eternal Warrior/v1992
+Directory: /data/Comics/Eternal Warrior/v1992
 Eternal Warrior 008 (1992).cbz
 
-Directory: /data/Valiant/Harbinger Wars 2 (2018)
-Harbinger Wars 001 (2018).cbz
-
-Directory: /data/Valiant/Harbinger/v1992
+Directory: /data/Comics/Harbinger/v1992
 Harbinger 011 (1992).cbz
 
-Directory: /data/Valiant/The Valiant/v2014
-The Valiant 001 (2015).cbz
-
-Directory: /data/Valiant/X-O Manowar/v1992
-X-O Manowar 050 (1992).cbz
-
-Directory: /data/Valiant/X-O Manowar/v2012
+Directory: /data/Comics/X-O Manowar/v2012
 X-O Manowar 005 (2012).cbz
 X-O Manowar 006 (2012).cbz
 X-O Manowar 007 (2012).cbz
-
-Directory: /data/Valiant/X-O Manowar/v2017
-X-O Manowar 001 (2018).cbz
-X-O Manowar 002 (2018).cbz
-X-O Manowar 003 (2018).cbz
-X-O Manowar 004 (2018).cbz
-X-O Manowar 005 (2018).cbz
-X-O Manowar 006 (2018).cbz
-X-O Manowar 007 (2018).cbz
-X-O Manowar 008 (2018).cbz
-X-O Manowar 009 (2018).cbz
-X-O Manowar 010 (2018).cbz
-X-O Manowar 011 (2018).cbz
-X-O Manowar 012 (2018).cbz
-X-O Manowar 013 (2018).cbz
-X-O Manowar 014 (2018).cbz
-X-O Manowar 015 (2018).cbz
-X-O Manowar 016 (2018).cbz
-X-O Manowar 017 (2018).cbz
 ```
 
-From this, I can assume that in `Directory: /data/Valiant/X-O Manowar/v2012` I am missing issues 001 - 004 and so on.
+## Ignored Terms and File Rules
 
-There is a threshold of 50 issues currently configured, so if more than 50 issues are missing of a series, the results will be truncated like so:
+To avoid false-positive gap reports caused by annuals, preview editions, or trade paperbacks, customize ignored terms and file patterns in [System Settings](../app-settings/system-settings.md#missing-issue-configuration) under **Missing Issue Configuration**.
 
-```
-Series Name 071-499 (1998) [Total missing: 429]
-```
+## Accessing `missing.txt`
 
-This is useful when publishers revert to the original number of a long-running series and you have issues like `001 - 070, 500-542`
+The resulting `missing.txt` report is saved directly inside the scanned directory.
 
-!!! warning
-    This is not a "smart" feature and simply assumes each folder should have files starting with (#01, 01, 001) and the "last" file is the last alpha-numeric file in the folder.
+![Missing.txt in Collection](../../assets/directory/missing03.png){: .center-image }
 
-### Ignored Terms
+You can open and read `missing.txt` directly within the CLU interface by clicking the file card in the browser:
 
-See the [System Settings](../app-settings/system-settings.md#missing-issue-configuration) page to configure ignored terms.
-
-### Missing.txt Files
-
-By default, the missing.txt files are created in the same directory as the directory you are running the feature on. These files will now show in the [Collection](../collection/index.md) UI.
-
-![Missing.txt Files](../../assets/directory/missing03.png){: .center-image }
-
-Additionally, they can bew viewed from within the UI as well, by clicking the file.
-
-![Missing.txt Files](../../assets/directory/missing04.png){: .center-image }
+![Viewing missing.txt](../../assets/directory/missing04.png){: .center-image }
