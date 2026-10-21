@@ -1,33 +1,36 @@
 ---
-description: Add one or more Newznab indexers for CLU to search
+description: Add and manage Newznab indexers for Usenet comic search in CLU.
 ---
 
 # Adding Newznab Indexers
 
-Indexers are the search engines of Usenet. CLU queries your **Newznab** indexers for releases that match a wanted issue, then hands the resulting NZB to your [download client](setup.md) when you grab it.
+Indexers function as the search engines of Usenet. When searching for a missing comic, CLU queries your configured **Newznab** indexers for releases matching the wanted series and issue, then passes the matching `.nzb` release directly to your [download client](setup.md).
 
-You can add one or more indexers from the **Download Clients** tab in Settings.
+Indexers are configured in the **Download Clients** tab in [Settings](../app-settings/index.md).
 
-![Newznab indexers](../../assets/settings/usenet-indexers.png){: .center-image}
+![Newznab indexers](../../assets/settings/usenet-indexers.png){: .center-image }
 
-## Indexer fields
+## Indexer Fields
 
 | Field | Description |
 | --- | --- |
-| Name | A label for the indexer so you can tell them apart. |
-| URL | The base URL of the indexer's Newznab API endpoint. |
-| API Key | Your personal API key for that indexer. |
-| Category | The Newznab category to search. Defaults to the comics category **`7030`**. |
-| Priority | Ordering used when an issue is found on more than one indexer (see below). |
+| **Name** | A recognizable label for the indexer (e.g. *Drunkenslug*, *Geek*, *NinjaCentral*). |
+| **URL** | The full base API URL for your indexer (e.g. `https://api.indexer.com`). |
+| **API Key** | Your personal API key provided in your indexer account profile. |
+| **Category** | The Newznab category ID to query. Defaults to standard comic category **`7030`**. |
+| **Priority** | Sets query precedence when multiple indexers are enabled (see below). |
 
-!!! info "Default comics category"
-    CLU defaults new indexers to Newznab category **`7030`** (Books → Comics). Only change this if your indexer maps comics to a different category.
+!!! info "Comics Category ID"
+    Newznab-compliant indexers universally standardize comic books under category ID **`7030`** (*Books > Comics*). Only alter this value if your specific indexer utilizes a custom non-standard categorization schema.
 
-## Priority ordering
+## Indexer Priority Ordering
 
-When you have more than one indexer, **priority** controls the order results are requested and displayed. Higher-priority indexers are queried first, and their results appear first in the manual and Wanted search UIs.
+When configuring multiple indexers, **Priority** determines the sequence in which indexers are queried and displayed:
 
-This is separate from **Source Priority**, which decides whether *Usenet as a whole* is tried before or after GetComics. See [Source Priority](source-priority.md) for how the two interact.
+- Higher-priority indexers are searched first.
+- Results from higher-priority indexers are displayed first in manual search modals and automated queues.
 
-!!! info "New in v6.0"
-    Indexers are new in **v6.0**. Usenet results stay hidden in search until you've added at least one indexer.
+Indexer priority is internal to your Usenet configuration. It works in conjunction with global [Source Priority](source-priority.md), which decides whether Usenet as a whole is queried before or after GetComics and DC++.
+
+!!! note "Search Visibility"
+    Usenet results remain hidden in manual search modals and automated sweeps until at least one indexer has been configured and enabled with a valid API key.

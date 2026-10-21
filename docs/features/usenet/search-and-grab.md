@@ -1,63 +1,35 @@
 ---
-description: Search Usenet and GetComics together, grab an issue, and let CLU import it
+description: Search Usenet alongside other sources, grab releases, and track automated ingestion.
 ---
 
 # Searching & Grabbing
 
-Once you've added an [indexer](indexers.md) and a [download client](setup.md), Usenet is wired into CLU's search — both the manual per-issue search on the series page and the [Wanted Issues](../pull-list/wanted.md) page.
+Once you have configured an [indexer](indexers.md) and an active [download client](setup.md), Usenet is integrated across CLU's manual and automated search interfaces.
 
-## Where you can search
+## Where Usenet Appears
 
-- **Series page (manual search)** — searching for a specific issue now queries the GetComics site **and** your enabled indexers in [priority order](source-priority.md), with a grab button on every result and per-indexer error reporting when something's misconfigured.
-- **Wanted Issues page** — the same combined search runs from your wanted list. Both sources appear under labeled section headers, ordered by your Source Priority.
+- **Series Page (Manual Search)**: When searching for a specific issue, CLU queries your enabled indexers alongside GetComics and DC++, ordering results according to your [Source Priority](source-priority.md).
+- **Wanted Issues Dashboard**: The combined search modal on the [Wanted Issues](../pull-list/wanted.md) page displays Usenet results under dedicated section headers with direct **Download** action buttons.
+- **Automated Sweeps**: The nightly wanted-issues sweep queries enabled indexers automatically based on your Source Priority ranking.
 
-<!-- TODO: screenshot — dual-source results on the Wanted page (assets/usenet/wanted-dual-search.png) -->
+!!! info "Activation Requirement"
+    Usenet results only appear in search interfaces once at least one indexer is enabled. If indexers are active but no download client is configured, CLU displays a warning indicator so grabs do not silently fail.
 
-!!! info "Usenet stays hidden until it's ready"
-    Usenet results only appear once you've added an indexer. If you have indexers configured but **no active download client**, CLU warns you so grabs don't silently fail.
+## Grabbing a Release
 
-## Grabbing a result
+When you click **Download** on a Usenet search result:
 
-Click the **grab** button on any Usenet result. CLU submits the release to your download client as real NZB content, and a background poller tracks it to completion.
+1. CLU dispatches the release's NZB payload directly to your configured download client (SABnzbd or NZBGet).
+2. The download client verifies, repairs, and unpacks the binary articles, reporting live progress to CLU's [Download Status](../file-downloads/status.md) dashboard.
+3. Completed comic files are transferred into your **WATCH** directory.
+4. The [Folder Monitoring](../folder-monitoring/index.md) pipeline detects the new arrival, matches it against your wanted list, standardizes the filename, and moves the comic into your library.
 
-When the download finishes, the comic is moved into your **WATCH** folder as:
+!!! tip "Multipart and Obfuscated Usenet Releases"
+    Usenet releases frequently arrive as nested split-volumes or multi-layer archives (e.g. `.zip` parts containing a `.rar` that wraps the comic). CLU's background pipeline automatically unwraps and extracts these archives layer-by-layer. See [Auto-Unwrap for Hybrid & Multipart Releases](../folder-monitoring/features.md#auto-unwrap-for-hybrid-multipart-releases).
 
-```
-<series> <issue>.cbz
-```
+## Ambiguous and Bare-Title Releases
 
-From there the normal [wanted-matching pipeline](../pull-list/wanted.md) picks it up exactly as it would any other file that lands in WATCH — matching it to the wanted issue and filing it into your library.
+Releases on Usenet that do not contain an identifiable issue number in their title (or consist solely of a bare series title) are treated with caution:
 
-!!! info "Multipart / obfuscated releases"
-    Some Usenet releases arrive as nested, multi-part archives instead of a ready comic. CLU unwraps those automatically — see [Auto-Unwrap for Hybrid & Multipart Releases](../folder-monitoring/features.md#auto-unwrap-for-hybrid-multipart-releases).
-
-## No-issue and bare-title releases
-
-Releases that don't include an identifiable issue number (or are just a bare series title) **appear in manual search** so you can grab them by hand if you know what they are — but they are **excluded from auto-download**. This keeps the nightly job from grabbing an ambiguous release that only matched on series and year.
-
-## Grabs no longer create ".cbz" folders
-
-!!! info "Fixed in v6.3"
-    A grab for `Heavy Metal 5.cbz` no longer produces a **directory** named `Heavy Metal 5.cbz`.
-
-CLU was handing the NZB client the destination **filename**, extension included, and download clients name the completed job folder after whatever you submit. The result was a folder called `Heavy Metal 5.cbz` holding the real comic — which the [folder monitor](../folder-monitoring/index.md) then read as a comic *file*, producing a series folder named `Heavy Metal 5.cbz` and nothing at the TARGET level at all.
-
-The submitted name is now stripped of its extension before it reaches the client.
-
-!!! info "You don't need to re-grab"
-    The monitor-side half of the fix strips comic extensions when deriving folder names, so it also **repairs folders already queued at your client** — and folders created this way by other download clients.
-
-## Auto-download correctness
-
-!!! info "Fixed in v6.5"
-    Several fixes landed in the shared auto-download path that both GetComics and Usenet grabs run through:
-
-    - A GetComics **listing page** no longer yields the first unrelated comic on it — CLU takes the specific entry or nothing.
-    - A post **split into several downloads** has the correct part picked per issue.
-    - A **sweep can't run twice** over the same scope, and queues at most **150 downloads** per run.
-    - A **rate-limited host is stood down** rather than asked again on every queued item.
-
-    See [Downloading the right comic](../file-downloads/send.md#downloading-the-right-comic) for the detail.
-
-!!! info "New in v6.0"
-    Combined GetComics + Usenet search and grabbing is new in **v6.0**.
+- **Manual Search**: These releases remain visible in manual search modals so you can inspect and grab them if you recognize the release.
+- **Automated Sweeps**: Ambiguous releases without issue numbers are strictly excluded from automated auto-download sweeps, preventing false-positive grabs for unrelated annuals or one-shots.

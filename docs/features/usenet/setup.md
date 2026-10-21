@@ -1,53 +1,47 @@
 ---
-description: Add a SABnzbd or NZBGet download client to CLU
+description: Add and configure a SABnzbd or NZBGet download client in CLU.
 ---
 
 # Adding a Download Client
 
-Your download client is the app — **SABnzbd** or **NZBGet** — that receives NZBs from CLU, downloads the articles from your Usenet provider, and assembles the finished files. CLU submits grabs to it and tracks them to completion.
+Your download client (**SABnzbd** or **NZBGet**) is the dedicated application that receives NZB files from CLU, connects to your Usenet provider, downloads and verifies binary articles, and assembles the completed comic archives.
 
-![Download Clients settings](../../assets/settings/usenet-clients.png){: .center-image}
+![Download Clients settings](../../assets/settings/usenet-clients.png){: .center-image }
 
-You add and manage download clients from the **Download Clients** tab in Settings.
+Download clients are added and managed from the **Download Clients** tab in [Settings](../app-settings/index.md).
 
-!!! warning "Only one active Usenet client"
-    Only **one** Usenet download client is active at a time. If you configure both SABnzbd and NZBGet, only the one marked active will receive grabs.
+!!! info "Client Group Scope"
+    CLU supports one active client per client group:
+    - You can configure credentials for both SABnzbd and NZBGet, but only the client currently toggled as active will receive grabs.
+    - Usenet clients belong to a separate group from [DC++ clients](../dcpp/setup.md), allowing you to run an active Usenet client and an active AirDC++ client simultaneously.
 
-    As of **v6.3** this is scoped **per client group**, so an active [AirDC++](../dcpp/setup.md) client does **not** deactivate your Usenet client — the two run side by side. See [Download client groups](../app-settings/download-settings.md#download-client-groups).
-
-!!! info "Editing saved clients"
-    When you re-open a saved client, its fields are **pre-filled with the real stored values** and secrets have a working **reveal toggle**. Editing one field no longer wipes the others, so you can update a single value without re-entering everything.
-
-## SABnzbd
+## SABnzbd Configuration
 
 | Field | Description |
 | --- | --- |
-| Host | The hostname or IP where SABnzbd is running (e.g. `192.168.1.10` or `sabnzbd`). |
-| Port | The SABnzbd web port (default `8080`). |
-| API Key | The **API Key** from SABnzbd → *Config → General → API Key*. |
-| Category | The SABnzbd category to assign grabs to (e.g. `comics`). Optional but recommended so downloads land in a predictable folder. |
+| **Host** | The hostname or IP address where SABnzbd is reachable (e.g. `192.168.1.50` or container hostname `sabnzbd`). |
+| **Port** | The SABnzbd web interface port (default `8080`). |
+| **API Key** | Found in SABnzbd under *Config > General > API Key*. |
+| **Category** | The SABnzbd category assigned to comic grabs (e.g. `comics`). Highly recommended so finished files land in your designated WATCH folder. |
 
-## NZBGet
+## NZBGet Configuration
 
 | Field | Description |
 | --- | --- |
-| Host | The hostname or IP where NZBGet is running. |
-| Port | The NZBGet web port (default `6789`). |
-| Username | The NZBGet control username (default `nzbget`). |
-| Password | The NZBGet control password. |
-| Category | The NZBGet category to assign grabs to (e.g. `comics`). Optional. |
+| **Host** | The hostname or IP address where NZBGet is reachable. |
+| **Port** | The NZBGet web interface port (default `6789`). |
+| **Username** | The NZBGet control username (default `nzbget`). |
+| **Password** | The NZBGet control password. |
+| **Category** | The NZBGet category assigned to comic grabs (e.g. `comics`). |
 
-## Test Connection
+## Testing the Connection
 
-After entering your details, click **Test Connection**. CLU makes a live call to the client and reports a readable result rather than a raw error. Common states:
+After entering your client details, click **Test Connection** to verify network connectivity and authentication. CLU evaluates the connection and provides human-readable feedback:
 
-| Result | Meaning | What to check |
+| Result | Status | Troubleshooting Action |
 | --- | --- | --- |
-| **Connected** | CLU reached the client and authenticated. | Nothing — you're good. |
-| **Connection refused** | Nothing is listening at that host/port. | Host, port, and that the client is running/reachable from CLU's container. |
-| **401 / Unauthorized** | The client answered but rejected your credentials. | API key (SABnzbd) or username/password (NZBGet). |
-| **Non-JSON response** | Something answered, but it wasn't the client's API. | You're likely pointed at the wrong port or a reverse proxy/login page. |
-| **Timed out** | No response in time. | Network path, firewall, or the client being overloaded. |
-
-!!! info "New in v6.0"
-    Download clients are new in **v6.0**.
+| **Connected** | <i class="bi bi-check-circle-fill text-success"></i> Success | Communication verified. Click **Save** to activate. |
+| **Connection refused** | <i class="bi bi-x-circle-fill text-danger"></i> Failed | Verify host IP/hostname, port number, and ensure the client is running. |
+| **401 / Unauthorized** | <i class="bi bi-x-circle-fill text-danger"></i> Failed | Verify the API key (SABnzbd) or control username/password (NZBGet). |
+| **Non-JSON response** | <i class="bi bi-x-circle-fill text-danger"></i> Failed | Check that the port points to the API service rather than a reverse proxy or web portal. |
+| **Timed out** | <i class="bi bi-exclamation-triangle-fill text-warning"></i> Timeout | Check Docker network bridges, firewall rules, or host resource saturation. |

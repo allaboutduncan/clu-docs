@@ -1,77 +1,66 @@
 ---
-description: Rank GetComics, Usenet and DC++ for auto-download
+description: Configure source priority and ranking across GetComics, Usenet, and DC++.
 ---
 
 # Source Priority
 
-**Source Priority** ranks CLU's download sources. You set it from the **Download Clients** tab in [Settings](../app-settings/index.md).
+**Source Priority** governs how CLU prioritizes and queries its three supported download sources: [Direct Downloads (GetComics)](../file-downloads/index.md), [Usenet](index.md), and [DC++](../dcpp/index.md).
 
-![Source Priority](../../assets/settings/source-priority.png){: .center-image}
+Source Priority is configured from the **Download Clients** tab in [Settings](../app-settings/index.md).
 
-!!! info "Three sources as of v6.3"
-    Source Priority used to be a single **Usenet vs. GetComics** comparison. As of **v6.3** it is a general ranking over **three** sources — [GetComics](../file-downloads/index.md), [Usenet](index.md), and [DC++](../dcpp/index.md) — and both the real auto-download loop and the dry-run simulation walk the same ordered list.
+![Source Priority](../../assets/settings/source-priority.png){: .center-image }
 
-!!! info "Changed in v6.8: on/off switches"
-    Each source now has an **on/off switch**, and only the sources that are on are saved. On a new install, the list is **GetComics alone**: Usenet and DC++ are switched on only when you choose to.
+Each source features an **On / Off toggle** and a draggable handle to set priority order. You can enable any combination of sources according to your preferences (at least one source must remain active). Disabling a source temporarily removes it from auto-download sweeps without deleting its underlying client credentials.
 
-    * A source you turn off keeps its client configuration, and is simply left out of the list.
-    * **The last source can't be switched off.**
-    * Before v6.8, the Settings page defaulted to all three sources, so the first reorder switched Usenet and DC++ on without asking.
+## Automated Sweeps vs. Manual Search
 
-    The [Mylar3 importer](../mylar-import.md) adds Usenet for you once it has imported an active client and an enabled indexer. The Downloads step of [Guided Setup](../../getting-started/guided-setup.md#downloads) sets the same list.
+Source Priority behaves differently depending on whether an operation is automated or manual:
 
-## What it does and doesn't control
-
-This is the part worth reading twice, because Source Priority means **two different things** depending on where you are:
-
-| | [Auto-download](../pull-list/wanted.md) | Manual search modal |
+| Behavior | [Automated Sweeps](../pull-list/wanted.md) | Manual Search Modal |
 | --- | --- | --- |
-| **Order** | Sources are tried in ranked order. | Sections are **displayed** in ranked order. |
-| **Membership** | **An unranked source is skipped entirely.** | **Every configured source is queried**, ranked or not. |
+| **Execution Order** | Sources are queried sequentially in ranked order. | Results sections are **displayed** in ranked order. |
+| **Source Membership** | **Only enabled, ranked sources are queried.** Unranked or disabled sources are skipped. | **All configured sources are queried**, regardless of ranking or toggle state. |
 
-!!! warning "Ranking governs auto-download membership"
-    If a source isn't in your Source Priority list, the nightly auto-download job will **never** use it — no matter how well configured it is.
+!!! warning "Ranking Governs Automated Sweeps"
+    If a source is toggled off or omitted from your Source Priority ranking, nightly automated download sweeps will **never** query it — even if its credentials are fully configured.
 
-    The manual search modal is the opposite: it queries everything you've set up, so an unranked client is still fully usable by hand. This is why a source can appear in your search results and yet never grab anything automatically.
+    In contrast, the manual search modal queries every configured service, ensuring you can always perform manual grabs from any provider by hand.
 
-## Auto-download behavior
+## Automated Download Cascading
 
-For nightly [auto-download](../pull-list/wanted.md), CLU walks your ranked sources in order for each wanted issue:
+During nightly automated sweeps, CLU processes wanted issues using a cascading priority check:
 
-1. Search the highest-ranked source.
-2. If it returns a qualifying match, grab it and **stop** — lower-ranked sources are skipped for that issue.
-3. If it returns nothing usable, fall through to the next ranked source.
-4. If no ranked source produces a match, the issue stays wanted.
+1. Queries the highest-ranked enabled source for the wanted issue.
+2. If an acceptable match is found, CLU queues the download and **stops searching** — lower-ranked sources are skipped for that issue.
+3. If no acceptable match is found, CLU falls through to the next ranked source.
+4. If no enabled source produces a match, the issue remains wanted and is retried on the next run.
 
-Only results that actually match the wanted issue are grabbed. A no-issue or bare-title release is never auto-grabbed — see [Searching & Grabbing](search-and-grab.md).
+Only high-confidence releases matching the specific series, volume, and issue number are grabbed. Ambiguous releases without issue numbers are never auto-grabbed.
 
-### Example
+### Cascading Example
 
-With a priority of **Usenet → GetComics → DC++**:
+With a priority ranking of **Usenet $\rightarrow$ GetComics $\rightarrow$ DC++**:
 
-| Situation | What happens |
+| Scenario | Result |
 | --- | --- |
-| Usenet has a match | Grabbed from Usenet. GetComics and DC++ are skipped. |
-| Usenet has nothing, GetComics has a match | Grabbed from GetComics. DC++ is skipped. |
-| Only DC++ has a match | Grabbed from DC++. |
-| Nothing matches anywhere | The issue stays wanted and is retried on the next run. |
-| **DC++ configured but not ranked** | DC++ is **never tried**, even for issues nothing else can satisfy — but it still appears in the manual search modal. |
+| Usenet returns a match | Download queued from Usenet. GetComics and DC++ are skipped. |
+| Usenet has no match; GetComics returns a match | Download queued from GetComics. DC++ is skipped. |
+| Usenet and GetComics have no match; DC++ returns a match | Download queued from DC++. |
+| No source returns an acceptable match | The issue remains wanted and is retried on the next sweep. |
+| **DC++ configured but toggled off** | DC++ is skipped during automated sweeps, but remains searchable in manual modals. |
 
-## Search UI behavior
+## Search Modal Display
 
-In the manual per-issue search, on the [Wanted Issues](../pull-list/wanted.md) page, and in the [Reading Lists](../collection/reading-lists.md) search modal, each source appears under its own labeled section header. Source Priority controls **which section is listed first**, so your preferred source is at the top — but you can grab from any of them.
+In single-issue search modals across the Series page, [Wanted Issues](../pull-list/wanted.md), and [Reading Lists](../collection/reading-lists.md), each source renders under its own labeled section header. Source Priority controls which section appears first at the top of the modal.
 
-![Usenet Search Results UI](../../assets/settings/usenet-search.png){: .center-image}
+![Search Results UI](../../assets/settings/usenet-search.png){: .center-image }
 
-!!! info "DC++ results arrive last"
-    DC++ searches take around 30 seconds because AirDC++ paces its hub queries. Its section fills in after the others regardless of where it sits in your ranking. See [DC++ Searching & Grabbing](../dcpp/search-and-grab.md#hub-searches-are-slow-thats-normal).
+!!! info "DC++ Search Timing"
+    DC++ searches typically require 20–30 seconds because AirDC++ paces its hub queries to respect peer limits. Its section populates progressively after direct download and Usenet results appear. See [DC++ Searching & Grabbing](../dcpp/search-and-grab.md#hub-searches-are-slow-thats-normal).
 
 ## Source Priority vs. Download Provider Priority
 
-!!! note "Two different settings"
-    **Source Priority** decides which *kind* of source (GetComics, Usenet, DC++) to try first for a wanted issue.
+These two settings control different layers of the download architecture:
 
-    **Download Provider Priority**, set in the [Download and API](../app-settings/download-settings.md) tab, only orders the DDL providers *within* GetComics results relative to each other. It has no effect on Usenet or DC++.
-
-!!! info "Where this page lives"
-    Source Priority governs all three download sources, so it sits at the top of the **Downloads** section, ahead of each source's own pages. Its address stays under `/features/usenet/` so existing links keep working. It applies equally to [DC++](../dcpp/index.md) and [File Downloads](../file-downloads/index.md).
+- **Source Priority** (this page): Determines which *source system* (GetComics, Usenet, or DC++) to query first for an issue.
+- **Download Provider Priority** (in [Download Settings](../app-settings/download-settings.md)): Orders the individual file hosting mirrors *within* GetComics results (e.g. Pixeldrain vs. Mediafire vs. Zippyshare). It has no effect on Usenet or DC++.
