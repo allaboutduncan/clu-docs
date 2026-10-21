@@ -1,56 +1,56 @@
+---
+description: Automatically download complete weekly comic releases by publisher.
+---
+
 # Weekly Packs
 
-![Weekly Packs](../../assets/pull/weekly-pack.png){: .center-image}
+![Weekly Packs](../../assets/pull/weekly-pack.png){: .center-image }
 
-If you want everything release in a week, you can use this feature to download all releases from a Publisher for a given week.
+If you prefer downloading entire publisher release bundles rather than managing individual issues, the **Weekly Packs** feature automatically checks for and downloads weekly release packs.
 
-## Weekly Pack Features
+!!! note "Weekly Packs Disables Individual Auto-Downloads"
+    Enabling Weekly Packs disables individual-issue automated downloads in CLU. Weekly packs provide comprehensive coverage for chosen publishers, replacing daily per-issue sweeps.
 
-Below, we walk through each setting of the Weekly Pack feature.
+## Supported Publishers
 
-!!! note "Weekly Packs Disables Automated Downloads"
-    If you have weekly packs enabled, you will not be able to use the automated download feature. The assumption is that you prefer the weekly download to the daily download of individual issues.
+Weekly packs are available for the following publisher categories:
 
-### Publishers to Download
+- **Marvel**
+- **DC Comics**
+- **Image Comics**
+- **Dark Horse Comics**
+- **Indie** (covers all independent and small-press publishers)
 
-Weeklly packs are currently available for the following publishers:
+Select one or more publishers to include their release bundles in your download schedule.
 
-- Marvel
-- DC Comics
-- Image Comics
-- Dark Horse Comics
-- Indie (this covers all other publishers)
+## Download Options
 
-Select one or more publishers to download the associated weekly pack.
-
-### Download Options
-
-There are multiple ways to sort your pull list to quickly find the series you are looking for as well. Simpley click the Table Header to sort that column. 
+Configure the scheduling and retrieval settings for weekly pack downloads:
 
 | Option | Description |
 | --- | --- |
-| **Check Day** | Day to begin checking for a new weekly pack |
-| **Check Time** | Time to begin checking for a new weekly pack |
-| **Start Date** | The first weekly pack you want to download. We support 6 months of weekly pack history. |
-| **Retry Option** | Retry Daily if Unavailable |
-| **Save Settings** | Save changes and begin any new schedule |
-| **Check & Download** | Check immediately and download the latest weekly pack if available |
-| **Check Pack Status** | Check the status of the latest weekly pack to see if it's available for download |
+| **Check Day** | Day of the week to begin checking for newly released weekly packs. |
+| **Check Time** | Time of day to initiate the availability check. |
+| **Start Date** | The starting date for pack downloads (supports up to 6 months of historical packs). |
+| **Retry Option** | Automatically retries daily if the weekly pack has not yet been uploaded. |
+| **Save Settings** | Saves configuration changes and updates the background schedule. |
+| **Check & Download** | Immediately initiates a check and downloads the latest pack if available. |
+| **Check Pack Status** | Queries download sources to check whether the latest pack is released without downloading. |
 
-### Status
+## Execution Status
 
-This section shows the **Last Run**, **Next Run** and the **last successful pack** that was downloaded.
+The status panel reports the **Last Run** timestamp, **Next Scheduled Run**, and the date of the **Last Successful Pack** retrieved.
 
-### Recent Downloads
+## Recent Downloads
 
-![Weekly Pack Downloads](../../assets/pull/weekly-pack-downloads.png){: .center-image}
+![Weekly Pack Downloads](../../assets/pull/weekly-pack-downloads.png){: .center-image }
 
-This section shows details about past pack downloads.
+The recent downloads table tracks historical pack acquisitions:
 
-| Item | Description |
+| Column | Description |
 | --- | --- |
-| **Pack Date** | Weekly Pack Date |
-| **Publisher** | Publisher of the weekly pack |
-| **Format** | Format of the downloaded weekly pack (JPG or WEBP) |
-| **Status** | Status of the weekly pack (Success, Failed, or Processing) |
-| **Downloaded** | Date and time the weekly pack was downloaded |
+| **Pack Date** | Official release date of the weekly pack. |
+| **Publisher** | Publisher category of the pack. |
+| **Format** | Image format of the comics contained in the pack (`JPG` or `WEBP`). |
+| **Status** | Ingestion status (`Success`, `Processing`, or `Failed`). |
+| **Downloaded** | Timestamp recording when the pack was successfully retrieved. |

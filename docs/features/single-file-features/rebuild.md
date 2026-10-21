@@ -1,31 +1,25 @@
 ---
-description: Rebuild or convert a single file
+description: Rebuild, repair, or convert a single comic archive.
 ---
 
 # Single File Rebuild
 
 ![Single File Rebuild](../../assets/single/rebuild.png){: .center-image }
 
-Accessible in the [File Manager view](../file-management/index.md) or [Collection view](../collection/index.md), via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> dropdown menu. 
+Accessible from the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> menu on any comic card in the [File Manager](../file-management/index.md) or [Collection view](../collection/index.md).
 
-Running this will rebuild a CBZ file in an attempt to fix issues/errors with it not displaying correctly. Additionally, this will also convert a single CBR/RAR file to a CBZ
+Single File Rebuild performs two primary functions:
 
-|                                      Before                                      |                                       After                                      |
-| :------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-| ![](https://github.com/allaboutduncan/comic-utils/raw/main/images/rebuild01.png) | ![](https://github.com/allaboutduncan/comic-utils/raw/main/images/rebuild02.png) |
+1. **Repairs existing CBZ files**: Unpacks and repackages the archive to resolve zip header errors, strip internal folder clutter, and repair archives that fail to open in comic readers.
+2. **Converts CBR / RAR to CBZ**: Re-packs single RAR-compressed files into standardized CBZ archives.
 
+## Automated Error Recovery
 
+During a rebuild, CLU unpacks the archive into an isolated staging directory and validates the contents before replacing the original file.
 
-## When a rebuild fails
+If extraction fails (for example, if the archive is encrypted or truncated), CLU automatically aborts the operation, leaves your original comic file untouched, and logs the detailed error on the **[Problem Files](../problem-files/index.md)** page under the **Rebuild** category.
 
-!!! info "Fixed in v6.5 — a failed rebuild leaves your comic alone"
-    A rebuild unpacks the archive and repacks it, so a failure used to leave the wreckage behind: the original renamed to `.bak` or `.zip`, sitting beside a folder of loose page images, with nothing readable where the comic used to be.
+!!! warning "Container Repairs vs. Corrupt Image Data"
+    Rebuilding repairs the **archive container**, not corrupted image data. It successfully recovers archives misnamed with the wrong extension (such as a RAR file labeled as `.cbz`) or broken zip directory headers. However, if the underlying image files inside the archive suffer from CRC corruption, rebuilding cannot restore damaged pixels.
 
-    As of **v6.5**, a failed rebuild **restores the comic exactly where it found it** and cleans up after itself. A rebuild that doesn't work now costs you nothing but the time.
-
-Failures are also recorded on the **[Problem Files](../problem-files/index.md)** page, with the full archive error, so a rebuild that fails silently in a directory-wide run is no longer invisible.
-
-!!! warning "Rebuild can't repair real damage"
-    Repacking fixes the **container**, not the contents — its one genuine repair is an archive that's a RAR wearing a `.cbz` name. A true CRC error aborts the extraction and no amount of rebuilding will bring those pages back.
-
-    For a genuinely damaged comic, use **[Find a replacement](../problem-files/replacing-a-file.md)** from its Problem Files row instead.
+    For severely corrupted files, use **[Find a replacement](../problem-files/replacing-a-file.md)** directly from its row on the Problem Files page.

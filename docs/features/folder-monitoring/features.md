@@ -1,122 +1,80 @@
 ---
-description: What can folder monitoring do?
+description: Automated processing features, archive unwrapping, and safety guards in Folder Monitoring.
 ---
 
 # Features
 
-Once enabled and configured, here are a list of features that are available via folder monitoring.
+When Folder Monitoring is enabled, CLU applies an automated processing pipeline to any new files or directories appearing in your **WATCH** folder.
 
 ## Ignored Extensions
 
-This setting is used to ignore file types in your **WATCH** folder. Any extension configured here will be ignored. This is used in 2 ways:
+Folder monitoring can be configured to ignore specific file extensions. This serves two purposes:
 
-1. Ignore temp files associated with downloads. The app monitors filesize and attempts to determine when a file download (or move) is complete. Certain file extensions are associated with temp files and this setting allows us to easily ignore them.
-2. Some files could contain multiple files or a single file (RAR) or we may not want to move and rename PDF files or images placed in the WATCH folder. Just add the file extension and they will be ignored.
+1. **Ignoring active download temp files**: File transfer tools often create temporary files while downloads are in flight. Adding these extensions ensures CLU ignores them until transfers finish.
+2. **Excluding non-comic files**: Prevents unwanted companion files (such as `.nfo`, `.torrent`, or raw images) from being moved or processed into your library.
 
-Default file extensions are:
+Default ignored file extensions include:
 
 ```ini
-.crdownload,.torrent,.tmp,.mega,.rar,.bak
+.crdownload,.torrent,.tmp,.mega,.rar,.bak,.dctmp
 ```
 
 ## Renaming
 
-This feature is enabled by default and will be running when monitoring is enabled. 
+When enabled, incoming comic files are automatically cleaned and standardized using the rules described in [Rename All Files](../directory-features/rename.md). Filenames are formatted according to your configured [Custom Rename Pattern](../app-settings/file-settings.md#custom-naming-settings) as they move from WATCH to TARGET.
 
-This applies the same renaming logic outlined in the [Rename All Files](../directory-features/rename.md) section to any file added to the directory.
+## Process Subdirectories
 
-Files will be moved to the **TARGET** directory when they are renamed.
+By default, monitoring processes only files resting in the root of the **WATCH** directory. Enabling **Process Subdirectories** allows the monitor to traverse nested child folders inside WATCH, applying extraction, conversion, and renaming to all contained files.
 
-## Process Sub-Directories
+## Move Subdirectories
 
-When enabled, this feature will apply all other configured options to you **WATCH** folder.
-
-For example, sub-directory files will not be renamed and moved by default. If enabled, all files on the root of your **WATCH** folder will be renamed as well as any sub-directories.
-
-## Move Sub-Directories
-
-If you have multiple issues of a series in a sub-directory of your **WATCH** folder, you may want to keep them in a separate folder as opposed to the root of the **TARGET** folder.
-
-Simply enable this feature and the sub-directory will be moved along with the files.
-
-**Note:** The sub-directory name will be renamed/cleaned using similar logic to the filenames.
+When downloading multi-issue packs or complete series runs, files often arrive inside a series subfolder. Enabling **Move Subdirectories** preserves this grouping: the entire subfolder is cleaned, renamed using standardized series naming rules, and moved into the **TARGET** directory with its issues intact.
 
 ## Auto ZIP Extraction
 
-If you download a ZIP file with multiple files, when this feature is enabled, all files will be extracted once the download is complete.
-
-Files are extracted to the **WATCH** folder and will maintain the structure within the ZIP file.
+When enabled, multi-file `.zip` packages appearing in the **WATCH** folder are automatically extracted once completely written to disk. Extracted files maintain their internal folder hierarchy and are subsequently processed by the remaining pipeline steps.
 
 ## Convert to CBZ
 
-When enabled, any CBR file will be auto-converted to a CBZ when processed.
+When enabled, any `.cbr` or `.rar` comic archive detected in the **WATCH** folder is automatically converted into a standard `.cbz` archive before moving to TARGET.
 
 ## Auto-Unwrap for Hybrid & Multipart Releases
 
-!!! info "New in v6.0"
-    Auto-unwrap is new in **v6.0**. There's nothing to configure.
+Usenet releases and complex web downloads often arrive as nested, multi-part, or obfuscated packages — such as a folder of `.zip` or `.rar` split volumes that extract to another archive layer before revealing the final comic file.
 
-    As of **v6.4** the **Auto-Unpack** setting is gone — archives in WATCH are always unpacked, and unpacked based on what's inside them. See [How archives in WATCH are handled](../app-settings/file-settings.md#how-archives-in-watch-are-handled).
+CLU automatically detects and unwraps these packages through a dedicated pre-processing workflow:
 
-Usenet releases don't always arrive as a ready-to-read comic. Many show up as a **hybrid/multipart release**: a folder of obfuscated, multi-part archives — a set of `.zip` parts that extract to a `.RAR` that finally extracts to the actual PDF, CBR, or CBZ. The old per-file monitor couldn't tell that four zips were really one archive, so it treated each obfuscated part as a separate file.
+1. **Identifies** the release folder within the **WATCH** directory.
+2. **Waits** for all parts to finish downloading (settling) before initiating extraction.
+3. **Extracts** nested archives layer-by-layer inside an isolated temporary workspace.
+4. **Converts** any extracted PDF documents into standard CBZ archives.
+5. **Renames** the extracted comic to a clean title and hands it off to the primary monitoring pipeline.
 
-CLU now recognizes these packaged releases and **unwraps them automatically**. A folder-level pre-pass:
+### Unwrapping Guarantees
 
-1. **Claims** the release folder in your **WATCH** directory.
-2. **Waits** for all parts to finish arriving (settling) before touching anything.
-3. **Extracts** the nested archives **layer by layer in an isolated work area**.
-4. **Renames** the emerged comic to a clean release name and **converts PDF → CBZ**.
-5. **Hands off** to the normal monitoring pipeline.
+- **Isolated extraction**: Files are unpacked in an isolated staging directory, never in place over your active files.
+- **Safety checks**: The unwrapper will not trigger if a valid, ready-to-read comic archive already exists in the top level of the folder.
+- **Clean error handling**: Temporary extraction artifacts are purged upon success; if an extraction fails, the source archive is preserved so it can be retried or inspected.
 
-Key guarantees:
+See [Searching & Grabbing](../usenet/search-and-grab.md) for details on how Usenet releases interact with this feature.
 
-- **The source is never mutated.** Extraction happens in isolation, not in place.
-- **Conservative by design.** It won't fire when a ready comic is already present in the folder.
-- **Cleans up on success, keeps on failure.** Leftover parts and cruft are deleted after a successful unwrap; on failure the source is left alone and retried later.
+## Pipeline Safeguards
 
-<!-- TODO: before/after screenshot — obfuscated parts vs. clean CBZ (assets/monitor/unwrap.png) -->
+Folder Monitoring includes several built-in protections to ensure library stability:
 
-See [Searching & Grabbing](../usenet/search-and-grab.md) for how these releases arrive from Usenet.
+### Active Download Detection
 
-## Fixes in v6.5
+CLU monitors file size over time to ensure files have stopped growing before attempting to read, unpack, or move them. In-progress downloads from clients like AirDC++ or torrent applications are left alone until fully written. Orphan cleanup routines will never delete files whose size is actively changing.
 
-Four long-standing ways a WATCH folder could work against you, all fixed in **v6.5**.
+### Graceful Archive Error Handling
 
-### A corrupt archive is opened once, not forever
+If an archive in the WATCH directory is corrupted or unreadable, CLU attempts extraction once, logs the failure, and moves the item to the **[Problem Files](../problem-files/index.md)** page under the **Unpack** category. The file will not loop or create duplicate numbered files on successive sweeps.
 
-!!! info "Fixed in v6.5"
-    A damaged `.zip` in WATCH used to be re-extracted on **every five-minute sweep**, producing a trail of `Comic (19).cbz`-style duplicates in your processed folder and thousands of log lines — forever, or until you noticed and deleted it.
+### Atomic Transfers
 
-    It now **fails once**, is recorded on the [Problem Files](../problem-files/index.md) page under **Unpack**, and is left alone.
+Files moved from WATCH to TARGET are verified upon arrival. If a transfer is interrupted, any partial destination file is cleaned up immediately, preventing the creation of numbered duplicate copies (e.g. `Comic (2).cbz`) on subsequent monitoring passes.
 
-This is the one row type that explains *"my download vanished and never appeared in the library"* — the file never reached your library, so nothing else would ever have told you about it.
+### Clean CBR Replacement
 
-### Partial downloads are left alone
-
-!!! info "Fixed in v6.5"
-    An AirDC++ transfer still in progress (a `.dctmp` file) was being imported as a **finished comic every 30 seconds**. One report left **28 copies** of the same file.
-
-Two guards were added alongside it:
-
-- **Orphan cleanup refuses to delete anything that's still growing.** A file whose size is changing is a download in progress, not an orphan.
-- **The Clean Up Orphan Files button got the same guard**, so clicking it mid-download no longer kills the download.
-
-!!! info "Another client's queue is never reaped"
-    In-progress queue items belonging to another download client are **never** cleaned up, regardless of age. A DC++ queue item can legitimately sit idle for **hours** waiting for a source, and idle is not the same as abandoned.
-
-### A failed move leaves no copy behind
-
-!!! info "Fixed in v6.5"
-    If a move out of WATCH failed part-way, the partial destination file was left in place — and a full copy left behind gets **re-imported under a new name on the next sweep**, which is how you end up with numbered duplicates of a file you only downloaded once.
-
-    CLU now cleans up the partial destination when a move fails.
-
-### No more CBR sitting beside its own CBZ
-
-!!! info "Fixed in v6.5"
-    On **CIFS/SMB and Windows-backed WSL2 mounts**, a CBR-to-CBZ conversion could write a **perfectly good CBZ and still report itself as failed** — so the original CBR was kept, and you got both files. On **every** download.
-
-    The conversion is now reported correctly. See [Convert Directory](../directory-features/convert.md).
-
-!!! note "Existing pairs need cleaning up by hand"
-    The fix stops new pairs being created; it doesn't go looking for the ones you already have. Sort a folder by name and the `.cbr`/`.cbz` pairs are easy to spot.
+When converting CBR files to CBZ, CLU verifies the integrity of the generated CBZ archive before safely removing the source CBR file from disk.

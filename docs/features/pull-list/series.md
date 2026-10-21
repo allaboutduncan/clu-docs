@@ -1,96 +1,93 @@
+---
+description: Manage series subscriptions, folder mapping, and issue statuses in CLU.
+---
+
 # Series
 
-The Series page will load the details of the selected series from the Metron API. From this page you can perform multiple actions depending on your subscription status.
+The **Series** page displays the complete checklist and metadata for a selected series from the Metron database. From this view, you can manage your subscription, map directory paths, and control tracking status.
 
-## Subscribe to Series
+## Subscribing to a Series
 
-![Subscribe to Series](../../assets/pull/not-subscribed.png){: .center-image}
+![Subscribe to Series](../../assets/pull/not-subscribed.png){: .center-image }
 
-If you are not currently subscribed to the series, you will see two possible actions:
+When viewing a series you are not currently tracking, two primary actions are available:
 
 ### Subscribe
 
-Clicking the Subscribe will prompt you for the location to save the series.
+Clicking **Subscribe** prompts you for the storage path where issues of this series will be saved.
 
-![Subscribe to Series Modal](../../assets/pull/subscribe.png){: .center-image}
+![Subscribe to Series Modal](../../assets/pull/subscribe.png){: .center-image }
 
-The default path will be based on your CUSTOM MOVE PATTERN setting in the configuration. You can easily modify this if you want a different location for the series.
+The proposed path defaults to your configured **Custom Move Pattern** in [File Settings](../app-settings/file-settings.md). You can customize this path as needed:
 
-!!! note
-    For example, I prefer <br/>_/{Publisher}/{Series} ({Year})_<br/> for my series naming but if there are multiple volumes, I'll use <br/>_/{Publisher}/{Series}/v{Year}_
+!!! tip "Common Folder Patterns"
+    Standard series typically use:
+    `/{Publisher}/{Series} ({Year})/`
+    
+    Multi-volume series can be organized using volume subfolders:
+    `/{Publisher}/{Series}/v{Year}/`
 
-Once you have selected the location, click the **Create & Map** button to create the folder and save the subscription. CLU will automatically map issues to the series
+Click **Create & Map** to create the directory (if it does not already exist), register the subscription, and create a persistent `.cvinfo` / `series.json` sidecar.
 
-### Map Location 
+### Map Location
 
-Clicking the Map Location button will open a modal, allowing you to map the series to an existing folder. This is useful if you already have issues of that series.
+If you already have a folder containing issues of this series, click **Map Location** to link the subscription to that existing directory.
 
-![Map Series Location](../../assets/pull/map.png){: .center-image}
+![Map Series Location](../../assets/pull/map.png){: .center-image }
 
-Simply navigate to the folder and click the <i class="bi bi-check-lg text-success"></i> or the "Select This Folder" button to map the series to the folder. CLU will then refresh and determine how many issues of the series you have.
+Navigate to the folder and click **Select This Folder** (or the checkmark icon). CLU scans the directory, matches your existing files against the checklist, and updates your owned count.
 
-Once you are subscribed to the series, you will see a different view:
+## Managing Active Subscriptions
 
-## Existing Subscription
+![Existing Subscription](../../assets/pull/current-subscription.png){: .center-image }
 
-![Existing Subscription](../../assets/pull/current-subscription.png){: .center-image}
-
-For existing subscriptions, you will see the following options:
+For subscribed series, the header toolbar provides the following actions:
 
 ### Remove
 
-<i class="bi bi-x-circle text-danger"> Remove</i> will remove the subscription. No files will be deleted.
+Click <i class="bi bi-x-circle text-danger"></i> **Remove** to unsubscribe from the series and remove it from your Pull List. Your local comic files are left untouched.
 
 ### Change Location
 
-<i class="bi bi-folder-symlink text-info"> Change Location</i> will open the same modal as Map Location, allowing you to change the location of the series. Once you confirm the new location, CLU will refresh and determine how many issues of the series you have.
+Click <i class="bi bi-folder-symlink text-info"></i> **Change Location** to re-map the series to a different folder. CLU updates the stored mapping and reconciles your files.
 
 ### API Sync
 
-<i class="bi bi-arrow-repeat text-dark"> API Sync</i> will call the Metron API to get the latest issues and details for the series. This process is run nightly for all series. 
+Click <i class="bi bi-arrow-repeat text-dark"></i> **API Sync** to query the Metron API for new issue solicitations, publication date updates, and revised series descriptions. This sync runs automatically every night across all subscribed series.
 
 ### Refresh
 
-<i class="bi bi-arrow-clockwise text-success"> Refresh</i> will scan the mapped directory to check for existing/missing issues.
-
-!!! info "Refresh now genuinely refetches (fixed in v6.3)"
-    Refresh skipped CLU's own cache, but the refetch still went through the Metron client library — which answers from **its** response cache before dispatching any HTTP request, and that cache is stale-forever in practice. A **Summary edited on Metron never reached the page.**
-
-    CLU now purges the cached responses for that series before refetching, so an edit made on Metron shows up.
-
-!!! info "Refresh also drops the issue bodies now (v6.4)"
-    The v6.3 fix purged the *series* response but not the individual **issue** responses — which are the ones carrying **creator credits**. So a series whose issues Metron had since completed still came back credit-less.
-
-    Refresh now drops the cached issue detail for every known issue in the series too. If your files were tagged with no credits, see [Credit Backfill](../app-settings/schedules.md#credit-backfill) for the automatic repair.
-
-    The same fix applies to **API Sync**, which had a second, independent version of the problem: it only ever filled a *blank* description, so an edited Summary couldn't land through that path either. It now **updates a description that already has content**.
+Click <i class="bi bi-arrow-clockwise text-success"></i> **Refresh** to purge local caches, refetch the latest series and issue records from Metron (including newly added creator credits), and rescan your local storage folder to reconcile file matches.
 
 ### Monitor
 
-The **Monitor** toggle controls whether CLU actively searches for this series' wanted issues. When a series is **Not Monitored**, it's greyed out on the [Pull List](pull-list.md#monitoring) and excluded from the nightly wanted-issues refresh and from DDL/Usenet auto-download.
+The **Monitor** toggle controls whether CLU actively tracks and searches for missing issues:
 
-Turn this off for series where you already have every issue, know the rest aren't available, or don't want CLU searching on a nightly basis. You can also flip the Monitor flag for many series at once from the [Pull List's bulk actions](pull-list.md#bulk-actions).
+- When **Monitored**: Missing issues appear on the [Wanted](wanted.md) page and are included in nightly automated download sweeps (GetComics, Usenet, DC++).
+- When **Not Monitored**: The series is greyed out on the [Pull List](pull-list.md), and automated downloader searches are paused.
+
+Turn off monitoring for completed runs where you already own all desired issues, or when remaining issues are out-of-print and unavailable.
 
 ### On the Stack
 
-If this is enabled and you have [*On the Stack*](../collection/index.md#on-the-stack) configured to show on your Library page, this will show the next issue you haven't read in that section. 
+Enable **On the Stack** to allow this series to surface its next unread issue in the **On the Stack** carousel on your [Collection homepage](../collection/index.md#on-the-stack).
 
-## Wanted / Skipped / Owned
+## Issue Statuses: Wanted, Owned, and Skipped
 
-By default, any issues not in the series folder will be marked as "Wanted" and will be searched for in the nightly pull process. 
+Each issue in the series checklist carries a tracking status:
 
-![Owned or Skipped](../../assets/pull/skipped.png){: .center-image}
+![Owned or Skipped](../../assets/pull/skipped.png){: .center-image }
 
-You can mark issues as "Owned" if you have a copy in a trade or another location. This will prevent CLU from searching for the issue in the nightly pull process.
-
-You can mark issues as "Skipped" if you don't want to search for the issue in the nightly pull process.
+- **Owned**: Issues physically detected in your mapped folder, or issues you manually marked as owned (e.g. issues collected in an omnibus or trade paperback).
+- **Wanted**: Released issues that are absent from your local folder. These are automatically included in automated download sweeps.
+- **Skipped**: Issues you do not wish to collect. Skipped issues are excluded from download searches.
 
 ### Multi-Select Actions
 
-![Multi-Select Actions](../../assets/pull/multi-select.png){: .center-image}
+![Multi-Select Actions](../../assets/pull/multi-select.png){: .center-image }
 
-You can select multiple issues and perform the following actions:
+Select multiple issues using the checkboxes to perform bulk status updates:
 
-- **Mark as Owned** - Mark multiple issues as owned
-- **Mark as Skipped** - Mark multiple issues as skipped
-- **Mark as Wanted** - Mark multiple issues as wanted (only if they are currently marked as Owned or Skipped)
+- **Mark as Owned**: Manually mark the selected issues as collected.
+- **Mark as Skipped**: Exclude selected issues from search sweeps.
+- **Mark as Wanted**: Re-enable tracking for issues previously marked as Owned or Skipped.

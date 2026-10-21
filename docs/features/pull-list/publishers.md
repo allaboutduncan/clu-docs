@@ -1,26 +1,28 @@
+---
+description: Manage publisher records, directory paths, and Metron mappings.
+---
+
 # Publishers
 
-![Publishers](../../assets/pull/publishers.png){: .center-image}
+![Publishers](../../assets/pull/publishers.png){: .center-image }
 
-When you add a new series, CLU will create a new publisher if it doesn't exist. 
-
-Currently, this is mostly a backend feature but there are possible feature regarding icons, logos, etc that could be added in the future.
+The **Publishers** table manages publisher records registered within your Pull List system. When you subscribe to a series, CLU automatically links the publisher to its official Metron publisher record and assigns its storage directory.
 
 ## Publisher Table Fields
 
 | Field | Description |
 | --- | --- |
-| ID | The unique identifier for the publisher from Metron. |
-| Name | The name of the publisher. |
-| Path | The path to the publisher's directory - must be mapped to a directory in UI. |
-| Favorite | Indicates if the publisher is favorited. |
-| Created At | The date and time the publisher was created. |
-| Actions - Edit/Delete | Edit the publisher path/name or delete the publisher. |
+| **ID** | The unique publisher identifier from the Metron database. |
+| **Name** | The canonical publisher name (e.g. Marvel, DC Comics, Image). |
+| **Path** | The local storage directory assigned to this publisher. |
+| **Favorite** | Indicates whether the publisher is pinned as a favorite on the collection dashboard. |
+| **Created At** | Timestamp recording when the publisher was registered in CLU. |
+| **Actions** | Edit the publisher's assigned directory path or delete the publisher record. |
 
-## Publisher Table Actions
+## Editing Publisher Paths
 
-### Edit
+Click the edit button on any publisher row to open the edit dialog:
 
-Clicking the edit button will open a modal to edit the publisher. 
+![Publisher Edit](../../assets/pull/edit-publisher.png){: .center-image }
 
-![Publisher Edit](../../assets/pull/edit-publisher.png){: .center-image}
+You can modify the display name or update the mapped storage directory. Updating the path ensures future series subscribed under that publisher are filed into the correct directory location.

@@ -1,14 +1,13 @@
 ---
-description: Adds a blank PNG at the end of a file
+description: Append a trailing blank image to an archive to correct dual-page spread alignment.
 ---
 
-# Add blank Image
+# Add Blank Image
 
 ![Add Blank Image](../../assets/single/blank.png){: .center-image }
 
-Accessible in the [File Manager view](../file-management/index.md) only, via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> dropdown menu. 
+Accessible in the [File Manager](../file-management/index.md) via the <i class="bi fs-2 bi-three-dots-vertical text-dark"></i> menu on any comic card.
 
-Requested feature from Komga Discord. Corrects display issues with Manga files.
+In two-page spread and dual-page reader modes (such as Komga, Kavita, or desktop comic viewers), pages are rendered side-by-side in pairs. If a comic or manga volume has an odd number of pages, or lacks an alignment spacer, every subsequent two-page spread throughout the book can become misaligned.
 
-Adds a blank / empty PNG file (zzzz9999.png) to the end of archive.
-
+The **Add Blank Image** tool inserts a blank image (`zzzz9999.png`) at the very end of the CBZ archive. This evens out the page count, ensuring dual-page layouts and splash spreads display across matching panels without modifying story content.

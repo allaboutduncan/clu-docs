@@ -1,17 +1,23 @@
+---
+description: Search the Metron database to discover and subscribe to comic series.
+---
+
 # Series Search
 
-![Series Search](../../assets/pull/series-search.png){: .center-image}
+![Series Search](../../assets/pull/series-search.png){: .center-image }
 
-If you are looking for a specific series, you can use the **Series Search** feature. This will allow you to search for a series by name and find all the issues for that series.
+The **Series Search** tool allows you to query the [Metron](https://metron.cloud) comic database by title to find series checklists, review issue runs, and subscribe to titles.
 
 ## Searching for a Series
 
-You can search for a series by typing the name of the series in the search bar and clicking<br/> the <i class="bi bi-search text-info"></i> **Search** button or pressing **Enter**.
+1. Type the series title in the search input.
+2. Click the <i class="bi bi-search text-info"></i> **Search** button or press **ENTER**.
+3. CLU queries Metron and returns matching series records, displaying publication years, publisher names, and total issue counts.
 
-## Series Results
+## Filtering Results
 
-All results available from the [Metron API](https://metron.cloud) will be displayed in the results section. Use the **Filter Results** input field to narrow down the results.
+If a query returns multiple series with similar names or multiple volumes across years, use the **Filter Results** field to quickly narrow down the results list.
 
-## Adding a Series
+## Subscribing or Mapping
 
-Simply click the Series Name to load the series details.
+Clicking on any series in the results list opens its full [Series page](series.md), where you can subscribe to the title, map it to an existing storage directory, or view its issue checklist.

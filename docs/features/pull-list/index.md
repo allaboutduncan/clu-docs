@@ -1,25 +1,37 @@
+---
+description: Manage subscriptions, track weekly releases, and monitor missing issues in CLU.
+---
+
 # Pull List and Series Management
 
-![Weekly Releases](../../assets/pull/weekly.png){: .center-image}
+![Weekly Releases](../../assets/pull/weekly.png){: .center-image }
 
-CLU has a built-in pull list that allows you to keep track of the comics you want to collect.
+CLU features an integrated Pull List and series tracking system powered by the [Metron](https://metron.cloud/) database. Similar to a pull list at a local comic book shop, it lets you subscribe to ongoing series, track weekly release schedules, identify missing back-catalogue issues, and coordinate automated downloads.
 
-- View Weekly Releases and Add them to Your Pull List 
-- [Map your existing collection](automap.md) to the pull list in one scan to see what you're missing
-- Search for a series and add it to your pull list
-- View wanted and upcoming issues
+## Core Capabilities
 
-!!! info "New in v6.5 — Wanted has two sources"
-    The [Wanted](wanted.md) page still reports the missing issues for the series on your Pull List, and as of **v6.5** it can also report the issues you're missing from a [reading list](../collection/reading-lists.md).
+- **Weekly Releases**: Browse current, past, and upcoming releases, filter by publisher, and subscribe in one click.
+- **Series Management**: Map series to local folders, manage custom naming patterns, and reconcile owned versus missing issues.
+- **Automated Downloads**: Feed missing issues directly into GetComics, Usenet, and DC++ download sweeps.
+- **Library Automap**: Scan existing sidecars (`series.json` and `cvinfo`) to import your entire library to the Pull List in a single pass.
 
-    Reading-list tracking is **opt-in per list** — turn on **[Track Wanted](../collection/reading-lists.md#track-wanted)** on the list itself, and its unmatched entries appear under [From Reading Lists](wanted.md#from-reading-lists).
+## Pull List Sections
 
-## Metron API Required
+| Section | Description | Documentation |
+| --- | --- | --- |
+| **Releases** | Browse weekly release schedules with live publisher filter pills and deep-linkable URLs. | [Releases](releases.md) |
+| **Series** | Manage series subscriptions, folder mapping, and issue-level statuses. | [Series](series.md) |
+| **Pull List** | Central dashboard showing collection health color-coding and bulk monitoring toggles. | [Pull List](pull-list.md) |
+| **Wanted** | Track missing back-catalogue issues and upcoming releases with integrated download searching. | [Wanted](wanted.md) |
+| **Weekly Packs** | Automate weekly bulk publisher pack downloads (Marvel, DC, Image, Dark Horse, Indie). | [Weekly Packs](weekly.md) |
+| **Series Search** | Search the Metron catalog by keyword to subscribe to new or ongoing series. | [Series Search](series-search.md) |
+| **Publishers** | Manage publisher directory paths and view provider-linked publisher records. | [Publishers](publishers.md) |
+| **Automap** | Scan existing library folders and sidecars to rapidly populate your Pull List. | [Automap (Scan Library)](automap.md) |
 
-![Metron](../../assets/pull/metron.png){: .center-image}
+## Metron API Configuration
 
-The pull list requires the Metron API to be enabled in the app settings.
+![Metron](../../assets/pull/metron.png){: .center-image }
 
-Signup for your free account at [Metron](https://metron.cloud/) and enter the credentials in the [app settings --> Download & API](../app-settings/download-settings.md).
+The Pull List relies on the Metron comic database for release calendars, issue checklists, and creator metadata.
 
-Continue reading to learn how to use the Pull List.
+To enable Pull List features, register for a free account at [Metron](https://metron.cloud/) and enter your credentials in **[Settings > Metadata Providers](../app-settings/metadata.md)**.

@@ -1,49 +1,49 @@
+---
+description: Browse weekly comic release schedules with live-count publisher filters.
+---
+
 # Releases
 
-![Releases](../../assets/pull/weekly.png){: .center-image}
+![Releases](../../assets/pull/weekly.png){: .center-image }
 
-## Weekly Releases
+The **Releases** page displays comic books scheduled for publication during a given week, based on data from the Metron comic database.
 
-The Weekly Releases page will show you a list of all comics that are slated to release for the current week.
+Clicking any comic in the release grid opens the series detail view, where you can:
 
-Clicking on a comic on the weekly release page will take you to the series page for that comic. From there you can perform multiple actions:
+- **Subscribe to the series** to add it to your Pull List.
+- **Map to an existing directory** or update its storage path.
+- **Check for new issues** or scan local folders for recently added files.
+- **Manage monitoring status** for automated downloader sweeps.
 
-- Subscribe to the comic
-- Map to an existing series or update the mapping location 
-- Check the API for new issues
-- Check your local folder for missing/newly added issues
-- Remove the series from your pull list
+## Navigating Release Weeks
 
-Continue on to the series page to learn more about each of these actions.
-
-## Previous and Future Weeks
-
-The Metron API provides release information for previous and future weeks. You can use the buttons at the top of the page to navigate to previous or future weeks.
+Use the navigation arrows at the top of the page to move between past, current, and upcoming release weeks.
 
 ## Publisher Filter
 
-!!! info "New in v6.3"
-    **Publisher filter pills** with live counts, above the release grid.
+Interactive publisher filter pills above the grid display real-time issue counts for each publisher releasing books that week:
 
-![Publisher filter on Weekly Releases](../../assets/pull/releases-publisher-filter.png){: .center-image}
-
+![Publisher filter on Weekly Releases](../../assets/pull/releases-publisher-filter.png){: .center-image }
 /// caption
-Filter pills with live counts. The selection is mirrored into the URL.
+Publisher filter pills with live counts. Selections mirror into the URL.
 ///
 
-Click a publisher pill to narrow the week's releases to that publisher. Filtering is **client-side**, so it's instant — no reload, no extra API calls.
+Click any publisher pill to isolate releases from that publisher. Because filtering runs client-side in the browser, switching between publishers is instantaneous and requires no page reloads or additional API calls.
 
-The selection is **mirrored into the URL** as `?publisher=`, which makes a filtered view **deep-linkable**. Bookmark `.../releases?publisher=Marvel` and you land straight on that week's Marvel books, and the browser back button steps through your filter selections.
+### Deep-Linkable Filter URLs
+
+Your selected publisher filter is automatically mirrored into the browser URL as a query parameter (e.g. `?publisher=Marvel`). This allows you to bookmark specific publisher views or use your browser's back and forward buttons to cycle through previous filter states.
 
 ### The list fills in as you watch
 
-!!! info "The list fills in as you watch"
-    On a **cold week**, the publisher pills populate **progressively over the first few visits** rather than appearing complete immediately. This is expected behavior, not a bug.
+When viewing a release week for the first time (a "cold" week), the publisher pills populate progressively over your initial visits rather than appearing all at once.
 
-    **Why:** Metron's issue-list endpoint returns objects that carry the series but **no publisher**, so there is nothing on the release data itself to group by. Resolving publishers one series at a time would mean roughly **150 API calls a week** against Metron's daily rate limit — which would burn your quota on a filter.
+Metron's weekly issue endpoint returns issue objects that associate with a series but omit the parent publisher name. Querying publishers individually for every release would require roughly 150 API calls per week, quickly consuming your daily Metron API quota.
 
-    Instead, CLU resolves publishers into a **self-warming cache**. A background pass sweeps in bulk using Metron's own server-side publisher filter, so a single filtered call resolves every series a publisher shipped that week, then does a capped number of per-series lookups for the tail. Each publisher discovered in the tail becomes a bulk candidate on the next pass, so a cold cache converges within a few passes.
+To prevent rate-limit exhaustion, CLU utilizes a **self-warming cache**:
 
-    While the cache is filling, the page polls and re-renders as publishers arrive. Revisit the week — or just wait a moment — and the pills complete.
+1. A background worker queries Metron using server-side publisher filters to resolve major publishers in bulk with single requests.
+2. Capped individual lookups are performed for remaining independent and small-press titles.
+3. Newly discovered publishers are added to subsequent bulk passes, converging on a complete publisher list within a few passes.
 
-Once a week's publishers are cached, the filter is immediate on every subsequent visit.
+Once a week's publisher records are cached locally, filter pills render instantly on every subsequent visit.

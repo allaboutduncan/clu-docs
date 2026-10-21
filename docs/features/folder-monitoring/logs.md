@@ -1,25 +1,33 @@
 ---
-description: How can I see what folder monitoring is doing?
+description: Inspect real-time background file processing and automation logs.
 ---
 
 # Monitoring Logs
 
-Once enabled and configured, you'll see a **Monitor Logs** link in your app navigation.
+When Folder Monitoring is enabled, a dedicated **Monitor Logs** link is available in the top navigation bar.
 
-<figure><img src="/assets/nav.png" alt=""><figcaption><p>Monitor Logs in Navigation</p></figcaption></figure>
+![Monitor Logs in Navigation](../../assets/nav.png){: .center-image }
+/// caption
+Monitor Logs in Navigation
+///
 
-This will let you view log messages associated specifically with Folder Monitoring. Navigating to this page you should see something like this:
+The Monitor Logs view displays real-time activity for files moving through the automated ingestion pipeline.
 
-Folder Monitoring uses some of the base functions of the app to perform actions. Logs related to these actions (renaming, conversion, etc) are visible on the App Logs page.
+![Folder Monitoring Logs](../../assets/monitor/mon-logs.png){: .center-image }
+/// caption
+Folder Monitoring Live Log View
+///
 
-<figure><img src="/assets/monitor/mon-logs.png" alt=""><figcaption><p>Folder Monitoring Logs</p></figcaption></figure>
+## Log Message Types
 
-In the example above, we can see a few things:
+The monitoring log details each stage of automated file ingestion:
 
-* **Config Reloaded:** Monitoring continually checks for config file changes to ensure it's always running the most recent config.
-* **Processing File:** The file currently being processed
-* **Waiting For:** App detects file is being updated, so it waits to do other actions
-* **Renamed:** The file before:after renaming&#x20;
-* **Moved File:** The file location before:after moving
-* **Checking If:** Checking if file is a CBR and needs conversion
-* **Sending Convert Request:** File being sent for conversion
+- **Config Reloaded**: The monitoring daemon checks for configuration changes and reloads dynamically without requiring a container restart.
+- **Processing File**: Identifies the specific file currently undergoing evaluation in the WATCH directory.
+- **Waiting For**: Indicates that a file is actively being written or downloaded. The monitor pauses until the file size stabilizes.
+- **Renamed**: Displays the original filename alongside the newly formatted name produced by the renaming engine.
+- **Moved File**: Reports the transfer path as processed files move from the WATCH directory to the TARGET directory.
+- **Checking If**: Inspects the internal file structure and extension to determine if format conversion (e.g. CBR $\rightarrow$ CBZ) is needed.
+- **Sending Convert Request**: Dispatches the file to the conversion worker and logs the outcome upon completion.
+
+For general application errors and database maintenance events, refer to the main [App Logs](../app-settings/logs.md) page.

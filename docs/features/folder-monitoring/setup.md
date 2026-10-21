@@ -1,58 +1,60 @@
 ---
-description: How to enable and setup folder monitoring
+description: How to enable and configure automated background folder monitoring in Docker.
 ---
 
 # Monitoring Setup
 
-Folder monitoring is a feature that can be enabled during installation or when updating the container. Once enabled, there are several features available.
+Folder Monitoring runs as an isolated background process to ensure continuous file processing without degrading web interface responsiveness.
 
-### Install or Update
+## Docker Compose Configuration
 
-Monitoring runs as a separate process to ensure background operations do not interfere with any manual processing done by the user. In order to support this, folder monitoring must have 2 options configured in the `docker-compose.yaml`
+To enable folder monitoring, ensure your `docker-compose.yaml` mounts a secondary volume for incoming files and sets the `MONITOR=yes` environment flag:
 
 ```yaml linenums="1"
 version: '3.9'
 services:
     comic-utils:
         image: allaboutduncan/comic-utils-web:latest
-
         container_name: clu
         logging:
             driver: "json-file"
             options:
-                max-size: '20m'  # Reduce log size to 20MB
-                max-file: '3'     # Keep only 3 rotated files
+                max-size: '20m'
+                max-file: '3'
         restart: always
         ports:
             - '5577:5577'
         volumes:
-            - "/path/to/local/config:/config" # Maps local folder to persist settings
-            - "/path/to/local/cache:/cache" # Maps to local folder for DB and thumbnail cache
-            ## update the line below to map to your library.
-            ## Your library MUST be mapped to '/data' for the app to work
+            - "/path/to/local/config:/config"
+            - "/path/to/local/cache:/cache"
+            # Main comic library (must be mapped to /data)
             - "/e/Comics:/data"
-            ## Additional folder if you want to use Folder Monitoring.
+            # Secondary volume for incoming downloads
             - "/f/Downloads:/downloads"
         environment:
             - FLASK_ENV=production
-            ## Set to 'yes' if you want to use folder monitoring.
-            - MONITOR=yes/no
+            # Enable folder monitoring background process
+            - MONITOR=yes
 ```
 
-These options are:
+Key configuration points:
 
-* **Line 22:** Secondary volume/location for monitoring
-* **Line 26:** `MONITOR=yes` to enable
+- **Secondary Volume Mount** (e.g. `"/f/Downloads:/downloads"`): Mounts your download client's destination directory into the container.
+- **`MONITOR=yes`**: Starts the dedicated background monitoring daemon inside the container.
 
-If you want to enable monitoring and did not configure these on setup, simply stop the container, update your <mark style="color:blue;">`docker-compose.yaml`</mark> file and restart.
+If you installed CLU without monitoring enabled, update your `docker-compose.yaml` with these values and restart the container (`docker compose up -d`).
 
-### Setup & Requirements
+## Directory Configuration (WATCH & TARGET)
 
-When you have monitoring enabled, you will need to configure a **WATCH** folder and a **TARGET** folder.
+Once monitoring is enabled, navigate to **Settings > File Processing** in the CLU web interface to assign your directory paths:
 
-<figure><img src="/assets/monitor/monitor01.png" alt=""></figure>
+![Folder Monitoring Configuration](../../assets/monitor/monitor01.png){: .center-image }
+/// caption
+Folder Monitoring Configuration in Settings
+///
 
-* **WATCH** is the source folder that will be monitored. Files in this location will have automated actions applied to them
-* **TARGET** is the destination folder where files will be moved as they are processed.
+- **WATCH Folder**: The incoming directory monitored for new files. Download clients should deposit completed downloads here.
+- **TARGET Folder**: The destination directory where files are moved once unpacked, converted, and renamed. This can be your main `/data` library or an intermediate staging folder.
 
-###
+!!! tip "Directory Placement"
+    Keep your **WATCH** folder outside `/data`. Storing raw incoming downloads in a separate folder prevents incomplete or temporary download files from appearing in your active comic collection.

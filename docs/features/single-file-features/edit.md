@@ -1,88 +1,80 @@
 ---
-description: Perform edits to a CBZ File
+description: Visually inspect, reorder, crop, and modify page contents within a CBZ archive.
 ---
 
 # Edit CBZ File
 
 ![Edit Header](../../assets/file/edit01.png)
 
-When viewing a single file in the [File Manager](../file-management/index.md) or [Collection](../collection/index.md), you can click the <i class="bi bi-three-dots-vertical fs-2 text-info"></i> button to open a CBZ file in the browser and rename/rearrange files, crop images, and delete images.
+When viewing an issue in the [File Manager](../file-management/index.md) or [Collection](../collection/index.md), click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu and select **Edit File** (or **Edit CBZ**) to open the in-browser archive editor.
 
-Once you select a CBZ file and click "Edit CBZ"  you will see a loading icon while the CBZ is extracted to a temp directory. Once this is complete, all of the image files will be displayed in the UI.
+CLU unpacks the archive into an isolated temporary workspace and loads the pages into an interactive visual grid:
 
 ![Edit Modal](../../assets/file/edit02.png)
 
-In the example above we can see the files in the CBZ. From this UI you can:
+From this interface, you can perform several operations:
 
-### Rename / Reorder Files
+## Rename and Reorder Pages
 
-Clicking a file name will allow you to edit the file name. Press `ENTER` to save the changes. Once a file name has been edited, it will re-order in the UI based on alpha/number ordering.
+Click on any filename to edit it inline. Press `ENTER` to save the new name. Pages automatically re-sort in the grid according to alphanumeric ordering.
 
-In the image below, you can see that updating the filename to `00b.jpg` has re-ordered the file to appear in the CBZ after `00a.jpg`
+For example, updating a filename to `00b.jpg` causes it to sort immediately after `00a.jpg`:
 
 ![Renamed Example](../../assets/file/edit-rename.png)
 
-### Upload Files
+## Upload New or Replacement Pages
 
-When editing the CBZ, you can drag and drop images to upload new files to the CBZ. I added this feature as many old comics are missing covers and I found it useful to be able to add them in the UI. Additionally, if you have a CBZ with a corrupted cover, it's easy to find the cover image and replace it in the UI. We'll use that as an example in the image below.
+You can drag and drop image files directly into the editor to add missing pages or replace corrupted covers:
 
 ![Upload Example](../../assets/file/edit-upload01.png "Corrupted Cover")
 
-After selecting "Edit" for this CBZ and the Edit UP opens, I have located the cover image and dragged it into the UI.
+1. Locate your replacement cover image and drag it into the editor modal.
 
 ![Upload Example](../../assets/file/edit-upload02.png "Uploading Cover")
 
-Once the is uploaded, it will be added to the CBZ according to its alpha/numeric order and displayed in the UI. When images are uploaded, they are resized to the same dimensions as the rest of the images in the CBZ.
+2. The image is uploaded, scaled to match the dimensions of the other pages in the archive, and inserted into alphanumeric order.
 
-!!! info
-    Only image files are allowed to be uploaded to a CBZ file. If you try to upload a non-image file, you will see <br/> <span class="badge bg-danger">"No valid image files. Allowed: .jpg, .jpeg, .png, .gif, .webp, .bmp"
+!!! note "Allowed Image Formats"
+    Only image files are permitted inside the archive (`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`, `.bmp`). Non-image files will be rejected upon upload.
 
 ![Upload Example](../../assets/file/edit-upload03.png "New Cover Added")
 
- I'll delete the corrupted cover and save the changes.The UI will update to show the new cover image.
+3. Once the replacement image is inserted, delete the old or damaged cover image and save changes.
 
 ![Upload Example](../../assets/file/edit-upload04.png "New Cover")
 
-### Crop Images
+## Crop Images
+
+The built-in crop tool provides precise controls for isolating panel artwork or cover sections from multi-page spreads:
 
 ![Crop Example](../../assets/file/edit-crop01.png)
 
-This is a more precise implementation of the [Crop Cover](crop.md) feature that allows you to select which piece of the cover you wish to save as the main cover image. For wrap-around or multi-page covers: 
+- **`<-| Left`**: Crops and saves the left half of the image as the new cover. The original full spread is retained and repositioned as the second image in the archive.
+- **`Right |->`**: Crops the image to the right half and assigns it as the primary cover.
+- **`Middle`**: Extracts the center panel for tri-fold covers.
+- **`Free Crop`**: Allows click-and-drag freeform cropping directly on the canvas:
+    - Click and drag to define the crop area.
+    - Hold **SPACE** to reposition the selection box.
+    - Hold **SHIFT** to lock standard comic page aspect ratios.
 
-Clicking the `<-| Left` button would crop and save the back as the new cover. The original image is never deleted. It is renamed and saved in the CBZ.
+![Freeform Crop](../../assets/file/edit-crop02.png){: .center-image }
 
-Clicking the `Right |->` button will crop the image to the right half and save that as the cover image.
+!!! info "Preserves Original Images"
+    Crop operations preserve the original un-cropped spread inside the archive, ensuring you can undo an accidental crop by removing the cropped page and restoring the original.
 
-Clicking the `Middle` button is used for Tri-fold covers where the main image is in the middle.
+## Delete Pages
 
-<i class="bi bi-crop text-primary"> Free</i> Crop lets you click and drag to free-form crop an image in the UI. 
+Click the <i class="bi bi-trash text-danger"></i> icon on any page card to delete it from the archive. This is useful for stripping non-story pages, advertisements, or scanner promotional cards.
 
-* Click to draw your area
-* SPACE to move the area
-* SHIFT to maintain typical comic page proportions.
+![Delete Page](../../assets/file/edit-delete.png){: .center-image }
 
-<figure><img src="../../assets/file/edit-crop02.png" alt=""></figure>
+!!! danger "Immediate Deletion"
+    Page deletions within the editor take effect immediately upon confirmation.
 
-!!! info
-    All Crop actions backup/preserve the original file in the CBZ and it should be instantly viewable. If you mistakenly crop something - just delete the file and start over.
+## Save Changes
 
-### Delete Files
+Click **Save** to repack the archive and clean up temporary files.
 
-Clicking the <i class="bi bi-trash text-danger"></i> will delete the file from the CBZ. This is useful for removing extra images not related to the comic.
+### Automated Junk File Cleanup
 
-<figure><img src="../../assets/file/edit-delete.png" alt=""></figure>
-
-!!! danger
-    **Warning:** The file/image is deleted immediately and this is not reversible.
-
-### Save Changes
-
-Once you have completed all actions on the file, click `Save` to re-pack the file and remove all temp files.
-
-There is no cancel button - as cancelling would still need to re-pack the files.
-
-### Skipped & Deleted File Types
-
-In [File Settings](../app-settings/file-settings.md), you can configure certain file types to be automatically deleted whenever a CBZ is unpacked. For example, I have my setup configured to auto-delete the following types of files when they are found `.nfo,.sfv,.db,.DS_Store`
-
-Additionally, you can configure file types to be skipped as well. This ensures that files like `.xml` are re-packed when the editing is completed.
+In [File Settings](../app-settings/file-settings.md), you can configure specific file extensions to be automatically purged whenever a CBZ is edited (e.g. `.nfo`, `.sfv`, `.db`, `.DS_Store`). Non-image metadata files such as `ComicInfo.xml` are automatically preserved during repacking.
