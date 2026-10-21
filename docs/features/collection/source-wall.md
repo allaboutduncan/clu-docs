@@ -5,44 +5,41 @@
 Example Source Wall
 ///
 
-Fine-tuning your comic metadata just got a lot easier. In v4.10, we've introduced the Source Wall view (naming inspired by Metron). This view is a table-based view of your libray, that also includes the metadata.
+The Source Wall provides a tabular, spreadsheet-style view of your library with detailed metadata columns. It is designed for auditing tags, inspecting file properties, and executing file actions across your collection.
 
 ![Publishers](../../assets/source/publishers.png)
 /// caption
-Publishers
+Source Wall Publishers View
 ///
 
-## Config Options
+## Column Configuration
 
-You can configure the Source Wall view by clicking the <i class="bi bi-layout-three-columns fs-1 text-icon"></i> icon in the top right corner of the Source Wall view.
+You can customize visible columns by clicking the <i class="bi bi-layout-three-columns fs-1 text-icon"></i> icon in the top right corner of the Source Wall view.
 
 ![Config Options](../../assets/source/config.png){: .center-image}
 /// caption
 Config Options
 ///
 
-This allows you to show/hide the columns that are displayed in the Source Wall view.
+Use the column selector to toggle which metadata fields and technical properties appear in the table.
 
-## Issue Options
+## Issue Actions
 
-You can read any issuse in this view by clicking the <i class="bi bi-book fs-2 text-info"></i> icon in the row of the issue.
+You can open and read any issue directly by clicking the <i class="bi bi-book fs-2 text-info"></i> icon in its row.
 
-Additionally you can perform 9 actions on issues via the dropdown menu that can be accessed by clicking the <i class="bi bi-layout-three-dot fs-2 text-icon"></i> menu.
+Click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu on any row to access issue operations:
 
 ![Issue Dropdown Menu](../../assets/source/actions.png){: .center-image}
 /// caption
 Example Issue Dropdown Menu
 ///
 
-1. **Crop Cover**: This will crop the first image of the CBZ, saving the right-side as the new cover and the full image as the 2nd image. This is the same process as [Crop Cover](../single-file-features/crop.md).
-2. **Remove First Image**: This will remove the first image from the issue. This is same feature as [Remove First Image](../single-file-features/remove.md). I recommend using this option after using "Edit File" as to ensure the incorrect image is truly the first image in the file.
-3. **Edit Pages**: This unpacks the CBZ and allows you to edit the files. See a full list of features in the [Edit File](../single-file-features/edit.md) section.
-4. **Rebuild**: This will quickly rebuild a incorrectly built CBZ file and/or convert a CBR to a CBZ file. This is the same feature as [Rebuild](../single-file-features/rebuild.md).
-5. **Enhance**: This will enhance the image quality of all images in the issue. This is the same feature as [Enhance](../single-file-features/enhance.md).
-6. **Add Blank to End**: Adds a blank `.png` file named `zzzz9999` to the file. This corrects display issues with Manga files.
-7. **Fetch Metadata**: The retrieves the metadata for the issue and generates the `ComicInfo.xml` file. This is the same process documented at [Get ComicInfo.xml](../file-management/comicinfo.md#get-metadata-for-a-single-issue)
-8. **Info**: View the full contents of the  `ComicInfo.xml` and other file information (number of image, image size, etc)
-9. **Delete**: This will delete the issue. This is the same feature as [Delete](../single-file-features/delete.md).
-
-!!! info "Fixed in v6.5 — the Pull List menu is back"
-    The **Pull List** entry was missing from the actions menu **on this page only** — it was present everywhere else an issue appears, which made it look like a Source Wall limitation rather than the oversight it was. It's back.
+1. **Crop Cover**: Crops the first image of the CBZ, saving the right side as the new cover and the full spread as the second image. See [Crop Cover](../single-file-features/crop.md).
+2. **Remove First Image**: Removes the first image from the issue. See [Remove First Image](../single-file-features/remove.md).
+3. **Edit Pages**: Unpacks the CBZ to edit or reorder pages and metadata. See [Edit File](../single-file-features/edit.md).
+4. **Rebuild**: Rebuilds an improperly constructed CBZ file or converts a CBR to CBZ format. See [Rebuild](../single-file-features/rebuild.md).
+5. **Enhance**: Enhances image quality across all pages in the comic. See [Enhance](../single-file-features/enhance.md).
+6. **Add Blank to End**: Appends a blank `.png` file named `zzzz9999` to the end of the archive to fix two-page spread alignment in manga readers.
+7. **Fetch Metadata**: Queries metadata providers to retrieve comic information and generate a `ComicInfo.xml` file. See [Get ComicInfo.xml](../file-management/comicinfo.md#get-metadata-for-a-single-issue).
+8. **Info**: Displays technical metadata and the full contents of `ComicInfo.xml` (e.g., page count, resolution, archive details).
+9. **Delete**: Deletes the issue from your library. See [Delete](../single-file-features/delete.md).

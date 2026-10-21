@@ -5,56 +5,43 @@
 Example Publisher Page with Custom Header
 ///
 
-With CLU, you can visually browse your collection. It will load you root (/data) folder and display all folders and files in it. For documentation purposes, we'll refer to this as the "Publisher" section, but it can be any folder structure you have in your collection.
+CLU allows you to visually browse your collection starting from your root library (`/data`) directory. While this documentation refers to top-level directories as "Publishers", they represent whatever folder structure exists in your storage.
 
-Each folder will have a <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu that will allow you to perform actions on the folder. Publisher folders will have different options than folders that contain issues. 
-
-!!! Warning
-    On the first load, CLU will scan your collection and generate thumbnails for all files. This can take some time if you have a large collection. A collection of 100,000 files will take ~2 hours to scan. All future loads will be near-instant.
+Each folder includes a <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu providing folder-level management actions.
 
 ## Publisher Folders
 
 ![Publisher Dropdown Menu](../../assets/collection/pub-dropdown.png){: .center-image}
 
-There are 3 options in the dropdown menu:
+The folder menu provides three options:
 
-- **Scan Files**: This will scan the folder and rebuild the database for this publisher, capturing any new files or structure changes.
-- **Generate Missing Thumbnails**: This will generate thumbnails for all folders that are missing a thumbnail. This uses the same process as [Generating Thumbnails](series.md#generating-thumbnails).
-- **Missing File Check**: This will check for missing files in the folder based on the [Directory Features Missing File Check](../directory-features/missing.md).
+- **Scan Files**: Scans the directory and updates the database for this publisher, indexing newly added files and structural changes.
+- **Generate Missing Thumbnails**: Generates cover thumbnails for all folders that are currently missing art. See [Generating Thumbnails](series.md#generating-thumbnails).
+- **Missing File Check**: Analyzes the folder to detect missing issues in series sequences. See [Missing File Check](../directory-features/missing.md).
 
 ### Custom Headers
 
-All folders support custom headers. CLU will look for an image file named `header.png`, `header.jpg`, or `header.gif` in the folder. If it finds one, it will use it as the header. Recommended image size is 2200x516 pixels.
+Folders support custom banner headers. CLU checks for an image file named `header.png`, `header.jpg`, or `header.gif` in the publisher folder. If present, it is rendered across the top of the page. The recommended image resolution is **2200×516 pixels**.
 
 ### Custom Thumbnails
 
-All folders support custom thumbnails. CLU will look for an image file named `folder.png` or `folder.jpg` in the folder. If it finds one, it will use it as the thumbnail. Recommended image size is 200x300 pixels.
+All folders support custom thumbnails. Place an image named `folder.png`, `folder.jpg`, `folder.jpeg`, `folder.gif`, or `folder.webp` in the directory, and CLU will use it as the folder's cover image. Recommended dimensions are **200×300 pixels**.
 
 ### Uploading a Publisher Thumbnail
 
-![Publisher without Thumbnail](../../assets/collection/upload-pub-01.png){: .center-image}
-/// caption
-Publisher without Thumbnail
-///
-
-You can upload a thumbnail for a publisher by dragging and dropping an image file onto the publisher folder.
+You can quickly assign a custom thumbnail by dragging and dropping an image file directly onto the publisher card from your computer.
 
 ![Uploading a Thumbnail](../../assets/collection/upload-pub-02.png){: .center-image}
 /// caption
-Uploading a Thumbnail
+Uploading a Thumbnail via Drag and Drop
 ///
 
-Once you browse back to the publisher page, you should see your thumbnail.
-
-![Publisher with Thumbnail](../../assets/collection/upload-pub-03.png){: .center-image}
-/// caption
-Publisher with Thumbnail
-///
+Once uploaded, the new cover art displays automatically on the publisher card.
 
 ### Favorite Publisher
 
-You can mark a publisher as a favorite by clicking the <i class="bi bi-bookmark-heart fs-2 text-icon"></i> icon in the top left of the publisher list. This will add the publisher to the "Favorite Collections" section on the collection page, allowing you to quickly access your favorite publishers.
+Click the <i class="bi bi-bookmark-heart fs-2 text-icon"></i> icon in the top left of any publisher card to mark it as a favorite. This pins the publisher to the **Favorite Collections** row on your dashboard for fast access.
 
 ### Navigating to Series
 
-Clicking on a publisher will take you to that Publisher page and display all folders (series) or issues in that publisher. 
+Clicking any publisher card opens that publisher's page, displaying all child series folders or standalone comic issues within it.

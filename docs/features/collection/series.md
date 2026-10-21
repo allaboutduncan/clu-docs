@@ -5,19 +5,20 @@
 Example Collection Series Page
 ///
 
-Once you navigate within a publisher, you will see a list of folders (series) or issues in that publisher.
+Opening a publisher displays all child series folders and standalone issues contained in that directory.
 
 ## Series Options
-For a series folder (any folder that is non-root / non-publisher), there are 3 options in the dropdown menu that can be accessed by clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu.
+
+For any series folder, clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu provides management options:
 
 ![Series Dropdown Menu](../../assets/collection/series-dropdown.png){: .center-image}
 /// caption
 Example Series Dropdown Menu
 ///
 
-1. **Generate Thumbnail**: This will generate thumbnails for all folder that are missing a thumbnail.
-2. **Missing File Check**: This will check for missing files in the folder based on the [Directory Features Missing File Check](../directory-features/missing.md).
-3. **Delete**: This will delete the folder and all files in it. You will be prompted to confirm this action.
+1. **Generate Thumbnail**: Generates a thumbnail for the folder based on its contents if art is missing.
+2. **Missing File Check**: Checks for missing issues within the series based on the [Missing File Check](../directory-features/missing.md).
+3. **Delete**: Deletes the folder and all contained files after confirmation.
 
 ### Generating Thumbnails
 
@@ -26,31 +27,25 @@ Example Series Dropdown Menu
 Example of Generating Thumbnails
 ///
 
-To generate thumbnails for a series, click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu and select "Generate Thumbnail". This will generate a thumgnail for the folder based on it's contents.
+To generate a thumbnail for a series, select **Generate Thumbnail** from the folder menu. CLU builds an image from the folder's contents:
 
-1. Folders with a single file will use that file as the thumbnail.
-2. Folders with multiple files will use up to the first 4 files, composed in whichever [folder art style](../app-settings/personalization.md#folder-thumbnail-style) is selected. In the default **Fanned Stack** style the first file is the top of the stack and the last is the bottom, with random rotation so every folder doesn't look identical.
-3. Folders containing other folders use the first image from up to 4 of those folders, and can additionally be drawn "inside" a folder icon — see the [folder icon overlay](../app-settings/personalization.md#show-the-folder-icon-overlay) switch.
+1. **Single-issue folders**: Uses the cover of that issue as the folder thumbnail.
+2. **Multi-issue folders**: Composes art using up to the first four issues according to your selected [folder art style](../app-settings/personalization.md#folder-thumbnail-style). In the default **Fanned Stack** style, the first issue forms the front cover with subtle offset rotation.
+3. **Nested folders**: Uses the lead cover from up to four child folders, with an optional folder glyph overlay (see [folder icon overlay](../app-settings/personalization.md#show-the-folder-icon-overlay)).
 
-!!! info "New in v6.4 — four styles, and you can pick the cover"
-    The fanned stack is no longer the only look. There are now **four styles** — Fanned Stack, Single Image, Isometric Cascade and 2x2 Mosaic Grid — selected site-wide under [Personalization](../app-settings/personalization.md#folder-thumbnail-style).
-
-    You can also pin a specific issue's cover as the folder's primary art with **[Set as Folder Thumbnail](issues.md#set-as-folder-thumbnail)** on any issue.
+CLU supports four thumbnail layout styles: **Fanned Stack**, **Single Image**, **Isometric Cascade**, and **2x2 Mosaic Grid**. These can be chosen site-wide under [Personalization](../app-settings/personalization.md#folder-thumbnail-style). You can also pin an exact issue cover as the front image using **[Set as Folder Thumbnail](issues.md#set-as-folder-thumbnail)**.
 
 ### Regenerate All Thumbnails
 
-!!! info "New in v6.4"
-    Changing the folder art style only affects art generated from that point on. **Regenerate All Thumbnails** applies it to art you already have.
+Changing the folder art style in settings applies to newly generated art going forward. To restyle folders you already have, use **Regenerate All Thumbnails**.
 
-On a **top-level folder** (a publisher), the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu gains **Regenerate All Thumbnails**, which restyles every series inside it. There's an all-libraries version on the [Personalization](../app-settings/personalization.md#regenerate-all-thumbnails) page.
+On any top-level publisher folder, select **Regenerate All Thumbnails** from the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu to update every series folder within it. A global version covering all libraries is available on the [Personalization](../app-settings/personalization.md#regenerate-all-thumbnails) page.
 
-It runs in the background with live progress in **Active Operations**, so a large library won't time out.
+Regeneration runs asynchronously in the background with live progress displayed in **Active Operations**.
 
-!!! warning "The folder you run it on is deliberately skipped"
-    Running it on `/data/DC Comics` restyles every series inside and leaves that publisher's **own** art alone — a hand-picked publisher image isn't what you're replacing when you restyle series art.
-
-    Everything *inside* is overwritten, including art you uploaded by hand, which is why it sits behind a confirmation modal. [Pinned covers](issues.md#set-as-folder-thumbnail) survive.
+!!! note "Preserves publisher art and pinned covers"
+    Running this operation on a publisher restyles child series art while leaving that publisher's own custom header and cover art untouched. Any series with a [pinned issue cover](issues.md#set-as-folder-thumbnail) will preserve that chosen cover within the updated layout.
 
 ### Mark a Series as "Want to Read"
 
-You can mark a series as a "Want to Read" by clicking the <i class="bi bi-bookmark-plus fs-2 text-icon"></i> icon in the top left of the series list. This will add the series to the "Want to Read" section on the collection page, allowing you to quickly access the series from the collection page or the OPDS feed.
+Click the <i class="bi bi-bookmark-plus fs-2 text-icon"></i> icon in the top left of the series list to add it to your **Want to Read** list. This surfaces the series in the Want to Read row on your collection homepage and in your OPDS feed.

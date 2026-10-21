@@ -4,8 +4,7 @@
 | :---------: | :----------------------------------: |
 | Example Collection Landing Page with Favorites and Reading Lists | Example Collection Publisher Page with Nested Folders |
 
-
-In version 4.0, CLU now uses a visual browser to navigate your collection. Generally this is grouped by publisher, but CLU will render any folder structure you have.
+CLU provides a visual browser to navigate your collection. Generally this is grouped by publisher, but CLU will render any folder structure you have.
 
 ## Viewing Multiple Libraries
 
@@ -15,84 +14,72 @@ If you have multiple libraries, you can select which library you want to view fr
 
 ## Sections
 
-Currently, there are up to 6 sections that can show on the collection page. They are:
+Currently, there are up to 6 sections that can show on the collection page:
 
-!!! info "Your dashboard is yours"
-    As of **v6.3**, the order of these sections and which ones are hidden is a **per-user** setting. Arrange your own from [My Account](../users/my-account.md#dashboard-layout); the Store Owner sets the [site default](../app-settings/personalization.md) that new accounts follow.
+!!! info "Dashboard Customization"
+    The order of these sections and which ones are hidden is a **per-user** setting. Arrange your dashboard from [My Account](../users/my-account.md#dashboard-layout); administrators can set the [site default](../app-settings/personalization.md) for new accounts.
 
 ### Publisher
 
-This is the default section. It will display all publishers in your collection. This is the only section that is always available. As you click into a publisher, it will display all folders (series) or issues in that publisher. Publisher, Series and Issues will have different options in the dropdown menu. 
+This is the default section. It displays all publishers in your collection and is always available. Clicking into a publisher displays all series folders or issues within that publisher.
 
-!!! Note
-    In documentation, this will be referred to as the "Publisher" section, but it can be any folder structure you have in your collection.
+!!! note
+    In documentation, this is referred to as the "Publisher" section, but it reflects whatever folder structure you have in your collection.
 
-With the introduction of multiple libraries, this section will update based on your selected library.
-
-!!! info "Per-page selection persists"
-    Your **Per page** choice when browsing is now saved and restored across navigation instead of resetting on each load.
+With multiple libraries configured, this section updates dynamically based on your selected library. Your **Per page** choice when browsing is saved and restored across navigation.
 
 ### Favorite Collections
 
-This section will display all publishers that have been marked as a favorite. You can mark a publisher as a favorite by clicking the <i class="bi bi-bookmark-heart fs-2 text-icon"></i> icon in the top left of the publisher list.
+Displays all publishers that have been marked as a favorite. You can favorite a publisher by clicking the <i class="bi bi-bookmark-heart fs-2 text-icon"></i> icon in the top left of the publisher list.
 
 ### Want to Read List
 
-This section has **two sources**:
+This section draws from two sources:
 
-- **Files and folders you flagged.** Mark a folder (series) or issue as "Want to Read" by clicking the <i class="bi bi-bookmark fs-2 text-icon"></i> icon in the top left of the publisher list, or from the **Want to Read** action in the folder dropdown (see [Additional Features](../file-management/additional.md)).
-- **[Reading lists you've bookmarked](reading-lists.md#bookmarking-a-list).** *(New in v6.3.)* Each bookmarked list appears as a single card — cover stack, read/total count, and a progress bar — that opens the list.
+- **Flagged files and folders**: Mark a series folder or issue as "Want to Read" by clicking the <i class="bi bi-bookmark fs-2 text-icon"></i> icon in the top left of the list, or via the **Want to Read** action in the folder dropdown (see [Additional Features](../file-management/additional.md)).
+- **[Bookmarked reading lists](reading-lists.md#bookmarking-a-list)**: Each bookmarked list appears as a single card featuring a cover stack, read/total progress count, and a direct link to the list.
 
 ### Continue Reading
 
 ![Continue Reading](../../assets/collection/continue.png){: .center-image}
 
-This section will display issues that have been started but not completed. Clicking the <i class="bi bi-x-circle-fill text-danger"></i> icon will remove the issues from this section.
+Displays issues that have been started but not completed. Clicking the <i class="bi bi-x-circle-fill text-danger"></i> icon removes an issue from this section.
 
 ### Discover
 
-This feature takes your reading history and "Want to Read" list and uses it to generate personalized recommendations for you. Recommendations are manually triggerer, so you can manage how often they run and use them when you want to find something new to read. You'll need to enter an API in [Recommendations](../app-settings/personalization.md#recommendations) to use this feature.
+Generates personalized recommendations based on your reading history and Want to Read list. Recommendations are manually triggered so you can run them on demand when looking for something new. You must configure an API key in [Recommendations](../app-settings/personalization.md#recommendations) to enable this feature.
 
 ### On the Stack
 
 ![On the Stack](../../assets/collection/stack.png){: .center-image}
 
-The *On the Stack* section will alert you to new issues for series that you are reading, to ensure you are always caught up.
+The *On the Stack* section alerts you to new issues for series that you are currently reading, ensuring you stay caught up.
 
-You have read `Absolute Batman 001` through `Absolute Batman 017` and are currently caught up.
+For example, if you have read `Absolute Batman 001` through `Absolute Batman 017`, issue `018` will appear on the stack as soon as it is added to your library.
 
-When `Absolute Batman 018` is available, it will be shown in "On the Stack", letting you know it's available for you to read.
+!!! note
+    Only the next unread issue in sequence is shown. If both `Absolute Batman 018` and `Absolute Batman 019` are unread, only issue `018` is displayed until it is marked as read.
 
-!!! Note
+On the Stack draws from two sources:
 
-    We should only show the next unread issue. So if you have `Absolute Batman 019` and `Absolute Batman 018` is still unread, we should only show `Absolute Batman 018`
+- **Series in your [Pull List](../pull-list/pull-list.md)**: If you want to exclude certain series, toggle the stack option on the [Series page](../pull-list/series.md).
+- **[Bookmarked reading lists](reading-lists.md#on-the-stack)**: Each bookmarked list contributes its next unread issue, displayed with a list-name badge.
 
-On the Stack draws from **two sources**:
-
-- **Series in your [Pull List](../pull-list/pull-list.md).** If you don't want certain series to show here, there's an option to remove them on the [Series page](../pull-list/series.md).
-- **[Bookmarked reading lists](reading-lists.md#on-the-stack).** *(New in v6.3.)* Each bookmarked list contributes its **next unread issue**, carrying a **list-name badge** so you can tell where it came from.
-
-If a bookmarked list and a subscribed series point at the same next issue, it is shown **once**.
+If a bookmarked list and a subscribed series point to the same next issue, it is deduplicated and shown once.
 
 ### Recently Added
 
-This section shows the last 100 issues added to your collection.
+Displays the last 100 issues added to your collection.
 
-## Browsing the grid
+## Browsing the Grid
 
 ### All Books
 
-!!! info "New in v6.6 — Volumes stay together"
-    **All Books** now sorts by series, then **parent folder**, then issue number, with cover year only as a tiebreaker. Previously, two volumes of the same series with overlapping cover years were interleaved — *Captain America* v1998 #49 could land between v2002 #7 and #8. Each volume's folder now stays together, and the order still matches the A–Z letter bar.
+By default, **All Books** sorts by series, then parent folder, then issue number (with cover year used as a tiebreaker). This keeps different volumes of the same series grouped together. Volumes kept loose in the same folder sort by issue number within that folder.
 
-    Two volumes kept loose in the *same* folder still sort by issue number within it.
+### The Pager
 
-### The pager
-
-!!! info "New in v6.3"
-    The pagination control is **sticky**. It pins to the bottom of the viewport for as long as there's grid left to scroll, then lands inline at the true bottom of the page.
-
-Previously the pager was rendered below the grid and nowhere else, so at **Per page** 100 or 250 reaching **Next** meant scrolling past every cover on the page — and the page then scrolled back to the top, so the next page cost the same trip again.
+The pagination control is sticky, pinning to the bottom of the viewport while browsing and settling inline at the true bottom of the page.
 
 ![Sticky pager](../../assets/collection/sticky-pager.png){: .center-image}
 
@@ -100,100 +87,50 @@ Previously the pager was rendered below the grid and nowhere else, so at **Per p
 The pager pinned to the bottom of the viewport over a full grid.
 ///
 
-The pager also gained:
+The pager includes:
 
-- **Windowed page numbers** with ellipsis, so long libraries don't produce an unusable row of numbers.
+- **Windowed page numbers** with ellipsis navigation for large libraries.
 - A **"Showing X–Y of Z"** readout.
-- A mirrored **Per page** selector, so you can change page size without scrolling back up.
+- A mirrored **Per page** selector so you can adjust page size without scrolling back to the top.
+- Seamless compatibility with Multi-Select mode so bulk action controls do not obstruct pagination.
 
-The old **page-jump dropdown** has been removed — the windowed page numbers replace it.
+### Card Size
 
-!!! info "Multi-Select no longer blocks paging"
-    The bulk action bar used to cover the pager and the last row of the grid, making paging impossible while Multi-Select was on. Both now clear it.
-
-### Card size
-
-!!! info "New in v6.3"
-    A **Standard / Large** card size toggle in the filter bar.
+Toggle between **Standard** and **Large** card sizes in the filter bar.
 
 ![Card size picker](../../assets/collection/card-size.png){: .center-image}
 
-Like **Per page**, this is saved **in your browser** rather than on your account — so it's per-device. Set it once on your desktop and once on your tablet, and each remembers its own.
+Like **Per page**, this setting is saved in your browser rather than your account, allowing device-specific preferences (e.g. standard on desktop, large on tablet).
 
-The bump is deliberately modest (roughly 13–15% on desktop, up to 22% on tablets; phones are unchanged), because raising the floor further drops an entire column and the remaining cards absorb every freed pixel.
+## Folder Art
 
-!!! info "Upgrading from an earlier version?"
-    Comic filenames were previously **unreadable on all six dark themes** — a hardcoded light-text class was overriding the theme-aware rule on grid tiles, dashboard card titles, and the tile actions button. If you switched away from a dark theme because of it, it's fixed. See [My Account](../users/my-account.md#appearance) to set your own theme.
+Folder cover art is generated automatically as you browse. When the grid encounters a folder without cached art, it queues a background task to generate it.
 
-## Folder art
-
-!!! info "New in v6.3"
-    Folder cover art is now **generated automatically as you browse**.
-
-Folder art previously appeared only if you uploaded it or ran **Generate Thumbnail** by hand, so new series sat behind a generic icon indefinitely.
-
-Now, when the grid asks for art it can't draw, those folders are handed to a background queue that produces the art, and the page re-checks a few times so it appears within a few seconds — while you're still looking at the folder.
-
-How the queue behaves:
+Folder art generation behavior:
 
 | Behavior | Detail |
 | --- | --- |
-| **One worker at a time** | Generation opens comic archives, so it's deliberately serialized rather than run in parallel. |
-| **In-flight paths deduped** | The same folder is never queued twice at once. |
-| **6-hour backoff** | A folder that can't produce art isn't retried for six hours, so a broken folder doesn't get hammered every time you browse past it. |
-| **Existing art is never replaced** | If a folder already has art — uploaded or generated — the queue leaves it alone. |
+| **Serialized processing** | Archive extraction is processed one folder at a time to preserve system resources. |
+| **Request deduplication** | A folder is never queued more than once concurrently. |
+| **Backoff on error** | Folders that fail thumbnail generation are paused for 6 hours before retrying. |
+| **Preserves existing art** | Uploaded or pre-existing art is never overwritten by automatic generation. |
 
-`folder.gif` is now recognized as folder art alongside `.png`, `.jpg`, and `.jpeg` — and as of **v6.4**, so is `folder.webp`. Two separate hardcoded extension lists had omitted it, so an uploaded `.webp` survived a rebuild and kept winning: the new art was generated and then never shown.
+CLU recognizes `folder.png`, `folder.jpg`, `folder.jpeg`, `folder.gif`, and `folder.webp` as folder art.
 
-!!! info "New in v6.4 — pick how folder art looks"
-    Generated folder art now has **four styles** — Fanned Stack (the default, unchanged), Single Image, Isometric Cascade and 2x2 Mosaic Grid — chosen site-wide on the [Personalization](../app-settings/personalization.md#folder-thumbnail-style) page, along with a switch for the nested-folder icon overlay.
+Generated folder art supports **four styles** — Fanned Stack (default), Single Image, Isometric Cascade, and 2x2 Mosaic Grid — selectable site-wide on the [Personalization](../app-settings/personalization.md#folder-thumbnail-style) page. You can pin a specific issue's cover as a folder's primary art with **[Set as Folder Thumbnail](issues.md#set-as-folder-thumbnail)**, or restyle all existing folders with **[Regenerate All Thumbnails](../app-settings/personalization.md#regenerate-all-thumbnails)**.
 
-    You can pin a specific issue's cover as a folder's primary art with **[Set as Folder Thumbnail](issues.md#set-as-folder-thumbnail)**, and apply a style change to art that already exists with **[Regenerate All Thumbnails](../app-settings/personalization.md#regenerate-all-thumbnails)**.
+Automatic folder art generation can be disabled in [File Processing Settings](../app-settings/file-settings.md).
 
-**Card art also renders at a consistent size** regardless of the source image's dimensions. Previously only some card types constrained the image, so identical art could appear at two different scales — a 200×300 file overflowed its frame and got centre-cropped while a 167×250 one sat inside it untouched.
+## Comic Covers
 
-!!! info "Upgrading from an earlier version?"
-    Generated thumbnails used to **vanish on reload** until the next full library scan, because nothing updated the index flag after writing the art and the grid reads art off that flag rather than the disk. That's fixed — and the same fix repairs the manual **Generate Thumbnail** button.
+Comic covers update automatically whenever an issue is edited, rebuilt, or retagged. The grid also detects when a comic archive is newer than its cached thumbnail and updates accordingly.
 
-You can turn automatic generation off entirely from [File Processing Settings](../app-settings/file-settings.md).
+- **Non-image formats**: Files without cover extractors (such as standalone PDFs) and macOS system sidecars (`._*`) are automatically skipped during generation and are not flagged as errors.
+- **Corrupted archives**: If cover extraction fails due to a damaged archive, the file is logged to the **[Problem Files](../problem-files/index.md)** page under **Thumbnail** with the exact error, where you can retry extraction or [find a replacement](../problem-files/replacing-a-file.md).
 
-!!! warning "Security fix in v6.5 — please upgrade"
-    The endpoint that serves folder cover art did not properly confine which files it would return, so a **signed-in user could read files outside the libraries they had been granted**.
+## Access in a Multi-User Install
 
-    This is fixed in **v6.5** (GHSA-vhvw-93fg-whm8). If your install has users you don't fully trust, the relevant action is simply: **upgrade to v6.5**.
+In a [multi-user install](../users/index.md):
 
-## Comic covers
-
-### Covers update when the comic does
-
-!!! info "Fixed in v6.5 — thumbnails never updating"
-    Editing, rebuilding or re-tagging a comic left its cover **stale**, sometimes permanently. Two specifics are worth naming, because they're what people actually reported:
-
-    - **Rebuilding a whole directory** left every cover stale — while rebuilding the same issues **one at a time** worked correctly.
-    - On installs running under `PUID`/`PGID`, thumbnails written by an earlier root-fallback start could **never be overwritten at all**, so those covers were frozen for good.
-
-**What changed for you:** every operation that rewrites a comic now refreshes its cover, and the grid additionally notices on its own when a comic is **newer than its cached cover**. You shouldn't need to do anything.
-
-!!! info "Upgrading from an earlier version?"
-    Existing stale thumbnails **repair themselves** as the grid asks for them. There's no rescan to trigger and nothing to schedule — browse your library and they'll correct as you go.
-
-### Formats that can't be thumbnailed are skipped, not retried
-
-PDFs — and CBR/RAR files on the background scan — have **no thumbnail reader**. They used to be re-queued at **every restart**, which is why large libraries saw a thumbnail storm on boot that never accomplished anything.
-
-They're now skipped **once**, permanently. And importantly, they are **not** recorded on the [Problem Files](../problem-files/index.md) page: *"a PDF has no thumbnail reader"* is a fact about the format, not damage to your file.
-
-**macOS sidecar files** (`._Foo.cbz`) are no longer queued as comics either.
-
-### A genuinely failed thumbnail is retryable
-
-When a cover fails because the **archive** is actually broken, that's a real problem and it's now reported as one.
-
-Instead of a silent broken tile in the grid, the file appears on the **[Problem Files](../problem-files/index.md)** page under **Thumbnail**, carrying the actual archive error. From there you can see the error in full, **Retry** it immediately, or **[Find a replacement](../problem-files/replacing-a-file.md)**.
-
-## Access in a multi-user install
-
-!!! info "Readers see a simplified grid"
-    In a [multi-user install](../users/index.md), **Readers** don't see the actions dropdown, Multi-Select, or the bulk action bar — those are [Clerk](../users/roles.md) features.
-
-    What appears in the grid at all is governed by [library and folder grants](../users/library-and-folder-access.md), and **Recently Added** is filtered to the folders a user has been granted.
+- **Readers** see a clean browsing grid without action menus, Multi-Select, or bulk action bars (which are reserved for [Clerk](../users/roles.md) and Admin roles).
+- Content visibility is governed by [library and folder grants](../users/library-and-folder-access.md). **Recently Added** is automatically filtered to include only folders the current user has permission to view.

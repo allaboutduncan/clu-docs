@@ -5,9 +5,9 @@
 Example Issues Page
 ///
 
-When you navigate to a folder (series) with only files (issues), you will see a list of files (issues) in that folder.
+When you open a series folder, CLU displays a grid of all comic issues in that folder.
 
-To ensure you can quickly determine the issue number, the issue number will be displayed in the top right corner of the cover.
+The issue number is displayed in the top right corner of each cover for quick identification.
 
 ![Issue Number](../../assets/collection/issue_number.png){: .center-image}
 /// caption
@@ -15,41 +15,41 @@ Issue Number
 ///
 
 ## Issue Options
-For issues, there are 7 options in the dropdown menu that can be accessed by clicking the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu.
+
+Click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu on any issue card to access file actions:
 
 ![Issue Dropdown Menu](../../assets/collection/issue-dropdown.png){: .center-image}
 /// caption
 Example Issue Dropdown Menu
 ///
 
-1. **Crop Cover**: This will crop the first image of the CBZ, saving the right-side as the new cover and the full image as the 2nd image. This is the same process as [Crop Cover](../single-file-features/crop.md).
-2. **Remove First Image**: This will remove the first image from the issue. This is same feature as [Remove First Image](../single-file-features/remove.md). I recommend using this option after using "Edit File" as to ensure the incorrect image is truly the first image in the file.
-3. **Edit File**: This unpacks the CBZ and allows you to edit the files. See a full list of features in the [Edit File](../single-file-features/edit.md) section.
-4. **Rebuild**: This will quickly rebuild a incorrectly built CBZ file and/or convert a CBR to a CBZ file. This is the same feature as [Rebuild](../single-file-features/rebuild.md).
-5. **Enhance**: This will enhance the image quality of all images in the issue. This is the same feature as [Enhance](../single-file-features/enhance.md).
-6. **Set as Folder Thumbnail**: Pins this issue's cover as the folder's cover art. See [below](#set-as-folder-thumbnail).
-7. **Delete**: This will delete the issue. This is the same feature as [Delete](../single-file-features/delete.md).
+1. **Crop Cover**: Crops the first image of the CBZ, saving the right half as the new cover and the full spread as the second page. See [Crop Cover](../single-file-features/crop.md).
+2. **Remove First Image**: Removes the first image from the issue. It is recommended to check the issue in [Edit File](../single-file-features/edit.md) first to confirm the target image is truly page one. See [Remove First Image](../single-file-features/remove.md).
+3. **Edit File**: Unpacks the CBZ archive to let you reorder, remove, or edit pages and metadata. See [Edit File](../single-file-features/edit.md).
+4. **Rebuild**: Rebuilds an incorrectly structured CBZ archive or converts a CBR file into a clean CBZ. See [Rebuild](../single-file-features/rebuild.md).
+5. **Enhance**: Enhances image quality across all pages in the issue. See [Enhance](../single-file-features/enhance.md).
+6. **Set as Folder Thumbnail**: Pins this issue's cover as the primary art for the folder. See [Set as Folder Thumbnail](#set-as-folder-thumbnail) below.
+7. **Delete**: Deletes the issue file from disk. See [Delete](../single-file-features/delete.md).
 
 ## Set as Folder Thumbnail
 
-!!! info "New in v6.4"
-    You can pin any issue's cover as the folder's cover art.
+You can pin any comic issue's cover as the parent folder's cover art.
 
-Click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu on the issue whose cover you want and choose **Set as Folder Thumbnail**. The folder's art is regenerated immediately with that issue as its **primary** cover.
+Click the <i class="bi bi-three-dots-vertical fs-2 text-icon"></i> menu on the issue whose cover you want to use and select **Set as Folder Thumbnail**. The folder's art is regenerated immediately with that issue featured as its primary cover.
 
-"Primary" means something slightly different in each [folder art style](../app-settings/personalization.md#folder-thumbnail-style), and that's the point — **switching styles never loses your choice**:
+"Primary" adapts automatically to each [folder art style](../app-settings/personalization.md#folder-thumbnail-style):
 
 | Style | Where the pinned cover appears |
 | --- | --- |
-| **Single Image** | It's the whole image. |
-| **Fanned Stack** | The front card of the stack. |
-| **Isometric Cascade** | The front card of the cascade. |
-| **2x2 Mosaic Grid** | The top-left tile. |
+| **Single Image** | Displays as the entire cover image. |
+| **Fanned Stack** | Positioned as the front card of the stack. |
+| **Isometric Cascade** | Positioned as the front card of the cascade. |
+| **2x2 Mosaic Grid** | Positioned as the top-left tile. |
 
-The pin is stored per folder and survives regeneration, so [Regenerate All Thumbnails](../app-settings/personalization.md#regenerate-all-thumbnails) restyles the art without discarding the cover you picked.
+Pinned covers are stored per folder and persist through bulk restyling, so running [Regenerate All Thumbnails](../app-settings/personalization.md#regenerate-all-thumbnails) applies the new style without losing your selection.
 
 !!! note "Comics only"
-    Only comic files can be pinned. A pinned text or image file would occupy a cover slot forever — and in **Single Image** style it's the *only* slot.
+    Only comic archive files can be pinned as folder thumbnails. Pinned text or auxiliary image files cannot be used.
 
-!!! tip "To un-pin"
-    Pin a different issue, or upload your own `folder.png` / `folder.jpg` / `folder.webp` to the folder — [uploaded art always wins](publishers.md#custom-thumbnails) over generated art.
+!!! tip "Changing or removing a pinned thumbnail"
+    To change the pinned cover, select **Set as Folder Thumbnail** on another issue. To use a custom image instead, place a `folder.png`, `folder.jpg`, or `folder.webp` file in the folder — custom uploaded art always takes precedence over generated thumbnails.

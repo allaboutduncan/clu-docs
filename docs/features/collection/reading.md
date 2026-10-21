@@ -5,63 +5,45 @@
 Reading a Comic
 ///
 
-When browsing your collection, you can click on a comic to read it. The reader will open in a modal over the page.
+When browsing your collection, click on any comic card to open it in the built-in reader modal.
 
-## Read vs Unread Status
+## Read vs. Unread Status
 
 ![Read vs Unread Status](../../assets/collection/read_unread.png){: .center-image}
 /// caption
-Read vs Unread Status
+Read vs. Unread Status
 ///
 
-When you read a comic, it will be marked as read and saved in your history. This is done automatically when you reach 90% of the issue.
+When reading a comic, it is automatically marked as completed and added to your reading history once you pass 90% of the pages.
 
-Additionaly, you'll see a unread/read icon <i class="bi bi-book text-primary"></i> in the right corner of the cover, directly after the issue number
+Completed and in-progress comics display a reading status icon <i class="bi bi-book text-primary"></i> in the corner of the cover badge next to the issue number.
 
 ## Reader Features
-The current implementation is a simple reader that allows you to read your comics quickly.  
 
-It has the following features:
+The reader is designed for lightweight, high-performance reading across desktop and mobile devices:
 
-1. **Fast Performance**: Even with large files, the reader will load near instantly. It does this byb loading only the first image of the file and pre-loading the next image as you read.
-2. **Responsive Design**: The reader is designed to work on any device, whether it be a desktop, tablet, or phone.
-3. **Page Count**: The reader will show the page count of the issue along with the current page number.
-4. **Progress Bar**: The reader will show a progress bar, indicating how far you have read. When this reaches 90%, the issue will be marked as read and saved in your history.
-5. **Jump to Page**: The dots along the bottom allow you to jump to a specific page in the issue.
-6. **Tap to Hide Controls**: Tap or click the page to hide or show the header and footer.
+1. **Instant Loading**: Pages load on demand, pre-buffering upcoming pages in the background as you read.
+2. **Responsive Layout**: Adapts automatically across desktop monitors, tablets, and mobile phones.
+3. **Page Counter**: Displays the current page number alongside the total page count.
+4. **Progress Bar**: Shows visual progress through the issue. Reaching 90% automatically marks the issue as read.
+5. **Direct Navigation**: Use the scrubber dots along the bottom or the page selector to jump directly to any page.
+6. **Toggleable Controls**: The header and footer overlay the top and bottom of the page. Tap or click anywhere on the page to toggle controls on or off. Double-click or double-tap to zoom.
 
-!!! info "New in v6.6 — Tap to hide works at every size and orientation"
-    Tap-to-hide used to work only on screens up to 1024px wide, so turning a tablet to landscape brought the controls back and tapping stopped hiding them. It now works at **every screen size and orientation**, in the collection, metadata browser, reading list view and source wall.
-
-    On desktop, the header and footer now **overlay** the top and bottom of the page rather than sitting beside it. They still show when the reader opens, and one click hides them. Double-click still zooms.
-
-### Resume Reading
+### Resuming Reading
 
 ![Resume Reading](../../assets/collection/resume.png){: .center-image}
 /// caption
 Resume Reading
 ///
 
-If you close the reader before reaching 90%, CLU will Bookmark your place and ask if you want to resume reading when you open that file again 
+If you close the reader before reaching the 90% completion threshold, CLU saves your position. The next time you open the issue, a prompt offers to resume reading from that exact page or start over from page one.
 
-You can manually set a bookmark by clicking on the icon <i class="bi bi-bookmark text-primary"></i> in the top-right corner. 
+You can also manually set a bookmark at any time by clicking the <i class="bi bi-bookmark text-primary"></i> icon in the reader header.
 
-### Reading Position Reliability
+### Reading Position & History Persistence
 
-!!! info "Improved in v6.3"
-    Reading positions are saved far more reliably, and **follow a file through renames, moves and CBR→CBZ conversion**.
+Reading progress and bookmarks follow robust persistence rules:
 
-That last one is the headline: reorganizing your library no longer costs you your place. Rename a file, move it to a different folder, or convert it from CBR to CBZ, and your bookmark comes with it.
-
-The rest of the improvements:
-
-| Change | What it fixes |
-| --- | --- |
-| **Autosave and unload flushes** | Position is saved on tab close, refresh, and navigation — not only on an explicit modal close. A mobile browser discarding the page no longer loses your place. |
-| **Resuming no longer destroys the bookmark** | Jumping to a late bookmark used to count as reading progress, so resuming at page 90 of 100 instantly read as 90% complete — closing then marked the comic read and deleted the bookmark. |
-| **"Start Over" actually clears the position** | It used to return you to the same place forever. |
-| **Very short comics can be bookmarked** | Comics of **three pages or fewer** were previously excluded. |
-| **No cross-user leakage** | One user's reading progress no longer appears on another user's browse listings. |
-
-!!! note "Unload flushes only ever save"
-    The autosave and unload paths **never** mark a comic read and **never** delete a bookmark — a hidden tab is an ambiguous signal, and guessing wrong would destroy the position it's supposed to protect.
+- **Follows file operations**: If you rename an issue, move it to a different directory, or convert it from CBR to CBZ, your reading progress and bookmarks remain intact.
+- **Autosave on exit**: Reading positions save automatically when closing the reader, switching tabs, or refreshing the browser, preventing lost progress on mobile devices.
+- **Per-user privacy**: In multi-user setups, reading progress, history, and bookmarks are isolated to each user account.
