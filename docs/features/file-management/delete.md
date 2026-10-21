@@ -1,37 +1,54 @@
 ---
-description: Delete files or directories in your mapped drive
+description: Delete files and directories, and manage soft-delete recovery via the Trash Can.
 ---
 
 # Delete
 
-### Delete Files
+CLU allows you to delete individual files, entire directories, or multi-selected batches from the File Manager and Collection views.
 
-![Delete the first file](../../assets/file/delete01.png){: .center-image}
+## Deleting Files
 
-You can see in the example above, we have 2 files that are the same, with slightly different naming conventions. To remove one of the files, simply click the :wastebasket: (Trash) icon and you'll be presented with a confirmation - to ensure you don't accidentally delete an item.
+To delete an individual comic file:
 
-![Confirming Delete Action](../../assets/file/delete02.png){: .center-image}
+1. Click the :wastebasket: (Trash) icon on the file row or select **Delete** from its action menu.
+2. A confirmation modal appears showing the filename and path.
 
-![Confirming Delete Action](../../assets/file/delete03.png){: .center-image}
+![Confirming Delete Action](../../assets/file/delete02.png){: .center-image }
 
-After confirming the delete, the file is removed from the UI and directory.
+3. Click **Delete** to confirm. The file is removed from your active library.
 
-### Delete Directories
+## Deleting Directories
 
-Deleting directories works in the same way - but will remove ALL FILES and the directory itself.
+To delete an entire directory, select **Delete** from the folder's action menu.
 
-### Delete Multiple Files
+!!! warning "Recursive Deletion"
+    Deleting a directory removes the folder and all files and subdirectories contained within it. You will be prompted to confirm the deletion before any files are touched.
 
-You can CTRL+Click or SHIFT+Click to select multiple files. Once you have multiple files selected, the UI will show what options you have.
+## Deleting Multiple Files
 
-![Selecting Multiple Files](../../assets/file/delete-select.png){: .center-image}
+You can delete multiple files simultaneously:
 
-You can see we have 4 files selected. Right-clicking will show you the option to "Delete Selected Files"
+1. Hold **CTRL** (or **CMD**) to select specific files, or **SHIFT** to select a continuous range of files.
 
-![Delete Selected Files](../../assets/file/delete-multiple.png){: .center-image}
+![Selecting Multiple Files](../../assets/file/delete-select.png){: .center-image }
 
-Clicking that option will show you the files that will be deleted and ask you to confirm.
+2. Right-click any selected file and choose **Delete Selected Files**.
 
-![Confirming Delete Action](../../assets/file/multiple-confirm.png){: .center-image}
+![Delete Selected Files](../../assets/file/delete-multiple.png){: .center-image }
 
-Clicking "Delete All" will delete the files. The modal will close and the files will be removed from the directory and the UI.
+3. A confirmation modal lists all targeted files:
+
+![Confirming Delete Action](../../assets/file/multiple-confirm.png){: .center-image }
+
+4. Click **Delete All** to process the batch deletion.
+
+## Soft Delete & The Trash Can
+
+To protect against accidental deletions and provide a safety net for automated operations, CLU includes a configurable **Trash Can** system:
+
+- **Staging location**: When enabled, deleted files are moved to a temporary staging folder (`/cache/trash` by default) rather than being permanently destroyed on disk.
+- **Automated file replacements**: When resolving duplicate comics or using **[Find a replacement](../problem-files/replacing-a-file.md)** for a damaged file, the replaced file is routed to the trash, ensuring you can revert if needed.
+- **Automatic eviction**: In [File Settings](../app-settings/file-settings.md#trash-can), you can configure the **Max Trash Size (MB)**. When accumulated files exceed this threshold, the oldest items are automatically pruned.
+- **Restoring files**: Trashed files retain metadata pointing to their original directory path, allowing you to restore them directly back into your library if deleted by mistake.
+
+If the Trash Can is disabled in settings, deletions are immediate and permanent.

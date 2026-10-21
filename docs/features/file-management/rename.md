@@ -1,76 +1,70 @@
 ---
-description: >-
-  Renaming has been updated to allow removing text, renaming specific files or
-  renaming all files in a directory.
+description: Rename individual files, remove or replace text, and standardize series filenames.
 ---
 
 # Rename
 
-### Rename Single Files
+CLU provides several renaming workflows in the File Manager, ranging from quick inline edits to batch string replacements and series-wide standardization.
+
+## Rename Single Files
 
 ![Folder Layout](../../assets/file/rename01.png)
 
-Navigate to the directory or file you'd like to rename and click the :pencil2: icon. This will change to an input, allowing you to rename the folder or file.
-
-`ENTER` to save/update the name
+To rename an individual file or folder, hover over the item and click the :pencil2: (pencil) icon. The name turns into an active text field.
 
 ![Renaming the file](../../assets/file/rename02.png)
 
+Enter the new name and press `ENTER` to save the change immediately to disk.
+
 ![File is renamed](../../assets/file/rename03.png)
 
-### Rename All Files in a Directory
+## Rename All Files in a Directory
 
-In all directory listings, you'll see a <i class="bi bi-input-cursor-text text-info fs-2"></i> icon button that will "Rename All Files" in that directory using your custom renaming logic or the default logic.
+In any directory listing, click the <i class="bi bi-input-cursor-text text-info fs-2"></i> button to execute automated batch cleaning across all comic archives in that directory:
 
-![Rename All Files in Directory](../../assets/file/rename-all.png){: .center-image}
+![Rename All Files in Directory](../../assets/file/rename-all.png){: .center-image }
 
-Clicking this will run the same renaming functions detailed on [Rename All Files](../directory-features/rename.md "mention"). This let's you easily run this feature as you are browsing your folders of if you manually add bulk issues or don't use the [folder-monitoring](../folder-monitoring/index.md "mention") features.
+This runs the automated cleaning and formatting engine detailed in [Rename All Files](../directory-features/rename.md). Batch renames run on the shared file job queue, executing safely behind any active metadata tagging or XML removal jobs.
 
-!!! info "New in v6.6"
-    Batch renames now wait their turn on the shared [file job queue](../directory-features/rename.md#batched-bulk-renames) behind any running tagging, Remove XML or bulk metadata job.
+## Remove Text from Files
 
-### Remove Text from Files
+To remove specific characters or substrings (such as unwanted scanner tags or volume markers like `" v01"`) across all files in a directory, click **Remove Text from Filenames**:
 
-You can now remove characters from groups of files while browsing a directory. If there are files present, you will see a "Remove Text from Filenames" button. Clicking this will bring up a modal and prompt for the characters to remove. Include any spaces you want removed as well.
+![Remove Text Modal](../../assets/file/remove01.png){: .center-image }
 
-In this example, I want to update all files and remove the " v01" from the titles.
+1. Enter the exact text you want removed (including leading or trailing spaces if applicable).
+2. Click **Preview** to review the proposed filename transformations before applying changes.
 
-![Remove Text Modal](../../assets/file/remove01.png){: .center-image}
+![Remove Text Preview Results](../../assets/file/remove02.png){: .center-image }
 
-Click preview once you have your text entered and the app will show a preview of the results. 
+3. Click **Execute Rename** to apply the changes to disk. A summary modal confirms the number of files updated.
 
-![Remove Text Preview Results](../../assets/file/remove02.png){: .center-image}
+![Remove Text Complete](../../assets/file/remove03.png){: .center-image }
 
-If the naming is as you would like, click the "Execute Rename" and the app will update all of the files, provide a summary and then close the modal.
+## Replace Text in Filenames
 
-![Remove Text Complete](../../assets/file/remove03.png){: .center-image}
+To substitute one string for another across all files in a folder (for example, correcting `"Saga of the Swamp Thing"` to `"The Saga of the Swamp Thing"`), click **Replace Text**:
 
-### Replace Text in Filenames
+![Replace Text Modal](../../assets/file/replace01.png){: .center-image }
 
-You can also replace text in all filenames in a directory. In this example, the series is "Saga of the Swamp Thing" and I want the naming to be "**The** Saga of the Swamp Thing"
+1. Enter the target text to find and the replacement text.
+2. Click **Preview** to inspect the before and after comparisons.
 
-Simply click the "Replace Text" button, enter the text to replace and then the replacement text.
+![Replace Text Preview Results](../../assets/file/replace02.png){: .center-image }
 
-![Replace Text Modal](../../assets/file/replace01.png){: .center-image}
+3. Click **Execute Rename** to process the changes.
 
-Click "Preview" to ensure your results are correct.
+![Replace Text Complete](../../assets/file/replace03.png){: .center-image }
 
-![Replace Text Preview Results](../../assets/file/replace02.png){: .center-image}
+## Rename Series
 
-Once you are satisfied with the results, click "Execute Rename" to process. Once completed, you'll see a summary of files renamed.
+If an entire folder of files has an incorrect, truncated, or inconsistent series prefix, click **Rename Series**. This operation replaces the series name across all files in the directory while preserving the existing `{issue}` and `{year}` values.
 
-![Replace Text Complete](../../assets/file/replace03.png){: .center-image}
+![Rename Series Modal](../../assets/file/rename-series01.png){: .center-image }
 
-### Rename Series
+1. Enter the desired series title.
+2. Click **Preview** to verify how the new series name pairs with existing issue numbers and years.
 
-You can also rename all files in a directory, replacing everything except the {issue} & {year}. This is useful if a series is named differently or truncated. In this example, all files were named Swamp Thing, but the series didn't switch to that naming until issue 31. We can rename all the files quickly.
+![Rename Series Preview Results](../../assets/file/rename-series02.png){: .center-image }
 
-![Rename Series Modal](../../assets/file/rename-series01.png){: .center-image}
-
-Type in the new file naming you want and click preview. You'll see the expected results for the first 3 files. Click "Execute Rename" to proceed or adjust your naming and click "Preview" to review.
-
-![Rename Series Preview Results](../../assets/file/rename-series02.png){: .center-image}
-
-Once you are satisfied with the results, click "Execute Rename" to process. Once completed, you'll see a summary count of all files renamed.
-
-![Rename Series Complete](../../assets/file/rename-series03.png){: .center-image}
+3. Click **Execute Rename** to finalize the batch update.

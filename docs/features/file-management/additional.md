@@ -1,96 +1,83 @@
 ---
-description: >-
-  As you browse and manage your library, there are additional features that will
-  help you manage your collection
+description: Additional browsing, search, metadata inspection, and collection tools in the File Manager.
 ---
 
 # Additional Features
 
+The File Manager includes several built-in tools to help inspect, search, and manage your collection efficiently.
+
 ### Directory Filtering
 
-For any directory that has more than more than 25 folders, you can now start typing to filter the list. This does not search within the directories, this just quickly narrows down your results.
+For directories containing more than 25 folders, an interactive filter bar appears at the top of the list. Typing into the field immediately filters the visible folder list in real time.
 
-| ![](<../../assets/file/filter01.png>) | ![](<../../assets/file/filter02.png>) |
-| :---------: | :----------------------------------: |
+| Filtering Large Directory | Filtered Results |
+| :---: | :---: |
+| ![Filter Bar Initial](../../assets/file/filter01.png) | ![Filter Bar Active](../../assets/file/filter02.png) |
 
 ### Search
 
-Search your Comic folders to see if you have a particular issue or to see if you want to look for a better file.
+Use the search bar to locate specific comic titles, issue numbers, or series across your library storage.
 
-![Search](../../assets/file/search01.png){: .center-image}
+![Search](../../assets/file/search01.png){: .center-image }
 
-When you start the app, all files and folders will be indexed and saved to the database. Timing on this will be dependent on your library. During testing, a library with 110,000 files indexed in about 12-minutes. 
+When CLU starts, all files and folders are indexed into the local database for rapid query response. When files or folders are moved or renamed, the database index updates automatically.
 
-When files and folders are moved, the app will add/update/delete them in the database. 
-
-See the **File Index Management** section on [App Settings](../app-settings/file-settings.md) for more details and to manually re-index your library.
-
-This searches you entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/index.md)
+See [File Index Management](../app-settings/file-settings.md) for details on re-indexing. Searches span your entire library, excluding any temporary folders configured in [Folder Monitoring](../folder-monitoring/index.md).
 
 ### Upload Files
 
-![Upload](../../assets/file/upload.png){: .center-image}
+![Upload](../../assets/file/upload.png){: .center-image }
 
-You can drag and drop a single file or multiple files to upload them to the currently visible _Source_ or _Destination_ directory
+You can upload comic files directly to your server by dragging and dropping them from your computer into either the **Source** or **Destination** panel of the File Manager.
 
 ### Recent Files
 
-Clicking the "Recent Files" button will show the last 100 files that have been added (or moved) withing you collection. This is useful for seeing new downloads.
+Click **Recent Files** to view the last 100 comic files added or moved within your collection. This provides a quick way to review newly acquired downloads or recently processed files.
 
-This provides results from your entire '/data' library, but ignores the 'TARGET' folder if you are using [folder-monitoring](../folder-monitoring/index.md)
-
-![Recent Files](../../assets/file/recent-files.png){: .center-image}
+![Recent Files](../../assets/file/recent-files.png){: .center-image }
 
 ### File & Folder Sizes
 
-When viewing folders, you can click the _**info icon**_ and CLU will scan the folder and return the size and file count. This is done on request, as providing that data in the list would increase load time significantly.
+To check folder metrics without slowing down list rendering, click the **info icon** next to any folder. CLU scans the directory on demand and returns the total file count and disk usage.
 
-![Folder Info](../../assets/file/folder-info.png){: .center-image}
+![Folder Info](../../assets/file/folder-info.png){: .center-image }
 
-When browsing files, you'll also see file size next to each file. This allows you compare two files, allowing you to see if a newer file was larger / better quality than an existing file.
+When browsing files, individual file sizes are displayed alongside each issue, making it easy to compare file editions and identify higher-resolution scans.
 
-![File Size](../../assets/file/file-size.png){: .center-image}
+![File Size](../../assets/file/file-size.png){: .center-image }
 
-### View Cover, Meta-Data and ComicInfo.xml
+### View Cover, Metadata, and ComicInfo.xml
 
-Additionally, you'll see a new **info icon** next to all comics as well. Clicking this will open a modal window and the cover, meta-data and ComicInfo.xml data (if available) will be displayed.
+Click the **info icon** next to any comic file to open the inspector modal. This window displays the cover image, file technical properties, and any embedded `ComicInfo.xml` metadata.
 
-Using the `<— Prev` and `Next -->` buttons, you can quickly view details for multiple issues.
+![Info Modal](../../assets/file/info01.png){: .center-image }
 
-![Info Modal](../../assets/file/info01.png){: .center-image}
+Use the `<- Prev` and `Next ->` buttons to browse through adjacent issues in the folder.
 
-For any comic that has a valid 'ComicInfo.xml' file, you'll also see a <i class="bi bi-eraser fs-2 text-danger"></i> icon that will let you clear the comic info for that file. This is useful if the metadata is incorrect or incomplete.
+If an issue contains invalid or outdated `ComicInfo.xml` data, click the <i class="bi bi-eraser fs-2 text-danger"></i> icon to clear the metadata. Upon confirmation, CLU unpacks the archive, removes the XML file, and repacks the CBZ.
 
-![Clear Comic Info](../../assets/file/clear-xml.png){: .center-image}
-
-After clicking the icon, you'll be asked to confirm you want to delete the metadata. Clicking Yes, will unpack the file, delete the XML and re-pack the file.
+![Clear Comic Info](../../assets/file/clear-xml.png){: .center-image }
 
 ### Want to Read
 
-!!! info "New in v6.3"
-    **Want to Read** is available on both **files and folders** from the dropdown menu, in the File Manager and the collection grid.
-
-Flags the item for the [Want to Read](../collection/index.md#want-to-read-list) swiper on the Collection homepage. It's a personal flag — in a [multi-user install](../users/index.md) it lands on your dashboard only.
+Select **Want to Read** from the actions menu on any file or folder to flag it for your personal reading list. Flagged items surface in the **Want to Read** carousel on your collection dashboard. In multi-user installations, this flag is personal to your user account.
 
 ### Add to Pull List
 
-!!! info "New in v6.3"
-    **Add to Pull List** is available on **folders** from the dropdown menu.
+Select **Add to Pull List** from any series folder's action menu to subscribe to that series.
 
-Runs the same identity resolution that [Scan Library](../pull-list/automap.md) uses, but on a **single folder**. The result is indistinguishable from a full library scan: sidecars are backfilled, issues are synced, and owned/missing counts are rebuilt in the background.
+This runs the same identification and mapping engine used by [Scan Library](../pull-list/automap.md), but scoped to that single folder. Series sidecar files are backfilled, issue checklists are synchronized, and missing counts update in the background.
 
 #### Outcomes
 
-The action reports what actually happened rather than silently doing something surprising:
-
-| Outcome | Meaning | What to do next |
+| Outcome | Meaning | Recommended Action |
 | --- | --- | --- |
-| `already_mapped` | The folder is already mapped to a series on your Pull List. | Nothing — this is a no-op. |
-| `applied` | The series was identified and mapped. Issues are syncing in the background. | Nothing. Check the [Pull List](../pull-list/pull-list.md) in a moment. |
-| `needs_match` | No usable `series.json` or `.cvinfo` sidecar was found. | A **Metron picker** opens — search for and pick the right series. |
-| `conflict` | The series is already mapped to a **different** folder. | CLU reports *where* rather than re-pointing the mapping. Decide which folder is correct and fix the mapping on the [Series page](../pull-list/series.md). |
-| `failed` | The operation could not complete. | Check [App Logs](../app-settings/logs.md). |
+| `already_mapped` | The folder is already mapped to an active series on your Pull List. | No action required. |
+| `applied` | The series was identified and mapped. Issues sync in the background. | No action required. View the series in your [Pull List](../pull-list/pull-list.md). |
+| `needs_match` | No matching sidecar (`series.json` or `.cvinfo`) was found. | A search picker opens allowing you to search and select the correct series. |
+| `conflict` | The series is already mapped to a different folder. | CLU reports the existing path. Verify which folder is correct on the [Series page](../pull-list/series.md). |
+| `failed` | The mapping operation could not complete. | Check [App Logs](../app-settings/logs.md) for details. |
 
-!!! info "Constraints"
-    - **The folder must sit inside a configured [library root](../app-settings/libraries.md).** This is what keeps your `/downloads` folder off the Pull List.
-    - **Root-level folders are excluded** in the collection grid, because at that level a folder is a *publisher*, not a series.
+!!! info "Folder Scope"
+    - Folders must reside within a configured [library path](../app-settings/libraries.md).
+    - Top-level root folders (representing publishers) cannot be mapped directly to a single series.

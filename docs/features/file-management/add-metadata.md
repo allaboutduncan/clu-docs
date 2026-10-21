@@ -1,95 +1,70 @@
 ---
-description: >-
-  CLU supports multiple metadata provides that can be configured per library. Search multiple comic databases for metadata and generate ComicInfo.xml files.
+description: Configure metadata providers, manage CVINFO sidecars, and generate ComicInfo.xml tags.
 ---
 
 # Adding Metadata
 
-CLU supports multiple metadata provides that can be configured per library. Search any or all of them in your preferred order when adding metadata to your files.
+CLU supports multiple comic metadata providers that can be configured per library. You can search across multiple databases simultaneously in your preferred priority order when scraping and embedding metadata.
 
 ## Overview
 
-CLU supports multiple metadata providers for populating your files with ComicInfo.xml metadata. Providers can be enabled per library with configurable priority ordering — CLU iterates through providers in order and applies metadata from the first provider that returns a result.
+CLU queries configured metadata providers to generate standard `ComicInfo.xml` metadata inside your comic archives. Providers can be assigned per library with configurable priority ordering — CLU queries providers in sequence and applies tags from the first provider that returns a valid match.
 
 | Provider | Status | Description |
-|----------|--------|-------------|
+| --- | --- | --- |
 | [Metron](https://metron.cloud) | <i class="bi bi-check-circle-fill text-success"></i> | Metron Comic Book Database |
-| [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Database |
+| [ComicVine](https://comicvine.gamespot.com/) | <i class="bi bi-check-circle-fill text-success"></i> | ComicVine Cloud Database |
 | ComicVine (Local DB) | <i class="bi bi-info-circle-fill text-info"></i> | Local ComicVine SQLite database (requires [local setup](../local-databases/comicvine.md)) |
 | [GCD API](https://github.com/GrandComicsDatabase/gcd-django/wiki/API) | <i class="bi bi-check-circle-fill text-success"></i> | Grand Comics Database API |
 | [GCD](https://www.comics.org/) | <i class="bi bi-info-circle-fill text-info"></i> | Grand Comics Database (requires [local setup](../local-databases/gcd.md)) |
-| MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Database |
-| MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database
-| Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | Bedetheque Database (Future Implementation) | |
+| MangaDex | <i class="bi bi-check-circle-fill text-success"></i> | MangaDex Manga Database |
+| MangaUpdates | <i class="bi bi-check-circle-fill text-success"></i> | MangaUpdates Database |
+| Bedetheque | <i class="bi bi-info-circle-fill text-warning"></i> | European Comic Database (Planned) |
 
-If you have enabled a [Local Metadata Database](../local-databases/index.md "Local Metadata Databases") you'll see an additional icon in the File Manager for searching your local database for Metadata.
-
-!!! warning
-    While not as thorough as ComicVine, the GCD database offers a quick way to get metadata for a large collection.
+If you have enabled a [Local Metadata Database](../local-databases/index.md), an additional search option appears in the File Manager to query your local SQLite cache.
 
 ## Configuration
 
-Navigate to **[Settings > Metadata Providers](../app-settings/metadata.md)** tab to add, edit, test, and remove provider credentials. Save and test each connection before use — a green checkmark confirms successful connectivity.
+Navigate to **[Settings > Metadata Providers](../app-settings/metadata.md)** to configure provider API keys, test connections, and adjust priority ordering. Save and test each provider before use — a green checkmark confirms successful API connectivity.
 
-Ensure you also enable the metadata provider(s) for the library you are working with. See **[Settings > Libraries](../app-settings/metadata.md#assign-metadata-providers-to-libraries)** for more information.
+Make sure to enable each provider for the specific library you wish to query. See [Assign Metadata Providers to Libraries](../app-settings/metadata.md#assign-metadata-providers-to-libraries) for details.
 
 ## CVINFO File and Creation
 
-If you have used Mylar3 to download comics, it adds a `cvinfo` file when you add a series. This file contains the ComicVine ID of the series, which CLU can use to search for metadata from ComicVine. 
+Comic series folders can store a `.cvinfo` sidecar file containing ComicVine and Metron series IDs. This provides persistent series identification, ensuring future issues placed in that folder match immediately without requiring ambiguous text searches.
 
-To enable this functionality for series created outside of Mylar3, you can create a `cvinfo` file in the same directory as the comic by clicking the <i class="bi bi-link-45deg text-pruple"></i>Add CVINFO</i> button. 
+To create or edit a sidecar file, open the series folder in the File Manager and click the <i class="bi bi-link-45deg text-primary"></i> **Add CVINFO** button.
 
-CLU will also create a `cvinfo` file if you use the [Subscribe to Series](../pull-list/series.md) feature and when retrieving metadata for a folder.
+![Add CVINFO](../../assets/file/cvinfo.png){: .center-image }
 
-![Add CVINFO](../../assets/file/cvinfo.png){: .center-image}
+Enter the ComicVine ID or Metron ID for the series. CLU also creates this sidecar automatically when subscribing to a series via the [Pull List](../pull-list/series.md) or retrieving metadata for a folder.
 
-This will open a modal window where you can add the ComicVine ID of the series as well as the Metron ID of the series.
+### Automated Metadata on File Move
 
-### Metadata Added on File Move
+When moving files, CLU can automatically apply metadata if configured in [File Settings](../app-settings/file-settings.md):
 
-If enabled, when you move a file to a new location the metadata will be applied automatically if the following criteria are met:
+- A valid `cvinfo` sidecar exists in the destination directory.
+- The file does not currently contain a `ComicInfo.xml` file (or existing metadata was generated from basic store data and needs enrichment).
 
-- There is a valid `cvinfo` file in the same directory
-- There is no `ComicInfo.xml` file OR if the `ComicInfo.xml` file was generated from Amazon data, it will be replaced.
+### Automated Renaming on Metadata Retrieval
 
-### File Renamed when Metadata is Added
+When metadata is added to an archive, CLU can automatically rename the file to match your configured [Custom Rename Pattern](../app-settings/file-settings.md#custom-naming-settings) using verified series, volume, and issue tags.
 
-If this feature is enabled, when a `ComicInfo.xml` file is generated, the file will be renamed to match your configured [Custom Rename Pattern](../app-settings/file-settings.md#custom-naming-settings) based on the data in the `ComicInfo.xml` file.
+## Handling Unmatched Issue Numbers
 
-## When the Issue Number Won't Match
+When scraping metadata, CLU matches issues against the identified volume using exact issue numbering. If an issue uses non-standard numbering (such as decimal variants like `1.MU`, letters like `13A`, or differing numbering conventions), CLU opens an interactive issue picker displaying all issues from that volume:
 
-!!! info "New in v6.3"
-    When the **volume matches but the issue number doesn't**, CLU now shows the volume's issues and lets you pick one — instead of dead-ending on *"No metadata found for selection"*.
-
-Applying metadata resolves the issue by **exact number** against the volume you chose. Odd numbering means the volume is right but the issue is never found, and the old flow simply gave up with a red toast.
-
-![Issue picker](../../assets/single/issue-picker.png){: .center-image}
-
+![Issue picker](../../assets/single/issue-picker.png){: .center-image }
 /// caption
-The volume's issues, listed after an issue-number match failed.
+Issue picker displaying available volume entries
 ///
 
-### Cases this covers
+Select the correct issue card to apply the metadata tags.
 
-| Case | Example |
-| --- | --- |
-| **Decimal or suffixed numbering** | `1.MU`, `13A` |
-| **A file numbered differently from the provider** | your file says `003`, the provider stores `23` |
+### Batch Folder Processing
 
-Rather than teaching the parser every numbering scheme ever invented, CLU shows you the volume's issues in the same card layout and filter as the volume picker, and you pick the right one.
+During automated folder runs, files with unmatched issue numbers are collected in the background rather than interrupting the batch. Once the main sweep finishes, you can step through and resolve any flagged near-misses sequentially.
 
-### Batch behavior
+### Match Precedence
 
-On a **folder run**, files that hit this are **collected as you go** rather than interrupting the batch. When the run finishes you walk through them one at a time. The issue list is cached per volume, so a folder of near-misses from the same volume doesn't re-fetch it repeatedly.
-
-!!! info "A real match always wins"
-    Providers that matched a series but no issue are recorded as **near misses** and offered **only after the whole provider cascade comes up empty**. Every provider still runs first, so a genuine match from a later provider always takes precedence over a near-miss picker from an earlier one.
-
-### Scope
-
-| Path | Providers covered |
-| --- | --- |
-| **Single file** | Metron, ComicVine, ComicVine local DB, GCD API |
-| **Batch / folder** | The above, plus GCD |
-
-The [bulk-review wizard](../collection/source-wall.md) already had its own picker and is unchanged.
+Exact matches from any configured provider always take priority. The manual issue picker is only presented after the entire provider cascade has been queried without an exact issue match.

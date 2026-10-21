@@ -1,46 +1,56 @@
 ---
-description: Move your files and directories around in your mapped drive
+description: Move files and directories within your comic library using drag-and-drop.
 ---
 
 # Move
 
-<figure><img src="/assets/file/files.png" alt=""><figcaption><p>Files Manager</p></figcaption></figure>
+![Files Manager](../../assets/file/files.png){: .center-image }
+/// caption
+Dual-Pane File Manager Interface
+///
 
-When the File Manager is loaded, it will display all files in your <mark style="color:blue;">`/data`</mark> directory in both the **Source** and **Destination** locations.
+When the File Manager loads, it displays a dual-pane view of your storage directory in both the **Source** (left) and **Destination** (right) panels.
+
+## Moving Files and Directories
+
+The dual-pane interface allows drag-and-drop transfers in either direction (Source $\rightarrow$ Destination or Destination $\rightarrow$ Source).
 
 ### Moving Files
 
-![Move Files](../../assets/file/move.png){: .center-image}
+![Move Files](../../assets/file/move.png){: .center-image }
 
-Using the file manager, navigate to the file(s) that you wish to move. Simply click and drag it to the location you want to file to move.
-
-The file manager supports dragging and dropping files/directories to/and from the **Source** and **Destination**. All examples will demonstrate **Source --> Destination,** but either direction will work.
+Navigate to the target file in one panel, then click and drag it to the desired directory in the opposing panel.
 
 ### Moving Directories
 
-Similar to files, navigate to the directory you wish to move. Click and drag it to the new location.
+Navigate to the directory you wish to move, then click and drag it into its new parent folder in the opposite panel.
 
-![Moving a Directory](../../assets/file/move_dir.png){: .center-image}
+![Moving a Directory](../../assets/file/move_dir.png){: .center-image }
 
-If you move a large file(s) or a directory, the UI will indicate the move as *in progress* and the status will be displayed in the Action Items area in the header as well, allowing you to navigate away and continue monitoring.
+When moving large directories or high volumes of files, progress is reported live in the top navigation bar's **Action Items** indicator, allowing you to navigate away while the transfer completes in the background.
 
-![Move Progress](../../assets/file/moving.png){: .center-image}
+![Move Progress](../../assets/file/moving.png){: .center-image }
 
-### Select Multiple
+## Multi-Item Selection
 
-You can move multiple files or directories by select them, one at a time, by holding down `SHIFT` while clicking each directory or file.
+You can select multiple files or directories simultaneously:
 
-![Multiple File Selection](../../assets/file/multiple.png){: .center-image}
+- Hold **SHIFT** while clicking to select a contiguous range of items.
+- Hold **CTRL** (or **CMD** on macOS) while clicking to toggle individual items.
 
-### Create Folder from Files
+![Multiple File Selection](../../assets/file/multiple.png){: .center-image }
 
-Once you have multiple files selected, you can right-click and see a context menu of additional actions you can perform. To make organizing and moving multiple files quick, you can "Create Folder with Selection" using your selected files.
+Once items are selected, you can drag the entire group to a new location at once.
 
-![Right-click multiple files to see options](../../assets/file/right-click.png){: .center-image}
+## Create Folder from Files
 
-If all of the files share the same _{Series Name}_, the folder will be created with that name. 
-If the files have differing _{Series Name}_, you'll be prompted to Enter Folder Name for those files.
+When multiple comic files are selected, right-click to open the context menu and choose **Create Folder with Selection**:
 
-![Enter Folder Name](../../assets/file/name-folder.png){: .center-image}
+![Right-click multiple files to see options](../../assets/file/right-click.png){: .center-image }
 
-Click "Create Folder" to finish up.
+- **Automatic series detection**: If all selected files share an identical detected series name, the new folder automatically defaults to that series title.
+- **Custom folder name**: If selected files originate from different series or lack common naming, a prompt asks you to enter the desired folder name.
+
+![Enter Folder Name](../../assets/file/name-folder.png){: .center-image }
+
+Click **Create Folder** to create the directory and automatically move the selected files into it.

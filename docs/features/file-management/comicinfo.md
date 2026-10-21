@@ -1,78 +1,60 @@
 ---
-description: How to get metadata and create ComicInfo.xml files
+description: Search for comic metadata and generate ComicInfo.xml tags.
 ---
 
 # Generate ComicInfo.xml
 
-Depending on your metadata provider settings, and the method used (file vs folder) you may be presented differening options are you attempt to get metadata for your comics.
+Depending on your configured metadata providers and whether you are processing a single file or an entire folder, CLU uses structured search hierarchies to find and apply comic metadata.
 
-### Get Metadata for all comics in a folder
+## Get Metadata for All Comics in a Folder
 
-To get metadata and generate a ComicInfo.xml file for all issues in a folder, simply click the <i class="bi bi-cloud-download fs-2 text-success"></i> *Fetch Metadata for All Comics in Folder* button.
+To fetch metadata and embed a `ComicInfo.xml` file across all issues in a folder, click the <i class="bi bi-cloud-download fs-2 text-success"></i> **Fetch Metadata for All Comics in Folder** button.
 
-Depending on your folder structure, CLU will then search for the best match using:
+CLU queries configured providers using the following search hierarchy:
 
-* `{Series Name} ({Year})` - using the year from the folder name, we attempt to match the series and year
-* `{Series Name}` - if no exact match, we then search for the exact series name
-* `% {Series Name} %` - if no match, we then search for the words in the series name
+1. **`{Series Name} ({Year})`**: Uses the series name and publication year extracted from the folder structure to find an exact volume match.
+2. **`{Series Name}`**: If no exact year match is found, queries for the exact series title.
+3. **`% {Series Name} %`**: If no exact title match is found, performs fuzzy keyword matching across provider records.
 
-Here are two specific examples:
+### Folder Structure Examples
 
 #### Series Name (Year)
 
-![Series Name (Year)](../../assets/file/gcd01.png){: .center-image}
+![Series Name (Year)](../../assets/file/gcd01.png){: .center-image }
 
-Searching for _'H.A.R.D. Corps (1992)'_ finds an exact match and applies metadata. Any issues with existing metadata will be skipped. 
+Searching for a structured folder like `H.A.R.D. Corps (1992)` matches the series and publication year directly, applying metadata tags across all issues. Any issues already containing valid metadata are skipped.
 
-![Series Name (Year)](../../assets/file/add-metadata02.png){: .center-image}
+Progress is displayed in a toast notification and updates in the top navigation header, allowing you to browse elsewhere while scraping continues in the background.
 
-Progress will be shown in a toast notification while on the page. 
+![Metadata Generation Progress](../../assets/file/add-metadata01.png){: .center-image }
 
-![Series Name (Year)](../../assets/file/add-metadata01.png){: .center-image}
+#### Nested Volume Folders: Series Name \ v(Year)
 
-You may navigate away from the page and the process will continue in the background with status being displayed in the header.
+![Series Name v(Year)](../../assets/file/gcd03.png){: .center-image }
 
-#### Series Name \ v(Year)
+When managing multi-volume series organized into subfolders (e.g. `Archer & Armstrong/v1992`), CLU combines the parent directory name with the volume year to query the provider for `Archer & Armstrong (1992)`.
 
-![Series Name v(Year)](../../assets/file/gcd03.png){: .center-image}
+If multiple potential volumes match (e.g. `Archer & Armstrong (2012)`), an interactive selection modal displays candidate series along with issue counts and date ranges:
 
-Similarly, when multiple volumes are present, CLU will grab the 'YEAR' from the folder and append it to the parent folder, so this search was for _'Archer & Armstrong (1992)'_ and we found an exact match.
+![Series Name - Select Match](../../assets/file/gcd04.png){: .center-image }
 
-![Series Name - Select Match](../../assets/file/gcd04.png){: .center-image}
-
-Searching for _'Archer & Armstrong (2012)'_ however, does not find an exact match, so we're presented with a list of possible matches. From that we can see a series from (2012-2014) with 72 Issues, so we select this for matching.
-
-!!! note
-    Many providers count alternate covers and reprints, so some issues counts (like this) are exaggerated. Simply select the correct issue from the list.
+Select the correct series entry to begin scraping and writing metadata.
 
 ### Get metadata for a single issue
 
-Getting details for single issues works similar to the directory search. The search order is:
+When fetching metadata for an individual issue, CLU applies a targeted search hierarchy:
 
-* `{Series Name} {Year} {Issue Number}` - we attempt to find an example match an apply the results
-* `{Series Name} {Year}` - If no exact match, we search for Series Name and year and llok for the issue
-* `% {Series Name} %` - If that fails, we search for series words, return the results and then match the issue from the user selection
+1. **`{Series Name} {Year} {Issue Number}`**: Attempts to identify the exact volume and issue number directly.
+2. **`{Series Name} {Year}`**: Locates the series volume, then searches for the specific issue number within it.
+3. **`% {Series Name} %`**: Performs a keyword search across series titles, displays candidate matches, and matches the issue upon selection.
 
-![Series Name Year Issue Number](../../assets/file/gcd05.png){: .center-image}
+![Single Issue Matching](../../assets/file/gcd05.png){: .center-image }
 
-![Series Name Year Issue Number](../../assets/file/gcd06.png){: .center-image}
+Select the matching volume and issue card to generate and write the `ComicInfo.xml` tag file.
 
-Selecting the (2016-2017) series will match and generate the data.
+## GCD API Considerations
 
-![Issue Count](../../assets/file/gcd07.png){: .center-image}
+When utilizing the Grand Comics Database (GCD) via its API, keep the following characteristics in mind:
 
-## GCD API Differences
-
-The GCD API is a newer API compared to the others, and as such, it has some differences in how it handles metadata.
-
-It has limited endpoints and methods for retrieving data, so when it is being used, you may need to provide more information to get the correct results.
-
-![GCD API Options](../../assets/file/gcd-api-options.png){: .center-image}
-
-### Language
-
-GCD has data for many languages but no way currently to filter API results by language. When many results are returned, you can select your preferred language from the results lists to filter out all other languages. 
-
-### Cover Image, Publisher and Issue Counts
-
-Other providers have this data in search results, but GCD does not. These fields are left as placeholders and will be populated if GCD adds them to their API results. 
+- **Language Filtering**: GCD catalogs international comics across numerous languages. If a search yields multiple foreign editions, use the language filter dropdown in the results modal to isolate your preferred language.
+- **Result Details**: Unlike ComicVine and Metron, basic GCD API search results do not always return cover art previews or publisher summaries. These fields populate once an issue is selected and downloaded.
